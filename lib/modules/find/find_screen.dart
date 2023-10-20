@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class FindScreen extends GetView<FindController>{
@@ -66,25 +65,36 @@ class FindScreen extends GetView<FindController>{
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(4.w)),
                       ),
-                      suffixIcon: GestureDetector(
-                        onTap: (){
-
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(15.h),
-                          child: CustomButton(
-                              '인증번호 발송',
-                              10.sp,
-                              ColorConstant.white,
-                              ColorConstant.primary,
-                              5.w,
-                              'Noto Sans KR',
-                              FontWeight.w500,
-                              88.w,
-                              24.h
-                          ),
-                        )
+                      suffixIconConstraints: BoxConstraints(
+                          minWidth: 81.w,
+                          minHeight: 23.h
                       ),
+                      suffixIcon: Container(
+                        margin: EdgeInsets.only(right: 15.w),
+                        child: ElevatedButton(
+                          onPressed: (){
+
+                          },
+                          child: Text(
+                            '인증번호 발송',
+                            style: TextStyle(
+                              color: ColorConstant.white,
+                              fontSize: 10.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorConstant.primary,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(3.w))
+                              ),
+                              padding: EdgeInsets.all(0),
+                              minimumSize: Size(81.w,23.h)
+                          ),
+                        ),
+                      )
                     ),
 
                     maxLines: 1,
@@ -134,24 +144,35 @@ class FindScreen extends GetView<FindController>{
                             fontFamily: 'Noto Sans KR',
                             fontWeight: FontWeight.w500,
                           ),
-                          suffixIcon: GestureDetector(
-                              onTap: (){
+                          suffixIconConstraints: BoxConstraints(
+                              minWidth: 81.w,
+                              minHeight: 23.h
+                          ),
+                          suffixIcon: Container(
+                            margin: EdgeInsets.only(right: 15.w),
+                            child: ElevatedButton(
+                              onPressed: (){
 
                               },
-                              child: Container(
-                                padding: EdgeInsets.all(15.h),
-                                child: CustomButton(
-                                    '인증 확인',
-                                    10.sp,
-                                    ColorConstant.white,
-                                    ColorConstant.primary,
-                                    5.w,
-                                    'Noto Sans KR',
-                                    FontWeight.w500,
-                                    88.w,
-                                    24.h
+                              child: Text(
+                                '인증번호 확인',
+                                style: TextStyle(
+                                  color: ColorConstant.white,
+                                  fontSize: 10.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              )
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: ColorConstant.primary,
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(3.w))
+                                  ),
+                                  padding: EdgeInsets.all(0),
+                                  minimumSize: Size(81.w,23.h)
+                              ),
+                            ),
                           ),
                           counterText: '',
                           focusedBorder: OutlineInputBorder(
@@ -229,22 +250,28 @@ class FindScreen extends GetView<FindController>{
                 Container(
                   margin: EdgeInsets.only(top: 13.h),
                   width: Get.width,
-                  child: GestureDetector(
-                    onTap: (){
+                  height: 55.w,
+                  child: ElevatedButton(
+                    onPressed: (){
                       Get.toNamed(AppRoutes.resetScreen);
                     },
-                    child: CustomButton(
-                        '다음',
-                        20.sp,
-                        ColorConstant.white,
-                        controller.validPhoneStatus.value == 1  && controller.validNumberStatus.value == 1
-                            ? ColorConstant.primary
-                            : ColorConstant.gray2,
-                        4.w,
-                        'Noto Sans KR',
-                        FontWeight.w700,
-                        Get.width,
-                        55.w
+                    child: Text(
+                      '다음',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 20.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: controller.validPhoneStatus.value == 1  && controller.validNumberStatus.value == 1
+                          ? ColorConstant.primary
+                          : ColorConstant.gray2,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4.w))
+                      ),
                     ),
                   ),
                 ),

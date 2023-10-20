@@ -7,10 +7,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class LoginScreen extends GetView<LoginController>{
+
+  void _showRegisterPopup(context){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            insetPadding: EdgeInsets.symmetric(horizontal: 68.w),
+            contentPadding: EdgeInsets.zero,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8))
+            ),
+            content: Container(
+              width: 424.w,
+              height: 127.h,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 117.w,
+                    height: 33.h,
+                    child: ElevatedButton(
+                      onPressed: (){
+                        Get.back();
+                        Get.toNamed(AppRoutes.registerScreen);
+                      },
+                      child: Text(
+                        '일반 회원가입',
+                        style: TextStyle(
+                          color: ColorConstant.white,
+                          fontSize: 12.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorConstant.primary
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 117.w,
+                    height: 33.h,
+                    margin: EdgeInsets.only(top: 8.h),
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                          side: BorderSide(width: 1.w, color: ColorConstant.primary)
+                      ),
+                      onPressed: (){
+                        Get.back();
+                        Get.toNamed(AppRoutes.registerBizScreen);
+                      },
+                      child: Text(
+                        '사업자 회원가입',
+                        style: TextStyle(
+                          color: ColorConstant.primary,
+                          fontSize: 12.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -185,25 +254,36 @@ class LoginScreen extends GetView<LoginController>{
               Container(
                 margin: EdgeInsets.only(top: 13.h),
                 width: Get.width,
-                child: CustomButton(
+                height: 55.w,
+                child: ElevatedButton(
+                  onPressed: (){
+                    Get.offAllNamed(AppRoutes.mainScreen);
+                  },
+                  child: Text(
                     '로그인',
-                    20.sp,
-                    ColorConstant.white,
-                    controller.validPhoneStatus.value == 1  && controller.validPasswordStatus.value == 1
-                        ? ColorConstant.primary
-                        : ColorConstant.gray2,
-                    4.w,
-                    'Noto Sans KR',
-                    FontWeight.w700,
-                    Get.width,
-                    55.w
+                    style: TextStyle(
+                      color: ColorConstant.white,
+                      fontSize: 20.sp,
+                      fontFamily: 'Noto Sans KR',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: controller.validPhoneStatus.value == 1  && controller.validPasswordStatus.value == 1
+                          ? ColorConstant.primary
+                          : ColorConstant.gray2,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4.w))
+                      ),
+                  ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(top: 43.h),
                 child: GestureDetector(
                   onTap: (){
-                    Get.toNamed(AppRoutes.registerScreen);
+                    _showRegisterPopup(context);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

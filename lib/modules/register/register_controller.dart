@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class RegisterController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey();
 
+  TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController1 = TextEditingController();
   TextEditingController passwordController2 = TextEditingController();
@@ -15,6 +15,7 @@ class RegisterController extends GetxController {
   RxBool isObscureText1 = false.obs;
   RxBool isObscureText2 = false.obs;
   RxBool isFinish = false.obs;
+  RxInt validNameStatus = 0.obs;
   RxInt validPhoneStatus = 0.obs;
   RxInt validNumberStatus = 0.obs;
   RxBool isShowTime = false.obs;

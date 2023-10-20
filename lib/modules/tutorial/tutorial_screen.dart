@@ -76,7 +76,7 @@ class TutorialScreen extends GetView<TutorialController>{
                             int page = controller.currentIndex.value;
 
                             if(page == 2){
-                              Get.offAllNamed(AppRoutes.loginScreen);
+                              Get.offAllNamed(AppRoutes.tutorialIntroScreen);
                             }else{
                               controller.pageController.jumpToPage(page+1);
                             }

@@ -9,8 +9,6 @@ class SplashController extends GetxController {
   void onInit() async {
     await Future.delayed(Duration(milliseconds: 2000));
 
-
-
     final StorageService _storageService = Get.find();
     try {
       if (_storageService.isLogin()) {
@@ -18,13 +16,12 @@ class SplashController extends GetxController {
         //await PermissionManager.checkPermission();
         Get.offAllNamed(AppRoutes.mainScreen);
       } else {
-        Get.offAllNamed(AppRoutes.tutorialIntroScreen);
+        Get.offAllNamed(AppRoutes.tutorialScreen);
       }
     } catch (e) {
-      Get.offAllNamed(AppRoutes.tutorialIntroScreen);
+      Get.offAllNamed(AppRoutes.tutorialScreen);
     }
 
-    // Get.offAllNamed(AppRoutes.loginScreen);
 
     super.onInit();
   }

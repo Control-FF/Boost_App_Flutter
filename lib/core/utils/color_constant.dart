@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class ColorConstant {
   static Color black = fromHex('#000000');
+  static Color black2 = fromHex('#404040');
   static Color white = fromHex('#FFFFFF');
   static Color primary = fromHex('#3A3390');
   static Color gray1 = fromHex('#BBBBBB');
@@ -12,6 +13,8 @@ class ColorConstant {
   static Color gray5 = fromHex('#575757');
   static Color gray6 = fromHex('#F2F2F2');
   static Color gray7 = fromHex('#AEAEAF');
+  static Color gray8 = fromHex('#ABABAB');
+
 
   static Color fromHex(String hexString) {
     final buffer = StringBuffer();

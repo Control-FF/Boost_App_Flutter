@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class ResetScreen extends GetView<ResetController>{
@@ -179,18 +178,33 @@ class ResetScreen extends GetView<ResetController>{
                   Container(
                     margin: EdgeInsets.only(top: 13.h),
                     width: Get.width,
-                    child: CustomButton(
+                    height: 55.w,
+                    child: ElevatedButton(
+                      onPressed: (){
+                        if(controller.isFinish.value){
+                          Get.toNamed(AppRoutes.loginScreen);
+                        }else{
+                          controller.isFinish.value = true;
+                        }
+                      },
+                      child: Text(
                         '확인',
-                        20.sp,
-                        ColorConstant.white,
-                        controller.validPasswordStatus1.value == 1  && controller.validPasswordStatus2.value == 1
+                        style: TextStyle(
+                          color: ColorConstant.white,
+                          fontSize: 20.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: controller.validPasswordStatus1.value == 1  && controller.validPasswordStatus2.value == 1
                             ? ColorConstant.primary
                             : ColorConstant.gray2,
-                        4.w,
-                        'Noto Sans KR',
-                        FontWeight.w700,
-                        Get.width,
-                        55.w
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(4.w))
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -212,26 +226,31 @@ class ResetScreen extends GetView<ResetController>{
                   Container(
                     margin: EdgeInsets.only(top: 33.h),
                     width: Get.width,
-                    child: GestureDetector(
-                      onTap: (){
+                    height: 55.w,
+                    child: ElevatedButton(
+                      onPressed: (){
                         Get.offAllNamed(AppRoutes.loginScreen);
                       },
-                      child: CustomButton(
-                          '로그인 하기',
-                          20.sp,
-                          ColorConstant.white,
-                          ColorConstant.primary,
-                          4.w,
-                          'Noto Sans KR',
-                          FontWeight.w700,
-                          Get.width,
-                          55.w
+                      child: Text(
+                        '로그인 하기',
+                        style: TextStyle(
+                          color: ColorConstant.white,
+                          fontSize: 20.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorConstant.primary,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(4.w))
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-
             ],
           )
           ),

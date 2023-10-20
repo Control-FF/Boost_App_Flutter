@@ -31,27 +31,36 @@ class TutorialIntroScreen extends GetView<TutorialController>{
             left: 48.w,
             right: 48.w,
             bottom: 52.h,
-            child: GestureDetector(
-              onTap: (){
-                Get.offAllNamed(AppRoutes.tutorialScreen);
-              },
-              child: CustomButton(
-                '둘러보기',
-                23.sp,
-                ColorConstant.white,
-                ColorConstant.primary,
-                4.w,
-                'Noto Sans KR',
-                FontWeight.w700,
-                Get.width,
-                55.w
+            child: Container(
+              width: Get.width,
+              height: 55.h,
+              child: ElevatedButton(
+                onPressed: (){
+                  Get.offAllNamed(AppRoutes.loginScreen);
+                },
+                child: Text(
+                  '로그인',
+                  style: TextStyle(
+                    color: ColorConstant.white,
+                    fontSize: 23.sp,
+                    fontFamily: 'Noto Sans KR',
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorConstant.primary,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4.w))
+                    )
+                ),
               ),
             ),
           ),
           Positioned(
             left: 0,
             right: 0,
-            bottom: 151.h,
+            bottom: 209.h,
             child: Container(
               alignment: Alignment.center,
               child: Text(
@@ -68,7 +77,7 @@ class TutorialIntroScreen extends GetView<TutorialController>{
           Positioned(
             left: 0,
             right: 0,
-            bottom: 261.h,
+            bottom: 244.h,
             child: Container(
               alignment: Alignment.center,
               child: Text(

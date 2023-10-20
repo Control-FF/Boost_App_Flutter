@@ -1,0 +1,1 @@
+com.soo.boost.boostapp

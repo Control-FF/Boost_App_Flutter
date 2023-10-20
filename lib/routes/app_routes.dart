@@ -1,3 +1,7 @@
+import 'package:boostapp/modules/address/address_edit_binding.dart';
+import 'package:boostapp/modules/address/address_edit_screen.dart';
+import 'package:boostapp/modules/address/address_list_binding.dart';
+import 'package:boostapp/modules/address/address_list_screen.dart';
 import 'package:boostapp/modules/find/find_binding.dart';
 import 'package:boostapp/modules/find/find_screen.dart';
 import 'package:boostapp/modules/login/login_binding.dart';
@@ -5,6 +9,8 @@ import 'package:boostapp/modules/login/login_screen.dart';
 import 'package:boostapp/modules/main/main.screen.dart';
 import 'package:boostapp/modules/main/main_binding.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
+import 'package:boostapp/modules/register/register_biz_binding.dart';
+import 'package:boostapp/modules/register/register_biz_screen.dart';
 import 'package:boostapp/modules/register/register_screen.dart';
 import 'package:boostapp/modules/reset/reset_binding.dart';
 import 'package:boostapp/modules/reset/reset_screen.dart';
@@ -24,6 +30,9 @@ class AppRoutes {
   static const findScreen = '/findPwd';
   static const resetScreen = '/resetPwd';
   static const registerScreen = '/register';
+  static const registerBizScreen = '/register_biz';
+  static const addressScreen = '/address';
+  static const addressEditScreen = '/address_edit';
 
   static List<GetPage> pages = [
     GetPage(
@@ -80,6 +89,27 @@ class AppRoutes {
       page: () => RegisterScreen(),
       bindings: [
         RegisterBinding(),
+      ],
+    ),
+    GetPage(
+      name: registerBizScreen,
+      page: () => RegisterBizScreen(),
+      bindings: [
+        RegisterBizBinding(),
+      ],
+    ),
+    GetPage(
+      name: addressScreen,
+      page: () => AddressScreen(),
+      bindings: [
+        AddressBinding(),
+      ],
+    ),
+    GetPage(
+      name: addressEditScreen,
+      page: () => AddressEditScreen(),
+      bindings: [
+        AddressEditBinding(),
       ],
     ),
   ];
