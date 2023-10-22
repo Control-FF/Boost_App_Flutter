@@ -1,3 +1,4 @@
+import 'package:boostapp/data/service/user_service.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,8 @@ import 'package:boostapp/modules/main/pages/home_screen.dart';
 import 'package:boostapp/modules/main/pages/my_page_screen.dart';
 
 class MainController extends GetxController {
+  final UserService _userService = Get.find();
+
   DateTime? currentBackPressTime;
   RxInt currentIndex = 0.obs;
 
@@ -37,7 +40,19 @@ class MainController extends GetxController {
 
     await Future.delayed(Duration(milliseconds: 500));
 
-    Get.toNamed(AppRoutes.addressScreen);
+    await getAddressCheck();
+  }
+
+  Future<void> getAddressCheck() async {
+    final result = await _userService.getAddressList();
+    result.fold(
+        (failure) => print(failure.message),
+        (response) => {
+          if(response.items!.isEmpty){
+            Get.toNamed(AppRoutes.addressScreen)
+          }
+        },
+    );
   }
 
   onWillPop(BuildContext context) {

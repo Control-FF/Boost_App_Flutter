@@ -1,41 +1,34 @@
-typedef AddressEntity = MapEntry<dynamic, Address>;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Address {
-  final int idx;
-  final String receiveName;
-  final String phone;
-  final String address1;
-  final String address2;
-  final bool isBasic;
-  bool isSelect;
+part 'address.freezed.dart';
+part 'address.g.dart';
 
-  Address({
-    required this.idx,
-    required this.receiveName,
-    required this.phone,
-    required this.address1,
-    required this.address2,
-    required this.isBasic,
-    required this.isSelect,
-  });
+@freezed
+class Address with _$Address {
+  factory Address({
+    @Default(0) int ad_id,
+    @Default('') String ad_subject,
+    @Default('') String address1,
+    @Default('') String address2,
+    @Default('') String address3,
+    @Default('') String name,
+    @Default('') String phone,
+    @Default('') String? ad_default,
+    @Default(false) bool? isCheck,
+  }) = _Address;
 
-  Address copyWith({
-    int? idx,
-    String? receiveName,
-    String? phone,
-    String? address1,
-    String? address2,
-    bool? isBasic,
-    bool? isSelect,
-  }) {
-    return Address(
-      idx: idx ?? this.idx,
-      receiveName: receiveName ?? this.receiveName,
-      phone: phone ?? this.phone,
-      address1: address1 ?? this.address1,
-      address2: address2 ?? this.address2,
-      isBasic: isBasic ?? this.isBasic,
-      isSelect: isBasic ?? this.isBasic,
-    );
-  }
+  factory Address.fromJson(Map<String, dynamic> json) =>
+      _$AddressFromJson(json);
+}
+
+@freezed
+class AddressResponse with _$AddressResponse {
+  factory AddressResponse({
+    required int status,
+    @Default('') String message,
+    @Default([]) @JsonKey(name: 'data') List<Address>? items,
+  }) = _AddressResponse;
+
+  factory AddressResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddressResponseFromJson(json);
 }

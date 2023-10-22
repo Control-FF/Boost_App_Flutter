@@ -1,4 +1,4 @@
-#Sat Oct 21 00:13:30 KST 2023
+#Sun Oct 22 21:50:02 KST 2023
 base.0=/Users/seunglee/Desktop/Project/Booost/Boost_App_Flutter/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

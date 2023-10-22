@@ -1,30 +1,78 @@
-import 'package:boostapp/data/models/address.dart';
+import 'package:boostapp/data/models/address_item.dart';
+import 'package:boostapp/data/service/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AddressController extends GetxController {
+class AddressController extends GetxController with StateMixin {
+  final UserService _userService = Get.find();
+
   TextEditingController receiveNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
-  var addressList = RxList<Address>.empty(growable: true).obs;
-  RxInt selectPosition = 99999999.obs;
+  var addressList = RxList<AddressItem>.empty(growable: true).obs;
+  RxInt selectAdId = 0.obs;
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
 
-    addressList.value.add(Address(idx: 1, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: true, isSelect: false));
-    addressList.value.add(Address(idx: 2, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 3, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 4, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 5, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 6, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 7, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 8, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 9, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
-    addressList.value.add(Address(idx: 10, receiveName: '테스터', phone: '010-1111-2222', address1: '부산광역시 금정구 온천장로 137', address2: '현대 성우오스타 1517호', isBasic: false, isSelect: false));
+    await getAddressList();
   }
+
+  Future<void> getAddressList() async {
+    final result = await _userService.getAddressList();
+    result.fold(
+        (failure) => print(failure.message),
+        (response) => {
+          if(response.items!.isEmpty){
+            change(response, status: RxStatus.empty())
+          }else{
+            change(response, status: RxStatus.success())
+          }
+        },
+    );
+  }
+
+  Future<void> setAddressBasic(context, int adId) async {
+    final result = await _userService.setAddressBasic(adId);
+    result.fold(
+          (failure) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              elevation: 6.0,
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                failure.message,
+                style: TextStyle(color: Colors.white),
+              ),
+            ));
+          },
+          (response) {
+            getAddressList();
+          },
+    );
+  }
+
+  Future<void> deleteAddress(context, int adId) async {
+    final result = await _userService.deleteAddress(adId);
+    result.fold(
+          (failure) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            failure.message,
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+      },
+          (response) {
+        getAddressList();
+      },
+    );
+  }
+
+
 
 
 }

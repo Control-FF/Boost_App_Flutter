@@ -4,6 +4,12 @@ import 'package:get/get.dart';
 class RegisterController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey();
 
+  final FocusNode nameFocusNode = FocusNode();
+  final FocusNode phoneFocusNode = FocusNode();
+  final FocusNode password1FocusNode = FocusNode();
+  final FocusNode password2FocusNode = FocusNode();
+  final FocusNode inviteFocusNode = FocusNode();
+
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController1 = TextEditingController();

@@ -104,6 +104,7 @@ class LoginScreen extends GetView<LoginController>{
               Container(
                 width: Get.width,
                 child: TextField(
+                  focusNode: controller.phoneFocusNode,
                   controller: controller.phoneController,
                   decoration: InputDecoration(
                     hintText: '휴대폰 번호를 입력하세요',
@@ -146,6 +147,8 @@ class LoginScreen extends GetView<LoginController>{
                     fontWeight: FontWeight.w500,
                   ),
                   keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.next,
+                  onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.passwordFocusNode),
                   inputFormatters: [
                     MaskTextInputFormatter(
                       mask: '###-####-####',
@@ -153,6 +156,13 @@ class LoginScreen extends GetView<LoginController>{
                       type: MaskAutoCompletionType.lazy,
                     )
                   ],
+                  onChanged: (value){
+                    if(value == "" || value.length < 13){
+                      controller.validPhoneStatus.value = 2;
+                    }else{
+                      controller.validPhoneStatus.value = 1;
+                    }
+                  },
 
                 ),
               ),
@@ -172,6 +182,7 @@ class LoginScreen extends GetView<LoginController>{
                 margin: EdgeInsets.only(top: 9.h),
                 width: Get.width,
                 child: TextField(
+                  focusNode: controller.passwordFocusNode,
                   controller: controller.passwordController,
                   decoration: InputDecoration(
                     hintText: '비밀번호를 입력하세요',
@@ -217,8 +228,27 @@ class LoginScreen extends GetView<LoginController>{
                     fontFamily: 'Noto Sans KR',
                     fontWeight: FontWeight.w500,
                   ),
-                  obscureText: controller.isObscureText.value,
+                  obscureText: !controller.isObscureText.value,
                   textInputAction: TextInputAction.done,
+                  onChanged: (value){
+                    //임시
+                    RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[!@#\$&*~]).{8,}$');
+                    if(value == "" || !regex.hasMatch(value) || value.length < 8 || value.length > 12){
+                      controller.validPasswordStatus.value = 2;
+                    }else{
+                      controller.validPasswordStatus.value = 1;
+                    }
+
+                    /*
+                    RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                    if(value == "" || !regex.hasMatch(value) || value.length < 8 || value.length > 12){
+                      controller.validPasswordStatus.value = 2;
+                    }else{
+                      controller.validPasswordStatus.value = 1;
+                    }
+
+                     */
+                  },
                 ),
               ),
               controller.validPasswordStatus.value == 2 ? Container(
@@ -256,8 +286,9 @@ class LoginScreen extends GetView<LoginController>{
                 width: Get.width,
                 height: 55.w,
                 child: ElevatedButton(
-                  onPressed: (){
-                    Get.offAllNamed(AppRoutes.mainScreen);
+                  onPressed: () async {
+                    //Get.offAllNamed(AppRoutes.mainScreen);
+                    await controller.login(context);
                   },
                   child: Text(
                     '로그인',

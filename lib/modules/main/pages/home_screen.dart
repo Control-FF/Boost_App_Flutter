@@ -67,7 +67,7 @@ class HomeScreen extends GetView<HomeController>{
         ],
       ),
       body: Center(
-        child: Text("d"),
+        child: Text("메인"),
       ),
     );
   }

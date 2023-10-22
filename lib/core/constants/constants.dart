@@ -1,8 +1,8 @@
 class Constants {
-  static final String baseUrl = '';
+  static const String baseUrl = 'http://boost.bnewb.kr';
 
   static const timeout = Duration(seconds: 30);
 
-  static final String tokenKey = 'Token';
+  static const String tokenKey = 'Token';
 
 }

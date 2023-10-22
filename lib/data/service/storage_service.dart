@@ -1,5 +1,8 @@
+import 'package:boostapp/core/constants/constants.dart';
+import 'package:boostapp/data/models/token.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 
 class StorageService extends GetxService {
@@ -17,7 +20,7 @@ class StorageService extends GetxService {
     return int.parse(String.fromCharCodes(
         Iterable.generate(9, (_) => ch.codeUnitAt(r.nextInt(ch.length)))));
   }
-
+*/
   Token? getToken() {
     final data = _storage.read(Constants.tokenKey);
     if (data != null) {
@@ -26,11 +29,14 @@ class StorageService extends GetxService {
       return data;
     }
   }
-*/
+
   bool isLogin() {
-    return false;
-    //final Token? _token = getToken();
-    //return (_token != null && !JwtDecoder.isExpired(_token!.accessToken));
+    final Token? _token = getToken();
+    return (_token != null && !JwtDecoder.isExpired(_token!.accessToken));
+  }
+
+  void saveToken(Token token) {
+    _storage.write(Constants.tokenKey, token);
   }
 /*
   Future<void> logOut() async {
@@ -51,10 +57,6 @@ class StorageService extends GetxService {
       await UserApi.instance.logout();
     } catch (e) {}
     await FlutterNaverLogin.logOutAndDeleteToken();
-  }
-
-  void saveToken(Token token) {
-    _storage.write(Constants.tokenKey, token);
   }
 
   UserInfo? getUserInfo() {

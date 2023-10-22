@@ -96,7 +96,6 @@ class FindScreen extends GetView<FindController>{
                         ),
                       )
                     ),
-
                     maxLines: 1,
                     maxLength: 13,
                     style: TextStyle(
@@ -106,6 +105,7 @@ class FindScreen extends GetView<FindController>{
                       fontWeight: FontWeight.w500,
                     ),
                     keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
                     inputFormatters: [
                       MaskTextInputFormatter(
                         mask: '###-####-####',
@@ -113,6 +113,13 @@ class FindScreen extends GetView<FindController>{
                         type: MaskAutoCompletionType.lazy,
                       )
                     ],
+                    onChanged: (value){
+                      if(value == "" || value.length < 13){
+                        controller.validPhoneStatus.value = 2;
+                      }else{
+                        controller.validPhoneStatus.value = 1;
+                      }
+                    },
 
                   ),
                 ),
@@ -206,6 +213,13 @@ class FindScreen extends GetView<FindController>{
                           fontWeight: FontWeight.w500,
                         ),
                         textInputAction: TextInputAction.done,
+                        onChanged: (value){
+                          if(value.length < 6){
+                            controller.validNumberStatus.value = 2;
+                          }else{
+                            controller.validNumberStatus.value = 1;
+                          }
+                        },
                       ),
                       controller.isShowTime.value ? Positioned(
                         right: 120,
@@ -253,7 +267,9 @@ class FindScreen extends GetView<FindController>{
                   height: 55.w,
                   child: ElevatedButton(
                     onPressed: (){
-                      Get.toNamed(AppRoutes.resetScreen);
+                      if(controller.validPhoneStatus.value == 1  && controller.validNumberStatus.value == 1){
+                        Get.toNamed(AppRoutes.resetScreen);
+                      }
                     },
                     child: Text(
                       '다음',

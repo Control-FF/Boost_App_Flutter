@@ -41,6 +41,7 @@ class RegisterScreen extends GetView<RegisterController>{
                     Container(
                       width: Get.width,
                       child: TextField(
+                        focusNode: controller.nameFocusNode,
                         controller: controller.nameController,
                         decoration: InputDecoration(
                           hintText: '성함을 입력하세요',
@@ -82,7 +83,14 @@ class RegisterScreen extends GetView<RegisterController>{
                         ),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
-                        onSubmitted: (_) => FocusScope.of(context).nextFocus(),
+                        onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.phoneFocusNode),
+                        onChanged: (value){
+                          if(value == ""){
+                            controller.validNameStatus.value = 2;
+                          }else{
+                            controller.validNameStatus.value = 1;
+                          }
+                        },
                       ),
                     ),
                     controller.validNameStatus.value == 2 ? Container(
@@ -101,6 +109,7 @@ class RegisterScreen extends GetView<RegisterController>{
                       margin: EdgeInsets.only(top: 9.h),
                       width: Get.width,
                       child: TextField(
+                        focusNode: controller.phoneFocusNode,
                         controller: controller.phoneController,
                         decoration: InputDecoration(
                             hintText: '휴대폰 번호를 입력하세요',
@@ -179,6 +188,14 @@ class RegisterScreen extends GetView<RegisterController>{
                             type: MaskAutoCompletionType.lazy,
                           )
                         ],
+                        textInputAction: TextInputAction.done,
+                        onChanged: (value){
+                          if(value == "" || value.length < 13){
+                            controller.validPhoneStatus.value = 2;
+                          }else{
+                            controller.validPhoneStatus.value = 1;
+                          }
+                        },
                       ),
                     ),
                     controller.validPhoneStatus.value == 2 ? Container(
@@ -271,6 +288,13 @@ class RegisterScreen extends GetView<RegisterController>{
                               fontWeight: FontWeight.w500,
                             ),
                             textInputAction: TextInputAction.done,
+                            onChanged: (value){
+                              if(value.length < 6){
+                                controller.validNumberStatus.value = 2;
+                              }else{
+                                controller.validNumberStatus.value = 1;
+                              }
+                            },
                           ),
                           controller.isShowTime.value ? Positioned(
                             right: 120,
@@ -303,6 +327,7 @@ class RegisterScreen extends GetView<RegisterController>{
                       margin: EdgeInsets.only(top: 9.h),
                       width: Get.width,
                       child: TextField(
+                        focusNode: controller.password1FocusNode,
                         controller: controller.passwordController1,
                         decoration: InputDecoration(
                           hintText: '비밀번호를 입력하세요',
@@ -348,9 +373,17 @@ class RegisterScreen extends GetView<RegisterController>{
                           fontFamily: 'Noto Sans KR',
                           fontWeight: FontWeight.w500,
                         ),
-                        obscureText: controller.isObscureText1.value,
+                        obscureText: !controller.isObscureText1.value,
                         textInputAction: TextInputAction.next,
-                        onSubmitted: (_) => FocusScope.of(context).nextFocus(),
+                        onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.password2FocusNode),
+                        onChanged: (value){
+                          RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                          if(value == "" || !regex.hasMatch(value) || value.length < 8 || value.length > 12){
+                            controller.validPasswordStatus1.value = 2;
+                          }else{
+                            controller.validPasswordStatus1.value = 1;
+                          }
+                        },
                       ),
                     ),
                     controller.validPasswordStatus1.value == 2 ? Container(
@@ -369,6 +402,7 @@ class RegisterScreen extends GetView<RegisterController>{
                       margin: EdgeInsets.only(top: 9.h),
                       width: Get.width,
                       child: TextField(
+                        focusNode: controller.password2FocusNode,
                         controller: controller.passwordController2,
                         decoration: InputDecoration(
                           hintText: '비밀번호를 입력하세요',
@@ -414,9 +448,17 @@ class RegisterScreen extends GetView<RegisterController>{
                           fontFamily: 'Noto Sans KR',
                           fontWeight: FontWeight.w500,
                         ),
-                        obscureText: controller.isObscureText2.value,
+                        obscureText: !controller.isObscureText2.value,
                         textInputAction: TextInputAction.next,
-                        onSubmitted: (_) => FocusScope.of(context).nextFocus(),
+                        onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.inviteFocusNode),
+                        onChanged: (value){
+                          String pwd = controller.passwordController1.text;
+                          if(value != pwd){
+                            controller.validPasswordStatus2.value = 2;
+                          }else{
+                            controller.validPasswordStatus2.value = 1;
+                          }
+                        },
                       ),
                     ),
                     controller.validPasswordStatus2.value == 2 ? Container(
@@ -435,6 +477,7 @@ class RegisterScreen extends GetView<RegisterController>{
                       margin: EdgeInsets.only(top: 9.h),
                       width: Get.width,
                       child: TextField(
+                        focusNode: controller.inviteFocusNode,
                         controller: controller.inviteController,
                         decoration: InputDecoration(
                           hintText: '추천인을 입력하세요 (선택)',

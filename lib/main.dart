@@ -1,4 +1,7 @@
+import 'package:boostapp/data/service/api_service.dart';
 import 'package:boostapp/data/service/storage_service.dart';
+import 'package:boostapp/data/service/user_service.dart';
+import 'package:boostapp/di.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
@@ -11,7 +14,7 @@ import 'package:get/get.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Get.putAsync(() => StorageService().init());
+  await DependencyInjection.init();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

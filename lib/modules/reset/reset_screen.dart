@@ -31,11 +31,13 @@ class ResetScreen extends GetView<ResetController>{
                 ),
               ),
               !controller.isFinish.value ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 43.h,),
                   Container(
                     width: Get.width,
                     child: TextField(
+                      focusNode: controller.password1FocusNode,
                       controller: controller.passwordController1,
                       decoration: InputDecoration(
                         hintText: '새 비밀번호를 입력해주세요.',
@@ -81,8 +83,17 @@ class ResetScreen extends GetView<ResetController>{
                         fontFamily: 'Noto Sans KR',
                         fontWeight: FontWeight.w500,
                       ),
-                      obscureText: controller.isObscureText1.value,
-                      textInputAction: TextInputAction.done,
+                      obscureText: !controller.isObscureText1.value,
+                      textInputAction: TextInputAction.next,
+                      onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.password2FocusNode),
+                      onChanged: (value){
+                        RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        if(value == "" || !regex.hasMatch(value) || value.length < 8 || value.length > 12){
+                          controller.validPasswordStatus1.value = 2;
+                        }else{
+                          controller.validPasswordStatus1.value = 1;
+                        }
+                      },
                     ),
                   ),
                   controller.validPasswordStatus1.value == 2 ? Container(
@@ -101,6 +112,7 @@ class ResetScreen extends GetView<ResetController>{
                     margin: EdgeInsets.only(top: 9.h),
                     width: Get.width,
                     child: TextField(
+                      focusNode: controller.password2FocusNode,
                       controller: controller.passwordController2,
                       decoration: InputDecoration(
                         hintText: '새 비밀번호를 한번 더 입력해주세요.',
@@ -146,8 +158,16 @@ class ResetScreen extends GetView<ResetController>{
                         fontFamily: 'Noto Sans KR',
                         fontWeight: FontWeight.w500,
                       ),
-                      obscureText: controller.isObscureText2.value,
+                      obscureText: !controller.isObscureText2.value,
                       textInputAction: TextInputAction.done,
+                      onChanged: (value){
+                        String pwd = controller.passwordController1.text;
+                        if(value != pwd){
+                          controller.validPasswordStatus2.value = 2;
+                        }else{
+                          controller.validPasswordStatus2.value = 1;
+                        }
+                      },
                     ),
                   ),
                   controller.validPasswordStatus2.value == 2 ? Container(
