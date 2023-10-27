@@ -20,10 +20,10 @@ class BottomBarScreen extends GetView<MainController>{
       bottomNavigationBar: BottomAppBar(
         shape: AutomaticNotchedShape(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(30.r),topRight: Radius.circular(30.r))
           ),
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(60))
+            borderRadius: BorderRadius.all(Radius.circular(60.r))
           )
         ),
         notchMargin: 5,

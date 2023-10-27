@@ -51,7 +51,7 @@ class TutorialIntroScreen extends GetView<TutorialController>{
                     backgroundColor: ColorConstant.primary,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4.w))
+                        borderRadius: BorderRadius.all(Radius.circular(4.r))
                     )
                 ),
               ),

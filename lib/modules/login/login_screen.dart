@@ -20,7 +20,7 @@ class LoginScreen extends GetView<LoginController>{
             contentPadding: EdgeInsets.zero,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8))
+              borderRadius: BorderRadius.all(Radius.circular(8.r))
             ),
             content: Container(
               width: 424.w,
@@ -120,21 +120,21 @@ class LoginScreen extends GetView<LoginController>{
                           width: 1.w,
                           color: ColorConstant.gray2
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r)),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                           width: 1.w,
                           color: ColorConstant.gray2
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r)),
                     ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
                           width: 1.w,
                           color: ColorConstant.gray2
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r)),
                     ),
 
                   ),
@@ -204,21 +204,21 @@ class LoginScreen extends GetView<LoginController>{
                           width: 1.w,
                           color: ColorConstant.gray2
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r)),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                           width: 1.w,
                           color: ColorConstant.gray2
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r)),
                     ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(
                           width: 1.w,
                           color: ColorConstant.gray2
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r)),
                     ),
                   ),
                   maxLines: 1,
@@ -305,7 +305,7 @@ class LoginScreen extends GetView<LoginController>{
                           : ColorConstant.gray2,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4.w))
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))
                       ),
                   ),
                 ),

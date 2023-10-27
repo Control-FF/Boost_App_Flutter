@@ -59,21 +59,21 @@ class ResetScreen extends GetView<ResetController>{
                               width: 1.w,
                               color: ColorConstant.gray2
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r)),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               width: 1.w,
                               color: ColorConstant.gray2
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r)),
                         ),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                               width: 1.w,
                               color: ColorConstant.gray2
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r)),
                         ),
                       ),
                       maxLines: 1,
@@ -134,21 +134,21 @@ class ResetScreen extends GetView<ResetController>{
                               width: 1.w,
                               color: ColorConstant.gray2
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r)),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                               width: 1.w,
                               color: ColorConstant.gray2
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r)),
                         ),
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                               width: 1.w,
                               color: ColorConstant.gray2
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r)),
                         ),
                       ),
                       maxLines: 1,
@@ -222,7 +222,7 @@ class ResetScreen extends GetView<ResetController>{
                             : ColorConstant.gray2,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(4.w))
+                            borderRadius: BorderRadius.all(Radius.circular(4.r))
                         ),
                       ),
                     ),
@@ -264,7 +264,7 @@ class ResetScreen extends GetView<ResetController>{
                         backgroundColor: ColorConstant.primary,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(4.w))
+                            borderRadius: BorderRadius.all(Radius.circular(4.r))
                         ),
                       ),
                     ),

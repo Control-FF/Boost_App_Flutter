@@ -1,3 +1,4 @@
+import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/service/api_service.dart';
 import 'package:boostapp/data/service/storage_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
           builder: EasyLoading.init(builder: DevicePreview.appBuilder),
           initialRoute: AppRoutes.splashScreen,
           getPages: AppRoutes.pages,
+          theme: ThemeData(
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
         ),
       ),
     );

@@ -19,7 +19,7 @@ class AddressScreen extends GetView<AddressController>{
             contentPadding: EdgeInsets.zero,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))
+                borderRadius: BorderRadius.all(Radius.circular(10.r))
             ),
             content: Container(
               height: 110.h,
@@ -51,7 +51,7 @@ class AddressScreen extends GetView<AddressController>{
                                   side: BorderSide(width: 1.w, color: ColorConstant.primary),
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.w))
+                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
                                   ),
                                   padding: EdgeInsets.all(0)
                               ),
@@ -91,7 +91,7 @@ class AddressScreen extends GetView<AddressController>{
                                   backgroundColor: ColorConstant.primary,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.w))
+                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
                                   ),
                                   padding: EdgeInsets.all(0)
                               ),
@@ -116,7 +116,7 @@ class AddressScreen extends GetView<AddressController>{
             contentPadding: EdgeInsets.zero,
             clipBehavior: Clip.antiAliasWithSaveLayer,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))
+                borderRadius: BorderRadius.all(Radius.circular(10.r))
             ),
             content: Container(
               height: 110.h,
@@ -148,7 +148,7 @@ class AddressScreen extends GetView<AddressController>{
                                   side: BorderSide(width: 1.w, color: ColorConstant.primary),
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.w))
+                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
                                   ),
                                   padding: EdgeInsets.all(0)
                               ),
@@ -188,7 +188,7 @@ class AddressScreen extends GetView<AddressController>{
                                   backgroundColor: ColorConstant.primary,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.w))
+                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
                                   ),
                                   padding: EdgeInsets.all(0)
                               ),
@@ -289,7 +289,7 @@ class AddressScreen extends GetView<AddressController>{
                                   ),
                                   value: controller.selectAdId.value == state.items[index].ad_id,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6),
+                                    borderRadius: BorderRadius.circular(6.r),
                                   ),
                                   checkColor: ColorConstant.white,
                                   activeColor: ColorConstant.primary,
@@ -336,7 +336,7 @@ class AddressScreen extends GetView<AddressController>{
                                             height: 25.h,
                                             alignment: Alignment.center,
                                             decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                                borderRadius: BorderRadius.all(Radius.circular(5.r)),
                                                 border: Border.all(width: 1,color: ColorConstant.gray2)
                                             ),
                                             child: Text(
@@ -360,7 +360,7 @@ class AddressScreen extends GetView<AddressController>{
                                                   side: BorderSide(width: 1.w, color: ColorConstant.primary),
                                                   elevation: 0,
                                                   shape: RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.all(Radius.circular(5.w))
+                                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
                                                   ),
                                                   padding: EdgeInsets.all(0),
                                                   minimumSize: Size(87.w,24.h)
@@ -402,7 +402,7 @@ class AddressScreen extends GetView<AddressController>{
                                             backgroundColor: ColorConstant.primary,
                                             elevation: 0,
                                             shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.w))
+                                                borderRadius: BorderRadius.all(Radius.circular(5.r))
                                             ),
                                             padding: EdgeInsets.all(0),
                                             minimumSize: Size(50.w,23.h)
@@ -463,7 +463,7 @@ class AddressScreen extends GetView<AddressController>{
                       backgroundColor: controller.selectAdId.value == 0 ? ColorConstant.gray2 : ColorConstant.primary,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.w))
+                          borderRadius: BorderRadius.all(Radius.circular(10.r))
                       )
                   ),
                 ),

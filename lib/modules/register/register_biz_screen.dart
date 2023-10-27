@@ -58,21 +58,21 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                           ),
                           maxLines: 1,
@@ -126,21 +126,21 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                     width: 1.w,
                                     color: ColorConstant.gray2
                                 ),
-                                borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                borderRadius: BorderRadius.all(Radius.circular(4.r)),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     width: 1.w,
                                     color: ColorConstant.gray2
                                 ),
-                                borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                borderRadius: BorderRadius.all(Radius.circular(4.r)),
                               ),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     width: 1.w,
                                     color: ColorConstant.gray2
                                 ),
-                                borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                borderRadius: BorderRadius.all(Radius.circular(4.r)),
                               ),
                               suffixIconConstraints: BoxConstraints(
                                   minWidth: 81.w,
@@ -165,7 +165,7 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                       backgroundColor: ColorConstant.primary,
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(3.w))
+                                          borderRadius: BorderRadius.all(Radius.circular(3.r))
                                       ),
                                       padding: EdgeInsets.all(0),
                                       minimumSize: Size(81.w,23.h)
@@ -250,7 +250,7 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                         backgroundColor: ColorConstant.primary,
                                         elevation: 0,
                                         shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(3.w))
+                                            borderRadius: BorderRadius.all(Radius.circular(3.r))
                                         ),
                                         padding: EdgeInsets.all(0),
                                         minimumSize: Size(81.w,23.h)
@@ -263,21 +263,21 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                               ),
                               maxLines: 1,
@@ -350,21 +350,21 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                           ),
                           maxLines: 1,
@@ -425,21 +425,21 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                           ),
                           maxLines: 1,
@@ -494,21 +494,21 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                           ),
                           maxLines: 1,
@@ -531,7 +531,7 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                             width: Get.width,
                             height: 55.h,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 border: Border.all(color: ColorConstant.gray2,width: 1.w)
                             ),
                             child: Row(

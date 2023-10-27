@@ -49,21 +49,21 @@ class FindScreen extends GetView<FindController>{
                             width: 1.w,
                             color: ColorConstant.gray2
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                        borderRadius: BorderRadius.all(Radius.circular(4.r)),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                             width: 1.w,
                             color: ColorConstant.gray2
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                        borderRadius: BorderRadius.all(Radius.circular(4.r)),
                       ),
                       border: OutlineInputBorder(
                         borderSide: BorderSide(
                             width: 1.w,
                             color: ColorConstant.gray2
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                        borderRadius: BorderRadius.all(Radius.circular(4.r)),
                       ),
                       suffixIconConstraints: BoxConstraints(
                           minWidth: 81.w,
@@ -88,7 +88,7 @@ class FindScreen extends GetView<FindController>{
                               backgroundColor: ColorConstant.primary,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(3.w))
+                                  borderRadius: BorderRadius.all(Radius.circular(3.r))
                               ),
                               padding: EdgeInsets.all(0),
                               minimumSize: Size(81.w,23.h)
@@ -174,7 +174,7 @@ class FindScreen extends GetView<FindController>{
                                   backgroundColor: ColorConstant.primary,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(3.w))
+                                      borderRadius: BorderRadius.all(Radius.circular(3.r))
                                   ),
                                   padding: EdgeInsets.all(0),
                                   minimumSize: Size(81.w,23.h)
@@ -187,21 +187,21 @@ class FindScreen extends GetView<FindController>{
                                 width: 1.w,
                                 color: ColorConstant.gray2
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                            borderRadius: BorderRadius.all(Radius.circular(4.r)),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 width: 1.w,
                                 color: ColorConstant.gray2
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                            borderRadius: BorderRadius.all(Radius.circular(4.r)),
                           ),
                           border: OutlineInputBorder(
                             borderSide: BorderSide(
                                 width: 1.w,
                                 color: ColorConstant.gray2
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                            borderRadius: BorderRadius.all(Radius.circular(4.r)),
                           ),
                         ),
                         maxLines: 1,
@@ -286,7 +286,7 @@ class FindScreen extends GetView<FindController>{
                           : ColorConstant.gray2,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4.w))
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))
                       ),
                     ),
                   ),

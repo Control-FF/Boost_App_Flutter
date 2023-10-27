@@ -14,6 +14,8 @@ import 'package:boostapp/modules/register/register_biz_screen.dart';
 import 'package:boostapp/modules/register/register_screen.dart';
 import 'package:boostapp/modules/reset/reset_binding.dart';
 import 'package:boostapp/modules/reset/reset_screen.dart';
+import 'package:boostapp/modules/search/search_binding.dart';
+import 'package:boostapp/modules/search/search_screen.dart';
 import 'package:boostapp/modules/splash/splash_binding.dart';
 import 'package:boostapp/modules/splash/splash_screen.dart';
 import 'package:boostapp/modules/tutorial/tutorial_binding.dart';
@@ -33,6 +35,7 @@ class AppRoutes {
   static const registerBizScreen = '/register_biz';
   static const addressScreen = '/address';
   static const addressEditScreen = '/address_edit';
+  static const searchScreen = '/search';
 
   static List<GetPage> pages = [
     GetPage(
@@ -110,6 +113,13 @@ class AppRoutes {
       page: () => AddressEditScreen(),
       bindings: [
         AddressEditBinding(),
+      ],
+    ),
+    GetPage(
+      name: searchScreen,
+      page: () => SearchScreen(),
+      bindings: [
+        SearchBinding(),
       ],
     ),
   ];

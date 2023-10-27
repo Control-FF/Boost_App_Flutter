@@ -38,6 +38,23 @@ class StorageService extends GetxService {
   void saveToken(Token token) {
     _storage.write(Constants.tokenKey, token);
   }
+
+  List? getSearchText(){
+    final data = _storage.read(Constants.searchTextKey);
+    if(data != null){
+      return data;
+    }else{
+      return [];
+    }
+  }
+
+  void saveSearchText(List searchList){
+    _storage.write(Constants.searchTextKey, searchList);
+  }
+
+  void clearSearchText(){
+    _storage.remove(Constants.searchTextKey);
+  }
 /*
   Future<void> logOut() async {
     if (_storage.hasData(Constants.tokenKey)) {

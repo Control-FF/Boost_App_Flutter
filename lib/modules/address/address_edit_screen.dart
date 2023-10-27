@@ -95,21 +95,21 @@ class AddressEditScreen extends GetView<AddressEditController>{
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                               ),
                               maxLines: 1,
@@ -148,21 +148,21 @@ class AddressEditScreen extends GetView<AddressEditController>{
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 suffixIconConstraints: BoxConstraints(
                                     minWidth: 81.w,
@@ -221,7 +221,7 @@ class AddressEditScreen extends GetView<AddressEditController>{
                                       backgroundColor: ColorConstant.primary,
                                       elevation: 0,
                                       shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(Radius.circular(4.w))
+                                          borderRadius: BorderRadius.all(Radius.circular(4.r))
                                       ),
                                       padding: EdgeInsets.all(0),
                                       minimumSize: Size(72.w,30.h)
@@ -241,7 +241,7 @@ class AddressEditScreen extends GetView<AddressEditController>{
                                   width: 1.w,
                                   color: ColorConstant.gray2
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                              borderRadius: BorderRadius.all(Radius.circular(4.r)),
                             ),
                             child: Text(
                                 controller.address1.value,
@@ -276,21 +276,21 @@ class AddressEditScreen extends GetView<AddressEditController>{
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.w,
                                       color: ColorConstant.gray2
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                                  borderRadius: BorderRadius.all(Radius.circular(4.r)),
                                 ),
                               ),
                               maxLines: 1,
@@ -326,7 +326,7 @@ class AddressEditScreen extends GetView<AddressEditController>{
                         backgroundColor: ColorConstant.primary,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10.w))
+                            borderRadius: BorderRadius.all(Radius.circular(10.r))
                         )
                     ),
                     child: Text(

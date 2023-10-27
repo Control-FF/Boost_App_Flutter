@@ -1,6 +1,7 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
+import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -90,5 +91,11 @@ abstract class ApiClient {
   @DELETE('/api/user/shipping/{adId}')
   Future<DataResponse> deleteAddress(
       @Path('adId') int idx,
+  );
+
+  //카테고리
+  @GET('/api/shop/category')
+  Future<CategoryResponse> getCategory(
+      @Query('ca_id') String caId,
   );
 }
