@@ -57,8 +57,6 @@ class MainController extends GetxController{
         (response) => {
           if(response.items!.isEmpty){
             Get.toNamed(AppRoutes.addressScreen)
-          }else{
-            Get.toNamed(AppRoutes.addressScreen)
           }
         },
     );

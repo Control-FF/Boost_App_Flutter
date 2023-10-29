@@ -26,7 +26,7 @@ class HomeTabTime extends GetView<HomeController>{
                         width: Get.width,
                         height: 187.h,
                         child: PageView(
-                          controller: controller.pageController1,
+                          controller: controller.pageController2,
                           children: [
                             GestureDetector(
                               onTap: (){
@@ -51,7 +51,7 @@ class HomeTabTime extends GetView<HomeController>{
                       ),
                       Center(
                         child: SmoothPageIndicator(
-                          controller: controller.pageController1,
+                          controller: controller.pageController2,
                           count: 3,
                           axisDirection: Axis.horizontal,
                           effect: ExpandingDotsEffect(

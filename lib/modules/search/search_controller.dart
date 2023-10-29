@@ -10,6 +10,9 @@ class SearchController extends GetxController {
 
   RxString searchStatus = ''.obs; //'': 기본, 'search': 검색, 'result' : 검색결과 상품
   RxList searchTextList = [].obs;
+  RxString filter = ''.obs; //'': 필터 적용전, 'boost': 부스트 배송, 'seller': 판매자 배송
+  RxString sort = ''.obs; //'': 필터 적용전, 'recent': 최근 등록, 'review': 리뷰, 'priceUp': 가격 높은, 'priceDown': 가격 낮은, 'rate': 평점, 'sell': 판매
+
 
   @override
   void onInit() async {

@@ -8,6 +8,8 @@ import 'package:boostapp/modules/login/login_binding.dart';
 import 'package:boostapp/modules/login/login_screen.dart';
 import 'package:boostapp/modules/main/main.screen.dart';
 import 'package:boostapp/modules/main/main_binding.dart';
+import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
+import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
 import 'package:boostapp/modules/register/register_biz_binding.dart';
 import 'package:boostapp/modules/register/register_biz_screen.dart';
@@ -36,6 +38,7 @@ class AppRoutes {
   static const addressScreen = '/address';
   static const addressEditScreen = '/address_edit';
   static const searchScreen = '/search';
+  static const productDetail = '/product_detail';
 
   static List<GetPage> pages = [
     GetPage(
@@ -120,6 +123,13 @@ class AppRoutes {
       page: () => SearchScreen(),
       bindings: [
         SearchBinding(),
+      ],
+    ),
+    GetPage(
+      name: productDetail,
+      page: () => ProductDetailScreen(),
+      bindings: [
+        ProductDetailBinding(),
       ],
     ),
   ];
