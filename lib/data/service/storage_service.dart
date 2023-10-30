@@ -3,6 +3,7 @@ import 'package:boostapp/data/models/token.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:intl/intl.dart';
 
 
 class StorageService extends GetxService {
@@ -54,6 +55,18 @@ class StorageService extends GetxService {
 
   void clearSearchText(){
     _storage.remove(Constants.searchTextKey);
+  }
+
+  void savePopupDate() {
+    DateTime now = DateTime.now();
+    DateFormat formatter = DateFormat('yyyy-MM-dd');
+    String strToday = formatter.format(now);
+    _storage.write(Constants.popupDate, strToday);
+  }
+
+  String getPopupDate(){
+    final date = _storage.read(Constants.popupDate);
+    return date ?? '';
   }
 /*
   Future<void> logOut() async {

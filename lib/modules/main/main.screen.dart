@@ -8,8 +8,10 @@ import 'main_controller.dart';
 
 
 class MainScreen extends GetView<MainController> {
+
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: WillPopScope(
         onWillPop: () async {
@@ -81,8 +83,6 @@ class MainScreen extends GetView<MainController> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: controller.categoryList.length,
                       itemBuilder: (context,index){
-
-
                         return Container(
                           padding: EdgeInsets.fromLTRB(25.w, 0.h, 25.w, 0.h),
                           child: InkWell(

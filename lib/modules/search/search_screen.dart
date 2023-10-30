@@ -1,5 +1,6 @@
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/search/search_controller.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -480,7 +481,9 @@ class SearchScreen extends GetView<SearchController> {
                   size: Size(17, 17), // button width and height
                   child: InkWell(
                     splashColor: Colors.white, // splash color
-                    onTap: () {}, // button pressed
+                    onTap: () {
+                      Get.toNamed(AppRoutes.cart);
+                    }, // button pressed
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -831,7 +834,9 @@ class SearchScreen extends GetView<SearchController> {
                                         (BuildContext context, int index){
                                       return InkWell(
                                         onTap: (){
-
+                                          Get.toNamed(AppRoutes.productDetail,arguments: {
+                                            'productId' : 1
+                                          });
                                         },
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,5 +1,6 @@
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/main/pages/home_controller.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -164,105 +165,112 @@ class HomeTabTime extends GetView<HomeController>{
                             shrinkWrap: true,
 
                             itemBuilder: (context, index){
-                              return Padding(
-                                padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Image.asset('assets/images/sample_product3.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                        Positioned(
-                                          left: 9,
-                                          top: 4,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            width: 29.w,
-                                            height: 12.h,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(2.r)),
-                                                color: ColorConstant.primary
-                                            ),
-                                            child: Text(
-                                              '기획 상품',
-                                              style: TextStyle(
-                                                color: ColorConstant.white,
-                                                fontSize: 6.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w700,
+                              return GestureDetector(
+                                onTap: (){
+                                  Get.toNamed(AppRoutes.productDetail,arguments: {
+                                    'productId' : 1
+                                  });
+                                },
+                                child: Padding(
+                                  padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Image.asset('assets/images/sample_product3.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                          Positioned(
+                                            left: 9,
+                                            top: 4,
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              width: 29.w,
+                                              height: 12.h,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                                                  color: ColorConstant.primary
+                                              ),
+                                              child: Text(
+                                                '기획 상품',
+                                                style: TextStyle(
+                                                  color: ColorConstant.white,
+                                                  fontSize: 6.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w700,
+                                                ),
                                               ),
                                             ),
                                           ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 9.h,),
+                                      SizedBox(
+                                        width: 146.w,
+                                        child: Text.rich(
+                                            TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '[부스트 상품]',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  ),
+                                                  TextSpan(
+                                                    text: '그레놀라 (500X2EA)',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                  )
+                                                ]
+                                            )
                                         ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 9.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '[부스트 상품]',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.primary,
-                                                    fontSize: 10.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: '그레놀라 (500X2EA)',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 10.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                )
-                                              ]
-                                          )
                                       ),
-                                    ),
-                                    SizedBox(height: 2.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '50%',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.primary,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
+                                      SizedBox(height: 2.h,),
+                                      SizedBox(
+                                        width: 146.w,
+                                        child: Text.rich(
+                                            TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '50%',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
                                                   ),
-                                                ),
-                                                TextSpan(
-                                                  text: ' 3,600원',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                )
-                                              ]
-                                          )
+                                                  TextSpan(
+                                                    text: ' 3,600원',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  )
+                                                ]
+                                            )
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      '7,800원',
-                                      style: TextStyle(
-                                          color: ColorConstant.gray1,
-                                          fontSize: 8.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                          decoration: TextDecoration.lineThrough
-                                      ),
-                                    )
-                                  ],
+                                      Text(
+                                        '7,800원',
+                                        style: TextStyle(
+                                            color: ColorConstant.gray1,
+                                            fontSize: 8.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                            decoration: TextDecoration.lineThrough
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                             },
@@ -356,105 +364,112 @@ class HomeTabTime extends GetView<HomeController>{
                             shrinkWrap: true,
 
                             itemBuilder: (context, index){
-                              return Padding(
-                                padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Image.asset('assets/images/sample_product4.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                        Positioned(
-                                          left: 9,
-                                          top: 4,
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            width: 29.w,
-                                            height: 12.h,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(2.r)),
-                                                color: ColorConstant.primary
-                                            ),
-                                            child: Text(
-                                              '기획 상품',
-                                              style: TextStyle(
-                                                color: ColorConstant.white,
-                                                fontSize: 6.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w700,
+                              return GestureDetector(
+                                onTap: (){
+                                  Get.toNamed(AppRoutes.productDetail,arguments: {
+                                    'productId' : 1
+                                  });
+                                },
+                                child: Padding(
+                                  padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Image.asset('assets/images/sample_product4.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                          Positioned(
+                                            left: 9,
+                                            top: 4,
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              width: 29.w,
+                                              height: 12.h,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(Radius.circular(2.r)),
+                                                  color: ColorConstant.primary
+                                              ),
+                                              child: Text(
+                                                '기획 상품',
+                                                style: TextStyle(
+                                                  color: ColorConstant.white,
+                                                  fontSize: 6.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w700,
+                                                ),
                                               ),
                                             ),
                                           ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 9.h,),
+                                      SizedBox(
+                                        width: 146.w,
+                                        child: Text.rich(
+                                            TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '[부스트 상품]',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  ),
+                                                  TextSpan(
+                                                    text: '요거트 (500X2EA)',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                  )
+                                                ]
+                                            )
                                         ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 9.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '[부스트 상품]',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.primary,
-                                                    fontSize: 10.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: '요거트 (500X2EA)',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 10.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                )
-                                              ]
-                                          )
                                       ),
-                                    ),
-                                    SizedBox(height: 2.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '50%',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.primary,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
+                                      SizedBox(height: 2.h,),
+                                      SizedBox(
+                                        width: 146.w,
+                                        child: Text.rich(
+                                            TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '50%',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
                                                   ),
-                                                ),
-                                                TextSpan(
-                                                  text: ' 3,600원',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                )
-                                              ]
-                                          )
+                                                  TextSpan(
+                                                    text: ' 3,600원',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  )
+                                                ]
+                                            )
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      '7,800원',
-                                      style: TextStyle(
-                                        color: ColorConstant.gray1,
-                                        fontSize: 8.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                        decoration: TextDecoration.lineThrough
-                                      ),
-                                    )
-                                  ],
+                                      Text(
+                                        '7,800원',
+                                        style: TextStyle(
+                                            color: ColorConstant.gray1,
+                                            fontSize: 8.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                            decoration: TextDecoration.lineThrough
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                             },
@@ -547,100 +562,107 @@ class HomeTabTime extends GetView<HomeController>{
                             itemCount: 5,
                             shrinkWrap: true,
                             itemBuilder: (context, index){
-                              return Padding(
-                                padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Image.asset('assets/images/sample_product2.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                        Positioned(
-                                          right: 0,
-                                          bottom: 0,
-                                          child: Container(
-                                            color: ColorConstant.red,
-                                            width: 20.w,
-                                            height: 20.h,
-                                            child: IconButton(padding: EdgeInsets.zero,
-                                              color: Colors.red,
-                                              alignment: Alignment.center,
-                                              onPressed: (){
+                              return GestureDetector(
+                                onTap: (){
+                                  Get.toNamed(AppRoutes.productDetail,arguments: {
+                                    'productId' : 1
+                                  });
+                                },
+                                child: Padding(
+                                  padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Image.asset('assets/images/sample_product2.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                          Positioned(
+                                            right: 0,
+                                            bottom: 0,
+                                            child: Container(
+                                              color: ColorConstant.red,
+                                              width: 20.w,
+                                              height: 20.h,
+                                              child: IconButton(padding: EdgeInsets.zero,
+                                                color: Colors.red,
+                                                alignment: Alignment.center,
+                                                onPressed: (){
 
-                                              },
-                                              icon: Icon(Icons.favorite_border_outlined,color: ColorConstant.white,size: 10),
+                                                },
+                                                icon: Icon(Icons.favorite_border_outlined,color: ColorConstant.white,size: 10),
+                                              ),
                                             ),
                                           ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 9.h,),
+                                      SizedBox(
+                                        width: 146.w,
+                                        child: Text.rich(
+                                            TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '[J마트]',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.red,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  ),
+                                                  TextSpan(
+                                                    text: '칠레산 생 블루베리 2(택1)',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                  )
+                                                ]
+                                            )
                                         ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 9.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '[J마트]',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.red,
-                                                    fontSize: 10.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: '칠레산 생 블루베리 2(택1)',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 10.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                )
-                                              ]
-                                          )
                                       ),
-                                    ),
-                                    SizedBox(height: 2.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '50%',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.primary,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
+                                      SizedBox(height: 2.h,),
+                                      SizedBox(
+                                        width: 146.w,
+                                        child: Text.rich(
+                                            TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '50%',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
                                                   ),
-                                                ),
-                                                TextSpan(
-                                                  text: ' 3,600원',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                )
-                                              ]
-                                          )
+                                                  TextSpan(
+                                                    text: ' 3,600원',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  )
+                                                ]
+                                            )
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      '7,800원',
-                                      style: TextStyle(
-                                          color: ColorConstant.gray1,
-                                          fontSize: 8.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                          decoration: TextDecoration.lineThrough
-                                      ),
-                                    )
-                                  ],
+                                      Text(
+                                        '7,800원',
+                                        style: TextStyle(
+                                            color: ColorConstant.gray1,
+                                            fontSize: 8.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                            decoration: TextDecoration.lineThrough
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               );
                             },

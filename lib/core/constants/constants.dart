@@ -5,5 +5,6 @@ class Constants {
 
   static const String tokenKey = 'Token';
   static const String searchTextKey = 'SearchText';
+  static const String popupDate = 'PopupDate';
 
 }

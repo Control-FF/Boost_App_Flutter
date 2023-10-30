@@ -2,6 +2,8 @@ import 'package:boostapp/modules/address/address_edit_binding.dart';
 import 'package:boostapp/modules/address/address_edit_screen.dart';
 import 'package:boostapp/modules/address/address_list_binding.dart';
 import 'package:boostapp/modules/address/address_list_screen.dart';
+import 'package:boostapp/modules/cart/cart_binding.dart';
+import 'package:boostapp/modules/cart/cart_screen.dart';
 import 'package:boostapp/modules/find/find_binding.dart';
 import 'package:boostapp/modules/find/find_screen.dart';
 import 'package:boostapp/modules/login/login_binding.dart';
@@ -39,6 +41,7 @@ class AppRoutes {
   static const addressEditScreen = '/address_edit';
   static const searchScreen = '/search';
   static const productDetail = '/product_detail';
+  static const cart = '/cart';
 
   static List<GetPage> pages = [
     GetPage(
@@ -130,6 +133,13 @@ class AppRoutes {
       page: () => ProductDetailScreen(),
       bindings: [
         ProductDetailBinding(),
+      ],
+    ),
+    GetPage(
+      name: cart,
+      page: () => CartScreen(),
+      bindings: [
+        CartBinding(),
       ],
     ),
   ];

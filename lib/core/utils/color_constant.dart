@@ -27,8 +27,10 @@ class ColorConstant {
   static Color gray18 = fromHex('#BDBDBD');
   static Color gray19 = fromHex('#B0B0B0');
   static Color gray20 = fromHex('#DADADA');
+  static Color gray21 = fromHex('#C6C6C6');
   static Color blue1 = fromHex('#A6B4CD');
   static Color red = fromHex('#EE3F00');
+  static Color red2 = fromHex('#DA783A');
   static Color green = fromHex('#52676A');
 
 

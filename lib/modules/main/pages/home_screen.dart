@@ -95,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen>
               size: Size(17, 17), // button width and height
               child: InkWell(
                 splashColor: Colors.white, // splash color
-                onTap: () {}, // button pressed
+                onTap: () {
+                  Get.toNamed(AppRoutes.cart);
+                }, // button pressed
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

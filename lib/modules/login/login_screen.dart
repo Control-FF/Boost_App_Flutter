@@ -146,18 +146,11 @@ class LoginScreen extends GetView<LoginController>{
                     fontFamily: 'Noto Sans KR',
                     fontWeight: FontWeight.w500,
                   ),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
                   onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.passwordFocusNode),
-                  inputFormatters: [
-                    MaskTextInputFormatter(
-                      mask: '###-####-####',
-                      filter: {"#": RegExp(r'[0-9]')},
-                      type: MaskAutoCompletionType.lazy,
-                    )
-                  ],
                   onChanged: (value){
-                    if(value == "" || value.length < 13){
+                    if(value == "" || value.length < 11){
                       controller.validPhoneStatus.value = 2;
                     }else{
                       controller.validPhoneStatus.value = 1;
