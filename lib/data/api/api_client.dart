@@ -41,6 +41,10 @@ abstract class ApiClient {
       @Part() List<MultipartFile>? file,
   );
 
+  //토큰 갱신
+  @GET('/api/user/refresh')
+  Future<TokenResponse> refreshToken();
+
   //배송지 목록
   @GET('/api/user/shipping-list')
   Future<AddressResponse> getAddressList();

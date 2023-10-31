@@ -45,6 +45,30 @@ class UserService extends GetxService{
     }
   }
 
+  Future<Either<Failure, Token>> refreshToken() async {
+    try {
+      final TokenResponse response =
+      await _apiService.getApiClient().refreshToken();
+      if (response.status == 200) {
+        final String accessToken = response.accessToken ?? '';
+        final String refreshToken = response.refreshToken ?? '';
+        final Token token = Token(
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+        );
+        _storageService.saveToken(token);
+        return Right(token);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, AddressResponse>> getAddressList() async {
     try {
       final AddressResponse response =

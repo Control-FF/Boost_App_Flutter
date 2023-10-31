@@ -40,8 +40,8 @@ class AppRoutes {
   static const addressScreen = '/address';
   static const addressEditScreen = '/address_edit';
   static const searchScreen = '/search';
-  static const productDetail = '/product_detail';
-  static const cart = '/cart';
+  static const productDetailScreen = '/product_detail';
+  static const cartScreen = '/cart';
 
   static List<GetPage> pages = [
     GetPage(
@@ -129,14 +129,14 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: productDetail,
+      name: productDetailScreen,
       page: () => ProductDetailScreen(),
       bindings: [
         ProductDetailBinding(),
       ],
     ),
     GetPage(
-      name: cart,
+      name: cartScreen,
       page: () => CartScreen(),
       bindings: [
         CartBinding(),

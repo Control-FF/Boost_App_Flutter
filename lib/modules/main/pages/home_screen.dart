@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen>
               child: InkWell(
                 splashColor: Colors.white, // splash color
                 onTap: () {
-                  Get.toNamed(AppRoutes.cart);
+                  Get.toNamed(AppRoutes.cartScreen);
                 }, // button pressed
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

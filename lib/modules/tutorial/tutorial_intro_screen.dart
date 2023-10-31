@@ -36,8 +36,16 @@ class TutorialIntroScreen extends GetView<TutorialController>{
               height: 55.h,
               child: ElevatedButton(
                 onPressed: (){
-                  Get.offAllNamed(AppRoutes.loginScreen);
+                  //Get.offAllNamed(AppRoutes.loginScreen);
+                  Get.offAllNamed(AppRoutes.mainScreen);
                 },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorConstant.primary,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4.r))
+                    )
+                ),
                 child: Text(
                   '로그인',
                   style: TextStyle(
@@ -46,13 +54,6 @@ class TutorialIntroScreen extends GetView<TutorialController>{
                     fontFamily: 'Noto Sans KR',
                     fontWeight: FontWeight.w700,
                   ),
-                ),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorConstant.primary,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(4.r))
-                    )
                 ),
               ),
             ),

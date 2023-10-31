@@ -40,6 +40,10 @@ class StorageService extends GetxService {
     _storage.write(Constants.tokenKey, token);
   }
 
+  void deleteToken() {
+    _storage.remove(Constants.tokenKey);
+  }
+
   List? getSearchText(){
     final data = _storage.read(Constants.searchTextKey);
     if(data != null){

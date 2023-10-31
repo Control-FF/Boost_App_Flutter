@@ -167,7 +167,7 @@ class HomeTabTime extends GetView<HomeController>{
                             itemBuilder: (context, index){
                               return GestureDetector(
                                 onTap: (){
-                                  Get.toNamed(AppRoutes.productDetail,arguments: {
+                                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
                                     'productId' : 1
                                   });
                                 },
@@ -366,7 +366,7 @@ class HomeTabTime extends GetView<HomeController>{
                             itemBuilder: (context, index){
                               return GestureDetector(
                                 onTap: (){
-                                  Get.toNamed(AppRoutes.productDetail,arguments: {
+                                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
                                     'productId' : 1
                                   });
                                 },
@@ -564,7 +564,7 @@ class HomeTabTime extends GetView<HomeController>{
                             itemBuilder: (context, index){
                               return GestureDetector(
                                 onTap: (){
-                                  Get.toNamed(AppRoutes.productDetail,arguments: {
+                                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
                                     'productId' : 1
                                   });
                                 },

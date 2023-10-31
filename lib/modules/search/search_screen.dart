@@ -482,7 +482,7 @@ class SearchScreen extends GetView<SearchController> {
                   child: InkWell(
                     splashColor: Colors.white, // splash color
                     onTap: () {
-                      Get.toNamed(AppRoutes.cart);
+                      Get.toNamed(AppRoutes.cartScreen);
                     }, // button pressed
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -834,7 +834,7 @@ class SearchScreen extends GetView<SearchController> {
                                         (BuildContext context, int index){
                                       return InkWell(
                                         onTap: (){
-                                          Get.toNamed(AppRoutes.productDetail,arguments: {
+                                          Get.toNamed(AppRoutes.productDetailScreen,arguments: {
                                             'productId' : 1
                                           });
                                         },
