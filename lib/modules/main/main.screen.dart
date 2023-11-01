@@ -22,8 +22,9 @@ class MainScreen extends GetView<MainController> {
           return Future.value(false);
         },
         child: Scaffold(
+          extendBody: true,
           key: controller.scaffoldKey,
-          backgroundColor: ColorConstant.black,
+          backgroundColor: ColorConstant.white,
           body: BottomBarScreen(),
           drawer: Drawer(
             child: ListView(

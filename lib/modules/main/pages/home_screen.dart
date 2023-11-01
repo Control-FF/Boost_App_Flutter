@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       drawerEnableOpenDragGesture: false,
+      extendBody: true,
       appBar: AppBar(
         backgroundColor: ColorConstant.white,
         elevation: 0,
@@ -136,64 +137,62 @@ class _HomeScreenState extends State<HomeScreen>
           ),
         ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              width: Get.width,
-              height: 14.h,
-              margin: EdgeInsets.symmetric(horizontal: 30.w),
-              color: ColorConstant.blue1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 6),
-                    child: Text(
-                      '배송중 2시간 후 도착',
-                      style: TextStyle(
-                        color: ColorConstant.white,
-                        fontSize: 7.sp,
-                        fontFamily: 'Noto Sans KR',
-                        fontWeight: FontWeight.w700,
-                      ),
+      body: Column(
+        children: [
+          Container(
+            width: Get.width,
+            height: 14.h,
+            margin: EdgeInsets.symmetric(horizontal: 30.w),
+            color: ColorConstant.blue1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 6),
+                  child: Text(
+                    '배송중 2시간 후 도착',
+                    style: TextStyle(
+                      color: ColorConstant.white,
+                      fontSize: 7.sp,
+                      fontFamily: 'Noto Sans KR',
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 6),
-                    child: Text(
-                      '부산 기장군 정관읍 504-3 >',
-                      style: TextStyle(
-                        color: ColorConstant.white,
-                        fontSize: 7.sp,
-                        fontFamily: 'Noto Sans KR',
-                        fontWeight: FontWeight.w700,
-                      ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 6),
+                  child: Text(
+                    '부산 기장군 정관읍 504-3 >',
+                    style: TextStyle(
+                      color: ColorConstant.white,
+                      fontSize: 7.sp,
+                      fontFamily: 'Noto Sans KR',
+                      fontWeight: FontWeight.w700,
                     ),
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  HomeTabPopular(),
-                  HomeTabTime(),
-                  Center(
-                    child: Text('gift'),
                   ),
-                  Center(
-                    child: Text('event'),
-                  ),
-                  Center(
-                    child: Text('myPage'),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                HomeTabPopular(),
+                HomeTabTime(),
+                Center(
+                  child: Text('gift'),
+                ),
+                Center(
+                  child: Text('event'),
+                ),
+                Center(
+                  child: Text('myPage'),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

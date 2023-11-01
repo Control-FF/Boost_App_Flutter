@@ -10,6 +10,9 @@ import 'package:boostapp/modules/login/login_binding.dart';
 import 'package:boostapp/modules/login/login_screen.dart';
 import 'package:boostapp/modules/main/main.screen.dart';
 import 'package:boostapp/modules/main/main_binding.dart';
+import 'package:boostapp/modules/main/pages/my_info/my_info_check_screen.dart';
+import 'package:boostapp/modules/main/pages/my_info/my_info_update_screen.dart';
+import 'package:boostapp/modules/main/pages/my_page_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
@@ -42,6 +45,8 @@ class AppRoutes {
   static const searchScreen = '/search';
   static const productDetailScreen = '/product_detail';
   static const cartScreen = '/cart';
+  static const myInfoCheck = '/my_info_check';
+  static const myInfoUpdate = '/my_info_update';
 
   static List<GetPage> pages = [
     GetPage(
@@ -140,6 +145,20 @@ class AppRoutes {
       page: () => CartScreen(),
       bindings: [
         CartBinding(),
+      ],
+    ),
+    GetPage(
+      name: myInfoCheck,
+      page: () => MyInfoCheckScreen(),
+      bindings: [
+        MyPageBinding(),
+      ],
+    ),
+    GetPage(
+      name: myInfoUpdate,
+      page: () => MyInfoUpdateScreen(),
+      bindings: [
+        MyPageBinding(),
       ],
     ),
   ];

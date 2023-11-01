@@ -550,7 +550,7 @@ class HomeTabPopular extends GetView<HomeController>{
                     [
                       Container(
                         color: ColorConstant.gray13,
-                        padding: EdgeInsets.fromLTRB(30.w, 34.h, 30.w, 46.h),
+                        padding: EdgeInsets.fromLTRB(30.w, 34.h, 30.w, 120.h),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
