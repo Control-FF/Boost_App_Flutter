@@ -213,21 +213,21 @@ class AddressScreen extends GetView<AddressController>{
         appBar: AppBar(
           backgroundColor: ColorConstant.white,
           elevation: 0,
-          title: Text(
-            '배송지 선택',
+          title: Obx(() => Text(
+            controller.title.value,
             style: TextStyle(
               color: ColorConstant.black2,
               fontSize: 16.sp,
               fontFamily: 'Noto Sans KR',
               fontWeight: FontWeight.w700,
             ),
-          ),
+          )),
           centerTitle: true,
           leading: IconButton(
             onPressed: (){
               Get.back();
             },
-            icon: Icon(Icons.arrow_back,color: ColorConstant.black,),
+            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
           ),
         ),
         body: Container(

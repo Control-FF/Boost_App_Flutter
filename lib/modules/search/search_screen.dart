@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class SearchScreen extends GetView<SearchController> {
+class SearchScreen extends GetView<ProductSearchController> {
 
   void _showFilterPopup(context){
     showDialog(
@@ -472,7 +472,7 @@ class SearchScreen extends GetView<SearchController> {
               onPressed: (){
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back,color: ColorConstant.gray12,),
+              icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.gray12,),
             ),
             actions: [
               Padding(

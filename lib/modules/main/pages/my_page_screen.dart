@@ -517,7 +517,7 @@ class MyPageScreen extends GetView<MyPageController>{
             ),
             InkWell(
               onTap: (){
-
+                Get.toNamed(AppRoutes.buyList);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 26.w),

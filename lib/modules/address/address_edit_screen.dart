@@ -54,7 +54,7 @@ class AddressEditScreen extends GetView<AddressEditController>{
             onPressed: (){
               Get.back();
             },
-            icon: Icon(Icons.arrow_back,color: ColorConstant.black,),
+            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
           ),
         ),
         body: Obx(

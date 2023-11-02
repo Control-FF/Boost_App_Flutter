@@ -12,10 +12,15 @@ class AddressController extends GetxController with StateMixin {
 
   var addressList = RxList<AddressItem>.empty(growable: true).obs;
   RxInt selectAdId = 0.obs;
+  RxString title = '배송지 관리'.obs;
 
   @override
   Future<void> onInit() async {
     super.onInit();
+
+    if (Get.arguments != null) {
+      title.value = Get.arguments['title'];
+    }
 
     await getAddressList();
   }

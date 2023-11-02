@@ -1,12 +1,12 @@
 import 'package:boostapp/core/utils/color_constant.dart';
-import 'package:boostapp/modules/main/pages/my_page_controller.dart';
+import 'package:boostapp/modules/main/pages/my_info/my_info_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class MyInfoCheckScreen extends GetView<MyPageController>{
+class MyInfoCheckScreen extends GetView<MyInfoController>{
 
   void _showLogoutPopup(context){
     showDialog(

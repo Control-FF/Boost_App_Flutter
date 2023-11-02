@@ -36,8 +36,7 @@ class TutorialIntroScreen extends GetView<TutorialController>{
               height: 55.h,
               child: ElevatedButton(
                 onPressed: (){
-                  //Get.offAllNamed(AppRoutes.loginScreen);
-                  Get.offAllNamed(AppRoutes.mainScreen);
+                  Get.offAllNamed(AppRoutes.loginScreen);
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: ColorConstant.primary,

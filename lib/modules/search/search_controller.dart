@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 
-class SearchController extends GetxController {
+class ProductSearchController extends GetxController {
   final StorageService _storageService = Get.find();
 
   TextEditingController searchController = TextEditingController();

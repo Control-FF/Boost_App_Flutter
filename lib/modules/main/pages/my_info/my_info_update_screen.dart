@@ -1,11 +1,11 @@
 import 'package:boostapp/core/utils/color_constant.dart';
-import 'package:boostapp/modules/main/pages/my_page_controller.dart';
+import 'package:boostapp/modules/main/pages/my_info/my_info_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class MyInfoUpdateScreen extends GetView<MyPageController>{
+class MyInfoUpdateScreen extends GetView<MyInfoController>{
 
   void _showFinishPopup(context){
     showDialog(
@@ -127,7 +127,7 @@ class MyInfoUpdateScreen extends GetView<MyPageController>{
             onPressed: (){
               Get.back();
             },
-            icon: Icon(Icons.arrow_back,color: ColorConstant.black,),
+            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
           ),
         ),
         backgroundColor: ColorConstant.white,
