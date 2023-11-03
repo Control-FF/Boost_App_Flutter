@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Constants {
   static const String baseUrl = 'http://boost.bnewb.kr';
 
@@ -7,4 +9,7 @@ class Constants {
   static const String searchTextKey = 'SearchText';
   static const String popupDate = 'PopupDate';
 
+  static String numberAddComma(int number){
+    return NumberFormat('###,###,###,###').format(number);
+  }
 }

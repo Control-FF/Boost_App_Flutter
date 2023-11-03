@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/main/pages/my_page_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
@@ -11,6 +12,9 @@ import 'package:get/get.dart';
 class MyPageScreen extends GetView<MyPageController>{
   @override
   Widget build(BuildContext context) {
+
+    controller.getMyInfo();
+
     return Scaffold(
       extendBody: true,
       backgroundColor: ColorConstant.white,
@@ -53,462 +57,482 @@ class MyPageScreen extends GetView<MyPageController>{
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                children: [
-                  Divider(
-                    height: 1.h,
-                    thickness: 1,
-                    color: ColorConstant.black,
-                  ),
-                  SizedBox(height: 8.h,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '회원이름',
-                            style: TextStyle(
-                              color: ColorConstant.black,
-                              fontSize: 16.sp,
-                              fontFamily: 'Noto Sans KR',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          SizedBox(height: 4.h,),
-                          Row(
-                            children: [
-                              Text(
-                                '신선신선야채맨',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 12.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(width: 4.w,),
-                              GestureDetector(
-                                onTap: (){
-                                  Get.toNamed(AppRoutes.myInfoCheck);
-                                },
-                                child: Image.asset('assets/images/ic_edit.png',width: 16,height: 16,),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(17.w, 4.h, 4.w, 4.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5)),
-                            border: Border.all(color: ColorConstant.gray2,width: 1)
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+            controller.obx(
+              (state) => Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  children: [
+                    Divider(
+                      height: 1.h,
+                      thickness: 1,
+                      color: ColorConstant.black,
+                    ),
+                    SizedBox(height: 8.h,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '일반멤버',
+                              state.data?.name,
                               style: TextStyle(
                                 color: ColorConstant.black,
-                                fontSize: 14.sp,
+                                fontSize: 16.sp,
                                 fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             SizedBox(height: 4.h,),
-                            Image.asset('assets/images/ic_grade_normal.png',width: 24.w,height: 24.h,),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 15.h,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          '추천인 코드',
-                          style: TextStyle(
-                            color: ColorConstant.black,
-                            fontSize: 14.sp,
-                            fontFamily: 'Noto Sans KR',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: InkWell(
-                          onTap: (){
-                            Clipboard.setData(ClipboardData(text: '1q2w3e'));
-
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              elevation: 6.0,
-                              behavior: SnackBarBehavior.floating,
-                              content: Text(
-                                '추천인 코드가 클립보드에 복사되었습니다.',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ));
-                          },
-                          child: Container(
-                            height: 28.h,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: ColorConstant.gray2, width: 1)
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            Row(
                               children: [
                                 Text(
-                                  '1q2w3e',
+                                  state.data?.nickname,
                                   style: TextStyle(
                                     color: ColorConstant.black,
-                                    fontSize: 14.sp,
+                                    fontSize: 12.sp,
                                     fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                SizedBox(width: 10.w,),
-                                Image.asset('assets/images/ic_copy.png',width: 20.w,height: 20.h,)
+                                SizedBox(width: 4.w,),
+                                GestureDetector(
+                                  onTap: (){
+                                    Get.toNamed(AppRoutes.myInfoCheck);
+                                  },
+                                  child: Image.asset('assets/images/ic_edit.png',width: 16,height: 16,),
+                                )
                               ],
-                            ),
+                            )
+                          ],
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(17.w, 4.h, 4.w, 4.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5)),
+                              border: Border.all(color: ColorConstant.gray2,width: 1)
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 16.h,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 53.w,
-                        height: 70.h,
-                        padding: EdgeInsets.only(top: 9.5.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                            color: ColorConstant.blue2.withOpacity(0.29)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '0',
-                              style: TextStyle(
-                                color: ColorConstant.black,
-                                fontSize: 14.sp,
-                                fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Wrap(
-                                  children: [
-                                    Text(
-                                      '입금, 결제 완료',
-                                      style: TextStyle(
-                                        color: ColorConstant.black,
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                '일반멤버',
+                                style: TextStyle(
+                                  color: ColorConstant.black,
+                                  fontSize: 14.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 53.w,
-                        height: 70.h,
-                        padding: EdgeInsets.only(top: 9.5.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                            color: ColorConstant.accent
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '0',
-                              style: TextStyle(
-                                color: ColorConstant.white,
-                                fontSize: 14.sp,
-                                fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Wrap(
-                                  children: [
-                                    Text(
-                                      '배송\n준비중',
-                                      style: TextStyle(
-                                        color: ColorConstant.white,
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 53.w,
-                        height: 70.h,
-                        padding: EdgeInsets.only(top: 9.5.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                            color: ColorConstant.blue2.withOpacity(0.29)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '0',
-                              style: TextStyle(
-                                color: ColorConstant.black,
-                                fontSize: 14.sp,
-                                fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Wrap(
-                                  children: [
-                                    Text(
-                                      '배송중',
-                                      style: TextStyle(
-                                        color: ColorConstant.black,
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 53.w,
-                        height: 70.h,
-                        padding: EdgeInsets.only(top: 9.5.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                            color: ColorConstant.blue2.withOpacity(0.29)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '0',
-                              style: TextStyle(
-                                color: ColorConstant.black,
-                                fontSize: 14.sp,
-                                fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Wrap(
-                                  children: [
-                                    Text(
-                                      '배송\n완료',
-                                      style: TextStyle(
-                                        color: ColorConstant.black,
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 53.w,
-                        height: 70.h,
-                        padding: EdgeInsets.only(top: 9.5.h),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                            color: ColorConstant.blue2.withOpacity(0.29)
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '0',
-                              style: TextStyle(
-                                color: ColorConstant.black,
-                                fontSize: 14.sp,
-                                fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Wrap(
-                                  children: [
-                                    Text(
-                                      '취소, 교환, 환불',
-                                      style: TextStyle(
-                                        color: ColorConstant.black,
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h,),
-                  Divider(
-                    thickness: 1,
-                    height: 1.h,
-                    color: ColorConstant.gray22,
-                  ),
-                  SizedBox(height: 20.h,),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.5.w),
-                    child: Row(
+                              SizedBox(height: 4.h,),
+                              Image.asset('assets/images/ic_grade_normal.png',width: 24.w,height: 24.h,),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 15.h,),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InkWell(
-                          onTap: (){
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            '추천인 코드',
+                            style: TextStyle(
+                              color: ColorConstant.black,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                            onTap: (){
+                              Clipboard.setData(ClipboardData(text: '1q2w3e'));
 
-                          },
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                elevation: 6.0,
+                                behavior: SnackBarBehavior.floating,
+                                content: Text(
+                                  '추천인 코드가 클립보드에 복사되었습니다.',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ));
+                            },
+                            child: Container(
+                              height: 28.h,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: ColorConstant.gray2, width: 1)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    state.data?.recommend_code,
+                                    style: TextStyle(
+                                      color: ColorConstant.black,
+                                      fontSize: 14.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  SizedBox(width: 10.w,),
+                                  Image.asset('assets/images/ic_copy.png',width: 20.w,height: 20.h,)
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 16.h,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 53.w,
+                          height: 70.h,
+                          padding: EdgeInsets.only(top: 9.5.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                              color: ColorConstant.blue2.withOpacity(0.29)
+                          ),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset('assets/images/ic_point.png',width: 24.w,height: 24.h,),
-                              SizedBox(height: 4.h,),
                               Text(
-                                '포인트',
+                                state.data.order.deposit_cnt.toString(),
                                 style: TextStyle(
                                   color: ColorConstant.black,
-                                  fontSize: 12.sp,
+                                  fontSize: 14.sp,
                                   fontFamily: 'Noto Sans KR',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              Text(
-                                '100,000점',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 12.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Wrap(
+                                    children: [
+                                      Text(
+                                        '입금, 결제 완료',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
-                        InkWell(
-                          onTap: (){
-
-                          },
+                        Container(
+                          width: 53.w,
+                          height: 70.h,
+                          padding: EdgeInsets.only(top: 9.5.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                              color: ColorConstant.accent
+                          ),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset('assets/images/ic_coupon.png',width: 24.w,height: 24.h,),
-                              SizedBox(height: 4.h,),
                               Text(
-                                '쿠폰',
+                                state.data.order.prepare_cnt.toString(),
                                 style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 12.sp,
+                                  color: ColorConstant.white,
+                                  fontSize: 14.sp,
                                   fontFamily: 'Noto Sans KR',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              Text(
-                                '1,000장',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 12.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Wrap(
+                                    children: [
+                                      Text(
+                                        '배송\n준비중',
+                                        style: TextStyle(
+                                          color: ColorConstant.white,
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
-                        InkWell(
-                          onTap: (){
-
-                          },
+                        Container(
+                          width: 53.w,
+                          height: 70.h,
+                          padding: EdgeInsets.only(top: 9.5.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                              color: ColorConstant.blue2.withOpacity(0.29)
+                          ),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset('assets/images/ic_point.png',width: 24.w,height: 24.h,),
-                              SizedBox(height: 4.h,),
                               Text(
-                                '리뷰',
+                                state.data.order.delivery_cnt.toString(),
                                 style: TextStyle(
                                   color: ColorConstant.black,
-                                  fontSize: 12.sp,
+                                  fontSize: 14.sp,
                                   fontFamily: 'Noto Sans KR',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Wrap(
+                                    children: [
+                                      Text(
+                                        '배송중',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 53.w,
+                          height: 70.h,
+                          padding: EdgeInsets.only(top: 9.5.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                              color: ColorConstant.blue2.withOpacity(0.29)
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
                               Text(
-                                '100건',
+                                state.data.order.complete_cnt.toString(),
                                 style: TextStyle(
                                   color: ColorConstant.black,
-                                  fontSize: 12.sp,
+                                  fontSize: 14.sp,
                                   fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Wrap(
+                                    children: [
+                                      Text(
+                                        '배송\n완료',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 53.w,
+                          height: 70.h,
+                          padding: EdgeInsets.only(top: 9.5.h),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                              color: ColorConstant.blue2.withOpacity(0.29)
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                state.data.order.cancel_cnt.toString(),
+                                style: TextStyle(
+                                  color: ColorConstant.black,
+                                  fontSize: 14.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Wrap(
+                                    children: [
+                                      Text(
+                                        '취소, 교환, 환불',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(height: 24.h,),
-                ],
-              ),
+                    SizedBox(height: 16.h,),
+                    Divider(
+                      thickness: 1,
+                      height: 1.h,
+                      color: ColorConstant.gray22,
+                    ),
+                    SizedBox(height: 20.h,),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.5.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              child: InkWell(
+                                onTap: (){
+
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/images/ic_point.png',width: 24.w,height: 24.h,),
+                                    SizedBox(height: 4.h,),
+                                    Text(
+                                      '포인트',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${Constants.numberAddComma(state.data.point)}점',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: InkWell(
+                                onTap: (){
+
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/images/ic_coupon.png',width: 24.w,height: 24.h,),
+                                    SizedBox(height: 4.h,),
+                                    Text(
+                                      '쿠폰',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${Constants.numberAddComma(state.data.coupon_cnt)}장',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              child: InkWell(
+                                onTap: (){
+
+                                },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/images/ic_point.png',width: 24.w,height: 24.h,),
+                                    SizedBox(height: 4.h,),
+                                    Text(
+                                      '리뷰',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${Constants.numberAddComma(state.data.review_cnt)}건',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 24.h,),
+                  ],
+                ),
+              )
             ),
             Divider(
               thickness: 1,

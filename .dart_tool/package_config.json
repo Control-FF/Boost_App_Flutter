@@ -176,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "file_picker",
+      "rootUri": "file:///Users/seunglee/.pub-cache/hosted/pub.dev/file_picker-5.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "fixnum",
       "rootUri": "file:///Users/seunglee/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
       "packageUri": "lib/",
@@ -240,6 +246,12 @@
       "rootUri": "file:///Users/seunglee/development/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///Users/seunglee/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "flutter_screenutil",
@@ -716,7 +728,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-11-02T13:46:49.411521Z",
+  "generated": "2023-11-03T14:07:47.930596Z",
   "generator": "pub",
   "generatorVersion": "2.19.1"
 }

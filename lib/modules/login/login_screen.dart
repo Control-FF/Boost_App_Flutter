@@ -38,6 +38,10 @@ class LoginScreen extends GetView<LoginController>{
                         Get.back();
                         Get.toNamed(AppRoutes.registerScreen);
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorConstant.primary,
+                        elevation: 0,
+                      ),
                       child: Text(
                         '일반 회원가입',
                         style: TextStyle(
@@ -46,9 +50,6 @@ class LoginScreen extends GetView<LoginController>{
                           fontFamily: 'Noto Sans KR',
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorConstant.primary
                       ),
                     ),
                   ),
@@ -286,15 +287,6 @@ class LoginScreen extends GetView<LoginController>{
                       FocusManager.instance.primaryFocus?.unfocus();
                       await controller.login(context);
                     },
-                    child: Text(
-                      '로그인',
-                      style: TextStyle(
-                        color: ColorConstant.white,
-                        fontSize: 20.sp,
-                        fontFamily: 'Noto Sans KR',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: controller.validPhoneStatus.value == 1  && controller.validPasswordStatus.value == 1
                           ? ColorConstant.primary
@@ -302,6 +294,15 @@ class LoginScreen extends GetView<LoginController>{
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4.r))
+                      ),
+                    ),
+                    child: Text(
+                      '로그인',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 20.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),

@@ -4,6 +4,7 @@ import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/token_response.dart';
+import 'package:boostapp/data/models/user_info.dart';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/retrofit.dart';
 
@@ -101,5 +102,30 @@ abstract class ApiClient {
   @GET('/api/shop/category')
   Future<CategoryResponse> getCategory(
       @Query('ca_id') String caId,
+  );
+
+  //인증 번호 요청
+  @POST('/api/user/auth-phone')
+  Future<DataResponse> authPhone(
+      @Field('phone') String phone,
+  );
+
+  //내정보
+  @GET('/api/user/mypage')
+  Future<UserInfoResponse> getMyInfo();
+
+  //비밀번호 확인
+  @POST('/api/user/verify-password')
+  Future<DataResponse> verifyPassword(
+      @Field('pw') String password,
+  );
+
+  //내 정보 수정
+  @PATCH('/api/user')
+  Future<DataResponse> updateMyInfo(
+      @Field('nickname') String nickname,
+      @Field('old_pw') String? currentPassword,
+      @Field('pw2') String? newPassword1,
+      @Field('pw3') String? newPassword2,
   );
 }

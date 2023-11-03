@@ -15,7 +15,6 @@ import 'package:boostapp/modules/main/pages/buy/buy_list_screen.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_binding.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_check_screen.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_update_screen.dart';
-import 'package:boostapp/modules/main/pages/my_page_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
 import 'package:boostapp/modules/register/register_binding.dart';

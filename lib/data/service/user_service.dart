@@ -2,6 +2,7 @@ import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
+import 'package:boostapp/data/models/user_info.dart';
 import 'package:dartz/dartz.dart';
 import 'package:boostapp/data/models/token.dart';
 import 'package:boostapp/data/models/token_response.dart';
@@ -177,6 +178,83 @@ class UserService extends GetxService{
     try {
       final DataResponse response =
       await _apiService.getApiClient().deleteAddress(adId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> authPhone({
+    required phone,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().authPhone(phone);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, UserInfoResponse>> getMyInfo() async {
+    try {
+      final UserInfoResponse response =
+      await _apiService.getApiClient().getMyInfo();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final UserInfoResponse response = UserInfoResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> verifyPassword({
+    required password,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().verifyPassword(password);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> updateMyInfo({
+    required nickname,
+    required currentPassword,
+    required newPassword1,
+    required newPassword2,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().updateMyInfo(nickname,currentPassword,newPassword1,newPassword2,);
       if (response.status == 200) {
         return Right(response);
       } else {

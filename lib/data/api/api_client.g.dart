@@ -349,6 +349,110 @@ class _ApiClient implements ApiClient {
     return value;
   }
 
+  @override
+  Future<DataResponse> authPhone(phone) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'phone': phone};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/auth-phone',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<UserInfoResponse> getMyInfo() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<UserInfoResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/mypage',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = UserInfoResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> verifyPassword(password) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'pw': password};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/verify-password',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> updateMyInfo(
+    nickname,
+    currentPassword,
+    newPassword1,
+    newPassword2,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'nickname': nickname,
+      'old_pw': currentPassword,
+      'pw2': newPassword1,
+      'pw3': newPassword2,
+    };
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

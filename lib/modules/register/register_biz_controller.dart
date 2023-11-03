@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:boostapp/data/service/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterBizController extends GetxController {
+  final UserService _userService = Get.find();
 
   final FocusNode nameFocusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
@@ -33,6 +37,7 @@ class RegisterBizController extends GetxController {
   RxBool check4 = false.obs;
 
   RxString fileName = ''.obs;
+  Rx<File?> bizFile = Rx<File?>(null);
 
   @override
   void onInit() {
@@ -71,5 +76,32 @@ class RegisterBizController extends GetxController {
     return str;
   }
 
+  Future<void> authPhone(context) async {
+    String phone = phoneController.text;
 
+    final result = await _userService.authPhone(phone: phone);
+    result.fold(
+      (failure) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            failure.message,
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+      },
+      (response) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            '인증번호가 발송되었습니다.',
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+      },
+    );
+
+  }
 }

@@ -7,105 +7,6 @@ import 'package:get/get.dart';
 
 class MyInfoUpdateScreen extends GetView<MyInfoController>{
 
-  void _showFinishPopup(context){
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            insetPadding: EdgeInsets.symmetric(horizontal: 68.w),
-            contentPadding: EdgeInsets.zero,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.r))
-            ),
-            content: Container(
-              height: 142.h,
-              alignment: Alignment.center,
-              child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '비밀번호가 변경되었습니다.',
-                        style: TextStyle(
-                          color: ColorConstant.black,
-                          fontSize: 14.sp,
-                          fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w500,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 79.w,
-                            height: 28.h,
-                            child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  side: BorderSide(width: 1.w, color: ColorConstant.gray2),
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
-                                  ),
-                                  padding: EdgeInsets.all(0)
-                              ),
-                              onPressed: (){
-                                Get.back();
-                              },
-                              child: Text(
-                                '취소',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 10.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 6.w,),
-                          Container(
-                            width: 79.w,
-                            height: 28.h,
-                            child: ElevatedButton(
-                              onPressed: (){
-                                Get.back();
-
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorConstant.primary,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
-                                  ),
-                                  padding: EdgeInsets.all(0)
-                              ),
-                              child: Text(
-                                '확인',
-                                style: TextStyle(
-                                  color: ColorConstant.white,
-                                  fontSize: 10.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  )
-              ),
-            ),
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -170,7 +71,7 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                                 color: ColorConstant.gray16,
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  '홍길동',
+                                  controller.name.value,
                                   style: TextStyle(
                                     color: ColorConstant.gray12,
                                     fontSize: 12.sp,
@@ -204,7 +105,7 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                                 color: ColorConstant.gray16,
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  '010-1234-5678',
+                                  controller.phone.value,
                                   style: TextStyle(
                                     color: ColorConstant.gray12,
                                     fontSize: 12.sp,
@@ -238,6 +139,7 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                                 color: ColorConstant.gray16,
                                 alignment: Alignment.centerLeft,
                                 child: controller.isEdit.value ? TextField(
+                                  controller: controller.nicknameController,
                                   decoration: InputDecoration(
                                       counterText: '',
                                       focusedBorder: const OutlineInputBorder(
@@ -277,7 +179,7 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      '사용자 123456',
+                                      controller.nickname.value,
                                       style: TextStyle(
                                         color: ColorConstant.gray12,
                                         fontSize: 12.sp,
@@ -485,9 +387,12 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                               fontFamily: 'Noto Sans KR',
                               fontWeight: FontWeight.w400,
                             ),
-                            keyboardType: TextInputType.text,
+                            keyboardType: TextInputType.visiblePassword,
                             textInputAction: TextInputAction.done,
                             obscureText: !controller.isObscureText3.value,
+                            onSubmitted: (value){
+
+                            },
                           ),
                         ),
                         controller.validNewPasswordStatus2.value == 2 ? Container(
@@ -539,8 +444,7 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                     flex: 1,
                     child: ElevatedButton(
                       onPressed: (){
-                        controller.checkPassword();
-                        _showFinishPopup(context);
+                        controller.updateMyInfo(context);
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorConstant.primary,

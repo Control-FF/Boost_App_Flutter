@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/register/register_biz_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:boostapp/widgets/custom_button.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -150,17 +153,12 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                 margin: EdgeInsets.only(right: 15.w),
                                 child: ElevatedButton(
                                   onPressed: (){
-
+                                    if(controller.phoneController.text.isEmpty || controller.phoneController.text.length < 11){
+                                      return;
+                                    }
+                                    FocusManager.instance.primaryFocus?.unfocus();
+                                    controller.authPhone(context);
                                   },
-                                  child: Text(
-                                    '인증번호 발송',
-                                    style: TextStyle(
-                                      color: ColorConstant.white,
-                                      fontSize: 10.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: ColorConstant.primary,
                                       elevation: 0,
@@ -169,6 +167,15 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                                       ),
                                       padding: EdgeInsets.all(0),
                                       minimumSize: Size(81.w,23.h)
+                                  ),
+                                  child: Text(
+                                    '인증번호 발송',
+                                    style: TextStyle(
+                                      color: ColorConstant.white,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               )
@@ -182,6 +189,7 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                             fontWeight: FontWeight.w500,
                           ),
                           keyboardType: TextInputType.number,
+                          /*
                           inputFormatters: [
                             MaskTextInputFormatter(
                               mask: '###-####-####',
@@ -189,9 +197,11 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                               type: MaskAutoCompletionType.lazy,
                             )
                           ],
+
+                           */
                           textInputAction: TextInputAction.done,
                           onChanged: (value){
-                            if(value == "" || value.length < 13){
+                            if(value == "" || value.length < 11){
                               controller.validPhoneStatus.value = 2;
                             }else{
                               controller.validPhoneStatus.value = 1;
@@ -522,8 +532,16 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                         ),
                       ),
                       GestureDetector(
-                        onTap: (){
-
+                        onTap: () async {
+                          FilePickerResult? result = await FilePicker.platform.pickFiles(
+                              type: FileType.custom,
+                              allowedExtensions: ['pdf','png','jpg','jpeg']
+                          );
+                          if(result != null) {
+                            File file = File(result.files.single.path.toString());
+                            controller.bizFile.value = file;
+                            controller.fileName.value = result.files.single.name;
+                          }
                         },
                         child: Container(
                             margin: EdgeInsets.only(top: 9.h),
@@ -539,7 +557,7 @@ class RegisterBizScreen extends GetView<RegisterBizController>{
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  controller.fileName.value == '' ? '사업자 등록증 파일 첨부' : controller.fileName.value,
+                                  controller.bizFile.value == null ? '사업자 등록증 파일 첨부' : controller.fileName.value,
                                   style: TextStyle(
                                     color: ColorConstant.gray1,
                                     fontSize: 14.sp,

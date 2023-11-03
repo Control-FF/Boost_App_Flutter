@@ -115,7 +115,7 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
-          child: Container(
+          child: Obx(() => Container(
             margin: EdgeInsets.fromLTRB(26.w, 47.w, 26.w, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -201,7 +201,7 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
                     textInputAction: TextInputAction.done,
                     obscureText: true,
                     onChanged: (value){
-                      if(value == "" || value.length < 13){
+                      if(value == ""){
                         controller.validPasswordStatus.value = 2;
                       }else{
                         controller.validPasswordStatus.value = 1;
@@ -210,7 +210,7 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
 
                   ),
                 ),
-                controller.validPasswordStatus.value == 2 ? Container(
+                controller.validPasswordStatus.value == 3 ? Container(
                   margin: EdgeInsets.only(top: 9.h,bottom: 5.h),
                   child: Text(
                     '비밀번호가 일치하지 않습니다.',
@@ -228,12 +228,11 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
                   height: 55.w,
                   child: ElevatedButton(
                     onPressed: (){
-                      if(controller.validPasswordStatus.value == 1){
-                        //Get.toNamed(AppRoutes.resetScreen);
-                        Get.toNamed(AppRoutes.myInfoUpdate);
-                      }
+                      FocusManager.instance.primaryFocus?.unfocus();
 
-                      Get.toNamed(AppRoutes.myInfoUpdate);
+                      if(controller.validPasswordStatus.value == 1){
+                        controller.verifyPassword(context);
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: controller.validPasswordStatus.value == 1
@@ -257,7 +256,7 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
                 ),
               ],
             ),
-          ),
+          )),
         ),
       ),
     );
