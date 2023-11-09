@@ -2,7 +2,11 @@ import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/category.dart';
+import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
+import 'package:boostapp/data/models/order.dart';
+import 'package:boostapp/data/models/payment.dart';
+import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -128,4 +132,32 @@ abstract class ApiClient {
       @Field('pw2') String? newPassword1,
       @Field('pw3') String? newPassword2,
   );
+
+  //쿠폰 목록 status(has : 보유 쿠폰, get : 전체쿠폰)
+  @GET('/api/user/coupon')
+  Future<CouponResponse> getCouponList(
+      @Query('status') String status,
+  );
+
+  //쿠폰 등록(코드)
+  @POST('/api/user/coupon')
+  Future<DataResponse> couponRegister(
+      @Body() Map<String, dynamic> map
+  );
+
+  //구매 내역
+  @GET('/api/user/payment-list')
+  Future<PaymentResponse> paymentList(
+      @Query('page') int page,
+  );
+
+  //주문 내역
+  @GET('/api/user/order-list')
+  Future<OrderResponse> orderList(
+      @Query('status') String status,
+  );
+
+  //포인트 목록
+  @GET('/api/user/point')
+  Future<PointResponse> pointList();
 }

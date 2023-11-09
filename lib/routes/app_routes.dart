@@ -12,9 +12,16 @@ import 'package:boostapp/modules/main/main.screen.dart';
 import 'package:boostapp/modules/main/main_binding.dart';
 import 'package:boostapp/modules/main/pages/buy/buy_binding.dart';
 import 'package:boostapp/modules/main/pages/buy/buy_list_screen.dart';
+import 'package:boostapp/modules/main/pages/coupon/coupon_binding.dart';
+import 'package:boostapp/modules/main/pages/coupon/coupon_list_screen.dart';
+import 'package:boostapp/modules/main/pages/coupon/coupon_register_screen.dart';
+import 'package:boostapp/modules/main/pages/order/order_binding.dart';
+import 'package:boostapp/modules/main/pages/order/order_list_screen.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_binding.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_check_screen.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_update_screen.dart';
+import 'package:boostapp/modules/main/pages/point/point_binding.dart';
+import 'package:boostapp/modules/main/pages/point/point_screen.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
@@ -34,6 +41,8 @@ import 'package:get/get.dart';
 
 class AppRoutes {
   static const mainScreen = '/';
+
+
   static const splashScreen = '/splash';
   static const tutorialScreen = '/tutorial';
   static const tutorialIntroScreen = '/intro';
@@ -42,14 +51,20 @@ class AppRoutes {
   static const resetScreen = '/resetPwd';
   static const registerScreen = '/register';
   static const registerBizScreen = '/register_biz';
+
   static const addressScreen = '/address';
   static const addressEditScreen = '/address_edit';
+
   static const searchScreen = '/search';
   static const productDetailScreen = '/product_detail';
   static const cartScreen = '/cart';
   static const myInfoCheck = '/my_info_check';
   static const myInfoUpdate = '/my_info_update';
+  static const orderList = '/order_list';
   static const buyList = '/buy_list';
+  static const couponList = '/coupon_list';
+  static const couponRegister = '/coupon_register';
+  static const pointList = '/point_list';
 
   static List<GetPage> pages = [
     GetPage(
@@ -165,10 +180,38 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: orderList,
+      page: () => OrderListScreen(),
+      bindings: [
+        OrderBinding(),
+      ],
+    ),
+    GetPage(
       name: buyList,
       page: () => BuyListScreen(),
       bindings: [
         BuyBinding(),
+      ],
+    ),
+    GetPage(
+      name: couponList,
+      page: () => CouponListScreen(),
+      bindings: [
+        CouponBinding(),
+      ],
+    ),
+    GetPage(
+      name: couponRegister,
+      page: () => CouponRegisterScreen(),
+      bindings: [
+        CouponBinding(),
+      ],
+    ),
+    GetPage(
+      name: pointList,
+      page: () => PointScreen(),
+      bindings: [
+        PointBinding(),
       ],
     ),
   ];
