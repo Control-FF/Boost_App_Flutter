@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/search/search_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
@@ -32,6 +33,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.filter.value = 'boost';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -74,6 +76,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.filter.value = 'seller';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -134,12 +137,12 @@ class SearchScreen extends GetView<ProductSearchController> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        if(controller.sort.value == 'recent'){
+                        if(controller.sort.value == 'latest'){
                           controller.sort.value = '';
                         }else{
-                          controller.sort.value = 'recent';
+                          controller.sort.value = 'latest';
                         }
-
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -149,7 +152,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(6.r)),
                             border: Border.all(
-                                color: controller.sort.value == 'recent' ? ColorConstant.accent :ColorConstant.gray17,
+                                color: controller.sort.value == 'latest' ? ColorConstant.accent :ColorConstant.gray17,
                                 width: 1
                             )
                         ),
@@ -167,7 +170,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             ),
                             Icon(
                               Icons.check_circle_outline_sharp,
-                              color: controller.sort.value == 'recent' ? ColorConstant.accent : ColorConstant.gray18,
+                              color: controller.sort.value == 'latest' ? ColorConstant.accent : ColorConstant.gray18,
                             )
                           ],
                         ),
@@ -182,6 +185,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.sort.value = 'review';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -218,12 +222,13 @@ class SearchScreen extends GetView<ProductSearchController> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: (){
-                        if(controller.sort.value == 'priceUp'){
+                        if(controller.sort.value == 'price_high'){
                           controller.sort.value = '';
                         }else{
-                          controller.sort.value = 'priceUp';
+                          controller.sort.value = 'price_high';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -233,7 +238,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(6.r)),
                             border: Border.all(
-                                color: controller.sort.value == 'priceUp' ? ColorConstant.accent :ColorConstant.gray17,
+                                color: controller.sort.value == 'price_high' ? ColorConstant.accent :ColorConstant.gray17,
                                 width: 1
                             )
                         ),
@@ -251,7 +256,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             ),
                             Icon(
                               Icons.check_circle_outline_sharp,
-                              color: controller.sort.value == 'priceUp' ? ColorConstant.accent : ColorConstant.gray18,
+                              color: controller.sort.value == 'price_high' ? ColorConstant.accent : ColorConstant.gray18,
                             )
                           ],
                         ),
@@ -260,12 +265,13 @@ class SearchScreen extends GetView<ProductSearchController> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: (){
-                        if(controller.sort.value == 'priceDown'){
+                        if(controller.sort.value == 'price_low'){
                           controller.sort.value = '';
                         }else{
-                          controller.sort.value = 'priceDown';
+                          controller.sort.value = 'price_low';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -275,7 +281,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(6.r)),
                             border: Border.all(
-                                color: controller.sort.value == 'priceDown' ? ColorConstant.accent :ColorConstant.gray17,
+                                color: controller.sort.value == 'price_low' ? ColorConstant.accent :ColorConstant.gray17,
                                 width: 1
                             )
                         ),
@@ -293,7 +299,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             ),
                             Icon(
                               Icons.check_circle_outline_sharp,
-                              color: controller.sort.value == 'priceDown' ? ColorConstant.accent : ColorConstant.gray18,
+                              color: controller.sort.value == 'price_low' ? ColorConstant.accent : ColorConstant.gray18,
                             )
                           ],
                         ),
@@ -302,12 +308,13 @@ class SearchScreen extends GetView<ProductSearchController> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: (){
-                        if(controller.sort.value == 'rate'){
+                        if(controller.sort.value == 'rating'){
                           controller.sort.value = '';
                         }else{
-                          controller.sort.value = 'rate';
+                          controller.sort.value = 'rating';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -317,7 +324,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(6.r)),
                             border: Border.all(
-                                color: controller.sort.value == 'rate' ? ColorConstant.accent :ColorConstant.gray17,
+                                color: controller.sort.value == 'rating' ? ColorConstant.accent :ColorConstant.gray17,
                                 width: 1
                             )
                         ),
@@ -335,7 +342,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             ),
                             Icon(
                               Icons.check_circle_outline_sharp,
-                              color: controller.sort.value == 'rate' ? ColorConstant.accent : ColorConstant.gray18,
+                              color: controller.sort.value == 'rating' ? ColorConstant.accent : ColorConstant.gray18,
                             )
                           ],
                         ),
@@ -344,12 +351,13 @@ class SearchScreen extends GetView<ProductSearchController> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: (){
-                        if(controller.sort.value == 'sell'){
+                        if(controller.sort.value == 'sales'){
                           controller.sort.value = '';
                         }else{
-                          controller.sort.value = 'sell';
+                          controller.sort.value = 'sales';
                         }
 
+                        controller.getKeywordResultList();
                         Get.back();
                       },
                       child: Container(
@@ -359,7 +367,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(6.r)),
                             border: Border.all(
-                                color: controller.sort.value == 'sell' ? ColorConstant.accent :ColorConstant.gray17,
+                                color: controller.sort.value == 'sales' ? ColorConstant.accent :ColorConstant.gray17,
                                 width: 1
                             )
                         ),
@@ -377,7 +385,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             ),
                             Icon(
                               Icons.check_circle_outline_sharp,
-                              color: controller.sort.value == 'sell' ? ColorConstant.accent : ColorConstant.gray18,
+                              color: controller.sort.value == 'sales' ? ColorConstant.accent : ColorConstant.gray18,
                             )
                           ],
                         ),
@@ -457,6 +465,9 @@ class SearchScreen extends GetView<ProductSearchController> {
                 onChanged: (value){
                   if(value == ""){
                     controller.searchStatus.value = '';
+                  }else{
+                    controller.searchStatus.value = 'search';
+                    controller.getKeywordAutoList();
                   }
                 },
                 onSubmitted: (String str){
@@ -574,11 +585,10 @@ class SearchScreen extends GetView<ProductSearchController> {
                                             ),
                                           ),
                                           onSelected: (bool isSelect){
-                                            if(isSelect){
-                                              controller.searchController.text = controller.searchTextList[index];
-                                              controller.searchStatus.value = 'search';
-                                              controller.saveSearchText(controller.searchTextList[index]);
-                                            }
+                                            controller.searchController.text = controller.searchTextList[index];
+                                            controller.searchStatus.value = 'search';
+                                            controller.saveSearchText(controller.searchTextList[index]);
+                                            controller.getKeywordAutoList();
                                           },
                                         );
                                       }
@@ -601,7 +611,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                 ),
                               ),
                               Text(
-                                '2023년 10월 17일 기준',
+                                '${Constants.getToday()} 기준',
                                 style: TextStyle(
                                   color: ColorConstant.black,
                                   fontSize: 10.sp,
@@ -626,12 +636,12 @@ class SearchScreen extends GetView<ProductSearchController> {
                                       crossAxisSpacing: 0,
                                     ),
                                     delegate: SliverChildBuilderDelegate(
-                                            (BuildContext context, int index){
+                                        (BuildContext context, int index){
                                           return InkWell(
                                             onTap: (){
-                                              controller.searchController.text = '썸머스비';
+                                              controller.searchController.text = controller.keywordRankList[index].keyword;
                                               controller.searchStatus.value = 'search';
-                                              controller.saveSearchText('썸머스비');
+                                              controller.saveSearchText(controller.keywordRankList[index].keyword);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -644,7 +654,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                   SizedBox(
                                                     width: 20,
                                                     child: Text(
-                                                      (index+1).toString(),
+                                                      controller.keywordRankList[index].rank.toString(),
                                                       style: TextStyle(
                                                         color: ColorConstant.primary,
                                                         fontSize: 16.sp,
@@ -655,7 +665,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                   ),
                                                   SizedBox(width: 14.3.w,),
                                                   Text(
-                                                    '썸머스비',
+                                                    controller.keywordRankList[index].keyword,
                                                     style: TextStyle(
                                                       color: ColorConstant.black,
                                                       fontSize: 12.sp,
@@ -668,7 +678,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                             ),
                                           );
                                         },
-                                        childCount: 10
+                                        childCount: controller.keywordRankList.length
                                     ),
                                   )
                               )
@@ -681,10 +691,11 @@ class SearchScreen extends GetView<ProductSearchController> {
                   return Container(
                     padding: EdgeInsets.fromLTRB(30.w, 34.h, 30.w, 0.h),
                     color: ColorConstant.gray16,
+                    height: Get.height,
                     child: ListView.separated(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: 100,
+                      itemCount: controller.keywordAutoList.length,
                       separatorBuilder: (context, index) {
                         return Container(
                           height: 26.h,
@@ -694,10 +705,12 @@ class SearchScreen extends GetView<ProductSearchController> {
                         return GestureDetector(
                           onTap: (){
                             controller.searchStatus.value = 'result';
-                            controller.searchController.text = '서울 우유';
+                            controller.searchController.text = controller.keywordAutoList[index];
+                            controller.getKeywordResultList();
+                            FocusManager.instance.primaryFocus?.unfocus();
                           },
                           child: Text(
-                            '서울 우유',
+                            controller.keywordAutoList[index],
                             style: TextStyle(
                               color: ColorConstant.black,
                               fontSize: 12.sp,
@@ -743,7 +756,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '60개의 상품',
+                                '${controller.keywordResultList.length}개의 상품',
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 10.sp,
@@ -835,7 +848,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                       return InkWell(
                                         onTap: (){
                                           Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                            'productId' : 1
+                                            'productId' : controller.keywordResultList[index].it_id
                                           });
                                         },
                                         child: Column(
@@ -843,7 +856,19 @@ class SearchScreen extends GetView<ProductSearchController> {
                                           children: [
                                             Stack(
                                               children: [
-                                                Image.asset('assets/images/sample_product2.png',fit: BoxFit.cover,),
+                                                controller.keywordResultList[index].it_img1 == ""
+                                                    ? Image.asset(
+                                                        'assets/images/product_sample.png',
+                                                        fit: BoxFit.cover,
+                                                    )
+                                                    : AspectRatio(
+                                                        aspectRatio: 1/1,
+                                                        child: Image.network(
+                                                          '${Constants.fileUrl}${controller.keywordResultList[index].it_img1}',
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      )
+                                                ,
                                                 Positioned(
                                                   right: 0,
                                                   bottom: 0,
@@ -870,7 +895,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                   TextSpan(
                                                       children: [
                                                         TextSpan(
-                                                          text: '칠레산 생 블루베리 2(택1)',
+                                                          text: controller.keywordResultList[index].it_name,
                                                           style: TextStyle(
                                                             color: ColorConstant.black,
                                                             fontSize: 10.sp,
@@ -889,7 +914,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                   TextSpan(
                                                       children: [
                                                         TextSpan(
-                                                          text: ' 3,600원',
+                                                          text: ' ${Constants.numberAddComma(controller.keywordResultList[index].it_price)}원',
                                                           style: TextStyle(
                                                             color: ColorConstant.black,
                                                             fontSize: 12.sp,
@@ -906,7 +931,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                         ),
                                       );
                                     },
-                                    childCount: 15
+                                    childCount: controller.keywordResultList.length
                                 ),
                               )
                             ]

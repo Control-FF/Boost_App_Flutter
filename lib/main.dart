@@ -43,9 +43,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) => GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: '부스트',
-          useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
-          builder: EasyLoading.init(builder: DevicePreview.appBuilder),
           initialRoute: AppRoutes.splashScreen,
           getPages: AppRoutes.pages,
           theme: ThemeData(

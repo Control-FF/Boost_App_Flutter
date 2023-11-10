@@ -1,5 +1,6 @@
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
+import 'package:boostapp/data/models/card.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
@@ -214,6 +215,73 @@ class UserService extends GetxService{
     }
   }
 
+  Future<Either<Failure, DataResponse>> authNumber({
+    required phone,
+    required number,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().authNumber(phone,number);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> resetPassword({
+    required phone,
+    required pw1,
+    required pw2,
+    required number,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().resetPassword(phone,pw1,pw2,number);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> registerUser({
+    required type,
+    required phone,
+    required pw1,
+    required pw2,
+    required authCode,
+    required recommendCode,
+    required bizLicense,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().registerUser(type,phone,pw1,pw2,authCode,recommendCode,bizLicense);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, UserInfoResponse>> getMyInfo() async {
     try {
       final UserInfoResponse response =
@@ -352,6 +420,86 @@ class UserService extends GetxService{
     try {
       final PointResponse response =
       await _apiService.getApiClient().pointList();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, CardResponse>> getCardList() async {
+    try {
+      final CardResponse response =
+      await _apiService.getApiClient().cardList();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> deleteCard({
+    required cdNo
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().deleteCard(cdNo);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> updateCard({
+    required cdNo,
+    required subject,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().updateCard(cdNo,subject);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> registerCard({
+    required type,
+    required number,
+    required expired,
+    required pw,
+    required birth,
+    required bizNumber
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().registerCard(type,number,expired,pw,birth,bizNumber);
       if (response.status == 200) {
         return Right(response);
       } else {

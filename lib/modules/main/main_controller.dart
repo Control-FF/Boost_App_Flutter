@@ -51,7 +51,7 @@ class MainController extends GetxController{
 
     await Future.delayed(Duration(milliseconds: 500));
 
-    await getAddressCheck();
+    //await getAddressCheck();
     await getCategoryList('');
 
     String popupDate = _storageService.getPopupDate();

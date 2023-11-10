@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
+import 'package:boostapp/data/models/card.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
+import 'package:boostapp/data/models/keyword_auto.dart';
+import 'package:boostapp/data/models/keyword_rank.dart';
+import 'package:boostapp/data/models/keyword_result.dart';
 import 'package:boostapp/data/models/order.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
@@ -22,29 +28,6 @@ abstract class ApiClient {
   @POST('/api/user/login')
   @FormUrlEncoded()
   Future<TokenResponse> login(@Field() String phone, @Field() String pw);
-
-  //회원가입
-  @POST('/api/user')
-  @FormUrlEncoded()
-  Future<TokenResponse> register(
-      @Field() String name,
-      @Field() String phone,
-      @Field() String pw1,
-      @Field() String pw2,
-      @Field() String code,
-  );
-
-  //사업자 회원가입
-  @POST('/api/user')
-  @FormUrlEncoded()
-  Future<TokenResponse> registerBiz(
-      @Field() String name,
-      @Field() String phone,
-      @Field() String pw1,
-      @Field() String pw2,
-      @Field() String code,
-      @Part() List<MultipartFile>? file,
-  );
 
   //토큰 갱신
   @GET('/api/user/refresh')
@@ -114,6 +97,34 @@ abstract class ApiClient {
       @Field('phone') String phone,
   );
 
+  //인증 번호 확인
+  @POST('/api/user/auth-phone-confrim')
+  Future<DataResponse> authNumber(
+      @Field('phone') String phone,
+      @Field('code') String code,
+  );
+
+  //비밀번호 변경
+  @PATCH('/api/user/change-password')
+  Future<DataResponse> resetPassword(
+      @Field('phone') String phone,
+      @Field('pw1') String pw1,
+      @Field('pw2') String pw2,
+      @Field('code') String code,
+  );
+
+  //회원가입
+  @POST('/api/user')
+  Future<DataResponse> registerUser(
+      @Part() String? type,
+      @Part() String? phone,
+      @Part() String? pw1,
+      @Part() String? pw2,
+      @Part() String? auth_code,
+      @Part() String? recommend_code,
+      @Part() File? biz_license,
+  );
+
   //내정보
   @GET('/api/user/mypage')
   Future<UserInfoResponse> getMyInfo();
@@ -160,4 +171,50 @@ abstract class ApiClient {
   //포인트 목록
   @GET('/api/user/point')
   Future<PointResponse> pointList();
+
+  //인기 검색어 목록
+  @GET('/api/shop/load-popular-keyword')
+  Future<KeywordRankResponse> keywordRankList();
+
+  //검색어 자동완성
+  @GET('/api/shop/autocomplete')
+  Future<KeywordAutoResponse> keywordAutoList(
+      @Query('keyword') String keyword,
+  );
+
+  //검색 결과 상품
+  @GET('/api/shop/search')
+  Future<KeywordResultResponse> keywordResultList(
+      @Query('keyword') String keyword,
+      @Query('sort') String sort,
+      @Query('pageNum') int page,
+  );
+
+  //신용카드 리스트
+  @GET('/api/user/card-list')
+  Future<CardResponse> cardList();
+
+  //신용카드 삭제
+  @DELETE('/api/user/card/{cdNo}')
+  Future<DataResponse> deleteCard(
+      @Path('cdNo') int cdNo,
+  );
+
+  //신용카드 이름 변경
+  @PATCH('/api/user/card/{cdNo}')
+  Future<DataResponse> updateCard(
+      @Path('cdNo') int cdNo,
+      @Field('subject') String subject,
+  );
+
+  //신용카드 등록
+  @POST('/api/user/card')
+  Future<DataResponse> registerCard(
+      @Field('type') String type,
+      @Field('number') String number,
+      @Field('expired') String expired,
+      @Field('pw') String pw,
+      @Field('birth') String? birth,
+      @Field('biz_number') String? bizNumber,
+  );
 }

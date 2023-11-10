@@ -73,8 +73,21 @@ class FindScreen extends GetView<FindController>{
                         margin: EdgeInsets.only(right: 15.w),
                         child: ElevatedButton(
                           onPressed: (){
-
+                            if(controller.phoneController.text.isEmpty || controller.phoneController.text.length < 11){
+                              return;
+                            }
+                            FocusManager.instance.primaryFocus?.unfocus();
+                            controller.authPhone(context);
                           },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: controller.validPhoneStatus.value == 1 ? ColorConstant.primary : ColorConstant.gray2,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(3.r))
+                              ),
+                              padding: EdgeInsets.all(0),
+                              minimumSize: Size(81.w,23.h)
+                          ),
                           child: Text(
                             '인증번호 발송',
                             style: TextStyle(
@@ -83,15 +96,6 @@ class FindScreen extends GetView<FindController>{
                               fontFamily: 'Noto Sans KR',
                               fontWeight: FontWeight.w500,
                             ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorConstant.primary,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(3.r))
-                              ),
-                              padding: EdgeInsets.all(0),
-                              minimumSize: Size(81.w,23.h)
                           ),
                         ),
                       )
@@ -106,15 +110,8 @@ class FindScreen extends GetView<FindController>{
                     ),
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.done,
-                    inputFormatters: [
-                      MaskTextInputFormatter(
-                        mask: '###-####-####',
-                        filter: {"#": RegExp(r'[0-9]')},
-                        type: MaskAutoCompletionType.lazy,
-                      )
-                    ],
                     onChanged: (value){
-                      if(value == "" || value.length < 13){
+                      if(value == "" || value.length < 11){
                         controller.validPhoneStatus.value = 2;
                       }else{
                         controller.validPhoneStatus.value = 1;
@@ -159,25 +156,29 @@ class FindScreen extends GetView<FindController>{
                             margin: EdgeInsets.only(right: 15.w),
                             child: ElevatedButton(
                               onPressed: (){
-
+                                if(controller.numberController.text.isEmpty || controller.numberController.text.length < 6){
+                                  return;
+                                }
+                                FocusManager.instance.primaryFocus?.unfocus();
+                                controller.authNumber(context);
                               },
-                              child: Text(
-                                '인증번호 확인',
-                                style: TextStyle(
-                                  color: ColorConstant.white,
-                                  fontSize: 10.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorConstant.primary,
+                                  backgroundColor: controller.validNumberStatus.value == 1 ? ColorConstant.primary : ColorConstant.gray2,
                                   elevation: 0,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(Radius.circular(3.r))
                                   ),
                                   padding: EdgeInsets.all(0),
                                   minimumSize: Size(81.w,23.h)
+                              ),
+                              child: Text(
+                                '인증 확인',
+                                style: TextStyle(
+                                  color: ColorConstant.white,
+                                  fontSize: 10.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
@@ -212,6 +213,7 @@ class FindScreen extends GetView<FindController>{
                           fontFamily: 'Noto Sans KR',
                           fontWeight: FontWeight.w500,
                         ),
+                        keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.done,
                         onChanged: (value){
                           if(value.length < 6){
@@ -267,10 +269,23 @@ class FindScreen extends GetView<FindController>{
                   height: 55.w,
                   child: ElevatedButton(
                     onPressed: (){
-                      if(controller.validPhoneStatus.value == 1  && controller.validNumberStatus.value == 1){
-                        Get.toNamed(AppRoutes.resetScreen);
+                      if(controller.validAuthStatus.value != 1){
+                        return;
                       }
+                      Get.offNamed(AppRoutes.resetScreen,arguments: {
+                        'phone' : controller.phoneController.text,
+                        'number' : controller.numberController.text,
+                      });
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: controller.validAuthStatus.value == 1
+                          ? ColorConstant.primary
+                          : ColorConstant.gray2,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))
+                      ),
+                    ),
                     child: Text(
                       '다음',
                       style: TextStyle(
@@ -278,15 +293,6 @@ class FindScreen extends GetView<FindController>{
                         fontSize: 20.sp,
                         fontFamily: 'Noto Sans KR',
                         fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: controller.validPhoneStatus.value == 1  && controller.validNumberStatus.value == 1
-                          ? ColorConstant.primary
-                          : ColorConstant.gray2,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4.r))
                       ),
                     ),
                   ),

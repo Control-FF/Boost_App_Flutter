@@ -60,7 +60,7 @@ class BuyListScreen extends GetView<BuyController>{
                             index == 0 ? Padding(
                               padding: EdgeInsets.only(bottom: 11.h),
                               child: Text(
-                                state.state.items[index].ct_select_time,
+                                state.items[index].ct_select_time,
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 12.sp,

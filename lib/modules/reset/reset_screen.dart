@@ -202,20 +202,11 @@ class ResetScreen extends GetView<ResetController>{
                     child: ElevatedButton(
                       onPressed: (){
                         if(controller.isFinish.value){
-                          Get.toNamed(AppRoutes.loginScreen);
+                          Get.offNamed(AppRoutes.loginScreen);
                         }else{
-                          controller.isFinish.value = true;
+                          controller.resetPassword(context);
                         }
                       },
-                      child: Text(
-                        '확인',
-                        style: TextStyle(
-                          color: ColorConstant.white,
-                          fontSize: 20.sp,
-                          fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: controller.validPasswordStatus1.value == 1  && controller.validPasswordStatus2.value == 1
                             ? ColorConstant.primary
@@ -223,6 +214,15 @@ class ResetScreen extends GetView<ResetController>{
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(4.r))
+                        ),
+                      ),
+                      child: Text(
+                        '확인',
+                        style: TextStyle(
+                          color: ColorConstant.white,
+                          fontSize: 20.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),

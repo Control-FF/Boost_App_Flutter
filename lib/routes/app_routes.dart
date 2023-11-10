@@ -20,13 +20,14 @@ import 'package:boostapp/modules/main/pages/order/order_list_screen.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_binding.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_check_screen.dart';
 import 'package:boostapp/modules/main/pages/my_info/my_info_update_screen.dart';
+import 'package:boostapp/modules/main/pages/pay/pay_binding.dart';
+import 'package:boostapp/modules/main/pages/pay/pay_register_screen.dart';
+import 'package:boostapp/modules/main/pages/pay/pay_screen.dart';
 import 'package:boostapp/modules/main/pages/point/point_binding.dart';
 import 'package:boostapp/modules/main/pages/point/point_screen.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
-import 'package:boostapp/modules/register/register_biz_binding.dart';
-import 'package:boostapp/modules/register/register_biz_screen.dart';
 import 'package:boostapp/modules/register/register_screen.dart';
 import 'package:boostapp/modules/reset/reset_binding.dart';
 import 'package:boostapp/modules/reset/reset_screen.dart';
@@ -50,7 +51,6 @@ class AppRoutes {
   static const findScreen = '/findPwd';
   static const resetScreen = '/resetPwd';
   static const registerScreen = '/register';
-  static const registerBizScreen = '/register_biz';
 
   static const addressScreen = '/address';
   static const addressEditScreen = '/address_edit';
@@ -65,6 +65,8 @@ class AppRoutes {
   static const couponList = '/coupon_list';
   static const couponRegister = '/coupon_register';
   static const pointList = '/point_list';
+  static const payList = '/pay_list';
+  static const payRegister = '/pay_register';
 
   static List<GetPage> pages = [
     GetPage(
@@ -121,13 +123,6 @@ class AppRoutes {
       page: () => RegisterScreen(),
       bindings: [
         RegisterBinding(),
-      ],
-    ),
-    GetPage(
-      name: registerBizScreen,
-      page: () => RegisterBizScreen(),
-      bindings: [
-        RegisterBizBinding(),
       ],
     ),
     GetPage(
@@ -212,6 +207,20 @@ class AppRoutes {
       page: () => PointScreen(),
       bindings: [
         PointBinding(),
+      ],
+    ),
+    GetPage(
+      name: payList,
+      page: () => PayScreen(),
+      bindings: [
+        PayBinding(),
+      ],
+    ),
+    GetPage(
+      name: payRegister,
+      page: () => PayRegisterScreen(),
+      bindings: [
+        PayBinding(),
       ],
     ),
   ];

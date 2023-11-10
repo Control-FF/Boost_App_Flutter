@@ -36,7 +36,7 @@ class LoginScreen extends GetView<LoginController>{
                     child: ElevatedButton(
                       onPressed: (){
                         Get.back();
-                        Get.toNamed(AppRoutes.registerScreen);
+                        Get.toNamed(AppRoutes.registerScreen,arguments: {'type' : 'nor'});
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ColorConstant.primary,
@@ -63,7 +63,7 @@ class LoginScreen extends GetView<LoginController>{
                       ),
                       onPressed: (){
                         Get.back();
-                        Get.toNamed(AppRoutes.registerBizScreen);
+                        Get.toNamed(AppRoutes.registerScreen,arguments: {'type' : 'biz'});
                       },
                       child: Text(
                         '사업자 회원가입',

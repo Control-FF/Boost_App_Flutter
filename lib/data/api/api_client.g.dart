@@ -51,80 +51,6 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<TokenResponse> register(
-    name,
-    phone,
-    pw1,
-    pw2,
-    code,
-  ) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = {
-      'name': name,
-      'phone': phone,
-      'pw1': pw1,
-      'pw2': pw2,
-      'code': code,
-    };
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<TokenResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-      contentType: 'application/x-www-form-urlencoded',
-    )
-            .compose(
-              _dio.options,
-              '/api/user',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = TokenResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<TokenResponse> registerBiz(
-    name,
-    phone,
-    pw1,
-    pw2,
-    code,
-    file,
-  ) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = {
-      'name': name,
-      'phone': phone,
-      'pw1': pw1,
-      'pw2': pw2,
-      'code': code,
-    };
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<TokenResponse>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-      contentType: 'application/x-www-form-urlencoded',
-    )
-            .compose(
-              _dio.options,
-              '/api/user',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = TokenResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<TokenResponse> refreshToken() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -373,6 +299,147 @@ class _ApiClient implements ApiClient {
   }
 
   @override
+  Future<DataResponse> authNumber(
+    phone,
+    code,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'phone': phone,
+      'code': code,
+    };
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/auth-phone-confrim',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> resetPassword(
+    phone,
+    pw1,
+    pw2,
+    code,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'phone': phone,
+      'pw1': pw1,
+      'pw2': pw2,
+      'code': code,
+    };
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/change-password',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> registerUser(
+    type,
+    phone,
+    pw1,
+    pw2,
+    auth_code,
+    recommend_code,
+    biz_license,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (type != null) {
+      _data.fields.add(MapEntry(
+        'type',
+        type,
+      ));
+    }
+    if (phone != null) {
+      _data.fields.add(MapEntry(
+        'phone',
+        phone,
+      ));
+    }
+    if (pw1 != null) {
+      _data.fields.add(MapEntry(
+        'pw1',
+        pw1,
+      ));
+    }
+    if (pw2 != null) {
+      _data.fields.add(MapEntry(
+        'pw2',
+        pw2,
+      ));
+    }
+    if (auth_code != null) {
+      _data.fields.add(MapEntry(
+        'auth_code',
+        auth_code,
+      ));
+    }
+    if (recommend_code != null) {
+      _data.fields.add(MapEntry(
+        'recommend_code',
+        recommend_code,
+      ));
+    }
+    if (biz_license != null) {
+      _data.files.add(MapEntry(
+        'biz_license',
+        MultipartFile.fromFileSync(
+          biz_license.path,
+          filename: biz_license.path
+              .split(Platform.pathSeparator)
+              .last,
+        ),
+      ));
+    }
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<UserInfoResponse> getMyInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -566,6 +633,194 @@ class _ApiClient implements ApiClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = PointResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<KeywordRankResponse> keywordRankList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<KeywordRankResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/load-popular-keyword',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = KeywordRankResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<KeywordAutoResponse> keywordAutoList(keyword) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'keyword': keyword};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<KeywordAutoResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/autocomplete',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = KeywordAutoResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<KeywordResultResponse> keywordResultList(
+    keyword,
+    sort,
+    page,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'keyword': keyword,
+      r'sort': sort,
+      r'pageNum': page,
+    };
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<KeywordResultResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/search',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = KeywordResultResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<CardResponse> cardList() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<CardResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/card-list',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = CardResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> deleteCard(cdNo) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/card/${cdNo}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> updateCard(
+    cdNo,
+    subject,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'subject': subject};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/card/${cdNo}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> registerCard(
+    type,
+    number,
+    expired,
+    pw,
+    birth,
+    bizNumber,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'type': type,
+      'number': number,
+      'expired': expired,
+      'pw': pw,
+      'birth': birth,
+      'biz_number': bizNumber,
+    };
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/card',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
     return value;
   }
 
