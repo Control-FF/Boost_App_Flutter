@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/main/pages/buy/buy_controller.dart';
 import 'package:flutter/material.dart';
@@ -57,10 +58,10 @@ class BuyListScreen extends GetView<BuyController>{
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            index == 0 ? Padding(
+                            controller.isShowDate(index) ? Padding(
                               padding: EdgeInsets.only(bottom: 11.h),
                               child: Text(
-                                state.items[index].ct_select_time,
+                                state.items[index].ct_select_time.split(' ')[0],
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 12.sp,
@@ -74,7 +75,7 @@ class BuyListScreen extends GetView<BuyController>{
                                 ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
                                   child: Image.asset(
-                                    'assets/images/sample_product1.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
+                                    'assets/images/product_sample.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
                                   ),
                                 ),
                                 SizedBox(width: 4.w,),
@@ -84,6 +85,7 @@ class BuyListScreen extends GetView<BuyController>{
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
+                                        /*
                                         Row(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
@@ -117,11 +119,12 @@ class BuyListScreen extends GetView<BuyController>{
                                             )
                                           ],
                                         ),
+                                         */
                                         SizedBox(height: 5.h,),
                                         Wrap(
                                           children: [
                                             Text(
-                                              '오리지널 바베큐 폭립 1kg (500X2EA)',
+                                              state.items[index].it_name,
                                               style: TextStyle(
                                                 color: ColorConstant.black,
                                                 fontSize: 10.sp,
@@ -131,6 +134,7 @@ class BuyListScreen extends GetView<BuyController>{
                                             )
                                           ],
                                         ),
+                                        /*
                                         SizedBox(height: 5.h,),
                                         Wrap(
                                           children: [
@@ -145,9 +149,12 @@ class BuyListScreen extends GetView<BuyController>{
                                             )
                                           ],
                                         ),
+
+                                         */
                                         Text.rich(
                                             TextSpan(
                                                 children: [
+                                                  /*
                                                   TextSpan(
                                                     text: '50%',
                                                     style: TextStyle(
@@ -157,8 +164,10 @@ class BuyListScreen extends GetView<BuyController>{
                                                       fontWeight: FontWeight.w700,
                                                     ),
                                                   ),
+
+                                                   */
                                                   TextSpan(
-                                                    text: ' 3,600원',
+                                                    text: '${Constants.numberAddComma(state.items[index].ct_price)}원',
                                                     style: TextStyle(
                                                       color: ColorConstant.black,
                                                       fontSize: 12.sp,

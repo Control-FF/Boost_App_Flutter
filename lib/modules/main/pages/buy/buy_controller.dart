@@ -25,4 +25,15 @@ class BuyController extends GetxController with StateMixin{
       },
     );
   }
+
+  bool isShowDate(index){
+    if(index == 0){
+      return true;
+    }else{
+      String date1 = state.items[index].ct_select_time.split(' ')[0];
+      String date2 = state.items[index-1].ct_select_time.split(' ')[0];
+
+      return date1 != date2;
+    }
+  }
 }

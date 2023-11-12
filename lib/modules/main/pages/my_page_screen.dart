@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class MyPageScreen extends GetView<MyPageController>{
+
   @override
   Widget build(BuildContext context) {
 
@@ -750,7 +751,7 @@ class MyPageScreen extends GetView<MyPageController>{
             ),
             InkWell(
               onTap: (){
-
+                Get.toNamed(AppRoutes.notice);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 26.w),
@@ -775,7 +776,7 @@ class MyPageScreen extends GetView<MyPageController>{
             ),
             InkWell(
               onTap: (){
-                controller.logout();
+                controller.showLogoutPopup(context);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 26.w),

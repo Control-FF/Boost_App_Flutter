@@ -10,9 +10,11 @@ import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
+import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/order.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
+import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -122,7 +124,18 @@ abstract class ApiClient {
       @Part() String? pw2,
       @Part() String? auth_code,
       @Part() String? recommend_code,
-      @Part() File? biz_license,
+  );
+
+  //사업자 회원가입
+  @POST('/api/user')
+  Future<DataResponse> registerBizUser(
+      @Part() String? type,
+      @Part() String? phone,
+      @Part() String? pw1,
+      @Part() String? pw2,
+      @Part() String? auth_code,
+      @Part() String? recommend_code,
+      @Part() File biz_license,
   );
 
   //내정보
@@ -216,5 +229,17 @@ abstract class ApiClient {
       @Field('pw') String pw,
       @Field('birth') String? birth,
       @Field('biz_number') String? bizNumber,
+  );
+
+  //상품 상세
+  @GET('/api/shop/item')
+  Future<ProductDetailResponse> productDetail(
+      @Query('it_id') String itId,
+  );
+
+  //상품 상세
+  @GET('/api/user/notice')
+  Future<NoticeResponse> noticeList(
+      @Query('isHTML') String isHtml,
   );
 }

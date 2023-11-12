@@ -368,6 +368,73 @@ class _ApiClient implements ApiClient {
     pw2,
     auth_code,
     recommend_code,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (type != null) {
+      _data.fields.add(MapEntry(
+        'type',
+        type,
+      ));
+    }
+    if (phone != null) {
+      _data.fields.add(MapEntry(
+        'phone',
+        phone,
+      ));
+    }
+    if (pw1 != null) {
+      _data.fields.add(MapEntry(
+        'pw1',
+        pw1,
+      ));
+    }
+    if (pw2 != null) {
+      _data.fields.add(MapEntry(
+        'pw2',
+        pw2,
+      ));
+    }
+    if (auth_code != null) {
+      _data.fields.add(MapEntry(
+        'auth_code',
+        auth_code,
+      ));
+    }
+    if (recommend_code != null) {
+      _data.fields.add(MapEntry(
+        'recommend_code',
+        recommend_code,
+      ));
+    }
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> registerBizUser(
+    type,
+    phone,
+    pw1,
+    pw2,
+    auth_code,
+    recommend_code,
     biz_license,
   ) async {
     const _extra = <String, dynamic>{};
@@ -411,17 +478,13 @@ class _ApiClient implements ApiClient {
         recommend_code,
       ));
     }
-    if (biz_license != null) {
-      _data.files.add(MapEntry(
-        'biz_license',
-        MultipartFile.fromFileSync(
-          biz_license.path,
-          filename: biz_license.path
-              .split(Platform.pathSeparator)
-              .last,
-        ),
-      ));
-    }
+    _data.files.add(MapEntry(
+      'biz_license',
+      MultipartFile.fromFileSync(
+        biz_license.path,
+        filename: biz_license.path.split(Platform.pathSeparator).last,
+      ),
+    ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
       method: 'POST',
@@ -821,6 +884,52 @@ class _ApiClient implements ApiClient {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ProductDetailResponse> productDetail(itId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'it_id': itId};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ProductDetailResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/item',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ProductDetailResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<NoticeResponse> noticeList(isHtml) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'isHTML': isHtml};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<NoticeResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/user/notice',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = NoticeResponse.fromJson(_result.data!);
     return value;
   }
 

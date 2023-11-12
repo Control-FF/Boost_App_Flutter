@@ -264,11 +264,35 @@ class UserService extends GetxService{
     required pw2,
     required authCode,
     required recommendCode,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().registerUser(type,phone,pw1,pw2,authCode,recommendCode);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> registerBizUser({
+    required type,
+    required phone,
+    required pw1,
+    required pw2,
+    required authCode,
+    required recommendCode,
     required bizLicense,
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().registerUser(type,phone,pw1,pw2,authCode,recommendCode,bizLicense);
+      await _apiService.getApiClient().registerBizUser(type,phone,pw1,pw2,authCode,recommendCode,bizLicense);
       if (response.status == 200) {
         return Right(response);
       } else {

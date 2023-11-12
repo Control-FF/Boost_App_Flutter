@@ -79,6 +79,8 @@ _$_PaymentResponse _$$_PaymentResponseFromJson(Map<String, dynamic> json) =>
               ?.map((e) => Payment.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      page: json['page'] as int? ?? 0,
+      totalCount: json['totalCount'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_PaymentResponseToJson(_$_PaymentResponse instance) =>
@@ -86,4 +88,6 @@ Map<String, dynamic> _$$_PaymentResponseToJson(_$_PaymentResponse instance) =>
       'status': instance.status,
       'message': instance.message,
       'data': instance.items,
+      'page': instance.page,
+      'totalCount': instance.totalCount,
     };

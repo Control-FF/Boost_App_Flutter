@@ -149,7 +149,14 @@ class RegisterController extends GetxController {
       recommendCode = null;
     }
 
-    final result = await _userService.registerUser(type: type.value, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode,bizLicense: bizFile.value);
+    var result;
+
+    if(type.value == 'nor'){
+      result = await _userService.registerUser(type: type.value, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode);
+    }else{
+      result = await _userService.registerBizUser(type: type.value, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode,bizLicense: bizFile.value);
+    }
+
     result.fold(
       (failure) {
         print(failure.message);

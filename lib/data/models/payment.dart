@@ -47,6 +47,8 @@ class PaymentResponse with _$PaymentResponse {
     required int status,
     @Default('') String message,
     @Default([]) @JsonKey(name: 'data') List<Payment>? items,
+    @Default(0) int page,
+    @Default(0) int totalCount,
   }) = _PaymentResponse;
 
   factory PaymentResponse.fromJson(Map<String, dynamic> json) =>

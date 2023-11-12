@@ -6,6 +6,8 @@ import 'package:boostapp/data/models/failure.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
+import 'package:boostapp/data/models/notice.dart';
+import 'package:boostapp/data/models/product_detail.dart';
 import 'package:dartz/dartz.dart';
 import 'package:boostapp/data/models/token.dart';
 import 'package:boostapp/data/models/token_response.dart';
@@ -84,6 +86,44 @@ class ShopService extends GetxService{
     try {
       final KeywordResultResponse response =
       await _apiService.getApiClient().keywordResultList(keyword,sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, ProductDetailResponse>> getProductDetail({
+    required itId
+  }) async {
+    try {
+      final ProductDetailResponse response =
+      await _apiService.getApiClient().productDetail(itId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, NoticeResponse>> getNotice({
+    required isHtml,
+  }) async {
+    try {
+      final NoticeResponse response =
+      await _apiService.getApiClient().noticeList(isHtml);
       if (response.status == 200) {
         return Right(response);
       } else {

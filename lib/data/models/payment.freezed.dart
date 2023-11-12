@@ -798,6 +798,8 @@ mixin _$PaymentResponse {
   String get message => throw _privateConstructorUsedError;
   @JsonKey(name: 'data')
   List<Payment>? get items => throw _privateConstructorUsedError;
+  int get page => throw _privateConstructorUsedError;
+  int get totalCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -814,7 +816,9 @@ abstract class $PaymentResponseCopyWith<$Res> {
   $Res call(
       {int status,
       String message,
-      @JsonKey(name: 'data') List<Payment>? items});
+      @JsonKey(name: 'data') List<Payment>? items,
+      int page,
+      int totalCount});
 }
 
 /// @nodoc
@@ -833,6 +837,8 @@ class _$PaymentResponseCopyWithImpl<$Res, $Val extends PaymentResponse>
     Object? status = null,
     Object? message = null,
     Object? items = freezed,
+    Object? page = null,
+    Object? totalCount = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -847,6 +853,14 @@ class _$PaymentResponseCopyWithImpl<$Res, $Val extends PaymentResponse>
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<Payment>?,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _value.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -862,7 +876,9 @@ abstract class _$$_PaymentResponseCopyWith<$Res>
   $Res call(
       {int status,
       String message,
-      @JsonKey(name: 'data') List<Payment>? items});
+      @JsonKey(name: 'data') List<Payment>? items,
+      int page,
+      int totalCount});
 }
 
 /// @nodoc
@@ -879,6 +895,8 @@ class __$$_PaymentResponseCopyWithImpl<$Res>
     Object? status = null,
     Object? message = null,
     Object? items = freezed,
+    Object? page = null,
+    Object? totalCount = null,
   }) {
     return _then(_$_PaymentResponse(
       status: null == status
@@ -893,6 +911,14 @@ class __$$_PaymentResponseCopyWithImpl<$Res>
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<Payment>?,
+      page: null == page
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCount: null == totalCount
+          ? _value.totalCount
+          : totalCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -903,7 +929,9 @@ class _$_PaymentResponse implements _PaymentResponse {
   _$_PaymentResponse(
       {required this.status,
       this.message = '',
-      @JsonKey(name: 'data') final List<Payment>? items = const []})
+      @JsonKey(name: 'data') final List<Payment>? items = const [],
+      this.page = 0,
+      this.totalCount = 0})
       : _items = items;
 
   factory _$_PaymentResponse.fromJson(Map<String, dynamic> json) =>
@@ -926,8 +954,15 @@ class _$_PaymentResponse implements _PaymentResponse {
   }
 
   @override
+  @JsonKey()
+  final int page;
+  @override
+  @JsonKey()
+  final int totalCount;
+
+  @override
   String toString() {
-    return 'PaymentResponse(status: $status, message: $message, items: $items)';
+    return 'PaymentResponse(status: $status, message: $message, items: $items, page: $page, totalCount: $totalCount)';
   }
 
   @override
@@ -937,13 +972,16 @@ class _$_PaymentResponse implements _PaymentResponse {
             other is _$_PaymentResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
-            const DeepCollectionEquality().equals(other._items, _items));
+            const DeepCollectionEquality().equals(other._items, _items) &&
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.totalCount, totalCount) ||
+                other.totalCount == totalCount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, status, message,
-      const DeepCollectionEquality().hash(_items));
+      const DeepCollectionEquality().hash(_items), page, totalCount);
 
   @JsonKey(ignore: true)
   @override
@@ -963,7 +1001,9 @@ abstract class _PaymentResponse implements PaymentResponse {
   factory _PaymentResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<Payment>? items}) = _$_PaymentResponse;
+      @JsonKey(name: 'data') final List<Payment>? items,
+      final int page,
+      final int totalCount}) = _$_PaymentResponse;
 
   factory _PaymentResponse.fromJson(Map<String, dynamic> json) =
       _$_PaymentResponse.fromJson;
@@ -975,6 +1015,10 @@ abstract class _PaymentResponse implements PaymentResponse {
   @override
   @JsonKey(name: 'data')
   List<Payment>? get items;
+  @override
+  int get page;
+  @override
+  int get totalCount;
   @override
   @JsonKey(ignore: true)
   _$$_PaymentResponseCopyWith<_$_PaymentResponse> get copyWith =>
