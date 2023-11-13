@@ -6,15 +6,18 @@ part 'order.g.dart';
 @freezed
 class Order with _$Order {
   factory Order({
-    @Default(0) int ct_id,
     @Default(0) int od_id,
     @Default('') String it_id,
     @Default('') String it_name,
     @Default('') String ct_status,
     @Default(0) int ct_price,
-    @Default('') String ct_option,
-    @Default('') String ct_time,
     @Default(0) int cp_price,
+    @Default(0) int ct_qty,
+    @Default(0) int ct_point_use,
+    @Default('') String io_id,
+    @Default(0) int io_price,
+    @Default('') String it_basic,
+    @Default('') String ct_time,
     @Default('') String it_img1,
     @Default('') String it_img2,
     @Default('') String it_img3,

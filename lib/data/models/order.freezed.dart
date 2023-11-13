@@ -20,15 +20,18 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Order {
-  int get ct_id => throw _privateConstructorUsedError;
   int get od_id => throw _privateConstructorUsedError;
   String get it_id => throw _privateConstructorUsedError;
   String get it_name => throw _privateConstructorUsedError;
   String get ct_status => throw _privateConstructorUsedError;
   int get ct_price => throw _privateConstructorUsedError;
-  String get ct_option => throw _privateConstructorUsedError;
-  String get ct_time => throw _privateConstructorUsedError;
   int get cp_price => throw _privateConstructorUsedError;
+  int get ct_qty => throw _privateConstructorUsedError;
+  int get ct_point_use => throw _privateConstructorUsedError;
+  String get io_id => throw _privateConstructorUsedError;
+  int get io_price => throw _privateConstructorUsedError;
+  String get it_basic => throw _privateConstructorUsedError;
+  String get ct_time => throw _privateConstructorUsedError;
   String get it_img1 => throw _privateConstructorUsedError;
   String get it_img2 => throw _privateConstructorUsedError;
   String get it_img3 => throw _privateConstructorUsedError;
@@ -51,15 +54,18 @@ abstract class $OrderCopyWith<$Res> {
       _$OrderCopyWithImpl<$Res, Order>;
   @useResult
   $Res call(
-      {int ct_id,
-      int od_id,
+      {int od_id,
       String it_id,
       String it_name,
       String ct_status,
       int ct_price,
-      String ct_option,
-      String ct_time,
       int cp_price,
+      int ct_qty,
+      int ct_point_use,
+      String io_id,
+      int io_price,
+      String it_basic,
+      String ct_time,
       String it_img1,
       String it_img2,
       String it_img3,
@@ -85,15 +91,18 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ct_id = null,
     Object? od_id = null,
     Object? it_id = null,
     Object? it_name = null,
     Object? ct_status = null,
     Object? ct_price = null,
-    Object? ct_option = null,
-    Object? ct_time = null,
     Object? cp_price = null,
+    Object? ct_qty = null,
+    Object? ct_point_use = null,
+    Object? io_id = null,
+    Object? io_price = null,
+    Object? it_basic = null,
+    Object? ct_time = null,
     Object? it_img1 = null,
     Object? it_img2 = null,
     Object? it_img3 = null,
@@ -106,10 +115,6 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? it_img10 = null,
   }) {
     return _then(_value.copyWith(
-      ct_id: null == ct_id
-          ? _value.ct_id
-          : ct_id // ignore: cast_nullable_to_non_nullable
-              as int,
       od_id: null == od_id
           ? _value.od_id
           : od_id // ignore: cast_nullable_to_non_nullable
@@ -130,18 +135,34 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.ct_price
           : ct_price // ignore: cast_nullable_to_non_nullable
               as int,
-      ct_option: null == ct_option
-          ? _value.ct_option
-          : ct_option // ignore: cast_nullable_to_non_nullable
+      cp_price: null == cp_price
+          ? _value.cp_price
+          : cp_price // ignore: cast_nullable_to_non_nullable
+              as int,
+      ct_qty: null == ct_qty
+          ? _value.ct_qty
+          : ct_qty // ignore: cast_nullable_to_non_nullable
+              as int,
+      ct_point_use: null == ct_point_use
+          ? _value.ct_point_use
+          : ct_point_use // ignore: cast_nullable_to_non_nullable
+              as int,
+      io_id: null == io_id
+          ? _value.io_id
+          : io_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      io_price: null == io_price
+          ? _value.io_price
+          : io_price // ignore: cast_nullable_to_non_nullable
+              as int,
+      it_basic: null == it_basic
+          ? _value.it_basic
+          : it_basic // ignore: cast_nullable_to_non_nullable
               as String,
       ct_time: null == ct_time
           ? _value.ct_time
           : ct_time // ignore: cast_nullable_to_non_nullable
               as String,
-      cp_price: null == cp_price
-          ? _value.cp_price
-          : cp_price // ignore: cast_nullable_to_non_nullable
-              as int,
       it_img1: null == it_img1
           ? _value.it_img1
           : it_img1 // ignore: cast_nullable_to_non_nullable
@@ -193,15 +214,18 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int ct_id,
-      int od_id,
+      {int od_id,
       String it_id,
       String it_name,
       String ct_status,
       int ct_price,
-      String ct_option,
-      String ct_time,
       int cp_price,
+      int ct_qty,
+      int ct_point_use,
+      String io_id,
+      int io_price,
+      String it_basic,
+      String ct_time,
       String it_img1,
       String it_img2,
       String it_img3,
@@ -223,15 +247,18 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ct_id = null,
     Object? od_id = null,
     Object? it_id = null,
     Object? it_name = null,
     Object? ct_status = null,
     Object? ct_price = null,
-    Object? ct_option = null,
-    Object? ct_time = null,
     Object? cp_price = null,
+    Object? ct_qty = null,
+    Object? ct_point_use = null,
+    Object? io_id = null,
+    Object? io_price = null,
+    Object? it_basic = null,
+    Object? ct_time = null,
     Object? it_img1 = null,
     Object? it_img2 = null,
     Object? it_img3 = null,
@@ -244,10 +271,6 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? it_img10 = null,
   }) {
     return _then(_$_Order(
-      ct_id: null == ct_id
-          ? _value.ct_id
-          : ct_id // ignore: cast_nullable_to_non_nullable
-              as int,
       od_id: null == od_id
           ? _value.od_id
           : od_id // ignore: cast_nullable_to_non_nullable
@@ -268,18 +291,34 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
           ? _value.ct_price
           : ct_price // ignore: cast_nullable_to_non_nullable
               as int,
-      ct_option: null == ct_option
-          ? _value.ct_option
-          : ct_option // ignore: cast_nullable_to_non_nullable
+      cp_price: null == cp_price
+          ? _value.cp_price
+          : cp_price // ignore: cast_nullable_to_non_nullable
+              as int,
+      ct_qty: null == ct_qty
+          ? _value.ct_qty
+          : ct_qty // ignore: cast_nullable_to_non_nullable
+              as int,
+      ct_point_use: null == ct_point_use
+          ? _value.ct_point_use
+          : ct_point_use // ignore: cast_nullable_to_non_nullable
+              as int,
+      io_id: null == io_id
+          ? _value.io_id
+          : io_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      io_price: null == io_price
+          ? _value.io_price
+          : io_price // ignore: cast_nullable_to_non_nullable
+              as int,
+      it_basic: null == it_basic
+          ? _value.it_basic
+          : it_basic // ignore: cast_nullable_to_non_nullable
               as String,
       ct_time: null == ct_time
           ? _value.ct_time
           : ct_time // ignore: cast_nullable_to_non_nullable
               as String,
-      cp_price: null == cp_price
-          ? _value.cp_price
-          : cp_price // ignore: cast_nullable_to_non_nullable
-              as int,
       it_img1: null == it_img1
           ? _value.it_img1
           : it_img1 // ignore: cast_nullable_to_non_nullable
@@ -328,15 +367,18 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
 @JsonSerializable()
 class _$_Order implements _Order {
   _$_Order(
-      {this.ct_id = 0,
-      this.od_id = 0,
+      {this.od_id = 0,
       this.it_id = '',
       this.it_name = '',
       this.ct_status = '',
       this.ct_price = 0,
-      this.ct_option = '',
-      this.ct_time = '',
       this.cp_price = 0,
+      this.ct_qty = 0,
+      this.ct_point_use = 0,
+      this.io_id = '',
+      this.io_price = 0,
+      this.it_basic = '',
+      this.ct_time = '',
       this.it_img1 = '',
       this.it_img2 = '',
       this.it_img3 = '',
@@ -351,9 +393,6 @@ class _$_Order implements _Order {
   factory _$_Order.fromJson(Map<String, dynamic> json) =>
       _$$_OrderFromJson(json);
 
-  @override
-  @JsonKey()
-  final int ct_id;
   @override
   @JsonKey()
   final int od_id;
@@ -371,13 +410,25 @@ class _$_Order implements _Order {
   final int ct_price;
   @override
   @JsonKey()
-  final String ct_option;
+  final int cp_price;
+  @override
+  @JsonKey()
+  final int ct_qty;
+  @override
+  @JsonKey()
+  final int ct_point_use;
+  @override
+  @JsonKey()
+  final String io_id;
+  @override
+  @JsonKey()
+  final int io_price;
+  @override
+  @JsonKey()
+  final String it_basic;
   @override
   @JsonKey()
   final String ct_time;
-  @override
-  @JsonKey()
-  final int cp_price;
   @override
   @JsonKey()
   final String it_img1;
@@ -411,7 +462,7 @@ class _$_Order implements _Order {
 
   @override
   String toString() {
-    return 'Order(ct_id: $ct_id, od_id: $od_id, it_id: $it_id, it_name: $it_name, ct_status: $ct_status, ct_price: $ct_price, ct_option: $ct_option, ct_time: $ct_time, cp_price: $cp_price, it_img1: $it_img1, it_img2: $it_img2, it_img3: $it_img3, it_img4: $it_img4, it_img5: $it_img5, it_img6: $it_img6, it_img7: $it_img7, it_img8: $it_img8, it_img9: $it_img9, it_img10: $it_img10)';
+    return 'Order(od_id: $od_id, it_id: $it_id, it_name: $it_name, ct_status: $ct_status, ct_price: $ct_price, cp_price: $cp_price, ct_qty: $ct_qty, ct_point_use: $ct_point_use, io_id: $io_id, io_price: $io_price, it_basic: $it_basic, ct_time: $ct_time, it_img1: $it_img1, it_img2: $it_img2, it_img3: $it_img3, it_img4: $it_img4, it_img5: $it_img5, it_img6: $it_img6, it_img7: $it_img7, it_img8: $it_img8, it_img9: $it_img9, it_img10: $it_img10)';
   }
 
   @override
@@ -419,7 +470,6 @@ class _$_Order implements _Order {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Order &&
-            (identical(other.ct_id, ct_id) || other.ct_id == ct_id) &&
             (identical(other.od_id, od_id) || other.od_id == od_id) &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
@@ -427,11 +477,17 @@ class _$_Order implements _Order {
                 other.ct_status == ct_status) &&
             (identical(other.ct_price, ct_price) ||
                 other.ct_price == ct_price) &&
-            (identical(other.ct_option, ct_option) ||
-                other.ct_option == ct_option) &&
-            (identical(other.ct_time, ct_time) || other.ct_time == ct_time) &&
             (identical(other.cp_price, cp_price) ||
                 other.cp_price == cp_price) &&
+            (identical(other.ct_qty, ct_qty) || other.ct_qty == ct_qty) &&
+            (identical(other.ct_point_use, ct_point_use) ||
+                other.ct_point_use == ct_point_use) &&
+            (identical(other.io_id, io_id) || other.io_id == io_id) &&
+            (identical(other.io_price, io_price) ||
+                other.io_price == io_price) &&
+            (identical(other.it_basic, it_basic) ||
+                other.it_basic == it_basic) &&
+            (identical(other.ct_time, ct_time) || other.ct_time == ct_time) &&
             (identical(other.it_img1, it_img1) || other.it_img1 == it_img1) &&
             (identical(other.it_img2, it_img2) || other.it_img2 == it_img2) &&
             (identical(other.it_img3, it_img3) || other.it_img3 == it_img3) &&
@@ -449,15 +505,18 @@ class _$_Order implements _Order {
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        ct_id,
         od_id,
         it_id,
         it_name,
         ct_status,
         ct_price,
-        ct_option,
-        ct_time,
         cp_price,
+        ct_qty,
+        ct_point_use,
+        io_id,
+        io_price,
+        it_basic,
+        ct_time,
         it_img1,
         it_img2,
         it_img3,
@@ -486,15 +545,18 @@ class _$_Order implements _Order {
 
 abstract class _Order implements Order {
   factory _Order(
-      {final int ct_id,
-      final int od_id,
+      {final int od_id,
       final String it_id,
       final String it_name,
       final String ct_status,
       final int ct_price,
-      final String ct_option,
-      final String ct_time,
       final int cp_price,
+      final int ct_qty,
+      final int ct_point_use,
+      final String io_id,
+      final int io_price,
+      final String it_basic,
+      final String ct_time,
       final String it_img1,
       final String it_img2,
       final String it_img3,
@@ -509,8 +571,6 @@ abstract class _Order implements Order {
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
 
   @override
-  int get ct_id;
-  @override
   int get od_id;
   @override
   String get it_id;
@@ -521,11 +581,19 @@ abstract class _Order implements Order {
   @override
   int get ct_price;
   @override
-  String get ct_option;
+  int get cp_price;
+  @override
+  int get ct_qty;
+  @override
+  int get ct_point_use;
+  @override
+  String get io_id;
+  @override
+  int get io_price;
+  @override
+  String get it_basic;
   @override
   String get ct_time;
-  @override
-  int get cp_price;
   @override
   String get it_img1;
   @override

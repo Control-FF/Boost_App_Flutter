@@ -1,4 +1,5 @@
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/main/main_controller.dart';
 import 'package:boostapp/modules/main/pages/home_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/gestures.dart';
@@ -10,6 +11,8 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeTabPopular extends GetView<HomeController>{
+  final mainController = Get.put(MainController());
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -115,44 +118,51 @@ class HomeTabPopular extends GetView<HomeController>{
                     ]
                 ),
               ),
-              SliverPadding(
-                padding: EdgeInsets.fromLTRB(30.w, 14.h, 30.w, 0),
-                sliver: SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5,
-                    childAspectRatio: 58.63 / 85.19,
-                    mainAxisSpacing: 5,
-                    crossAxisSpacing: 5,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index){
-                        return InkWell(
-                          onTap: (){
-
-                          },
-                          child: Column(
-                            children: [
-                              CircleAvatar(
-                                backgroundImage: AssetImage('assets/images/sample_category1.png',),
-                                radius: 29.w,
-                              ),
-                              SizedBox(height: 7.h,),
-                              Text(
-                                '과자류',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 10.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w500,
+              GetX<MainController>(
+                  builder: (_){
+                    return SliverPadding(
+                      padding: EdgeInsets.fromLTRB(30.w, 14.h, 30.w, 0),
+                      sliver: SliverGrid(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 5,
+                          childAspectRatio: 58.63 / 85.19,
+                          mainAxisSpacing: 5,
+                          crossAxisSpacing: 5,
+                        ),
+                        delegate: SliverChildBuilderDelegate(
+                                (BuildContext context, int index){
+                              return InkWell(
+                                onTap: (){
+                                  Get.toNamed(AppRoutes.category,arguments: {
+                                    'category':mainController.categoryList[index].ca_name,
+                                    'caId':mainController.categoryList[index].ca_id,
+                                  });
+                                },
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundImage: AssetImage('assets/images/sample_category1.png',),
+                                      radius: 29.w,
+                                    ),
+                                    SizedBox(height: 7.h,),
+                                    Text(
+                                      mainController.categoryList[index].ca_name,
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 10.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                      childCount: 15
-                  ),
-                ),
+                              );
+                            },
+                            childCount: controller.isCategoryAll.value ? mainController.categoryList.length : (mainController.categoryList.length > 15 ? 15 : mainController.categoryList.length)
+                        ),
+                      ),
+                    );
+                  }
               ),
               SliverList(
                 delegate: SliverChildListDelegate(

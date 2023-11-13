@@ -939,7 +939,7 @@ class OrderListScreen extends GetView<OrderController>{
                     color: ColorConstant.black.withOpacity(0.1),
                   ),
                 ),
-                Container(
+                Obx(() => Container(
                   margin: EdgeInsets.fromLTRB(30.w, 12.h, 30.w, 25.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -961,7 +961,7 @@ class OrderListScreen extends GetView<OrderController>{
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                '0',
+                                controller.userData.value == null ? '0' : controller.userData.value!.order!.deposit_cnt.toString(),
                                 style: TextStyle(
                                   color: controller.orderListStatus.value == 0 ? ColorConstant.white : ColorConstant.black,
                                   fontSize: 14.sp,
@@ -1009,7 +1009,7 @@ class OrderListScreen extends GetView<OrderController>{
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                '0',
+                                controller.userData.value == null ? '0' : controller.userData.value!.order!.prepare_cnt.toString(),
                                 style: TextStyle(
                                   color: controller.orderListStatus.value == 1 ? ColorConstant.white : ColorConstant.black,
                                   fontSize: 14.sp,
@@ -1057,7 +1057,7 @@ class OrderListScreen extends GetView<OrderController>{
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                '0',
+                                controller.userData.value == null ? '0' : controller.userData.value!.order!.delivery_cnt.toString(),
                                 style: TextStyle(
                                   color: controller.orderListStatus.value == 2 ? ColorConstant.white : ColorConstant.black,
                                   fontSize: 14.sp,
@@ -1105,7 +1105,7 @@ class OrderListScreen extends GetView<OrderController>{
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                '0',
+                                controller.userData.value == null ? '0' : controller.userData.value!.order!.complete_cnt.toString(),
                                 style: TextStyle(
                                   color: controller.orderListStatus.value == 3 ? ColorConstant.white : ColorConstant.black,
                                   fontSize: 14.sp,
@@ -1153,7 +1153,7 @@ class OrderListScreen extends GetView<OrderController>{
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                '0',
+                                controller.userData.value == null ? '0' : controller.userData.value!.order!.cancel_cnt.toString(),
                                 style: TextStyle(
                                   color: controller.orderListStatus.value == 4 ? ColorConstant.white : ColorConstant.black,
                                   fontSize: 14.sp,
@@ -1186,7 +1186,7 @@ class OrderListScreen extends GetView<OrderController>{
                       )
                     ],
                   ),
-                ),
+                )),
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -1201,7 +1201,7 @@ class OrderListScreen extends GetView<OrderController>{
                             controller.isShowDate(index) ? Padding(
                               padding: EdgeInsets.only(bottom: 11.h),
                               child: Text(
-                                state.items[index].ct_select_time.split(' ')[0],
+                                state.items[index].ct_time.split(' ')[0],
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 12.sp,

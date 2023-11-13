@@ -1,5 +1,6 @@
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/main/pages/bottom_bar_screen.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -94,6 +95,10 @@ class MainScreen extends GetView<MainController> {
                                 controller.setFold(index);
                               }else{
                                 //move page
+                                Get.toNamed(AppRoutes.category,arguments: {
+                                  'category':controller.categoryList[index].ca_name,
+                                  'caId':controller.categoryList[index].ca_id,
+                                });
                               }
                             },
                             child: Padding(

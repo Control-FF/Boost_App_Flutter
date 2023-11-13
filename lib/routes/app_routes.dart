@@ -4,6 +4,8 @@ import 'package:boostapp/modules/address/address_list_binding.dart';
 import 'package:boostapp/modules/address/address_list_screen.dart';
 import 'package:boostapp/modules/cart/cart_binding.dart';
 import 'package:boostapp/modules/cart/cart_screen.dart';
+import 'package:boostapp/modules/category/category_binding.dart';
+import 'package:boostapp/modules/category/category_screen.dart';
 import 'package:boostapp/modules/find/find_binding.dart';
 import 'package:boostapp/modules/find/find_screen.dart';
 import 'package:boostapp/modules/login/login_binding.dart';
@@ -71,6 +73,7 @@ class AppRoutes {
   static const payRegister = '/pay_register';
 
   static const notice = '/notice';
+  static const category = '/category';
 
   static List<GetPage> pages = [
     GetPage(
@@ -232,6 +235,13 @@ class AppRoutes {
       page: () => NoticeScreen(),
       bindings: [
         NoticeBinding(),
+      ],
+    ),
+    GetPage(
+      name: category,
+      page: () => CategoryScreen(),
+      bindings: [
+        CategoryBinding(),
       ],
     ),
   ];

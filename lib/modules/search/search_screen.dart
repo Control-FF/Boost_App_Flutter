@@ -933,7 +933,195 @@ class SearchScreen extends GetView<ProductSearchController> {
                                     },
                                     childCount: controller.keywordResultList.length
                                 ),
-                              )
+                              ),
+                              SliverList(
+                                delegate: SliverChildListDelegate(
+                                    [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 49.h),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  '부스트 앱 오픈 맞이 파격행사',
+                                                  style: TextStyle(
+                                                    color: ColorConstant.gray11,
+                                                    fontSize: 10.sp,
+                                                    fontFamily: 'Noto Sans KR',
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      '이런 상품은 어떠세요?',
+                                                      style: TextStyle(
+                                                        color: ColorConstant.black,
+                                                        fontSize: 16.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                            TextButton(
+                                              onPressed: (){
+
+                                              },
+                                              style: TextButton.styleFrom(
+                                                padding: EdgeInsets.zero,
+                                                minimumSize: Size(0,20),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    '더보러 가기',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.gray12,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                  Icon(Icons.arrow_forward_ios_sharp,size: 10,color: ColorConstant.gray12,)
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: 17.h,),
+                                      Divider(
+                                        color: ColorConstant.gray10,
+                                        height: 1.h,
+                                        thickness: 1.h,
+                                      ),
+                                      Container(
+                                        height: 290,
+                                        child: ListView.builder(
+                                          physics: BouncingScrollPhysics(),
+                                          padding: EdgeInsets.only(top: 20.h,bottom: 30.h),
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount: 5,
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index){
+                                            return GestureDetector(
+                                              onTap: (){
+                                                Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                                                  'productId' : 1
+                                                });
+                                              },
+                                              child: Padding(
+                                                padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Stack(
+                                                      children: [
+                                                        Image.asset('assets/images/sample_product2.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                                        Positioned(
+                                                          right: 0,
+                                                          bottom: 0,
+                                                          child: Container(
+                                                            color: ColorConstant.accent,
+                                                            width: 20.w,
+                                                            height: 20.h,
+                                                            child: IconButton(padding: EdgeInsets.zero,
+                                                              color: ColorConstant.accent,
+                                                              alignment: Alignment.center,
+                                                              onPressed: (){
+
+                                                              },
+                                                              icon: Icon(Icons.favorite_border_outlined,color: ColorConstant.white,size: 10),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: 9.h,),
+                                                    SizedBox(
+                                                      width: 146.w,
+                                                      child: Text.rich(
+                                                          TextSpan(
+                                                              children: [
+                                                                TextSpan(
+                                                                  text: '[J마트]',
+                                                                  style: TextStyle(
+                                                                    color: ColorConstant.accent,
+                                                                    fontSize: 10.sp,
+                                                                    fontFamily: 'Noto Sans KR',
+                                                                    fontWeight: FontWeight.w700,
+                                                                  ),
+                                                                ),
+                                                                TextSpan(
+                                                                  text: '칠레산 생 블루베리 2(택1)',
+                                                                  style: TextStyle(
+                                                                    color: ColorConstant.black,
+                                                                    fontSize: 10.sp,
+                                                                    fontFamily: 'Noto Sans KR',
+                                                                    fontWeight: FontWeight.w400,
+                                                                  ),
+                                                                )
+                                                              ]
+                                                          )
+                                                      ),
+                                                    ),
+                                                    SizedBox(height: 2.h,),
+                                                    SizedBox(
+                                                      width: 146.w,
+                                                      child: Text.rich(
+                                                          TextSpan(
+                                                              children: [
+                                                                TextSpan(
+                                                                  text: '50%',
+                                                                  style: TextStyle(
+                                                                    color: ColorConstant.primary,
+                                                                    fontSize: 12.sp,
+                                                                    fontFamily: 'Noto Sans KR',
+                                                                    fontWeight: FontWeight.w700,
+                                                                  ),
+                                                                ),
+                                                                TextSpan(
+                                                                  text: ' 3,600원',
+                                                                  style: TextStyle(
+                                                                    color: ColorConstant.black,
+                                                                    fontSize: 12.sp,
+                                                                    fontFamily: 'Noto Sans KR',
+                                                                    fontWeight: FontWeight.w700,
+                                                                  ),
+                                                                )
+                                                              ]
+                                                          )
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '7,800원',
+                                                      style: TextStyle(
+                                                          color: ColorConstant.gray1,
+                                                          fontSize: 8.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                          decoration: TextDecoration.lineThrough
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      )
+                                    ]
+                                ),
+                              ),
                             ]
                         )
                       ],

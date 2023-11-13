@@ -99,8 +99,13 @@ class MyPageScreen extends GetView<MyPageController>{
                                   ),
                                   SizedBox(width: 4.w,),
                                   GestureDetector(
-                                    onTap: (){
-                                      Get.toNamed(AppRoutes.myInfoCheck);
+                                    onTap: () async {
+                                      var res = await Get.toNamed(AppRoutes.myInfoCheck);
+                                      if(res != null){
+                                        controller.getMyInfo();
+                                      }else{
+                                        controller.getMyInfo();
+                                      }
                                     },
                                     child: Image.asset('assets/images/ic_edit.png',width: 16,height: 16,),
                                   )
@@ -612,36 +617,6 @@ class MyPageScreen extends GetView<MyPageController>{
                   children: [
                     Text(
                       '결제수단 관리',
-                      style: TextStyle(
-                        color: ColorConstant.black,
-                        fontSize: 16.sp,
-                        fontFamily: 'Noto Sans KR',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Icon(Icons.navigate_next_sharp,color: ColorConstant.black.withOpacity(0.25),size: 24,)
-                  ],
-                ),
-              ),
-            ),
-            Divider(
-              thickness: 1,
-              height: 1.h,
-              color: ColorConstant.gray22,
-            ),
-            InkWell(
-              onTap: (){
-
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 26.w),
-                alignment: Alignment.center,
-                height: 72.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '찜한 상품',
                       style: TextStyle(
                         color: ColorConstant.black,
                         fontSize: 16.sp,

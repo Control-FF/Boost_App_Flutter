@@ -185,6 +185,13 @@ class MainController extends GetxController{
                           Get.back();
                           _storageService.savePopupDate();
                         },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorConstant.white,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero
+                            )
+                        ),
                         child: Text(
                           '오늘 그만보기',
                           style: TextStyle(
@@ -193,13 +200,6 @@ class MainController extends GetxController{
                             fontFamily: 'Noto Sans KR',
                             fontWeight: FontWeight.w500,
                           ),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: ColorConstant.white,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero
-                            )
                         ),
                       ),
                     ),
@@ -211,6 +211,13 @@ class MainController extends GetxController{
                       onPressed: (){
                         Get.back();
                       },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorConstant.red2,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero
+                          )
+                      ),
                       child: Text(
                         '닫기',
                         style: TextStyle(
@@ -219,13 +226,6 @@ class MainController extends GetxController{
                           fontFamily: 'Noto Sans KR',
                           fontWeight: FontWeight.w500,
                         ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorConstant.red2,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero
-                          )
                       ),
                     ),
                   )

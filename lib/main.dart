@@ -21,10 +21,14 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]).then((value) {
     runApp(
+      MyApp(),
+      /*
       DevicePreview(
-        enabled: kReleaseMode,
+        enabled: !kReleaseMode,
         builder: (context) => MyApp(),
       ),
+
+       */
     );
   });
 }

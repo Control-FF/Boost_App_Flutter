@@ -11,6 +11,7 @@ class HomeController extends GetxController with StateMixin {
   late PageController pageController2;
   RxInt currentIndex1 = 0.obs;
   RxInt currentIndex2 = 0.obs;
+  RxBool isCategoryAll = false.obs;
 
 
   @override
@@ -32,7 +33,6 @@ class HomeController extends GetxController with StateMixin {
     tabs.add('인기목록');
     tabs.add('타임세일');
     tabs.add('소상공인특가');
-    tabs.add('정기구독');
     tabs.add('부산명물');
 
     change(null, status: RxStatus.success());

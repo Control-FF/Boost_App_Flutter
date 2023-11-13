@@ -57,8 +57,9 @@ class MyInfoController extends GetxController with StateMixin{
       (failure) {
         validPasswordStatus.value = 3;
       },
-      (response) {
-        Get.offNamed(AppRoutes.myInfoUpdate);
+      (response) async {
+        var res = await Get.toNamed(AppRoutes.myInfoUpdate);
+        Get.back();
       },
     );
   }

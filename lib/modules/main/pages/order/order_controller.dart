@@ -1,3 +1,4 @@
+import 'package:boostapp/data/models/user_info.dart';
 import 'package:boostapp/data/service/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ class OrderController extends GetxController with StateMixin{
   RxBool orderListRefundCheck2 = false.obs;
   RxBool orderListRefundCheck3 = false.obs;
   RxBool orderListRefundCheck4 = false.obs;
+  Rx<UserInfo?> userData = Rx<UserInfo?>(null);
 
 
 
@@ -23,6 +25,7 @@ class OrderController extends GetxController with StateMixin{
     if (Get.arguments != null) {
       orderListStatus.value = Get.arguments['status'];
 
+      getMyInfo();
       getOrderList();
     }
   }
@@ -66,8 +69,8 @@ class OrderController extends GetxController with StateMixin{
     if(index == 0){
       return true;
     }else{
-      String date1 = state.items[index].ct_select_time.split(' ')[0];
-      String date2 = state.items[index-1].ct_select_time.split(' ')[0];
+      String date1 = state.items[index].ct_time.split(' ')[0];
+      String date2 = state.items[index-1].ct_time.split(' ')[0];
 
       return date1 != date2;
     }
@@ -97,5 +100,15 @@ class OrderController extends GetxController with StateMixin{
         change(response, status: RxStatus.success());
       },
     );
+  }
+
+  Future<void> getMyInfo() async {
+
+    final result = await _userService.getMyInfo();
+    result.fold(
+      (failure) => print(failure.message),
+      (response) => userData.value = response.data,
+    );
+
   }
 }

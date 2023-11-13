@@ -7,15 +7,18 @@ part of 'order.dart';
 // **************************************************************************
 
 _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
-      ct_id: json['ct_id'] as int? ?? 0,
       od_id: json['od_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       ct_status: json['ct_status'] as String? ?? '',
       ct_price: json['ct_price'] as int? ?? 0,
-      ct_option: json['ct_option'] as String? ?? '',
-      ct_time: json['ct_time'] as String? ?? '',
       cp_price: json['cp_price'] as int? ?? 0,
+      ct_qty: json['ct_qty'] as int? ?? 0,
+      ct_point_use: json['ct_point_use'] as int? ?? 0,
+      io_id: json['io_id'] as String? ?? '',
+      io_price: json['io_price'] as int? ?? 0,
+      it_basic: json['it_basic'] as String? ?? '',
+      ct_time: json['ct_time'] as String? ?? '',
       it_img1: json['it_img1'] as String? ?? '',
       it_img2: json['it_img2'] as String? ?? '',
       it_img3: json['it_img3'] as String? ?? '',
@@ -29,15 +32,18 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
     );
 
 Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
-      'ct_id': instance.ct_id,
       'od_id': instance.od_id,
       'it_id': instance.it_id,
       'it_name': instance.it_name,
       'ct_status': instance.ct_status,
       'ct_price': instance.ct_price,
-      'ct_option': instance.ct_option,
-      'ct_time': instance.ct_time,
       'cp_price': instance.cp_price,
+      'ct_qty': instance.ct_qty,
+      'ct_point_use': instance.ct_point_use,
+      'io_id': instance.io_id,
+      'io_price': instance.io_price,
+      'it_basic': instance.it_basic,
+      'ct_time': instance.ct_time,
       'it_img1': instance.it_img1,
       'it_img2': instance.it_img2,
       'it_img3': instance.it_img3,

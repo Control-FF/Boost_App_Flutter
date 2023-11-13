@@ -63,9 +63,9 @@ class BottomBarScreen extends GetView<MainController>{
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.only(bottom: 4.h),
-                    child: Image.asset('assets/images/ic_bnv_delivery.png',width: 22.w,height: 22.h,),
+                    child: Image.asset('assets/images/ic_bnv_onetouch.png',width: 16.61.w,height: 22.h,),
                   ),
-                  label: '정기 배송',
+                  label: '원터치 배송',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: null,

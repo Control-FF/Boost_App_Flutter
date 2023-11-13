@@ -181,13 +181,10 @@ class _HomeScreenState extends State<HomeScreen>
                 HomeTabPopular(),
                 HomeTabTime(),
                 Center(
-                  child: Text('gift'),
+                  child: Text('tab3'),
                 ),
                 Center(
-                  child: Text('event'),
-                ),
-                Center(
-                  child: Text('myPage'),
+                  child: Text('tab4'),
                 )
               ],
             ),
