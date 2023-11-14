@@ -134,8 +134,8 @@ class HomeTabPopular extends GetView<HomeController>{
                               return InkWell(
                                 onTap: (){
                                   Get.toNamed(AppRoutes.category,arguments: {
-                                    'category':mainController.categoryList[index].ca_name,
-                                    'caId':mainController.categoryList[index].ca_id,
+                                    'category':mainController.categoryFirstList[index].ca_name,
+                                    'caId':mainController.categoryFirstList[index].ca_id,
                                   });
                                 },
                                 child: Column(
@@ -146,7 +146,7 @@ class HomeTabPopular extends GetView<HomeController>{
                                     ),
                                     SizedBox(height: 7.h,),
                                     Text(
-                                      mainController.categoryList[index].ca_name,
+                                      mainController.categoryFirstList[index].ca_name,
                                       style: TextStyle(
                                         color: ColorConstant.black,
                                         fontSize: 10.sp,
@@ -158,7 +158,7 @@ class HomeTabPopular extends GetView<HomeController>{
                                 ),
                               );
                             },
-                            childCount: controller.isCategoryAll.value ? mainController.categoryList.length : (mainController.categoryList.length > 15 ? 15 : mainController.categoryList.length)
+                            childCount: controller.isCategoryAll.value ? mainController.categoryFirstList.length : (mainController.categoryFirstList.length > 15 ? 15 : mainController.categoryFirstList.length)
                         ),
                       ),
                     );

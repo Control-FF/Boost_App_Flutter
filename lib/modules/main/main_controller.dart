@@ -27,6 +27,7 @@ class MainController extends GetxController{
   RxList pages = [].obs;
 
   RxList categoryList = [].obs;
+  RxList categoryFirstList = [].obs;
 
   @override
   Future<void> onInit() async {
@@ -54,6 +55,7 @@ class MainController extends GetxController{
 
     //await getAddressCheck();
     await getCategoryList('');
+    await getCategoryFirstList();
 
     String popupDate = _storageService.getPopupDate();
 
@@ -102,6 +104,15 @@ class MainController extends GetxController{
               categoryList.value = tempList;
             }
           },
+    );
+  }
+
+  Future<void> getCategoryFirstList() async {
+
+    final result = await _shopService.getCategoryList(caId: '');
+    result.fold(
+      (failure) => print(failure.message),
+      (response) => categoryFirstList.value = response.items!,
     );
   }
 
