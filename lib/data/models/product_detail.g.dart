@@ -107,9 +107,9 @@ _$_ProductDetailResponse _$$_ProductDetailResponseFromJson(
       item: json['item'] == null
           ? null
           : Item.fromJson(json['item'] as Map<String, dynamic>),
-      itemInfo: json['itemInfo'] == null
+      item_info: json['item_info'] == null
           ? null
-          : ItemInfo.fromJson(json['itemInfo'] as Map<String, dynamic>),
+          : ItemInfo.fromJson(json['item_info'] as Map<String, dynamic>),
       option: (json['option'] as List<dynamic>?)
               ?.map((e) => Option.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -124,6 +124,6 @@ Map<String, dynamic> _$$_ProductDetailResponseToJson(
       'reviews': instance.reviews,
       'qna': instance.qna,
       'item': instance.item,
-      'itemInfo': instance.itemInfo,
+      'item_info': instance.item_info,
       'option': instance.option,
     };

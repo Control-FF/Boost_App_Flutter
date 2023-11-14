@@ -1,5 +1,6 @@
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/main/main_controller.dart';
-import 'package:boostapp/modules/main/pages/my_page_controller.dart';
+import 'package:boostapp/modules/main/pages/bnv_my_page_controller.dart';
 import 'package:get/get.dart';
 
 class MainBinding extends Bindings {
@@ -7,6 +8,7 @@ class MainBinding extends Bindings {
   void dependencies() {
     Get.put<MainController>(MainController());
     Get.put<MyPageController>(MyPageController());
+    Get.put<CartController>(CartController());
     //Get.put<HomeController>(HomeController());
     //Get.put<HistoryController>(HistoryController());
   }

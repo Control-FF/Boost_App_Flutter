@@ -13,6 +13,7 @@ class ProductDetailController extends GetxController{
   RxString productId = ''.obs;
   Rx<ProductDetailResponse?> productData = Rx<ProductDetailResponse?>(null);
   RxList<Widget> productImgList = <Widget>[].obs;
+  RxInt qty = 1.obs;
 
   @override
   void onInit() {
@@ -34,12 +35,17 @@ class ProductDetailController extends GetxController{
     final result = await _shopService.getProductDetail(itId: productId.value);
     result.fold(
           (failure) => print(failure.message),
-          (response) => productData.value = response,
+          (response){
+            productData.value = response;
+            print(productData.value!.item_info.toString());
+            print(productData.value!.qna.toString());
+            print(productData.value!.reviews.toString());
+          },
     );
   }
 
   List<Widget> getProductImage(){
-
+    productImgList.clear();
 
     if(productData.value != null){
       if(productData.value?.item != null){
@@ -86,5 +92,13 @@ class ProductDetailController extends GetxController{
     }
 
     return productImgList;
+  }
+
+  String nullCheck(String? data){
+    if(productData.value != null && productData.value!.item_info != null && productData.value!.option != null){
+      return data!;
+    }else{
+      return '';
+    }
   }
 }

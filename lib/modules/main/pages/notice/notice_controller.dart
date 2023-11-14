@@ -25,8 +25,6 @@ class NoticeController extends GetxController{
   }
 
   void updateExpanded(index,isExpand){
-    print('$isExpand');
     items[index] = items[index].copyWith(isExpand: isExpand);
-    print('${items[index].isExpand}');
   }
 }

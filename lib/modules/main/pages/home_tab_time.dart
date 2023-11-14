@@ -1,5 +1,5 @@
 import 'package:boostapp/core/utils/color_constant.dart';
-import 'package:boostapp/modules/main/pages/home_controller.dart';
+import 'package:boostapp/modules/main/pages/bnv_home_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

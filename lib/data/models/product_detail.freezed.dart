@@ -43,7 +43,7 @@ mixin _$Item {
   String? get it_img8 => throw _privateConstructorUsedError;
   String? get it_img9 => throw _privateConstructorUsedError;
   String? get it_img10 => throw _privateConstructorUsedError;
-  String? get is_wish => throw _privateConstructorUsedError;
+  String get is_wish => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -79,7 +79,7 @@ abstract class $ItemCopyWith<$Res> {
       String? it_img8,
       String? it_img9,
       String? it_img10,
-      String? is_wish});
+      String is_wish});
 }
 
 /// @nodoc
@@ -118,7 +118,7 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
     Object? it_img8 = freezed,
     Object? it_img9 = freezed,
     Object? it_img10 = freezed,
-    Object? is_wish = freezed,
+    Object? is_wish = null,
   }) {
     return _then(_value.copyWith(
       it_id: null == it_id
@@ -213,10 +213,10 @@ class _$ItemCopyWithImpl<$Res, $Val extends Item>
           ? _value.it_img10
           : it_img10 // ignore: cast_nullable_to_non_nullable
               as String?,
-      is_wish: freezed == is_wish
+      is_wish: null == is_wish
           ? _value.is_wish
           : is_wish // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -251,7 +251,7 @@ abstract class _$$_ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
       String? it_img8,
       String? it_img9,
       String? it_img10,
-      String? is_wish});
+      String is_wish});
 }
 
 /// @nodoc
@@ -286,7 +286,7 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res, _$_Item>
     Object? it_img8 = freezed,
     Object? it_img9 = freezed,
     Object? it_img10 = freezed,
-    Object? is_wish = freezed,
+    Object? is_wish = null,
   }) {
     return _then(_$_Item(
       it_id: null == it_id
@@ -381,10 +381,10 @@ class __$$_ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res, _$_Item>
           ? _value.it_img10
           : it_img10 // ignore: cast_nullable_to_non_nullable
               as String?,
-      is_wish: freezed == is_wish
+      is_wish: null == is_wish
           ? _value.is_wish
           : is_wish // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -491,7 +491,7 @@ class _$_Item implements _Item {
   final String? it_img10;
   @override
   @JsonKey()
-  final String? is_wish;
+  final String is_wish;
 
   @override
   String toString() {
@@ -610,7 +610,7 @@ abstract class _Item implements Item {
       final String? it_img8,
       final String? it_img9,
       final String? it_img10,
-      final String? is_wish}) = _$_Item;
+      final String is_wish}) = _$_Item;
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
@@ -661,7 +661,7 @@ abstract class _Item implements Item {
   @override
   String? get it_img10;
   @override
-  String? get is_wish;
+  String get is_wish;
   @override
   @JsonKey(ignore: true)
   _$$_ItemCopyWith<_$_Item> get copyWith => throw _privateConstructorUsedError;
@@ -679,8 +679,8 @@ mixin _$ItemInfo {
   String get maker => throw _privateConstructorUsedError;
   String get caution => throw _privateConstructorUsedError;
   String get manufacturing_ym => throw _privateConstructorUsedError;
-  String? get warranty => throw _privateConstructorUsedError;
-  String? get as => throw _privateConstructorUsedError;
+  String get warranty => throw _privateConstructorUsedError;
+  String get as => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -700,8 +700,8 @@ abstract class $ItemInfoCopyWith<$Res> {
       String maker,
       String caution,
       String manufacturing_ym,
-      String? warranty,
-      String? as});
+      String warranty,
+      String as});
 }
 
 /// @nodoc
@@ -723,8 +723,8 @@ class _$ItemInfoCopyWithImpl<$Res, $Val extends ItemInfo>
     Object? maker = null,
     Object? caution = null,
     Object? manufacturing_ym = null,
-    Object? warranty = freezed,
-    Object? as = freezed,
+    Object? warranty = null,
+    Object? as = null,
   }) {
     return _then(_value.copyWith(
       material: null == material
@@ -751,14 +751,14 @@ class _$ItemInfoCopyWithImpl<$Res, $Val extends ItemInfo>
           ? _value.manufacturing_ym
           : manufacturing_ym // ignore: cast_nullable_to_non_nullable
               as String,
-      warranty: freezed == warranty
+      warranty: null == warranty
           ? _value.warranty
           : warranty // ignore: cast_nullable_to_non_nullable
-              as String?,
-      as: freezed == as
+              as String,
+      as: null == as
           ? _value.as
           : as // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -777,8 +777,8 @@ abstract class _$$_ItemInfoCopyWith<$Res> implements $ItemInfoCopyWith<$Res> {
       String maker,
       String caution,
       String manufacturing_ym,
-      String? warranty,
-      String? as});
+      String warranty,
+      String as});
 }
 
 /// @nodoc
@@ -798,8 +798,8 @@ class __$$_ItemInfoCopyWithImpl<$Res>
     Object? maker = null,
     Object? caution = null,
     Object? manufacturing_ym = null,
-    Object? warranty = freezed,
-    Object? as = freezed,
+    Object? warranty = null,
+    Object? as = null,
   }) {
     return _then(_$_ItemInfo(
       material: null == material
@@ -826,14 +826,14 @@ class __$$_ItemInfoCopyWithImpl<$Res>
           ? _value.manufacturing_ym
           : manufacturing_ym // ignore: cast_nullable_to_non_nullable
               as String,
-      warranty: freezed == warranty
+      warranty: null == warranty
           ? _value.warranty
           : warranty // ignore: cast_nullable_to_non_nullable
-              as String?,
-      as: freezed == as
+              as String,
+      as: null == as
           ? _value.as
           : as // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -874,10 +874,10 @@ class _$_ItemInfo implements _ItemInfo {
   final String manufacturing_ym;
   @override
   @JsonKey()
-  final String? warranty;
+  final String warranty;
   @override
   @JsonKey()
-  final String? as;
+  final String as;
 
   @override
   String toString() {
@@ -929,8 +929,8 @@ abstract class _ItemInfo implements ItemInfo {
       final String maker,
       final String caution,
       final String manufacturing_ym,
-      final String? warranty,
-      final String? as}) = _$_ItemInfo;
+      final String warranty,
+      final String as}) = _$_ItemInfo;
 
   factory _ItemInfo.fromJson(Map<String, dynamic> json) = _$_ItemInfo.fromJson;
 
@@ -947,9 +947,9 @@ abstract class _ItemInfo implements ItemInfo {
   @override
   String get manufacturing_ym;
   @override
-  String? get warranty;
+  String get warranty;
   @override
-  String? get as;
+  String get as;
   @override
   @JsonKey(ignore: true)
   _$$_ItemInfoCopyWith<_$_ItemInfo> get copyWith =>
@@ -1162,7 +1162,7 @@ mixin _$ProductDetailResponse {
   int get reviews => throw _privateConstructorUsedError;
   int get qna => throw _privateConstructorUsedError;
   Item? get item => throw _privateConstructorUsedError;
-  ItemInfo? get itemInfo => throw _privateConstructorUsedError;
+  ItemInfo? get item_info => throw _privateConstructorUsedError;
   @JsonKey(name: 'option')
   List<Option>? get option => throw _privateConstructorUsedError;
 
@@ -1184,11 +1184,11 @@ abstract class $ProductDetailResponseCopyWith<$Res> {
       int reviews,
       int qna,
       Item? item,
-      ItemInfo? itemInfo,
+      ItemInfo? item_info,
       @JsonKey(name: 'option') List<Option>? option});
 
   $ItemCopyWith<$Res>? get item;
-  $ItemInfoCopyWith<$Res>? get itemInfo;
+  $ItemInfoCopyWith<$Res>? get item_info;
 }
 
 /// @nodoc
@@ -1210,7 +1210,7 @@ class _$ProductDetailResponseCopyWithImpl<$Res,
     Object? reviews = null,
     Object? qna = null,
     Object? item = freezed,
-    Object? itemInfo = freezed,
+    Object? item_info = freezed,
     Object? option = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1234,9 +1234,9 @@ class _$ProductDetailResponseCopyWithImpl<$Res,
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item?,
-      itemInfo: freezed == itemInfo
-          ? _value.itemInfo
-          : itemInfo // ignore: cast_nullable_to_non_nullable
+      item_info: freezed == item_info
+          ? _value.item_info
+          : item_info // ignore: cast_nullable_to_non_nullable
               as ItemInfo?,
       option: freezed == option
           ? _value.option
@@ -1259,13 +1259,13 @@ class _$ProductDetailResponseCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $ItemInfoCopyWith<$Res>? get itemInfo {
-    if (_value.itemInfo == null) {
+  $ItemInfoCopyWith<$Res>? get item_info {
+    if (_value.item_info == null) {
       return null;
     }
 
-    return $ItemInfoCopyWith<$Res>(_value.itemInfo!, (value) {
-      return _then(_value.copyWith(itemInfo: value) as $Val);
+    return $ItemInfoCopyWith<$Res>(_value.item_info!, (value) {
+      return _then(_value.copyWith(item_info: value) as $Val);
     });
   }
 }
@@ -1284,13 +1284,13 @@ abstract class _$$_ProductDetailResponseCopyWith<$Res>
       int reviews,
       int qna,
       Item? item,
-      ItemInfo? itemInfo,
+      ItemInfo? item_info,
       @JsonKey(name: 'option') List<Option>? option});
 
   @override
   $ItemCopyWith<$Res>? get item;
   @override
-  $ItemInfoCopyWith<$Res>? get itemInfo;
+  $ItemInfoCopyWith<$Res>? get item_info;
 }
 
 /// @nodoc
@@ -1309,7 +1309,7 @@ class __$$_ProductDetailResponseCopyWithImpl<$Res>
     Object? reviews = null,
     Object? qna = null,
     Object? item = freezed,
-    Object? itemInfo = freezed,
+    Object? item_info = freezed,
     Object? option = freezed,
   }) {
     return _then(_$_ProductDetailResponse(
@@ -1333,9 +1333,9 @@ class __$$_ProductDetailResponseCopyWithImpl<$Res>
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as Item?,
-      itemInfo: freezed == itemInfo
-          ? _value.itemInfo
-          : itemInfo // ignore: cast_nullable_to_non_nullable
+      item_info: freezed == item_info
+          ? _value.item_info
+          : item_info // ignore: cast_nullable_to_non_nullable
               as ItemInfo?,
       option: freezed == option
           ? _value._option
@@ -1354,7 +1354,7 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
       this.reviews = 0,
       this.qna = 0,
       this.item,
-      this.itemInfo,
+      this.item_info,
       @JsonKey(name: 'option') final List<Option>? option = const []})
       : _option = option;
 
@@ -1375,7 +1375,7 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
   @override
   final Item? item;
   @override
-  final ItemInfo? itemInfo;
+  final ItemInfo? item_info;
   final List<Option>? _option;
   @override
   @JsonKey(name: 'option')
@@ -1389,7 +1389,7 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
 
   @override
   String toString() {
-    return 'ProductDetailResponse(status: $status, message: $message, reviews: $reviews, qna: $qna, item: $item, itemInfo: $itemInfo, option: $option)';
+    return 'ProductDetailResponse(status: $status, message: $message, reviews: $reviews, qna: $qna, item: $item, item_info: $item_info, option: $option)';
   }
 
   @override
@@ -1402,15 +1402,15 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
             (identical(other.reviews, reviews) || other.reviews == reviews) &&
             (identical(other.qna, qna) || other.qna == qna) &&
             (identical(other.item, item) || other.item == item) &&
-            (identical(other.itemInfo, itemInfo) ||
-                other.itemInfo == itemInfo) &&
+            (identical(other.item_info, item_info) ||
+                other.item_info == item_info) &&
             const DeepCollectionEquality().equals(other._option, _option));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, status, message, reviews, qna,
-      item, itemInfo, const DeepCollectionEquality().hash(_option));
+      item, item_info, const DeepCollectionEquality().hash(_option));
 
   @JsonKey(ignore: true)
   @override
@@ -1434,7 +1434,7 @@ abstract class _ProductDetailResponse implements ProductDetailResponse {
           final int reviews,
           final int qna,
           final Item? item,
-          final ItemInfo? itemInfo,
+          final ItemInfo? item_info,
           @JsonKey(name: 'option') final List<Option>? option}) =
       _$_ProductDetailResponse;
 
@@ -1452,7 +1452,7 @@ abstract class _ProductDetailResponse implements ProductDetailResponse {
   @override
   Item? get item;
   @override
-  ItemInfo? get itemInfo;
+  ItemInfo? get item_info;
   @override
   @JsonKey(name: 'option')
   List<Option>? get option;

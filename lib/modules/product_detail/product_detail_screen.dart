@@ -1,5 +1,6 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +11,8 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailScreen extends GetView<ProductDetailController>{
+  CartController cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -86,7 +89,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                     child: Center(
                                       child: SmoothPageIndicator(
                                         controller: controller.pageController,
-                                        count: controller.productData.value != null ? controller.productImgList.length : 0,
+                                        count: controller.productImgList.isNotEmpty ? controller.productImgList.length : 0,
                                         axisDirection: Axis.horizontal,
                                         effect: ExpandingDotsEffect(
                                           dotHeight: 9.w,
@@ -182,7 +185,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                   ),
                                                 ),
                                                 Text(
-                                                  '1,600원',
+                                                    controller.productData.value != null ? '${Constants.numberAddComma(controller.productData.value!.item!.it_price)}원' : '',
                                                   style: TextStyle(
                                                     color: ColorConstant.black,
                                                     fontSize: 12.sp,
@@ -204,12 +207,15 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
-                                                Row(
+                                                controller.productData.value != null && controller.productData.value!.item!.it_stock_qty != 0 ? Row(
                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
-
+                                                        if(controller.productData.value!.item!.it_min_qty <= controller.qty.value){
+                                                          return;
+                                                        }
+                                                        controller.qty.value--;
                                                       },
                                                       child: Container(
                                                         width: 20.w,
@@ -222,7 +228,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                     ),
                                                     SizedBox(width: 20,),
                                                     Text(
-                                                      '2',
+                                                      controller.qty.value.toString(),
                                                       style: TextStyle(
                                                         color: ColorConstant.black,
                                                         fontSize: 14.sp,
@@ -233,7 +239,10 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                     SizedBox(width: 20,),
                                                     GestureDetector(
                                                       onTap: (){
-
+                                                        if(controller.productData.value!.item!.it_max_qty >= controller.qty.value){
+                                                          return;
+                                                        }
+                                                        controller.qty.value++;
                                                       },
                                                       child: Container(
                                                         width: 20.w,
@@ -245,6 +254,14 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                       ),
                                                     )
                                                   ],
+                                                ) : Text(
+                                                  '품절',
+                                                  style: TextStyle(
+                                                    color: ColorConstant.red,
+                                                    fontSize: 12.sp,
+                                                    fontFamily: 'Noto Sans KR',
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                                 )
                                               ],
                                             )
@@ -263,124 +280,129 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                   color: ColorConstant.gray17,
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                child: Text(
-                                  '옵션 추가',
-                                  style: TextStyle(
-                                    color: ColorConstant.black,
-                                    fontSize: 16.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w700,
+                              controller.productData.value != null && controller.productData.value!.option!.isNotEmpty ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                    child: Text(
+                                      '옵션 추가',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 16.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(30.w, 9.h, 30.w, 10.h),
-                                child: Divider(
-                                  thickness: 1,
-                                  height: 1,
-                                  color: ColorConstant.gray17,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(30.w, 9.h, 30.w, 10.h),
+                                    child: Divider(
+                                      thickness: 1,
+                                      height: 1,
+                                      color: ColorConstant.gray17,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                    child: Column(
                                       children: [
-                                        GestureDetector(
-                                          onTap: (){
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: (){
 
-                                          },
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 20.w,
-                                                height: 20.h,
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(Radius.circular(47)),
-                                                  border: Border.all(width: 5,color: ColorConstant.primary),
-                                                ),
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    width: 20.w,
+                                                    height: 20.h,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.all(Radius.circular(47)),
+                                                      border: Border.all(width: 5,color: ColorConstant.primary),
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 10.w,),
+                                                  Text(
+                                                    '1박스',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 14.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                  )
+                                                ],
                                               ),
-                                              SizedBox(width: 10.w,),
-                                              Text(
-                                                '1박스',
-                                                style: TextStyle(
-                                                  color: ColorConstant.black,
-                                                  fontSize: 14.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              )
-                                            ],
-                                          ),
+                                            ),
+                                            Text(
+                                              '+50,000원',
+                                              style: TextStyle(
+                                                color: ColorConstant.black,
+                                                fontSize: 14.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                        Text(
-                                          '+50,000원',
-                                          style: TextStyle(
-                                            color: ColorConstant.black,
-                                            fontSize: 14.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w400,
-                                          ),
+                                        SizedBox(height: 6.h,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: (){
+
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    width: 20.w,
+                                                    height: 20.h,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.all(Radius.circular(47)),
+                                                      border: Border.all(width: 1,color: ColorConstant.gray20),
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 10.w,),
+                                                  Text(
+                                                    '3박스',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.black,
+                                                      fontSize: 14.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w400,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Text(
+                                              '+85,000원',
+                                              style: TextStyle(
+                                                color: ColorConstant.black,
+                                                fontSize: 14.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            )
+                                          ],
                                         )
                                       ],
                                     ),
-                                    SizedBox(height: 6.h,),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: (){
-
-                                          },
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 20.w,
-                                                height: 20.h,
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(Radius.circular(47)),
-                                                  border: Border.all(width: 1,color: ColorConstant.gray20),
-                                                ),
-                                              ),
-                                              SizedBox(width: 10.w,),
-                                              Text(
-                                                '3박스',
-                                                style: TextStyle(
-                                                  color: ColorConstant.black,
-                                                  fontSize: 14.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Text(
-                                          '+85,000원',
-                                          style: TextStyle(
-                                            color: ColorConstant.black,
-                                            fontSize: 14.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(30.w, 22.h, 30.w, 33.h),
-                                child: Divider(
-                                  thickness: 1,
-                                  height: 1,
-                                  color: ColorConstant.gray17,
-                                ),
-                              ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(30.w, 22.h, 30.w, 33.h),
+                                    child: Divider(
+                                      thickness: 1,
+                                      height: 1,
+                                      color: ColorConstant.gray17,
+                                    ),
+                                  ),
+                                ],
+                              ) : SizedBox(),
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 30.w),
                                 child: Column(
@@ -408,9 +430,9 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                     Row(
                                       children: [
                                         Container(
-                                          width: 100.w,
+                                          width: 150.w,
                                           child: Text(
-                                            '원산지',
+                                            '제품 소재',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -420,7 +442,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           ),
                                         ),
                                         Text(
-                                          '대한민국',
+                                          controller.nullCheck(controller.productData.value?.item_info?.material),
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -440,9 +462,9 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                     Row(
                                       children: [
                                         Container(
-                                          width: 100.w,
+                                          width: 150.w,
                                           child: Text(
-                                            '보관방법',
+                                            '색상',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -452,7 +474,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           ),
                                         ),
                                         Text(
-                                          '상온 보관',
+                                          controller.nullCheck(controller.productData.value?.item_info?.color),
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -472,9 +494,9 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                     Row(
                                       children: [
                                         Container(
-                                          width: 100.w,
+                                          width: 150.w,
                                           child: Text(
-                                            '소비기한',
+                                            '사이즈',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -484,7 +506,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           ),
                                         ),
                                         Text(
-                                          '수령일로부터 일주일',
+                                          controller.nullCheck(controller.productData.value?.item_info?.size),
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -504,9 +526,9 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                     Row(
                                       children: [
                                         Container(
-                                          width: 100.w,
+                                          width: 150.w,
                                           child: Text(
-                                            '식품유형',
+                                            '제조자',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -516,7 +538,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           ),
                                         ),
                                         Text(
-                                          '농산물',
+                                          controller.nullCheck(controller.productData.value?.item_info?.maker),
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -536,9 +558,9 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                     Row(
                                       children: [
                                         Container(
-                                          width: 100.w,
+                                          width: 150.w,
                                           child: Text(
-                                            '오차범위',
+                                            '세탁방법 및 주의사항',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -548,7 +570,103 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           ),
                                         ),
                                         Text(
-                                          '2%',
+                                          controller.nullCheck(controller.productData.value?.item_info?.caution),
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 12.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 6.h,),
+                                    Divider(
+                                      thickness: 1,
+                                      height: 1,
+                                      color: ColorConstant.gray17,
+                                    ),
+                                    SizedBox(height: 6.h,),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 150.w,
+                                          child: Text(
+                                            '제조연월',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          controller.nullCheck(controller.productData.value?.item_info?.manufacturing_ym),
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 12.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 6.h,),
+                                    Divider(
+                                      thickness: 1,
+                                      height: 1,
+                                      color: ColorConstant.gray17,
+                                    ),
+                                    SizedBox(height: 6.h,),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 150.w,
+                                          child: Text(
+                                            '품질보증기준',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          controller.nullCheck(controller.productData.value?.item_info?.warranty),
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 12.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 6.h,),
+                                    Divider(
+                                      thickness: 1,
+                                      height: 1,
+                                      color: ColorConstant.gray17,
+                                    ),
+                                    SizedBox(height: 6.h,),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 150.w,
+                                          child: Text(
+                                            'A/S 책임자와 전화번호',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 12.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          controller.nullCheck(controller.productData.value?.item_info?.as),
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -610,8 +728,25 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                         height: 55.h,
                         child: ElevatedButton(
                           onPressed: (){
-                            //Get.offAllNamed(AppRoutes.loginScreen);
+                            if(controller.productData.value!.item!.it_stock_qty == 0){
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                elevation: 6.0,
+                                behavior: SnackBarBehavior.floating,
+                                content: Text(
+                                  '품절된 상품입니다.',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ));
+                            }
+                            cartController.addCart(context,controller.productData.value!.item!.it_id,controller.qty.value);
                           },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: ColorConstant.primary,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.zero
+                              )
+                          ),
                           child: Text(
                             '장바구니',
                             style: TextStyle(
@@ -620,13 +755,6 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                               fontFamily: 'Noto Sans KR',
                               fontWeight: FontWeight.w500,
                             ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorConstant.primary,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.zero
-                              )
                           ),
                         ),
                       ),

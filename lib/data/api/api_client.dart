@@ -4,6 +4,7 @@ import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/card.dart';
+import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
@@ -241,5 +242,14 @@ abstract class ApiClient {
   @GET('/api/user/notice')
   Future<NoticeResponse> noticeList(
       @Query('isHTML') String isHtml,
+  );
+
+  @GET('/api/shop/cart')
+  Future<CartResponse> cartList();
+
+  @POST('/api/shop/cart')
+  Future<DataResponse> addCart(
+      @Field('it_id') String itId,
+      @Field('ct_qty') String qty,
   );
 }

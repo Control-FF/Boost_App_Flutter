@@ -2,15 +2,16 @@ import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/storage_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
+import 'package:boostapp/modules/main/pages/bnv_gift_screen.dart';
+import 'package:boostapp/modules/main/pages/bnv_home_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:boostapp/modules/main/pages/delivery_screen.dart';
-import 'package:boostapp/modules/main/pages/event_screen.dart';
-import 'package:boostapp/modules/main/pages/gift_screen.dart';
-import 'package:boostapp/modules/main/pages/home_screen.dart';
-import 'package:boostapp/modules/main/pages/my_page_screen.dart';
+import 'package:boostapp/modules/main/pages/bnv_delivery_screen.dart';
+import 'package:boostapp/modules/main/pages/bnv_cart_screen.dart';
+import 'package:boostapp/modules/main/pages/bnv_home_screen.dart';
+import 'package:boostapp/modules/main/pages/bnv_my_page_screen.dart';
 import 'package:intl/intl.dart';
 
 class MainController extends GetxController{
@@ -33,19 +34,19 @@ class MainController extends GetxController{
 
     pages.value = [
       {
-        'page' : HomeScreen(),
+        'page' : BnvHomeScreen(),
       },
       {
-        'page' : DeliveryScreen(),
+        'page' : BnvDeliveryScreen(),
       },
       {
-        'page' : GiftScreen(),
+        'page' : BnvGiftScreen(),
       },
       {
-        'page' : EventScreen(),
+        'page' : BnvCartScreen(),
       },
       {
-        'page' : MyPageScreen(),
+        'page' : BnvMyPageScreen(),
       },
     ];
 
@@ -134,6 +135,10 @@ class MainController extends GetxController{
   }
 
   onWillPop(BuildContext context) {
+    if(scaffoldKey.currentState!.isDrawerOpen){
+      scaffoldKey.currentState!.closeDrawer();
+      return;
+    }
     DateTime now = DateTime.now();
     if (currentBackPressTime == null ||
         now.difference(currentBackPressTime!) > Duration(seconds: 2)) {
@@ -157,6 +162,14 @@ class MainController extends GetxController{
   }
 
   void selectPage(int index){
+    if(index == 2){
+      return;
+    }
+
+    if(index == 0){
+      Get.find<HomeController>().clear();
+    }
+
     currentIndex.value = index;
   }
 

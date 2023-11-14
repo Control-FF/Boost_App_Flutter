@@ -1,6 +1,6 @@
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/main/main_controller.dart';
-import 'package:boostapp/modules/main/pages/home_controller.dart';
+import 'package:boostapp/modules/main/pages/bnv_home_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -81,9 +81,9 @@ class HomeTabPopular extends GetView<HomeController>{
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
-                            TextButton(
+                            Obx(() => !controller.isCategoryAll.value ? TextButton(
                               onPressed: (){
-
+                                controller.isCategoryAll.value = true;
                               },
                               style: TextButton.styleFrom(
                                   padding: EdgeInsets.zero,
@@ -103,7 +103,7 @@ class HomeTabPopular extends GetView<HomeController>{
                                   Icon(Icons.add,size: 10,color: ColorConstant.black.withOpacity(0.77),)
                                 ],
                               ),
-                            )
+                            ) : SizedBox())
                           ],
                         ),
                       ),

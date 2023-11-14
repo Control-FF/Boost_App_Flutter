@@ -29,7 +29,7 @@ class Item with _$Item {
     @Default('') String? it_img8,
     @Default('') String? it_img9,
     @Default('') String? it_img10,
-    @Default('false') String? is_wish,
+    @Default('false') String is_wish,
   }) = _Item;
 
   factory Item.fromJson(Map<String, dynamic> json) =>
@@ -45,8 +45,8 @@ class ItemInfo with _$ItemInfo {
     @Default('') String maker,
     @Default('') String caution,
     @Default('') String manufacturing_ym,
-    @Default('') String? warranty,
-    @Default('') String? as,
+    @Default('') String warranty,
+    @Default('') String as,
   }) = _ItemInfo;
 
   factory ItemInfo.fromJson(Map<String, dynamic> json) =>
@@ -74,7 +74,7 @@ class ProductDetailResponse with _$ProductDetailResponse {
     @Default(0) int reviews,
     @Default(0) int qna,
     Item? item,
-    ItemInfo? itemInfo,
+    ItemInfo? item_info,
     @Default([]) @JsonKey(name: 'option') List<Option>? option,
   }) = _ProductDetailResponse;
 

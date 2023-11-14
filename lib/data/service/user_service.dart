@@ -1,6 +1,7 @@
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/card.dart';
+import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
@@ -524,6 +525,43 @@ class UserService extends GetxService{
     try {
       final DataResponse response =
       await _apiService.getApiClient().registerCard(type,number,expired,pw,birth,bizNumber);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, CartResponse>> getCartList() async {
+    try {
+      final CartResponse response =
+      await _apiService.getApiClient().cartList();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> addCart({
+    required itId,
+    required qty
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().addCart(itId, qty);
       if (response.status == 200) {
         return Right(response);
       } else {
