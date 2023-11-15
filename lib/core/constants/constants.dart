@@ -14,6 +14,10 @@ class Constants {
     return NumberFormat('###,###,###,###').format(number);
   }
 
+  static String doubleAddComma(double number){
+    return NumberFormat('###,###,###,###.####').format(number);
+  }
+
   static String getToday(){
     DateTime now = DateTime.now();
     DateFormat format = DateFormat('yyyy년 MM월 dd일');

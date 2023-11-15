@@ -13,6 +13,7 @@ import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
 import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/order.dart';
+import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/product_detail.dart';
@@ -244,12 +245,20 @@ abstract class ApiClient {
       @Query('isHTML') String isHtml,
   );
 
+  //장바구니 목록
   @GET('/api/shop/cart')
   Future<CartResponse> cartList();
 
+  //장바구니 담기
   @POST('/api/shop/cart')
   Future<DataResponse> addCart(
       @Field('it_id') String itId,
       @Field('ct_qty') String qty,
+  );
+
+  //주문페이지
+  @GET('/api/shop/order-confirm')
+  Future<OrderConfirmResponse> orderConfirm(
+      @Query('od_id') String odId
   );
 }

@@ -1,6 +1,7 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -240,7 +241,7 @@ class CartScreen extends GetView<CartController>{
                                             controller.boostAllCheck();
                                           },
                                           child: Text(
-                                            '부스트 배송 (2/${controller.cartList.length})',
+                                            '부스트 배송 (${controller.getCheckCnt()}/${controller.cartList.length})',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 14.sp,
@@ -931,10 +932,14 @@ class CartScreen extends GetView<CartController>{
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: 38.h,bottom: 120.h),
+                                padding: EdgeInsets.only(top: 38.h),
                                 child: ElevatedButton(
                                   onPressed: () async {
+                                    var res = await Get.toNamed(AppRoutes.orderConfirm);
 
+                                    if(res != null){
+                                      controller.cartList();
+                                    }
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: ColorConstant.primary,

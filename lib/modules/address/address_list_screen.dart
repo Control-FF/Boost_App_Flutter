@@ -294,7 +294,7 @@ class AddressScreen extends GetView<AddressController>{
                                   checkColor: ColorConstant.white,
                                   activeColor: ColorConstant.primary,
                                   onChanged: (bool? checkValue){
-
+                                    controller.selectIndex.value = index;
                                     for(int i=0; i<state.items.length; i++){
                                       if(i == index){
                                         controller.selectAdId.value = state.items[index].ad_id;
@@ -389,15 +389,6 @@ class AddressScreen extends GetView<AddressController>{
                                         onPressed: (){
                                           _showDeletePopup(context,state.items[index].ad_id);
                                         },
-                                        child: Text(
-                                          '삭제',
-                                          style: TextStyle(
-                                            color: ColorConstant.white,
-                                            fontSize: 10.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: ColorConstant.primary,
                                             elevation: 0,
@@ -406,6 +397,15 @@ class AddressScreen extends GetView<AddressController>{
                                             ),
                                             padding: EdgeInsets.all(0),
                                             minimumSize: Size(50.w,23.h)
+                                        ),
+                                        child: Text(
+                                          '삭제',
+                                          style: TextStyle(
+                                            color: ColorConstant.white,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w400,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -442,29 +442,38 @@ class AddressScreen extends GetView<AddressController>{
                       return;
                     }
 
-                    var res = await Get.toNamed(AppRoutes.addressEditScreen,arguments: {
-                      'addressIdx' : controller.selectAdId.value,
-                    });
+                    if(controller.type.value == ''){
+                      var res = await Get.toNamed(AppRoutes.addressEditScreen,arguments: {
+                        'addressIdx' : controller.selectAdId.value,
+                      });
 
-                    if(res != null){
-                      controller.getAddressList();
+                      if(res != null){
+                        controller.getAddressList();
+                      }
+                    }else{
+                      Get.back(result: {
+                        'addressIdx' : controller.addressList[controller.selectIndex.value].ad_id,
+                        'addressName' : controller.addressList[controller.selectIndex.value].name,
+                        'address1' : controller.addressList[controller.selectIndex.value].address1,
+                        'address2' : controller.addressList[controller.selectIndex.value].address2,
+                      });
                     }
                   },
-                  child: Text(
-                    '배송지 변경하기',
-                    style: TextStyle(
-                      color: ColorConstant.white,
-                      fontSize: 16.sp,
-                      fontFamily: 'Noto Sans KR',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: controller.selectAdId.value == 0 ? ColorConstant.gray2 : ColorConstant.primary,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10.r))
                       )
+                  ),
+                  child: Text(
+                    controller.type.value == '' ? '배송지 변경하기' : '배송지 선택하기',
+                    style: TextStyle(
+                      color: ColorConstant.white,
+                      fontSize: 16.sp,
+                      fontFamily: 'Noto Sans KR',
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ))

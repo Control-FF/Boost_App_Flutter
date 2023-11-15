@@ -29,6 +29,8 @@ import 'package:boostapp/modules/main/pages/pay/pay_register_screen.dart';
 import 'package:boostapp/modules/main/pages/pay/pay_screen.dart';
 import 'package:boostapp/modules/main/pages/point/point_binding.dart';
 import 'package:boostapp/modules/main/pages/point/point_screen.dart';
+import 'package:boostapp/modules/order/order_confirm_binding.dart';
+import 'package:boostapp/modules/order/order_confirm_screen.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
@@ -74,6 +76,8 @@ class AppRoutes {
 
   static const notice = '/notice';
   static const category = '/category';
+
+  static const orderConfirm = '/order_confirm';
 
   static List<GetPage> pages = [
     GetPage(
@@ -242,6 +246,13 @@ class AppRoutes {
       page: () => CategoryScreen(),
       bindings: [
         CategoryBinding(),
+      ],
+    ),
+    GetPage(
+      name: orderConfirm,
+      page: () => OrderConfirmScreen(),
+      bindings: [
+        OrderConfirmBinding(),
       ],
     ),
   ];

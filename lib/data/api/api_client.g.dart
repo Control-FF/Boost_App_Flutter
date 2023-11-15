@@ -985,6 +985,29 @@ class _ApiClient implements ApiClient {
     return value;
   }
 
+  @override
+  Future<OrderConfirmResponse> orderConfirm(odId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'od_id': odId};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<OrderConfirmResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/order-confirm',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = OrderConfirmResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

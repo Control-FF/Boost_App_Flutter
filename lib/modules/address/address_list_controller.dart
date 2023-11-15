@@ -1,3 +1,4 @@
+import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_item.dart';
 import 'package:boostapp/data/service/user_service.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +11,11 @@ class AddressController extends GetxController with StateMixin {
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
-  var addressList = RxList<AddressItem>.empty(growable: true).obs;
+  RxList<Address> addressList = RxList<Address>([]);
   RxInt selectAdId = 0.obs;
+  RxInt selectIndex = 0.obs;
   RxString title = '배송지 관리'.obs;
+  RxString type = ''.obs;
 
   @override
   Future<void> onInit() async {
@@ -20,6 +23,7 @@ class AddressController extends GetxController with StateMixin {
 
     if (Get.arguments != null) {
       title.value = Get.arguments['title'];
+      type.value = Get.arguments['type'];
     }
 
     await getAddressList();
@@ -29,11 +33,12 @@ class AddressController extends GetxController with StateMixin {
     final result = await _userService.getAddressList();
     result.fold(
         (failure) => print(failure.message),
-        (response) => {
+        (response) {
           if(response.items!.isEmpty){
-            change(response, status: RxStatus.empty())
+            change(response, status: RxStatus.empty());
           }else{
-            change(response, status: RxStatus.success())
+            addressList.value = response.items!;
+            change(response, status: RxStatus.success());
           }
         },
     );
@@ -61,7 +66,7 @@ class AddressController extends GetxController with StateMixin {
   Future<void> deleteAddress(context, int adId) async {
     final result = await _userService.deleteAddress(adId);
     result.fold(
-          (failure) {
+      (failure) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           elevation: 6.0,
           behavior: SnackBarBehavior.floating,
@@ -71,7 +76,7 @@ class AddressController extends GetxController with StateMixin {
           ),
         ));
       },
-          (response) {
+      (response) {
         getAddressList();
       },
     );

@@ -58,10 +58,8 @@ class CartController extends GetxController{
   }
 
   void boostAllCheck(){
-    if(boostAll.value){
-      for(int i=0; i<cartList.length; i++){
-        updateCheck(i,boostAll.value);
-      }
+    for(int i=0; i<cartList.length; i++){
+      cartList[i] = cartList[i].copyWith(isCheck: boostAll.value);
     }
   }
 
@@ -69,9 +67,23 @@ class CartController extends GetxController{
     int sumPrice = 0;
 
     for(int i = 0; i<cartList.length; i++){
-      sumPrice += cartList[i].ct_price;
+      if(cartList[i].isCheck){
+        sumPrice += cartList[i].ct_price;
+      }
     }
 
     return sumPrice;
+  }
+
+  int getCheckCnt(){
+    int checkCnt = 0;
+
+    for(int i = 0; i<cartList.length; i++){
+      if(cartList[i].isCheck){
+        checkCnt++;
+      }
+    }
+
+    return checkCnt;
   }
 }

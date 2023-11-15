@@ -6,6 +6,7 @@ import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
 import 'package:boostapp/data/models/order.dart';
+import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/user_info.dart';
@@ -562,6 +563,23 @@ class UserService extends GetxService{
     try {
       final DataResponse response =
       await _apiService.getApiClient().addCart(itId, qty);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, OrderConfirmResponse>> getOrderConfirm() async {
+    try {
+      final OrderConfirmResponse response =
+      await _apiService.getApiClient().orderConfirm('202311158510001');
       if (response.status == 200) {
         return Right(response);
       } else {
