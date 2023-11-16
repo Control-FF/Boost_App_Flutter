@@ -1,16 +1,19 @@
 import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/service/user_service.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController{
   final UserService _userService = Get.find();
 
-  RxList<Cart> cartList = RxList<Cart>([]);
+  RxList<CartItem> cartList = RxList<CartItem>([]);
 
   RxBool checkAll = true.obs;
   RxBool boostAll = true.obs;
   RxBool sellerAll = true.obs;
+
+  RxInt odId = 0.obs;
 
   //RxBool isPeriod = false.obs;
 
@@ -23,7 +26,7 @@ class CartController extends GetxController{
     final result = await _userService.getCartList();
     result.fold(
       (failure) => print(failure.message),
-      (response) => cartList.value = List<Cart>.from(response.items!.toList(growable: false)),
+      (response) => cartList.value = List<CartItem>.from(response.data!.items!.toList(growable: false)),
     );
   }
 
@@ -41,6 +44,32 @@ class CartController extends GetxController{
           ),
         ));
       },
+    );
+  }
+
+  Future<void> addOrder() async {
+    List<int> ctItems = List.empty(growable: true);
+    for(int i=0; i<cartList.length; i++){
+      ctItems.add(cartList[i].ct_id);
+    }
+
+    var map = <String, dynamic>{};
+    map.addAll(
+      {'mb_id' : '','ct_items' : ctItems,'cp_no' : '','use_point' : '','location' : '','accesscode' : '','notes' : ''},
+    );
+
+    final result = await _userService.addOrder(data: map);
+    result.fold(
+          (failure) => print(failure.message),
+          (response) async {
+            String odId = response.od_id;
+
+            var res = await Get.toNamed(AppRoutes.orderConfirm,arguments: {'odId' : odId});
+
+            if(res != null){
+              cartList();
+            }
+          },
     );
   }
 

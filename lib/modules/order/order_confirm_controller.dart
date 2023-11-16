@@ -19,11 +19,16 @@ class OrderConfirmController extends GetxController{
   void onInit() {
     super.onInit();
 
-    getOrderConfirm();
+    if (Get.arguments != null) {
+      String odId = Get.arguments['odId'];
+      getOrderConfirm(odId);
+    }
+
+
   }
 
-  Future<void> getOrderConfirm() async {
-    final result = await _userService.getOrderConfirm();
+  Future<void> getOrderConfirm(String confirmOdId) async {
+    final result = await _userService.getOrderConfirm(odId: confirmOdId);
     result.fold(
       (failure) => print(failure.message),
       (response){

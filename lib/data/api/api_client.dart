@@ -14,6 +14,7 @@ import 'package:boostapp/data/models/keyword_result.dart';
 import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/order.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
+import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/product_detail.dart';
@@ -260,5 +261,11 @@ abstract class ApiClient {
   @GET('/api/shop/order-confirm')
   Future<OrderConfirmResponse> orderConfirm(
       @Query('od_id') String odId
+  );
+
+  //주문서 작성
+  @POST('/api/shop/order')
+  Future<OrderRequestResponse> addOrder(
+      @Body() Map<String, dynamic> map
   );
 }

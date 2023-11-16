@@ -935,11 +935,19 @@ class CartScreen extends GetView<CartController>{
                                 padding: EdgeInsets.only(top: 38.h),
                                 child: ElevatedButton(
                                   onPressed: () async {
-                                    var res = await Get.toNamed(AppRoutes.orderConfirm);
-
-                                    if(res != null){
-                                      controller.cartList();
+                                    if(controller.cartList.isEmpty){
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                        elevation: 6.0,
+                                        behavior: SnackBarBehavior.floating,
+                                        content: Text(
+                                          '장바구니가 비었습니다.',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ));
+                                      return;
                                     }
+
+                                    controller.addOrder();
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: ColorConstant.primary,
