@@ -14,6 +14,7 @@ class CouponController extends GetxController
 
   late TabController tabController;
   Rx<int> currentIndex = 0.obs;
+  RxInt selectUseCpNo = 0.obs;
 
   RxList<Coupon> couponList = RxList<Coupon>([]);
   RxList<Coupon> myCouponList = RxList<Coupon>([]);
@@ -78,6 +79,17 @@ class CouponController extends GetxController
     }else{
       return '개별상품할인';
     }
+  }
+
+  int getSelectIndex(int cpNo){
+    for(int i=0; i<myCouponList.length; i++){
+      if(myCouponList[i].cp_no == selectUseCpNo.value){
+        print(myCouponList[i].cp_no.toString());
+        print(selectUseCpNo.value.toString());
+        return i;
+      }
+    }
+    return -1;
   }
 
   void showAddCouponPopup(context,type){

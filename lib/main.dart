@@ -1,19 +1,20 @@
-import 'package:boostapp/core/utils/color_constant.dart';
-import 'package:boostapp/data/service/api_service.dart';
-import 'package:boostapp/data/service/storage_service.dart';
-import 'package:boostapp/data/service/user_service.dart';
+import 'dart:io';
+
 import 'package:boostapp/di.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await _configureLocalTimeZone();
 
   await DependencyInjection.init();
 
@@ -31,6 +32,15 @@ void main() async {
        */
     );
   });
+}
+
+Future<void> _configureLocalTimeZone() async {
+  if (kIsWeb || Platform.isLinux) {
+    return;
+  }
+  tz.initializeTimeZones();
+  final String? timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(timeZoneName!));
 }
 
 class MyApp extends StatelessWidget {

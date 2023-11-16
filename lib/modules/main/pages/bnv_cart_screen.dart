@@ -934,6 +934,12 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                               padding: EdgeInsets.only(top: 38.h,bottom: 120.h),
                               child: ElevatedButton(
                                 onPressed: () async {
+                                  var res = await Get.toNamed(AppRoutes.orderConfirm);
+
+                                  if(res != null){
+                                    controller.cartList();
+                                  }
+                                  /*
                                   if(controller.cartList.isEmpty){
                                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                       elevation: 6.0,
@@ -947,6 +953,8 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                   }
 
                                   controller.addOrder();
+
+                                   */
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: ColorConstant.primary,

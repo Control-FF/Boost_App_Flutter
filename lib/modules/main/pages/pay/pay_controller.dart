@@ -28,10 +28,15 @@ class PayController extends GetxController with StateMixin{
   RxInt passwordStatus = 0.obs;
 
   RxString type = 'nor'.obs;  //nor:일반, biz:사업자
+  RxString orderType = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
+
+    if (Get.arguments != null) {
+      orderType.value = Get.arguments['type'];
+    }
 
     getCardList();
   }

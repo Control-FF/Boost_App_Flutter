@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:table_calendar/table_calendar.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class OrderConfirmScreen extends GetView<OrderConfirmController>{
+
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.white,
@@ -233,31 +238,41 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              '포인트 ',
-                                              style: TextStyle(
-                                                color: ColorConstant.gray25,
-                                                fontSize: 12.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
+                                        GestureDetector(
+                                          onTap: () async {
+                                            var res = await Get.toNamed(AppRoutes.pointUse);
+
+                                            if(res != null){
+                                              controller.usePoint.value = res['point'];
+
+                                            }
+                                          },
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                '포인트 ',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray25,
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              controller.orderCoupon.isNotEmpty ? '(${Constants.numberAddComma(controller.orderCoupon[0].mb_point)}원 보유)' : '',
-                                              style: TextStyle(
-                                                color: ColorConstant.gray1,
-                                                fontSize: 8.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
+                                              Text(
+                                                controller.orderCoupon.isNotEmpty ? '(${Constants.numberAddComma(controller.orderCoupon[0].mb_point)}원 보유)' : '',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray1,
+                                                  fontSize: 8.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                         Text(
-                                          '0원',
+                                          '${Constants.numberAddComma(controller.usePoint.value)}원',
                                           style: TextStyle(
                                             color: ColorConstant.primary,
                                             fontSize: 8.sp,
@@ -274,43 +289,53 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                       color: ColorConstant.gray7,
                                     ),
                                     SizedBox(height: 9.h,),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              '쿠폰 ',
-                                              style: TextStyle(
-                                                color: ColorConstant.gray25,
-                                                fontSize: 12.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
+                                    GestureDetector(
+                                      onTap: () async {
+                                        var res = await Get.toNamed(AppRoutes.couponUse);
+
+                                        if(res != null){
+                                          controller.cpNo.value = res['cpNo'];
+                                          controller.cpPrice.value = res['cpPrice'];
+                                        }
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                '쿠폰 ',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray25,
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              controller.orderCoupon.isNotEmpty ? '(${Constants.numberAddComma(controller.orderCoupon[0].unused_coupon_count)}장 보유)' : '',
-                                              style: TextStyle(
-                                                color: ColorConstant.gray1,
-                                                fontSize: 8.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
+                                              Text(
+                                                controller.orderCoupon.isNotEmpty ? '(${Constants.numberAddComma(controller.orderCoupon[0].unused_coupon_count)}장 보유)' : '',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray1,
+                                                  fontSize: 8.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                        Text(
-                                          '0원',
-                                          style: TextStyle(
-                                            color: ColorConstant.primary,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w500,
+                                            ],
                                           ),
-                                        ),
-                                      ],
+                                          Text(
+                                            '${Constants.numberAddComma(controller.cpPrice.value)}원',
+                                            style: TextStyle(
+                                              color: ColorConstant.primary,
+                                              fontSize: 8.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -326,40 +351,52 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                 ),
                               ),
                               SizedBox(height: 27.h,),
-                              Container(
-                                width: Get.width,
-                                color: ColorConstant.gray16,
-                                padding: EdgeInsets.fromLTRB(12.w, 13.h, 14.w, 16.h),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment: CrossAxisAlignment.end,
+                              GestureDetector(
+                                onTap: () async {
+                                  var res = await Get.toNamed(AppRoutes.shipping);
+
+                                  if(res != null){
+                                    String location = res['location'];
+                                    controller.enter.value = res['enter'];
+                                    controller.etc.value = res['etc'];
+                                    controller.shippingRequest[0] = controller.shippingRequest[0].copyWith(location: location);
+                                  }
+                                },
+                                child: Container(
+                                    width: Get.width,
+                                    color: ColorConstant.gray16,
+                                    padding: EdgeInsets.fromLTRB(12.w, 13.h, 14.w, 16.h),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          controller.shippingRequest.isNotEmpty ? controller.shippingRequest[0].location : '',
-                                          style: TextStyle(
-                                            color: ColorConstant.gray25,
-                                            fontSize: 12.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                        Row(
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              controller.shippingRequest.isNotEmpty ? controller.shippingRequest[0].location : '',
+                                              style: TextStyle(
+                                                color: ColorConstant.gray25,
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            Text(
+                                              '(벨${controller.enter})${controller.etc.value != '' ? '\n${controller.etc}' : ''}',
+                                              style: TextStyle(
+                                                color: ColorConstant.gray1,
+                                                fontSize: 8.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Text(
-                                          '(벨 ****)',
-                                          style: TextStyle(
-                                            color: ColorConstant.gray1,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
+                                        Image.asset('assets/images/ic_next_order.png',width: 5.w,height: 16.h,)
                                       ],
-                                    ),
-                                    Image.asset('assets/images/ic_next_order.png',width: 5.w,height: 16.h,)
-                                  ],
-                                )
+                                    )
+                                ),
                               ),
                               SizedBox(height: 14.h,),
                               Divider(
@@ -478,7 +515,95 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              SizedBox(height: 22.h,),
+                              !controller.isShipping.value ? Container(
+                                width: Get.width,
+                                margin: EdgeInsets.only(top: 52.h),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: ColorConstant.gray2.withOpacity(0.45), width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(17.r))
+                                ),
+                                child: TableCalendar(
+                                  availableGestures: AvailableGestures.none,
+                                  headerStyle: const HeaderStyle(
+                                      headerMargin: EdgeInsets.only(bottom: 10),
+                                      formatButtonVisible: false,
+                                      titleCentered: true,
+                                      titleTextStyle: TextStyle(fontWeight: FontWeight.bold),
+                                      leftChevronIcon: Icon(Icons.chevron_left,color: Color(0xFF979898),),
+                                      rightChevronIcon: Icon(Icons.chevron_right,color: Color(0xFF979898),)
+                                  ),
+                                  rowHeight: 60,
+                                  daysOfWeekHeight: 50,
+                                  focusedDay: controller.selectedDay!.value,
+                                  firstDay: DateTime(2023,11,1),
+                                  lastDay: DateTime(2999,1,31),
+                                  locale: 'ko-KR',
+                                  calendarBuilders: CalendarBuilders(
+                                    selectedBuilder: (context, day, _){
+                                      return getSelectedCalendarBuilder(context,day,_,day.weekday);
+                                    },
+                                    defaultBuilder: (context, day, _){
+                                      return getDefaultCalendarBuilder(context,day,_,day.weekday);
+                                    },
+                                    todayBuilder: (context, day, _){
+                                      return getTodayCalendarBuilder(context,day,_,day.weekday);
+                                    },
+                                    outsideBuilder: (context, day, _){
+                                      return getOutSideCalendarBuilder(context,day,_,day.weekday);
+                                    },
+                                    dowBuilder: (context, day){
+                                      switch(day.weekday){
+                                        case 1:
+                                          return Center(child: Text('Mo', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                        case 2:
+                                          return Center(child: Text('Tu', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                        case 3:
+                                          return Center(child: Text('We', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                        case 4:
+                                          return Center(child: Text('Th', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                        case 5:
+                                          return Center(child: Text('Fr', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                        case 6:
+                                          return Center(child: Text('Sa', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                        case 7:
+                                          return Center(child: Text('Su', style: TextStyle(color: ColorConstant.black3,fontSize: 12,),));
+                                      }
+
+                                    },
+                                  ),
+                                  onDaySelected: (selectedDay, focusDay){
+                                    String year = selectedDay.year.toString();
+                                    String month = selectedDay.month < 10 ? '0${selectedDay.month}' : selectedDay.month.toString();
+                                    String day = selectedDay.day < 10 ? '0${selectedDay.day}' : selectedDay.day.toString();
+
+                                    controller.selectedDate.value = '$year-$month-$day';
+
+                                    if (!isSameDay(controller.selectedDay!.value, selectedDay)) {
+                                      controller.selectedDay!.value = selectedDay;
+                                    }
+
+                                  },
+
+                                  onFormatChanged: (format){
+                                    /*
+                                      if (_calendarFormat != format) {
+                                        // Call `setState()` when updating calendar format
+                                        setState(() {
+                                          _calendarFormat = format;
+                                        });
+                                      }
+
+                                       */
+                                  },
+                                  onPageChanged: (datetime){
+
+                                  },
+                                  selectedDayPredicate: (day){
+                                    return isSameDay(controller.selectedDay!.value, day);
+                                  },
+                                ),
+                              ) : SizedBox(),
+                              SizedBox(height: 30.h,),
                               Text(
                                 '결제 수단',
                                 style: TextStyle(
@@ -489,21 +614,31 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                 ),
                               ),
                               SizedBox(height: 27.h,),
-                              Container(
-                                width: Get.width,
-                                color: ColorConstant.gray16,
-                                padding: EdgeInsets.fromLTRB(12.w, 13.h, 12.w, 16.h),
-                                child: Text(
-                                  controller.paymentMethod.isNotEmpty
-                                      ? '${controller.paymentMethod[0].subject}(${Constants.getMaskingCard(controller.paymentMethod[0].number)})'
-                                      : '',
-                                  style: TextStyle(
-                                    color: ColorConstant.gray25,
-                                    fontSize: 12.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )
+                              GestureDetector(
+                                onTap: () async {
+                                  var res = await Get.toNamed(AppRoutes.payList,arguments: {'type' : 'order'});
+
+                                  if(res != null){
+                                    controller.paymentMethod[0] = controller.paymentMethod[0].copyWith(subject: res['subject']);
+                                    controller.paymentMethod[0] = controller.paymentMethod[0].copyWith(number: res['number']);
+                                  }
+                                },
+                                child: Container(
+                                    width: Get.width,
+                                    color: ColorConstant.gray16,
+                                    padding: EdgeInsets.fromLTRB(12.w, 13.h, 12.w, 16.h),
+                                    child: Text(
+                                      controller.paymentMethod.isNotEmpty
+                                          ? '${controller.paymentMethod[0].subject}(${Constants.getMaskingCard(controller.paymentMethod[0].number)})'
+                                          : '',
+                                      style: TextStyle(
+                                        color: ColorConstant.gray25,
+                                        fontSize: 12.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    )
+                                ),
                               ),
                               SizedBox(height: 39.h,),
                             ],
@@ -579,7 +714,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                       ),
                                     ),
                                     Text(
-                                      '0P',
+                                      '-${Constants.numberAddComma(controller.usePoint.value)}P',
                                       style: TextStyle(
                                         color: ColorConstant.black.withOpacity(0.4),
                                         fontSize: 10.sp,
@@ -606,7 +741,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                       ),
                                     ),
                                     Text(
-                                      '0원',
+                                      '-${Constants.numberAddComma(controller.cpPrice.value)}원',
                                       style: TextStyle(
                                         color: ColorConstant.black.withOpacity(0.4),
                                         fontSize: 10.sp,
@@ -631,7 +766,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                     ),
                                   ),
                                   Text(
-                                    controller.totalPayment.isNotEmpty ? '${Constants.numberAddComma(controller.totalPayment[0].od_send_cost)}원' : '',
+                                    controller.totalPayment.isNotEmpty ? '${Constants.numberAddComma(controller.getFinalPrice())}원' : '',
                                     style: TextStyle(
                                       color: ColorConstant.black,
                                       fontSize: 14.sp,
@@ -702,11 +837,14 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                           padding: EdgeInsets.only(top: 38.h),
                           child: ElevatedButton(
                             onPressed: () async {
-                              //var res = await Get.toNamed(AppRoutes.orderConfirm);
-
-                              //if(res != null){
-                              //  controller.cartList();
-                              //}
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                elevation: 6.0,
+                                behavior: SnackBarBehavior.floating,
+                                content: Text(
+                                  'PG사 등록이 안되었습니다.',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ));
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: ColorConstant.primary,
@@ -735,6 +873,94 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
               ))
             ]
         )
+      ),
+    );
+  }
+
+  Widget getSelectedCalendarBuilder(context, DateTime day, _ , int weekDay){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 8,bottom: 6),
+            child: Container(
+              width: 30.w,
+              height: 30.h,
+              alignment: Alignment.center,
+              child: Text(day.day.toString(), style: TextStyle(color: Colors.white,fontSize: 12, fontWeight: FontWeight.bold),),
+              decoration: BoxDecoration(
+                color: ColorConstant.primary,
+                border: Border.all(color: ColorConstant.primary,width: 1),
+                shape: BoxShape.circle
+              ),
+            ),
+          )
+      ),
+    );
+  }
+
+  Widget getDefaultCalendarBuilder(context, DateTime day, _ , int weekDay){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 8,bottom: 6),
+            child: Container(
+              width: 30.w,
+              height: 30.h,
+              alignment: Alignment.center,
+              child: Text(day.day.toString(), style: TextStyle(color: ColorConstant.gray24,fontSize: 12, fontWeight: FontWeight.bold),),
+              decoration: BoxDecoration(
+                  color: ColorConstant.white,
+                  border: Border.all(color: ColorConstant.white,width: 1),
+                  shape: BoxShape.circle
+              ),
+            ),
+          )
+      ),
+    );
+  }
+
+  Widget getTodayCalendarBuilder(context, DateTime day, _ , int weekDay){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 8,bottom: 6),
+            child: Container(
+              width: 30.w,
+              height: 30.h,
+              alignment: Alignment.center,
+              child: Text(day.day.toString(), style: TextStyle(color: ColorConstant.gray24,fontSize: 12, fontWeight: FontWeight.bold),),
+              decoration: BoxDecoration(
+                  color: ColorConstant.white,
+                  border: Border.all(color: ColorConstant.white,width: 1),
+                  shape: BoxShape.circle
+              ),
+            ),
+          )
+      ),
+    );
+  }
+
+  Widget getOutSideCalendarBuilder(context, DateTime day, _ , int weekDay){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 8,bottom: 6),
+            child: Container(
+              width: 30.w,
+              height: 30.h,
+              alignment: Alignment.center,
+              child: Text(day.day.toString(), style: TextStyle(color: ColorConstant.white,fontSize: 12, fontWeight: FontWeight.bold),),
+              decoration: BoxDecoration(
+                  color: ColorConstant.white,
+                  border: Border.all(color: ColorConstant.white,width: 1),
+                  shape: BoxShape.circle
+              ),
+            ),
+          )
       ),
     );
   }

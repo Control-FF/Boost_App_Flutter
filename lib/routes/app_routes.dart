@@ -17,6 +17,7 @@ import 'package:boostapp/modules/main/pages/buy/buy_list_screen.dart';
 import 'package:boostapp/modules/main/pages/coupon/coupon_binding.dart';
 import 'package:boostapp/modules/main/pages/coupon/coupon_list_screen.dart';
 import 'package:boostapp/modules/main/pages/coupon/coupon_register_screen.dart';
+import 'package:boostapp/modules/main/pages/coupon/coupon_use_screen.dart';
 import 'package:boostapp/modules/main/pages/notice/notice_binding.dart';
 import 'package:boostapp/modules/main/pages/notice/notice_screen.dart';
 import 'package:boostapp/modules/main/pages/order/order_binding.dart';
@@ -28,7 +29,9 @@ import 'package:boostapp/modules/main/pages/pay/pay_binding.dart';
 import 'package:boostapp/modules/main/pages/pay/pay_register_screen.dart';
 import 'package:boostapp/modules/main/pages/pay/pay_screen.dart';
 import 'package:boostapp/modules/main/pages/point/point_binding.dart';
+import 'package:boostapp/modules/main/pages/point/point_controller.dart';
 import 'package:boostapp/modules/main/pages/point/point_screen.dart';
+import 'package:boostapp/modules/main/pages/point/point_use_screen.dart';
 import 'package:boostapp/modules/order/order_confirm_binding.dart';
 import 'package:boostapp/modules/order/order_confirm_screen.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
@@ -39,6 +42,8 @@ import 'package:boostapp/modules/reset/reset_binding.dart';
 import 'package:boostapp/modules/reset/reset_screen.dart';
 import 'package:boostapp/modules/search/search_binding.dart';
 import 'package:boostapp/modules/search/search_screen.dart';
+import 'package:boostapp/modules/shipping/shipping_binding.dart';
+import 'package:boostapp/modules/shipping/shipping_screen.dart';
 import 'package:boostapp/modules/splash/splash_binding.dart';
 import 'package:boostapp/modules/splash/splash_screen.dart';
 import 'package:boostapp/modules/tutorial/tutorial_binding.dart';
@@ -69,8 +74,10 @@ class AppRoutes {
   static const orderList = '/order_list';
   static const buyList = '/buy_list';
   static const couponList = '/coupon_list';
+  static const couponUse = '/coupon_use';
   static const couponRegister = '/coupon_register';
   static const pointList = '/point_list';
+  static const pointUse = '/point_use';
   static const payList = '/pay_list';
   static const payRegister = '/pay_register';
 
@@ -78,6 +85,7 @@ class AppRoutes {
   static const category = '/category';
 
   static const orderConfirm = '/order_confirm';
+  static const shipping = '/shipping';
 
   static List<GetPage> pages = [
     GetPage(
@@ -214,8 +222,22 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: couponUse,
+      page: () => CouponUseScreen(),
+      bindings: [
+        CouponBinding(),
+      ],
+    ),
+    GetPage(
       name: pointList,
       page: () => PointScreen(),
+      bindings: [
+        PointBinding(),
+      ],
+    ),
+    GetPage(
+      name: pointUse,
+      page: () => PointUseScreen(),
       bindings: [
         PointBinding(),
       ],
@@ -255,5 +277,13 @@ class AppRoutes {
         OrderConfirmBinding(),
       ],
     ),
+    GetPage(
+      name: shipping,
+      page: () => ShippingScreen(),
+      bindings: [
+        ShippingBinding(),
+      ],
+    ),
+
   ];
 }

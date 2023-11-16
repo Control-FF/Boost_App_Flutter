@@ -235,10 +235,17 @@ class PayScreen extends GetView<PayController>{
                                               backgroundColor: ColorConstant.white
                                           ),
                                           onPressed: (){
-                                            _showDeletePopup(context,state.items[index].cd_no);
+                                            if(controller.orderType.value == ''){
+                                              _showDeletePopup(context,state.items[index].cd_no);
+                                            }else{
+                                              Get.back(result: {
+                                                'subject' : state.items[index].subject,
+                                                'number' : state.items[index].number,
+                                              });
+                                            }
                                           },
                                           child: Text(
-                                            '삭제',
+                                            controller.orderType.value == '' ? '삭제' : '선택',
                                             style: TextStyle(
                                               color: ColorConstant.primary,
                                               fontSize: 10.sp,
