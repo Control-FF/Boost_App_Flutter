@@ -353,7 +353,11 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                               SizedBox(height: 27.h,),
                               GestureDetector(
                                 onTap: () async {
-                                  var res = await Get.toNamed(AppRoutes.shipping);
+                                  var res = await Get.toNamed(AppRoutes.shipping,arguments: {
+                                    'location': controller.shippingRequest[0].location,
+                                    'enter': controller.enter.value,
+                                    'etc': controller.etc.value,
+                                  });
 
                                   if(res != null){
                                     String location = res['location'];
@@ -383,7 +387,8 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                               ),
                                             ),
                                             Text(
-                                              '(벨${controller.enter})${controller.etc.value != '' ? '\n${controller.etc}' : ''}',
+                                              controller.enter.value == '' ? '' : '(벨${controller.enter.value})'
+                                              '${controller.etc.value != '' ? '\n${controller.etc}' : ''}',
                                               style: TextStyle(
                                                 color: ColorConstant.gray1,
                                                 fontSize: 8.sp,
@@ -766,7 +771,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                     ),
                                   ),
                                   Text(
-                                    controller.totalPayment.isNotEmpty ? '${Constants.numberAddComma(controller.getFinalPrice())}원' : '',
+                                    controller.totalPayment.isNotEmpty ? '${Constants.numberAddComma(controller.totalPayment[0].od_send_cost)}원' : '',
                                     style: TextStyle(
                                       color: ColorConstant.black,
                                       fontSize: 14.sp,
@@ -820,7 +825,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                     ),
                                   ),
                                   Text(
-                                    controller.totalPayment.isNotEmpty ? '${Constants.numberAddComma(int.parse(controller.totalPayment[0].total_payment))}원' : '',
+                                    controller.totalPayment.isNotEmpty ? '${Constants.numberAddComma(controller.getFinalPrice())}원' : '',
                                     style: TextStyle(
                                       color: ColorConstant.red,
                                       fontSize: 16.sp,
@@ -856,7 +861,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                             ),
                             child: Text(
                               controller.totalPayment.isNotEmpty
-                                  ? '${Constants.numberAddComma(int.parse(controller.totalPayment[0].total_payment))}원 바로 결제하기'
+                                  ? '${Constants.numberAddComma(controller.getFinalPrice())}원 바로 결제하기'
                                   : '',
                               style: TextStyle(
                                 color: ColorConstant.white,

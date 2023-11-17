@@ -286,8 +286,10 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                               SizedBox(width: 6.w,),
                                               ClipRRect(
                                                 borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                                                child: Image.network(
+                                                child: controller.cartList[index].img != '' ? Image.network(
                                                   controller.cartList[index].img,width: 68.w,height: 68.h,
+                                                ) : Image.asset(
+                                                    'assets/images/product_sample.png',width: 68.w,height: 68.h
                                                 ),
                                               ),
                                               SizedBox(width: 10.w,),
@@ -934,12 +936,12 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                               padding: EdgeInsets.only(top: 38.h,bottom: 120.h),
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  var res = await Get.toNamed(AppRoutes.orderConfirm);
+                                  //var res = await Get.toNamed(AppRoutes.orderConfirm);
 
-                                  if(res != null){
-                                    controller.cartList();
-                                  }
-                                  /*
+                                  //if(res != null){
+                                  //  controller.cartList();
+                                  //}
+
                                   if(controller.cartList.isEmpty){
                                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                       elevation: 6.0,
@@ -954,7 +956,7 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
 
                                   controller.addOrder();
 
-                                   */
+
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: ColorConstant.primary,

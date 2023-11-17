@@ -15,5 +15,27 @@ class ShippingController extends GetxController{
   @override
   void onInit() {
     super.onInit();
+
+    if (Get.arguments != null) {
+      String strLocation = Get.arguments['location'];
+      String strEnter = Get.arguments['enter'];
+      String strEtc = Get.arguments['etc'];
+
+      location.value = locations.indexOf(strLocation);
+
+      if(strEnter == ''){
+        enter.value = 0;
+      }else{
+        enter.value = 1;
+        enterPwdController.text = strEnter;
+      }
+
+      if(strEtc == ''){
+        etc.value = 0;
+      }else{
+        etc.value = 1;
+        etcController.text = strEnter;
+      }
+    }
   }
 }

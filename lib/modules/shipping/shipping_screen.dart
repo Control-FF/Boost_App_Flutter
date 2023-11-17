@@ -321,7 +321,6 @@ class ShippingScreen extends GetView<ShippingController>{
                                           fontFamily: 'Noto Sans KR',
                                           fontWeight: FontWeight.w500,
                                         ),
-                                        obscureText: true,
                                         textInputAction: TextInputAction.done,
                                         onSubmitted: (_) => FocusManager.instance.primaryFocus?.unfocus(),
                                         onChanged: (value){
@@ -488,6 +487,18 @@ class ShippingScreen extends GetView<ShippingController>{
                         behavior: SnackBarBehavior.floating,
                         content: Text(
                           '공동현관 비밀번호를 입력해주세요.',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ));
+                      return;
+                    }
+
+                    if(controller.etc.value == 1 && controller.etcController.text == ''){
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        elevation: 6.0,
+                        behavior: SnackBarBehavior.floating,
+                        content: Text(
+                          '특이사항을 입력해주세요.',
                           style: TextStyle(color: Colors.white),
                         ),
                       ));

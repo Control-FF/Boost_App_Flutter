@@ -97,7 +97,7 @@ class CartController extends GetxController{
 
     for(int i = 0; i<cartList.length; i++){
       if(cartList[i].isCheck){
-        sumPrice += cartList[i].ct_price;
+        sumPrice += cartList[i].ct_price * cartList[i].ct_qty;
       }
     }
 

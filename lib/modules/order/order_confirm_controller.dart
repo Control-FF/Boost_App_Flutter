@@ -57,7 +57,7 @@ class OrderConfirmController extends GetxController{
     if(totalPayment.isEmpty){
       return 0;
     }
-    int totalPrice = totalPayment[0].od_send_cost;
+    int totalPrice = int.parse(totalPayment[0].total_payment);
 
     return totalPrice - usePoint.value - cpPrice.value;
   }
