@@ -15,6 +15,8 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
 
   @override
   Widget build(BuildContext context) {
+    cartController.getCartList();
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.white,
@@ -40,22 +42,51 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
           actions: [
             Padding(
               padding: EdgeInsets.only(right: 30.w),
-              child: SizedBox.fromSize(
-                size: Size(17, 17), // button width and height
-                child: InkWell(
-                  splashColor: Colors.white, // splash color
-                  onTap: () {
-                    Get.toNamed(AppRoutes.cartScreen);
-                  }, // button pressed
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
-                    ],
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 25.w,
+                    height: 25.h,
+                    child: InkWell(
+                      splashColor: Colors.white, // splash color
+                      onTap: () {
+                        Get.toNamed(AppRoutes.cartScreen);
+                      }, // button pressed
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                  GetX<CartController>(
+                      builder: (_){
+                        return cartController.cartList.isNotEmpty ? Container(
+                          width: 15.w,
+                          height: 15.h,
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 20.w,bottom: 10.h),
+                          decoration: BoxDecoration(
+                              color: ColorConstant.accent,
+                              shape: BoxShape.circle
+                          ),
+                          child: Text(
+                            cartController.cartList.length.toString(),
+                            style: TextStyle(
+                              color: ColorConstant.white,
+                              fontSize: 7.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ) : SizedBox();
+                      }
+                  )
+                ],
               ),
-            ),
+            )
           ],
         ),
         body: Obx(
@@ -185,7 +216,9 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                   ),
                                                 ),
                                                 Text(
-                                                    controller.productData.value != null ? '${Constants.numberAddComma(controller.productData.value!.item!.it_price)}원' : '',
+                                                    controller.productData.value != null
+                                                        ? '${Constants.numberAddComma(controller.productData.value!.item!.it_price*controller.qty.value)}원'
+                                                        : '',
                                                   style: TextStyle(
                                                     color: ColorConstant.black,
                                                     fontSize: 12.sp,
@@ -212,10 +245,15 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                   children: [
                                                     GestureDetector(
                                                       onTap: (){
-                                                        if(controller.productData.value!.item!.it_min_qty <= controller.qty.value){
-                                                          return;
+                                                        if(controller.productData.value!.item!.it_min_qty != 0){
+                                                          if(controller.productData.value!.item!.it_min_qty <= controller.qty.value){
+                                                            return;
+                                                          }
                                                         }
-                                                        controller.qty.value--;
+                                                        if(controller.qty.value != 1){
+                                                          controller.qty.value--;
+                                                        }
+
                                                       },
                                                       child: Container(
                                                         width: 20.w,
@@ -239,8 +277,11 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                                     SizedBox(width: 20,),
                                                     GestureDetector(
                                                       onTap: (){
-                                                        if(controller.productData.value!.item!.it_max_qty >= controller.qty.value){
-                                                          return;
+                                                        if(controller.productData.value!.item!.it_max_qty != 0) {
+                                                          if (controller.productData.value!.item!.it_max_qty >=
+                                                              controller.qty.value) {
+                                                            return;
+                                                          }
                                                         }
                                                         controller.qty.value++;
                                                       },

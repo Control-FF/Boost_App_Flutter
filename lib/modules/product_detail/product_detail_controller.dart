@@ -37,9 +37,6 @@ class ProductDetailController extends GetxController{
           (failure) => print(failure.message),
           (response){
             productData.value = response;
-            print(productData.value!.item_info.toString());
-            print(productData.value!.qna.toString());
-            print(productData.value!.reviews.toString());
           },
     );
   }

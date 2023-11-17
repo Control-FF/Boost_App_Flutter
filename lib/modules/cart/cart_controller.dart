@@ -43,6 +43,7 @@ class CartController extends GetxController{
             style: TextStyle(color: Colors.white),
           ),
         ));
+        getCartList();
       },
     );
   }

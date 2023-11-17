@@ -15,7 +15,7 @@ class ShippingScreen extends GetView<ShippingController>{
           backgroundColor: ColorConstant.white,
           elevation: 0,
           title: Text(
-            '포인트 사용',
+            '배송 요청사항',
             style: TextStyle(
               color: ColorConstant.black2,
               fontSize: 16.sp,

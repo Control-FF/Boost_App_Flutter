@@ -1,5 +1,6 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/search/search_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SearchScreen extends GetView<ProductSearchController> {
+
+  final cartController = Get.put(CartController());
 
   void _showFilterPopup(context){
     showDialog(
@@ -401,6 +404,8 @@ class SearchScreen extends GetView<ProductSearchController> {
 
   @override
   Widget build(BuildContext context) {
+    cartController.getCartList();
+
     return SafeArea(
       child: WillPopScope(
         onWillPop: () async {
@@ -488,20 +493,49 @@ class SearchScreen extends GetView<ProductSearchController> {
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: 30.w),
-                child: SizedBox.fromSize(
-                  size: Size(17, 17), // button width and height
-                  child: InkWell(
-                    splashColor: Colors.white, // splash color
-                    onTap: () {
-                      Get.toNamed(AppRoutes.cartScreen);
-                    }, // button pressed
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
-                      ],
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: 25.w,
+                      height: 25.h,
+                      child: InkWell(
+                        splashColor: Colors.white, // splash color
+                        onTap: () {
+                          Get.toNamed(AppRoutes.cartScreen);
+                        }, // button pressed
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
+                    GetX<CartController>(
+                      builder: (_){
+                        return cartController.cartList.isNotEmpty ? Container(
+                          width: 15.w,
+                          height: 15.h,
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(left: 20.w,bottom: 10.h),
+                          decoration: BoxDecoration(
+                              color: ColorConstant.accent,
+                              shape: BoxShape.circle
+                          ),
+                          child: Text(
+                            cartController.cartList.length.toString(),
+                            style: TextStyle(
+                              color: ColorConstant.white,
+                              fontSize: 7.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ) : SizedBox();
+                      }
+                    )
+                  ],
                 ),
               )
             ],

@@ -1,4 +1,5 @@
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/main/main_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class BottomBarScreen extends GetView<MainController>{
+
+  final cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
@@ -29,7 +33,7 @@ class BottomBarScreen extends GetView<MainController>{
           notchMargin: 5,
           clipBehavior: Clip.antiAlias,
           child: Container(
-            height: kBottomNavigationBarHeight * 1.2,
+            height: 71.h,
             child: Container(
               child: BottomNavigationBar(
                 onTap: controller.selectPage,
@@ -54,16 +58,22 @@ class BottomBarScreen extends GetView<MainController>{
                 ),
                 items: [
                   BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: EdgeInsets.only(bottom: 4.43.h),
-                      child: Image.asset('assets/images/ic_bnv_home.png',width: 23.08.w,height: 24.32.h,),
+                    icon: Container(
+                      height: 30.h,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 4.43.h),
+                        child: Image.asset('assets/images/ic_bnv_home.png',width: 23.08.w,height: 24.32.h,),
+                      ),
                     ),
                     label: '메인',
                   ),
                   BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: EdgeInsets.only(bottom: 7.h),
-                      child: Image.asset('assets/images/ic_bnv_onetouch.png',width: 16.61.w,height: 22.h,),
+                    icon: Container(
+                      height: 30.h,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 7.h),
+                        child: Image.asset('assets/images/ic_bnv_onetouch.png',width: 16.61.w,height: 22.h,),
+                      ),
                     ),
                     label: '원터치 배송',
                   ),
@@ -73,16 +83,51 @@ class BottomBarScreen extends GetView<MainController>{
                     label: '',
                   ),
                   BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: EdgeInsets.only(bottom: 3.68.h),
-                      child: Image.asset('assets/images/ic_bnv_cart.png',width: 24.w,height: 24.32.h,),
+                    icon: Container(
+                      height: 30.h,
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 3.68.h),
+                        child: Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            Container(
+                              width: 34.w,
+                              height: 30.h,
+                              padding: EdgeInsets.only(top: 2.84.h,bottom: 2.84.h),
+                              child: Image.asset('assets/images/ic_bnv_cart.png',width: 24.w,height: 24.32.h,),
+                            ),
+                            cartController.cartList.isNotEmpty ? Container(
+                              width: 15.w,
+                              height: 15.h,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: ColorConstant.accent,
+                                  shape: BoxShape.circle
+                              ),
+                              child: Text(
+                                cartController.cartList.length.toString(),
+                                style: TextStyle(
+                                  color: ColorConstant.white,
+                                  fontSize: 7.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ) : SizedBox()
+                          ],
+                        ),
+                      ),
                     ),
                     label: '장바구니',
                   ),
                   BottomNavigationBarItem(
-                    icon: Padding(
-                      padding: EdgeInsets.only(bottom: 7.h),
-                      child: Image.asset('assets/images/ic_bnv_my_page.png',width: 20.w,height: 20.h,),
+                    icon: Container(
+                      height: 30.h,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 7.h),
+                        child: Image.asset('assets/images/ic_bnv_my_page.png',width: 20.w,height: 20.h,),
+                      ),
                     ),
                     label: '마이페이지',
                   ),
