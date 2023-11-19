@@ -79,7 +79,7 @@ class _BnvHomeScreenState extends State<BnvHomeScreen>
         bottom: TabBar(
           padding: EdgeInsets.symmetric(horizontal: 15),
           controller: controller.tabController,
-          tabs: controller.tabs.value
+          tabs: controller.tabs
               .map((String title) => Tab(text: title))
               .toList(),
           indicatorColor: Colors.transparent,

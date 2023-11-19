@@ -911,6 +911,68 @@ class _ApiClient implements ApiClient {
   }
 
   @override
+  Future<InquiryResponse> inquiry(
+    page,
+    idId,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'it_id': idId,
+    };
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<InquiryResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/item-inquiry',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = InquiryResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> inquiryWrite(
+    idId,
+    iqType,
+    question,
+    isSecret,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'it_id': idId,
+      'iq_type': iqType,
+      'question': question,
+      'is_secret': isSecret,
+    };
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/item-inquiry',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<NoticeResponse> noticeList(isHtml) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'isHTML': isHtml};

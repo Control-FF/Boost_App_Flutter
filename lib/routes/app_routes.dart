@@ -35,7 +35,9 @@ import 'package:boostapp/modules/main/pages/point/point_use_screen.dart';
 import 'package:boostapp/modules/order/order_confirm_binding.dart';
 import 'package:boostapp/modules/order/order_confirm_screen.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
+import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
+import 'package:boostapp/modules/product_detail/product_detail_tab_inquiry_register.dart';
 import 'package:boostapp/modules/register/register_binding.dart';
 import 'package:boostapp/modules/register/register_screen.dart';
 import 'package:boostapp/modules/reset/reset_binding.dart';
@@ -68,6 +70,7 @@ class AppRoutes {
 
   static const searchScreen = '/search';
   static const productDetailScreen = '/product_detail';
+  static const productDetailInquiryRegister = '/product_detail_inquiry_register';
   static const cartScreen = '/cart';
   static const myInfoCheck = '/my_info_check';
   static const myInfoUpdate = '/my_info_update';
@@ -168,6 +171,13 @@ class AppRoutes {
     GetPage(
       name: productDetailScreen,
       page: () => ProductDetailScreen(),
+      bindings: [
+        ProductDetailBinding(),
+      ],
+    ),
+    GetPage(
+      name: productDetailInquiryRegister,
+      page: () => ProductDetailTabInquiryRegister(),
       bindings: [
         ProductDetailBinding(),
       ],
@@ -284,6 +294,5 @@ class AppRoutes {
         ShippingBinding(),
       ],
     ),
-
   ];
 }

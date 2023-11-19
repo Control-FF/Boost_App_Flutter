@@ -8,6 +8,7 @@ import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
+import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
@@ -240,7 +241,23 @@ abstract class ApiClient {
       @Query('it_id') String itId,
   );
 
-  //상품 상세
+  //상품 문의목록
+  @GET('/api/shop/item-inquiry')
+  Future<InquiryResponse> inquiry(
+      @Query('page') String page,
+      @Query('it_id') String idId
+  );
+
+  //상품 문의등록
+  @POST('/api/shop/item-inquiry')
+  Future<DataResponse> inquiryWrite(
+      @Field('it_id') String idId,
+      @Field('iq_type') String iqType,
+      @Field('question') String question,
+      @Field('is_secret') String isSecret
+  );
+
+  //공지사항
   @GET('/api/user/notice')
   Future<NoticeResponse> noticeList(
       @Query('isHTML') String isHtml,

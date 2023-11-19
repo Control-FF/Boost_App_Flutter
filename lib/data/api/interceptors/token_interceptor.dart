@@ -18,6 +18,7 @@ class TokenInterceptor extends InterceptorsWrapper {
     final Token? token = _storageService.getToken();
     if (token != null) {
       options.headers['Authorization'] = "Bearer ${token!.accessToken}";
+      print(token.accessToken);
     }
     super.onRequest(options, handler);
   }

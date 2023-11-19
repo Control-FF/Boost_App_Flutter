@@ -12,6 +12,8 @@ class BottomBarScreen extends GetView<MainController>{
 
   @override
   Widget build(BuildContext context) {
+    cartController.getCartList();
+
     return Obx(() => Scaffold(
       extendBody: true,
       backgroundColor: ColorConstant.white,
@@ -97,24 +99,28 @@ class BottomBarScreen extends GetView<MainController>{
                               padding: EdgeInsets.only(top: 2.84.h,bottom: 2.84.h),
                               child: Image.asset('assets/images/ic_bnv_cart.png',width: 24.w,height: 24.32.h,),
                             ),
-                            cartController.cartList.isNotEmpty ? Container(
-                              width: 15.w,
-                              height: 15.h,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                  color: ColorConstant.accent,
-                                  shape: BoxShape.circle
-                              ),
-                              child: Text(
-                                cartController.cartList.length.toString(),
-                                style: TextStyle(
-                                  color: ColorConstant.white,
-                                  fontSize: 7.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ) : SizedBox()
+                            GetX<CartController>(
+                              builder: (_){
+                                return cartController.cartList.isNotEmpty ? Container(
+                                  width: 15.w,
+                                  height: 15.h,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      color: ColorConstant.accent,
+                                      shape: BoxShape.circle
+                                  ),
+                                  child: Text(
+                                    cartController.cartList.length.toString(),
+                                    style: TextStyle(
+                                      color: ColorConstant.white,
+                                      fontSize: 7.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ) : SizedBox();
+                              },
+                            )
                           ],
                         ),
                       ),

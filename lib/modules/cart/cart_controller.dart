@@ -1,7 +1,9 @@
+import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/service/user_service.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController{
@@ -115,5 +117,75 @@ class CartController extends GetxController{
     }
 
     return checkCnt;
+  }
+
+  void showOneTouchPopup(context){
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            insetPadding: EdgeInsets.symmetric(horizontal: 68.w),
+            contentPadding: EdgeInsets.zero,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.r))
+            ),
+            content: Container(
+              height: 110.h,
+              alignment: Alignment.center,
+              child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '원터치 상품이 추가되었습니다.',
+                        style: TextStyle(
+                          color: ColorConstant.black,
+                          fontSize: 12.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 14.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 50.w,
+                            height: 23.h,
+                            child: ElevatedButton(
+                              onPressed: (){
+                                Get.back();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: ColorConstant.primary,
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
+                                  ),
+                                  padding: EdgeInsets.all(0)
+                              ),
+                              child: Text(
+                                '확인',
+                                style: TextStyle(
+                                  color: ColorConstant.white,
+                                  fontSize: 10.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+              ),
+            ),
+          );
+        });
   }
 }
