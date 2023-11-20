@@ -70,7 +70,7 @@ class CartController extends GetxController{
             var res = await Get.toNamed(AppRoutes.orderConfirm,arguments: {'odId' : odId});
 
             if(res != null){
-              cartList();
+              getCartList();
             }
           },
     );

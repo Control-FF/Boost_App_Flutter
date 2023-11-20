@@ -56,23 +56,153 @@ class ProductDetailInquiryInfo extends GetView<ProductDetailController>{
             return Padding(
               padding: EdgeInsets.only(top: 21.h,bottom: 25.h),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Wrap(
+                  Stack(
                     children: [
-                      Text(
-                        '[${controller.inquiryList[index].iq_type} 문의]',
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: RichText(
+                                overflow: TextOverflow.visible,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                        text: '[${controller.inquiryList[index].iq_type} 문의] ',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 14.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        )
+                                    ),
+                                    TextSpan(
+                                        text: '제목',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 14.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w400,
+                                        )
+                                    ),
+                                    TextSpan(
+                                        text: controller.inquiryList[index].iq_time,
+                                        style: TextStyle(
+                                          color: Colors.transparent,
+                                          fontSize: 10.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w400,
+                                        )
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: RichText(
+                            text: TextSpan(
+                                text: controller.inquiryList[index].iq_time,
+                                style: TextStyle(
+                                  color: ColorConstant.gray32,
+                                  fontSize: 10.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w400,
+                                )
+                            ),
+                          )
+                      )
+                    ],
+                  ),
+                  controller.inquiryList[index].iq_question != '' ? Padding(
+                    padding: EdgeInsets.only(top: 4.h),
+                    child: Text(
+                        controller.inquiryList[index].iq_question,
                         style: TextStyle(
                           color: ColorConstant.black,
                           fontSize: 14.sp,
                           fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w400,
+                        )
+                    ),
+                  ) : SizedBox(),
+                  controller.inquiryList[index].iq_answer != '' ? Padding(
+                    padding: EdgeInsets.only(top: 29.h),
+                    child: Stack(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: RichText(
+                                  overflow: TextOverflow.visible,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                          text: '[답변완료] ',
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 14.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                          )
+                                      ),
+                                      TextSpan(
+                                          text: '제목',
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 14.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w400,
+                                          )
+                                      ),
+                                      TextSpan(
+                                          text: controller.inquiryList[index].iq_answer_time,
+                                          style: TextStyle(
+                                            color: Colors.transparent,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w400,
+                                          )
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                          ],
                         ),
-                      ),
-                      Html(
-                          data: controller.inquiryList[index].iq_question
-                      ),
-                    ],
-                  )
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: RichText(
+                              text: TextSpan(
+                                  text: controller.inquiryList[index].iq_answer_time,
+                                  style: TextStyle(
+                                    color: ColorConstant.gray32,
+                                    fontSize: 10.sp,
+                                    fontFamily: 'Noto Sans KR',
+                                    fontWeight: FontWeight.w400,
+                                  )
+                              ),
+                            )
+                        )
+                      ],
+                    ),
+                  ) : SizedBox(),
+                  controller.inquiryList[index].iq_answer != '' ? Padding(
+                    padding: EdgeInsets.only(top: 4.h),
+                    child: Text(
+                        controller.inquiryList[index].iq_answer,
+                        style: TextStyle(
+                          color: ColorConstant.black,
+                          fontSize: 14.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w400,
+                        )
+                    ),
+                  ) : SizedBox()
                 ],
               ),
             );

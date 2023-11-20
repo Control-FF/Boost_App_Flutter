@@ -846,10 +846,11 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                 elevation: 6.0,
                                 behavior: SnackBarBehavior.floating,
                                 content: Text(
-                                  'PG사 등록이 안되었습니다.',
+                                  '결제가 완료되었습니다',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ));
+                              Get.back(result: 'OK');
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: ColorConstant.primary,
