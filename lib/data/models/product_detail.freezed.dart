@@ -966,6 +966,8 @@ mixin _$Option {
   int get io_price => throw _privateConstructorUsedError;
   int get io_stock_qty => throw _privateConstructorUsedError;
   bool get is_soldout => throw _privateConstructorUsedError;
+  int get io_qty => throw _privateConstructorUsedError;
+  bool? get isCheck => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -977,7 +979,13 @@ abstract class $OptionCopyWith<$Res> {
   factory $OptionCopyWith(Option value, $Res Function(Option) then) =
       _$OptionCopyWithImpl<$Res, Option>;
   @useResult
-  $Res call({String io_id, int io_price, int io_stock_qty, bool is_soldout});
+  $Res call(
+      {String io_id,
+      int io_price,
+      int io_stock_qty,
+      bool is_soldout,
+      int io_qty,
+      bool? isCheck});
 }
 
 /// @nodoc
@@ -997,6 +1005,8 @@ class _$OptionCopyWithImpl<$Res, $Val extends Option>
     Object? io_price = null,
     Object? io_stock_qty = null,
     Object? is_soldout = null,
+    Object? io_qty = null,
+    Object? isCheck = freezed,
   }) {
     return _then(_value.copyWith(
       io_id: null == io_id
@@ -1015,6 +1025,14 @@ class _$OptionCopyWithImpl<$Res, $Val extends Option>
           ? _value.is_soldout
           : is_soldout // ignore: cast_nullable_to_non_nullable
               as bool,
+      io_qty: null == io_qty
+          ? _value.io_qty
+          : io_qty // ignore: cast_nullable_to_non_nullable
+              as int,
+      isCheck: freezed == isCheck
+          ? _value.isCheck
+          : isCheck // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -1025,7 +1043,13 @@ abstract class _$$_OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
       __$$_OptionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String io_id, int io_price, int io_stock_qty, bool is_soldout});
+  $Res call(
+      {String io_id,
+      int io_price,
+      int io_stock_qty,
+      bool is_soldout,
+      int io_qty,
+      bool? isCheck});
 }
 
 /// @nodoc
@@ -1042,6 +1066,8 @@ class __$$_OptionCopyWithImpl<$Res>
     Object? io_price = null,
     Object? io_stock_qty = null,
     Object? is_soldout = null,
+    Object? io_qty = null,
+    Object? isCheck = freezed,
   }) {
     return _then(_$_Option(
       io_id: null == io_id
@@ -1060,6 +1086,14 @@ class __$$_OptionCopyWithImpl<$Res>
           ? _value.is_soldout
           : is_soldout // ignore: cast_nullable_to_non_nullable
               as bool,
+      io_qty: null == io_qty
+          ? _value.io_qty
+          : io_qty // ignore: cast_nullable_to_non_nullable
+              as int,
+      isCheck: freezed == isCheck
+          ? _value.isCheck
+          : isCheck // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -1071,7 +1105,9 @@ class _$_Option implements _Option {
       {this.io_id = '',
       this.io_price = 0,
       this.io_stock_qty = 0,
-      this.is_soldout = false});
+      this.is_soldout = false,
+      this.io_qty = 1,
+      this.isCheck = false});
 
   factory _$_Option.fromJson(Map<String, dynamic> json) =>
       _$$_OptionFromJson(json);
@@ -1088,10 +1124,16 @@ class _$_Option implements _Option {
   @override
   @JsonKey()
   final bool is_soldout;
+  @override
+  @JsonKey()
+  final int io_qty;
+  @override
+  @JsonKey()
+  final bool? isCheck;
 
   @override
   String toString() {
-    return 'Option(io_id: $io_id, io_price: $io_price, io_stock_qty: $io_stock_qty, is_soldout: $is_soldout)';
+    return 'Option(io_id: $io_id, io_price: $io_price, io_stock_qty: $io_stock_qty, is_soldout: $is_soldout, io_qty: $io_qty, isCheck: $isCheck)';
   }
 
   @override
@@ -1105,13 +1147,15 @@ class _$_Option implements _Option {
             (identical(other.io_stock_qty, io_stock_qty) ||
                 other.io_stock_qty == io_stock_qty) &&
             (identical(other.is_soldout, is_soldout) ||
-                other.is_soldout == is_soldout));
+                other.is_soldout == is_soldout) &&
+            (identical(other.io_qty, io_qty) || other.io_qty == io_qty) &&
+            (identical(other.isCheck, isCheck) || other.isCheck == isCheck));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, io_id, io_price, io_stock_qty, is_soldout);
+  int get hashCode => Object.hash(
+      runtimeType, io_id, io_price, io_stock_qty, is_soldout, io_qty, isCheck);
 
   @JsonKey(ignore: true)
   @override
@@ -1132,7 +1176,9 @@ abstract class _Option implements Option {
       {final String io_id,
       final int io_price,
       final int io_stock_qty,
-      final bool is_soldout}) = _$_Option;
+      final bool is_soldout,
+      final int io_qty,
+      final bool? isCheck}) = _$_Option;
 
   factory _Option.fromJson(Map<String, dynamic> json) = _$_Option.fromJson;
 
@@ -1144,6 +1190,10 @@ abstract class _Option implements Option {
   int get io_stock_qty;
   @override
   bool get is_soldout;
+  @override
+  int get io_qty;
+  @override
+  bool? get isCheck;
   @override
   @JsonKey(ignore: true)
   _$$_OptionCopyWith<_$_Option> get copyWith =>

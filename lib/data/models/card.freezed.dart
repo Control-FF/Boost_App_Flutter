@@ -20,12 +20,13 @@ Card _$CardFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Card {
-  int get cd_no => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  String get subject => throw _privateConstructorUsedError;
-  String get number => throw _privateConstructorUsedError;
-  String get expired_MM => throw _privateConstructorUsedError;
-  String get expired_YY => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get billingkey => throw _privateConstructorUsedError;
+  String get card_name => throw _privateConstructorUsedError;
+  int get is_default => throw _privateConstructorUsedError;
+  String get mb_id => throw _privateConstructorUsedError;
+  int get disabled => throw _privateConstructorUsedError;
+  int get is_company => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,12 +39,13 @@ abstract class $CardCopyWith<$Res> {
       _$CardCopyWithImpl<$Res, Card>;
   @useResult
   $Res call(
-      {int cd_no,
-      String type,
-      String subject,
-      String number,
-      String expired_MM,
-      String expired_YY});
+      {int id,
+      String billingkey,
+      String card_name,
+      int is_default,
+      String mb_id,
+      int disabled,
+      int is_company});
 }
 
 /// @nodoc
@@ -59,38 +61,43 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cd_no = null,
-    Object? type = null,
-    Object? subject = null,
-    Object? number = null,
-    Object? expired_MM = null,
-    Object? expired_YY = null,
+    Object? id = null,
+    Object? billingkey = null,
+    Object? card_name = null,
+    Object? is_default = null,
+    Object? mb_id = null,
+    Object? disabled = null,
+    Object? is_company = null,
   }) {
     return _then(_value.copyWith(
-      cd_no: null == cd_no
-          ? _value.cd_no
-          : cd_no // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      billingkey: null == billingkey
+          ? _value.billingkey
+          : billingkey // ignore: cast_nullable_to_non_nullable
               as String,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
+      card_name: null == card_name
+          ? _value.card_name
+          : card_name // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
+      is_default: null == is_default
+          ? _value.is_default
+          : is_default // ignore: cast_nullable_to_non_nullable
+              as int,
+      mb_id: null == mb_id
+          ? _value.mb_id
+          : mb_id // ignore: cast_nullable_to_non_nullable
               as String,
-      expired_MM: null == expired_MM
-          ? _value.expired_MM
-          : expired_MM // ignore: cast_nullable_to_non_nullable
-              as String,
-      expired_YY: null == expired_YY
-          ? _value.expired_YY
-          : expired_YY // ignore: cast_nullable_to_non_nullable
-              as String,
+      disabled: null == disabled
+          ? _value.disabled
+          : disabled // ignore: cast_nullable_to_non_nullable
+              as int,
+      is_company: null == is_company
+          ? _value.is_company
+          : is_company // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -102,12 +109,13 @@ abstract class _$$_CardCopyWith<$Res> implements $CardCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int cd_no,
-      String type,
-      String subject,
-      String number,
-      String expired_MM,
-      String expired_YY});
+      {int id,
+      String billingkey,
+      String card_name,
+      int is_default,
+      String mb_id,
+      int disabled,
+      int is_company});
 }
 
 /// @nodoc
@@ -119,38 +127,43 @@ class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res, _$_Card>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cd_no = null,
-    Object? type = null,
-    Object? subject = null,
-    Object? number = null,
-    Object? expired_MM = null,
-    Object? expired_YY = null,
+    Object? id = null,
+    Object? billingkey = null,
+    Object? card_name = null,
+    Object? is_default = null,
+    Object? mb_id = null,
+    Object? disabled = null,
+    Object? is_company = null,
   }) {
     return _then(_$_Card(
-      cd_no: null == cd_no
-          ? _value.cd_no
-          : cd_no // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      billingkey: null == billingkey
+          ? _value.billingkey
+          : billingkey // ignore: cast_nullable_to_non_nullable
               as String,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
+      card_name: null == card_name
+          ? _value.card_name
+          : card_name // ignore: cast_nullable_to_non_nullable
               as String,
-      number: null == number
-          ? _value.number
-          : number // ignore: cast_nullable_to_non_nullable
+      is_default: null == is_default
+          ? _value.is_default
+          : is_default // ignore: cast_nullable_to_non_nullable
+              as int,
+      mb_id: null == mb_id
+          ? _value.mb_id
+          : mb_id // ignore: cast_nullable_to_non_nullable
               as String,
-      expired_MM: null == expired_MM
-          ? _value.expired_MM
-          : expired_MM // ignore: cast_nullable_to_non_nullable
-              as String,
-      expired_YY: null == expired_YY
-          ? _value.expired_YY
-          : expired_YY // ignore: cast_nullable_to_non_nullable
-              as String,
+      disabled: null == disabled
+          ? _value.disabled
+          : disabled // ignore: cast_nullable_to_non_nullable
+              as int,
+      is_company: null == is_company
+          ? _value.is_company
+          : is_company // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -159,37 +172,41 @@ class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res, _$_Card>
 @JsonSerializable()
 class _$_Card implements _Card {
   _$_Card(
-      {this.cd_no = 0,
-      this.type = '',
-      this.subject = '',
-      this.number = '',
-      this.expired_MM = '',
-      this.expired_YY = ''});
+      {this.id = 0,
+      this.billingkey = '',
+      this.card_name = '',
+      this.is_default = 0,
+      this.mb_id = '',
+      this.disabled = 0,
+      this.is_company = 0});
 
   factory _$_Card.fromJson(Map<String, dynamic> json) => _$$_CardFromJson(json);
 
   @override
   @JsonKey()
-  final int cd_no;
+  final int id;
   @override
   @JsonKey()
-  final String type;
+  final String billingkey;
   @override
   @JsonKey()
-  final String subject;
+  final String card_name;
   @override
   @JsonKey()
-  final String number;
+  final int is_default;
   @override
   @JsonKey()
-  final String expired_MM;
+  final String mb_id;
   @override
   @JsonKey()
-  final String expired_YY;
+  final int disabled;
+  @override
+  @JsonKey()
+  final int is_company;
 
   @override
   String toString() {
-    return 'Card(cd_no: $cd_no, type: $type, subject: $subject, number: $number, expired_MM: $expired_MM, expired_YY: $expired_YY)';
+    return 'Card(id: $id, billingkey: $billingkey, card_name: $card_name, is_default: $is_default, mb_id: $mb_id, disabled: $disabled, is_company: $is_company)';
   }
 
   @override
@@ -197,20 +214,24 @@ class _$_Card implements _Card {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Card &&
-            (identical(other.cd_no, cd_no) || other.cd_no == cd_no) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.subject, subject) || other.subject == subject) &&
-            (identical(other.number, number) || other.number == number) &&
-            (identical(other.expired_MM, expired_MM) ||
-                other.expired_MM == expired_MM) &&
-            (identical(other.expired_YY, expired_YY) ||
-                other.expired_YY == expired_YY));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.billingkey, billingkey) ||
+                other.billingkey == billingkey) &&
+            (identical(other.card_name, card_name) ||
+                other.card_name == card_name) &&
+            (identical(other.is_default, is_default) ||
+                other.is_default == is_default) &&
+            (identical(other.mb_id, mb_id) || other.mb_id == mb_id) &&
+            (identical(other.disabled, disabled) ||
+                other.disabled == disabled) &&
+            (identical(other.is_company, is_company) ||
+                other.is_company == is_company));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, cd_no, type, subject, number, expired_MM, expired_YY);
+  int get hashCode => Object.hash(runtimeType, id, billingkey, card_name,
+      is_default, mb_id, disabled, is_company);
 
   @JsonKey(ignore: true)
   @override
@@ -228,27 +249,30 @@ class _$_Card implements _Card {
 
 abstract class _Card implements Card {
   factory _Card(
-      {final int cd_no,
-      final String type,
-      final String subject,
-      final String number,
-      final String expired_MM,
-      final String expired_YY}) = _$_Card;
+      {final int id,
+      final String billingkey,
+      final String card_name,
+      final int is_default,
+      final String mb_id,
+      final int disabled,
+      final int is_company}) = _$_Card;
 
   factory _Card.fromJson(Map<String, dynamic> json) = _$_Card.fromJson;
 
   @override
-  int get cd_no;
+  int get id;
   @override
-  String get type;
+  String get billingkey;
   @override
-  String get subject;
+  String get card_name;
   @override
-  String get number;
+  int get is_default;
   @override
-  String get expired_MM;
+  String get mb_id;
   @override
-  String get expired_YY;
+  int get disabled;
+  @override
+  int get is_company;
   @override
   @JsonKey(ignore: true)
   _$$_CardCopyWith<_$_Card> get copyWith => throw _privateConstructorUsedError;
@@ -262,7 +286,7 @@ CardResponse _$CardResponseFromJson(Map<String, dynamic> json) {
 mixin _$CardResponse {
   int get status => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-  @JsonKey(name: 'lists')
+  @JsonKey(name: 'data')
   List<Card>? get items => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -278,7 +302,7 @@ abstract class $CardResponseCopyWith<$Res> {
       _$CardResponseCopyWithImpl<$Res, CardResponse>;
   @useResult
   $Res call(
-      {int status, String message, @JsonKey(name: 'lists') List<Card>? items});
+      {int status, String message, @JsonKey(name: 'data') List<Card>? items});
 }
 
 /// @nodoc
@@ -324,7 +348,7 @@ abstract class _$$_CardResponseCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int status, String message, @JsonKey(name: 'lists') List<Card>? items});
+      {int status, String message, @JsonKey(name: 'data') List<Card>? items});
 }
 
 /// @nodoc
@@ -365,7 +389,7 @@ class _$_CardResponse implements _CardResponse {
   _$_CardResponse(
       {required this.status,
       this.message = '',
-      @JsonKey(name: 'lists') final List<Card>? items = const []})
+      @JsonKey(name: 'data') final List<Card>? items = const []})
       : _items = items;
 
   factory _$_CardResponse.fromJson(Map<String, dynamic> json) =>
@@ -378,7 +402,7 @@ class _$_CardResponse implements _CardResponse {
   final String message;
   final List<Card>? _items;
   @override
-  @JsonKey(name: 'lists')
+  @JsonKey(name: 'data')
   List<Card>? get items {
     final value = _items;
     if (value == null) return null;
@@ -425,7 +449,7 @@ abstract class _CardResponse implements CardResponse {
   factory _CardResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'lists') final List<Card>? items}) = _$_CardResponse;
+      @JsonKey(name: 'data') final List<Card>? items}) = _$_CardResponse;
 
   factory _CardResponse.fromJson(Map<String, dynamic> json) =
       _$_CardResponse.fromJson;
@@ -435,7 +459,7 @@ abstract class _CardResponse implements CardResponse {
   @override
   String get message;
   @override
-  @JsonKey(name: 'lists')
+  @JsonKey(name: 'data')
   List<Card>? get items;
   @override
   @JsonKey(ignore: true)

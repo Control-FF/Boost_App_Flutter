@@ -57,8 +57,8 @@ class PayController extends GetxController with StateMixin{
     );
   }
 
-  Future<void> deleteCard(int cdNo) async {
-    final result = await _userService.deleteCard(cdNo: cdNo);
+  Future<void> deleteCard(int id) async {
+    final result = await _userService.deleteCard(billingKeyId: id);
     result.fold(
       (failure) => print(failure.message),
       (response) => getCardList(),
@@ -74,20 +74,52 @@ class PayController extends GetxController with StateMixin{
   }
 
   Future<void> registerCard(context) async {
-    final result = await _userService.registerCard(
-      type: type.value,
-      number: numberController.text.replaceAll(" ",""),
-      expired: expireController.text.replaceAll(" ",""),
-      pw: passwordController.text,
-      birth: type.value == 'nor' ? birthController.text.replaceAll(" ","").replaceAll("/","") : null,
-      bizNumber: type.value == 'biz' ? bizController.text.replaceAll(" ", "").replaceAll("-","") : null
+    var map = <String, dynamic>{};
+    map.addAll(
+      {
+        'card_number' : numberController.text.replaceAll(" ",""),
+        'expiry' : expireController.text.replaceAll(" ","").replaceAll("/",""),
+        'birth' : type.value == 'nor' ? birthController.text.replaceAll(" ","").replaceAll("/","") : bizController.text.replaceAll(" ", "").replaceAll("-",""),
+        'pwd_2digit' : passwordController.text,
+        'is_company' : type.value == 'nor' ? '0' : '1'
+      },
     );
+
+    final result = await _userService.registerCard(data: map);
     result.fold(
           (failure) {
             _showPopup(context,'error',failure.message);
           },
           (response) {
             _showPopup(context,'success','카드가 등록되었습니다.');
+          },
+    );
+  }
+
+  Future<void> defaultCard(BuildContext context, int billingKeyId) async {
+    final result = await _userService.defaultCard(billingKeyId: billingKeyId);
+    result.fold(
+          (failure){
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              elevation: 6.0,
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                failure.message,
+                style: TextStyle(color: Colors.white),
+              ),
+            ));
+          },
+          (response){
+            getCardList();
+
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              elevation: 6.0,
+              behavior: SnackBarBehavior.floating,
+              content: Text(
+                '주 결제카드가 변경되었습니다.',
+                style: TextStyle(color: Colors.white),
+              ),
+            ));
           },
     );
   }
@@ -182,7 +214,7 @@ class PayController extends GetxController with StateMixin{
           );
         });
   }
-
+/*
   void showCardNamePopup(context, cdNo, name){
     showDialog(
         context: context,
@@ -320,4 +352,6 @@ class PayController extends GetxController with StateMixin{
         });
     cardNameController.text = name;
   }
+
+ */
 }

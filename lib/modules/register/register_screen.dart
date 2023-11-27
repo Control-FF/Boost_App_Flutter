@@ -657,11 +657,12 @@ class RegisterScreen extends GetView<RegisterController>{
                           SizedBox(width: 8.w,),
                           GestureDetector(
                             onTap: (){
-                              controller.check1.value = !controller.check1.value;
-                              controller.checkPolicyUI();
+                              //controller.check1.value = !controller.check1.value;
+                              //controller.checkPolicyUI();
+                              Get.toNamed(AppRoutes.policy,arguments: {'type' : 'privacy'});
                             },
                             child: Text(
-                              '[필수] 필수인 이용약관이 들어가야겠지요',
+                              '[필수] 개인정보 처리방침',
                               style: TextStyle(
                                 color: ColorConstant.gray7,
                                 fontSize: 12.sp,
@@ -700,11 +701,12 @@ class RegisterScreen extends GetView<RegisterController>{
                           SizedBox(width: 8.w,),
                           GestureDetector(
                             onTap: (){
-                              controller.check2.value = !controller.check2.value;
-                              controller.checkPolicyUI();
+                              //controller.check2.value = !controller.check2.value;
+                              //controller.checkPolicyUI();
+                              Get.toNamed(AppRoutes.policy,arguments: {'type' : 'provision'});
                             },
                             child: Text(
-                              '[필수] 필수인 이용약관이 들어가야겠지요',
+                              '[필수] 서비스 이용약관',
                               style: TextStyle(
                                 color: ColorConstant.gray7,
                                 fontSize: 12.sp,

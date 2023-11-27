@@ -478,11 +478,11 @@ class UserService extends GetxService{
   }
 
   Future<Either<Failure, DataResponse>> deleteCard({
-    required cdNo
+    required billingKeyId
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().deleteCard(cdNo);
+      await _apiService.getApiClient().deleteCard(billingKeyId);
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -517,16 +517,30 @@ class UserService extends GetxService{
   }
 
   Future<Either<Failure, DataResponse>> registerCard({
-    required type,
-    required number,
-    required expired,
-    required pw,
-    required birth,
-    required bizNumber
+    required data
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().registerCard(type,number,expired,pw,birth,bizNumber);
+      await _apiService.getApiClient().registerCard(data);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> defaultCard({
+    required billingKeyId,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().defaultCard(billingKeyId);
       if (response.status == 200) {
         return Right(response);
       } else {

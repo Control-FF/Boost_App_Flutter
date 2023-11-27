@@ -17,7 +17,8 @@ class NoticeController extends GetxController{
   }
 
   Future<void> getNoticeList() async {
-    final result = await _shopService.getNotice(isHtml: 'false');
+    String searchText = searchController.text;
+    final result = await _shopService.getNotice(isHtml: 'false',keyword: searchText);
     result.fold(
       (failure) => print(failure.message),
       (response) => items.value = List<Notice>.from(response.items!.toList(growable: false)),

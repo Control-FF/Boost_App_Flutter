@@ -159,7 +159,15 @@ class RegisterController extends GetxController {
 
     result.fold(
       (failure) {
-        print(failure.message);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            failure.message,
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+
       },
       (response) {
         isFinish.value = true;

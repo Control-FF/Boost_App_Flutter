@@ -18,6 +18,7 @@ import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
+import 'package:boostapp/data/models/policy.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/models/user_info.dart';
@@ -143,6 +144,10 @@ abstract class ApiClient {
   );
 
   //내정보
+  @GET('/api/shop/')
+  Future<UserInfoResponse> shopMain();
+
+  //내정보
   @GET('/api/user/mypage')
   Future<UserInfoResponse> getMyInfo();
 
@@ -208,13 +213,13 @@ abstract class ApiClient {
   );
 
   //신용카드 리스트
-  @GET('/api/user/card-list')
+  @GET('/api/user/get-billingkey')
   Future<CardResponse> cardList();
 
   //신용카드 삭제
-  @DELETE('/api/user/card/{cdNo}')
+  @DELETE('/api/user/delete-billingkey')
   Future<DataResponse> deleteCard(
-      @Path('cdNo') int cdNo,
+      @Query('billingKey_id') int billingKeyId,
   );
 
   //신용카드 이름 변경
@@ -225,20 +230,29 @@ abstract class ApiClient {
   );
 
   //신용카드 등록
-  @POST('/api/user/card')
+  @POST('/api/user/add-billingkey')
   Future<DataResponse> registerCard(
-      @Field('type') String type,
-      @Field('number') String number,
-      @Field('expired') String expired,
-      @Field('pw') String pw,
-      @Field('birth') String? birth,
-      @Field('biz_number') String? bizNumber,
+      @Body() Map<String, dynamic> map
+  );
+
+  //주결제 카드 변경
+  @PATCH('/api/user/default-card')
+  Future<DataResponse> defaultCard(
+      @Query('billingKey_id') int billingKeyId,
   );
 
   //상품 상세
   @GET('/api/shop/item')
   Future<ProductDetailResponse> productDetail(
       @Query('it_id') String itId,
+  );
+
+  //바로 구매
+  @GET('/api/shop/buy-now')
+  Future<OrderRequestResponse> buyNow(
+      @Query('it_id') String itId,
+      @Query('ct_qty') String qty,
+      @Query('io_no') String ioNo,
   );
 
   //상품 문의목록
@@ -261,6 +275,13 @@ abstract class ApiClient {
   @GET('/api/user/notice')
   Future<NoticeResponse> noticeList(
       @Query('isHTML') String isHtml,
+      @Query('keyword') String keyword,
+  );
+
+  //이용약관
+  @GET('/api/user/co-content')
+  Future<PolicyResponse> policyList(
+      @Query('co_id') String coId,
   );
 
   //장바구니 목록
@@ -284,5 +305,11 @@ abstract class ApiClient {
   @POST('/api/shop/order')
   Future<OrderRequestResponse> addOrder(
       @Body() Map<String, dynamic> map
+  );
+
+  //주문페이지
+  @GET('/api/shop/payment')
+  Future<DataResponse> setPayment(
+      @Query('od_id') String odId
   );
 }

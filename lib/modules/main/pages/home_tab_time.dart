@@ -686,7 +686,7 @@ class HomeTabTime extends GetView<HomeController>{
                               children: [
                                 TextButton(
                                   onPressed: (){
-
+                                    Get.toNamed(AppRoutes.policy,arguments: {'type' : 'company'});
                                   },
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,
@@ -740,7 +740,7 @@ class HomeTabTime extends GetView<HomeController>{
                                 ),
                                 TextButton(
                                   onPressed: (){
-
+                                    Get.toNamed(AppRoutes.policy,arguments: {'type' : 'provision'});
                                   },
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,
@@ -758,7 +758,7 @@ class HomeTabTime extends GetView<HomeController>{
                                 ),
                                 TextButton(
                                   onPressed: (){
-
+                                    Get.toNamed(AppRoutes.policy,arguments: {'type' : 'privacy'});
                                   },
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,

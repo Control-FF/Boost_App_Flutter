@@ -250,7 +250,7 @@ class HomeTabPopular extends GetView<HomeController>{
                               return GestureDetector(
                                 onTap: (){
                                   Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                    'productId' : 1
+                                    'productId' : '8801242640304'
                                   });
                                 },
                                 child: Padding(
@@ -448,7 +448,7 @@ class HomeTabPopular extends GetView<HomeController>{
                               return GestureDetector(
                                 onTap: (){
                                   Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                    'productId' : 1
+                                    'productId' : '8801242640304'
                                   });
                                 },
                                 child: Padding(
@@ -569,7 +569,7 @@ class HomeTabPopular extends GetView<HomeController>{
                               children: [
                                 TextButton(
                                   onPressed: (){
-
+                                    Get.toNamed(AppRoutes.policy,arguments: {'type' : 'company'});
                                   },
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,
@@ -623,7 +623,7 @@ class HomeTabPopular extends GetView<HomeController>{
                                 ),
                                 TextButton(
                                   onPressed: (){
-
+                                    Get.toNamed(AppRoutes.policy,arguments: {'type' : 'provision'});
                                   },
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,
@@ -641,7 +641,7 @@ class HomeTabPopular extends GetView<HomeController>{
                                 ),
                                 TextButton(
                                   onPressed: (){
-
+                                    Get.toNamed(AppRoutes.policy,arguments: {'type' : 'privacy'});
                                   },
                                   style: TextButton.styleFrom(
                                       padding: EdgeInsets.zero,

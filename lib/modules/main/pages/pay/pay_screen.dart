@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class PayScreen extends GetView<PayController>{
 
-  void _showDeletePopup(context,cdNo){
+  void _showDeletePopup(context,id){
     showDialog(
         context: context,
         builder: (context) {
@@ -76,7 +76,7 @@ class PayScreen extends GetView<PayController>{
                             child: ElevatedButton(
                               onPressed: (){
                                 Get.back();
-                                controller.deleteCard(cdNo);
+                                controller.deleteCard(id);
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: ColorConstant.primary,
@@ -146,26 +146,47 @@ class PayScreen extends GetView<PayController>{
                         children: [
                           SizedBox(height: 16.h,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                '등록 카드',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '등록 카드',
+                                    style: TextStyle(
+                                      color: ColorConstant.black,
+                                      fontSize: 14.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  SizedBox(width: 47.w,),
+                                  Text(
+                                    '${Constants.numberAddComma(state.items.length)}개',
+                                    style: TextStyle(
+                                      color: ColorConstant.black,
+                                      fontSize: 14.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  )
+                                ],
                               ),
-                              SizedBox(width: 47.w,),
-                              Text(
-                                '${Constants.numberAddComma(state.items.length)}개',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset('assets/images/ic_check_on.png',width: 12.w,height: 12.h,),
+                                  SizedBox(width: 5.w,),
+                                  Text(
+                                    '주거래 카드로 설정',
+                                    style: TextStyle(
+                                      color: ColorConstant.primary,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  )
+                                ],
                               )
                             ],
                           ),
@@ -184,6 +205,15 @@ class PayScreen extends GetView<PayController>{
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
+                                        GestureDetector(
+                                          onTap: (){
+                                            controller.defaultCard(context,state.items[index].id);
+                                          },
+                                          child: state.items[index].is_default == 1
+                                              ? Image.asset('assets/images/ic_check_on.png',width: 16.w,height: 16.h,)
+                                              : Image.asset('assets/images/ic_check_off.png',width: 16.w,height: 16.h,),
+                                        ),
+                                        SizedBox(width: 15.w,),
                                         Image.asset('assets/images/ic_card.png',width: 33.w,height: 33.h,),
                                         SizedBox(width: 11.w,),
                                         Expanded(
@@ -194,7 +224,7 @@ class PayScreen extends GetView<PayController>{
                                               Row(
                                                 children: [
                                                   Text(
-                                                    state.items[index].subject,
+                                                    state.items[index].card_name,
                                                     style: TextStyle(
                                                       color: ColorConstant.black,
                                                       fontSize: 11.sp,
@@ -202,24 +232,18 @@ class PayScreen extends GetView<PayController>{
                                                       fontWeight: FontWeight.w500,
                                                     ),
                                                   ),
+                                                  /*
                                                   SizedBox(width: 9.w,),
-                                                  GestureDetector(
+                                                  state.items[index].is_default == 0 ? GestureDetector(
                                                     onTap: (){
-                                                      controller.showCardNamePopup(context,state.items[index].cd_no,state.items[index].subject);
+                                                      controller.showCardNamePopup(context,state.items[index].id,state.items[index].card_name);
                                                     },
                                                     child: Image.asset('assets/images/ic_edit_card.png',width: 12.w,height: 12.h,),
-                                                  )
+                                                  ) : SizedBox()
+
+                                                   */
                                                 ],
                                               ),
-                                              Text(
-                                                Constants.getMaskingCard(state.items[index].number),
-                                                style: TextStyle(
-                                                  color: ColorConstant.black,
-                                                  fontSize: 10.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              )
                                             ],
                                           ),
                                         ),
@@ -236,11 +260,11 @@ class PayScreen extends GetView<PayController>{
                                           ),
                                           onPressed: (){
                                             if(controller.orderType.value == ''){
-                                              _showDeletePopup(context,state.items[index].cd_no);
+                                              _showDeletePopup(context,state.items[index].id);
                                             }else{
                                               Get.back(result: {
-                                                'subject' : state.items[index].subject,
-                                                'number' : state.items[index].number,
+                                                'subject' : state.items[index].card_name,
+                                                //'number' : state.items[index].number,
                                               });
                                             }
                                           },

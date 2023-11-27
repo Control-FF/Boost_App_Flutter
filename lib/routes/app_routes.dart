@@ -34,6 +34,8 @@ import 'package:boostapp/modules/main/pages/point/point_screen.dart';
 import 'package:boostapp/modules/main/pages/point/point_use_screen.dart';
 import 'package:boostapp/modules/order/order_confirm_binding.dart';
 import 'package:boostapp/modules/order/order_confirm_screen.dart';
+import 'package:boostapp/modules/policy/policy_binding.dart';
+import 'package:boostapp/modules/policy/policy_screen.dart';
 import 'package:boostapp/modules/product_detail/product_detail_binding.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_screen.dart';
@@ -85,6 +87,7 @@ class AppRoutes {
   static const payRegister = '/pay_register';
 
   static const notice = '/notice';
+  static const policy = '/policy';
   static const category = '/category';
 
   static const orderConfirm = '/order_confirm';
@@ -271,6 +274,13 @@ class AppRoutes {
       page: () => NoticeScreen(),
       bindings: [
         NoticeBinding(),
+      ],
+    ),
+    GetPage(
+      name: policy,
+      page: () => PolicyScreen(),
+      bindings: [
+        PolicyBinding(),
       ],
     ),
     GetPage(

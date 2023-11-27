@@ -60,6 +60,8 @@ class Option with _$Option {
     @Default(0) int io_price,
     @Default(0) int io_stock_qty,
     @Default(false) bool is_soldout,
+    @Default(1) int io_qty,
+    @Default(false) bool? isCheck,
   }) = _Option;
 
   factory Option.fromJson(Map<String, dynamic> json) =>

@@ -3,13 +3,17 @@ import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/data/service/shop_service.dart';
-import 'package:boostapp/modules/product_detail/product_detail_tab_info.dart';
+import 'package:boostapp/data/service/user_service.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class ProductDetailController extends GetxController with GetSingleTickerProviderStateMixin{
   final ShopService _shopService = Get.find();
+
+  CartController cartController = Get.put(CartController());
 
   late PageController pageController;
   RxInt currentIndex = 0.obs;
@@ -21,6 +25,8 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
 
   RxString productId = ''.obs;
   Rx<ProductDetailResponse?> productData = Rx<ProductDetailResponse?>(null);
+  RxList<Option> optionList = (List<Option>.of([])).obs;
+  RxList<Option> optionSelectList = (List<Option>.of([])).obs;
   RxList<Widget> productImgList = <Widget>[].obs;
   RxInt qty = 1.obs;
 
@@ -44,27 +50,27 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
       productId.value = Get.arguments['productId'];
 
       getProductDetail();
+
+      tabs.clear();
+      tabs.add('상품 정보');
+      tabs.add('구매 정보');
+      tabs.add('후기(0)');
+      tabs.add('Q&A(${Constants.numberAddComma(inquiryList.length)})');
+
+      pageController = PageController(initialPage: 0);
+      pageController.addListener(() {
+        currentIndex.value = pageController.page!.toInt();
+      });
+
+      tabController = TabController(
+        length: tabs.length,
+        initialIndex: tagIndex.value,
+        vsync: this,
+      );
+      tabController.addListener(() {
+        tagIndex.value = tabController.index;
+      });
     }
-
-    pageController = PageController(initialPage: 0);
-    pageController.addListener(() {
-      currentIndex.value = pageController.page!.toInt();
-    });
-
-    tabs.clear();
-    tabs.add('상품 정보');
-    tabs.add('구매 정보');
-    tabs.add('후기(0)');
-    tabs.add('Q&A(1,000)');
-
-    tabController = TabController(
-      length: tabs.length,
-      initialIndex: tagIndex.value,
-      vsync: this,
-    );
-    tabController.addListener(() {
-      tagIndex.value = tabController.index;
-    });
   }
 
   Future<void> getProductDetail() async {
@@ -73,10 +79,36 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
       (failure) => print(failure.message),
       (response){
         productData.value = response;
+
+        optionList.value = List<Option>.from(response.option!.toList(growable: false));
+
+        for(int i=0; i<optionList.length; i++){
+          if(i == 0){
+            optionList[i] = optionList[i].copyWith(isCheck: true);
+          }
+        }
+        
+        getInquiry();
       },
     );
   }
+/*
+  Future<void> buyNow() async {
+    final result = await _shopService.buyNow(itId: productId.value,qty: , ioNo: );
+    result.fold(
+      (failure) => print(failure.message),
+      (response) async {
+        String odId = response.od_id;
 
+        var res = await Get.toNamed(AppRoutes.orderConfirm,arguments: {'odId' : odId});
+
+        if(res != null){
+          Get.back();
+        }
+      },
+    );
+  }
+*/
   Future<void> getInquiry() async {
     final result = await _shopService.getInquiry(page: inquiryPage.value.toString(),itId: productId.value);
     result.fold(
@@ -127,43 +159,89 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
     if(productData.value != null){
       if(productData.value?.item != null){
         if(productData.value?.item?.it_img1 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img1!,fit: BoxFit.cover,));
+          productImgList.add(
+            AspectRatio(
+              aspectRatio: 1/1,
+              child: Image.network(Constants.fileUrl+productData.value!.item!.it_img1!,fit: BoxFit.cover,),
+            )
+          );
         }
 
         if(productData.value?.item?.it_img2 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img2!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img2!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img3 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img3!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img3!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img4 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img4!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img4!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img5 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img5!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img5!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img6 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img6!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img6!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img7 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img7!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img7!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img8 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img8!,fit: BoxFit.cover,));
+          productImgList.add(
+              AspectRatio(
+                aspectRatio: 1/1,
+                child: Image.network(Constants.fileUrl+productData.value!.item!.it_img8!,fit: BoxFit.cover,),
+              )
+          );
         }
 
         if(productData.value?.item?.it_img9 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img9!,fit: BoxFit.cover,));
+          productImgList.add(AspectRatio(
+            aspectRatio: 1/1,
+            child: Image.network(Constants.fileUrl+productData.value!.item!.it_img9!,fit: BoxFit.cover,),
+          ));
         }
 
         if(productData.value?.item?.it_img10 != ''){
-          productImgList.add(Image.network(Constants.fileUrl+productData.value!.item!.it_img10!,fit: BoxFit.cover,));
+          productImgList.add(AspectRatio(
+            aspectRatio: 1/1,
+            child: Image.network(Constants.fileUrl+productData.value!.item!.it_img10!,fit: BoxFit.cover,),
+          ));
         }
       }
     }
@@ -177,6 +255,52 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
     }else{
       return '';
     }
+  }
+
+  int getCheckCnt(){
+    int checkCnt = 0;
+
+    for(int i=0; i<optionList.length; i++){
+      if(optionList[i].isCheck ?? false){
+        checkCnt++;
+      }
+    }
+
+    return checkCnt;
+  }
+
+  void getOptionSelectList(){
+    optionSelectList.clear();
+
+    for(int i=0; i<optionList.length; i++){
+      if(optionList[i].isCheck ?? false){
+        optionSelectList.add(optionList[i]);
+      }
+    }
+  }
+
+  int getOptionTotalPrice(){
+    int totalPrice = 0;
+
+    for(int i=0; i<optionSelectList.length; i++){
+      if(optionSelectList[i].isCheck ?? false){
+        totalPrice += optionSelectList[i].io_qty * (optionSelectList[i].io_price + productData.value!.item!.it_price);
+      }
+    }
+
+    return totalPrice;
+  }
+
+  int getOptionTotalCnt(){
+    int totalCnt = 0;
+
+    for(int i=0; i<optionSelectList.length; i++){
+      if(optionSelectList[i].isCheck ?? false){
+        totalCnt += optionSelectList[i].io_qty;
+      }
+    }
+
+    return totalCnt;
   }
 
   void showInquiryTypePopup(context){
@@ -390,5 +514,492 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
             ),
           );
         });
+  }
+
+  void showOptionBottomSheet(context,type){
+    Get.bottomSheet(
+      Obx(() => Wrap(
+        children: [
+          ListView.separated(
+            shrinkWrap: true,
+            padding: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 39.h),
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index){
+              return Container(
+                width: Get.width,
+                child: Column(
+                  children: [
+                    SizedBox(height: 24.h,),
+                    Row(
+                      children: [
+                        Container(
+                          width: 20.w,
+                          height: 20.h,
+                          child: Checkbox(
+                            side: BorderSide(
+                                width: 1.w,
+                                color: ColorConstant.gray7
+                            ),
+                            value: optionSelectList[index].isCheck,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6.r),
+                            ),
+                            checkColor: ColorConstant.white,
+                            activeColor: ColorConstant.accent,
+                            onChanged: (bool? checkValue){
+                              optionSelectList[index] = optionSelectList[index].copyWith(isCheck: checkValue);
+                            },
+                          ),
+                        ),
+                        SizedBox(width: 10.w,),
+                        Text(
+                          '옵션 제목 $index',
+                          style: TextStyle(
+                            color: ColorConstant.black,
+                            fontSize: 16.sp,
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 22.h,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: (){
+                                int cnt = optionSelectList[index].io_qty;
+
+                                if(cnt > 1){
+                                  optionSelectList[index] = optionSelectList[index].copyWith(io_qty: --cnt);
+                                }
+                              },
+                              child: Container(
+                                width: 20.w,
+                                height: 20.h,
+                                decoration: BoxDecoration(
+                                    border: Border.all(width: 1,color: ColorConstant.gray2)
+                                ),
+                                child: Icon(Icons.remove,color: ColorConstant.gray19,size: 10,),
+                              ),
+                            ),
+                            SizedBox(width: 20,),
+                            Text(
+                              optionSelectList[index].io_qty.toString(),
+                              style: TextStyle(
+                                color: ColorConstant.black,
+                                fontSize: 14.sp,
+                                fontFamily: 'Noto Sans KR',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(width: 20,),
+                            GestureDetector(
+                              onTap: (){
+                                int cnt = optionSelectList[index].io_qty;
+
+                                if(cnt < optionSelectList[index].io_stock_qty){
+                                  optionSelectList[index] = optionSelectList[index].copyWith(io_qty: ++cnt);
+                                }
+                              },
+                              child: Container(
+                                width: 20.w,
+                                height: 20.h,
+                                decoration: BoxDecoration(
+                                    border: Border.all(width: 1,color: ColorConstant.gray2)
+                                ),
+                                child: Icon(Icons.add,color: ColorConstant.gray19,size: 10,),
+                              ),
+                            )
+                          ],
+                        ),
+                        Text(
+                          '${Constants.numberAddComma((optionSelectList[index].io_price + productData.value!.item!.it_price) * optionSelectList[index].io_qty)}원',
+                          style: TextStyle(
+                            color: ColorConstant.black,
+                            fontSize: 14.sp,
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 22.h,),
+                  ],
+                ),
+              );
+            },
+            separatorBuilder: (context, index){
+              return Divider(
+                height: 1.h,
+                thickness: 1,
+                color: ColorConstant.black,
+              );
+            },
+            itemCount: optionSelectList.length,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: Divider(
+              height: 1.h,
+              thickness: 1,
+              color: ColorConstant.black,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(30.w, 8.h, 30.w, 11.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '총 수량  ',
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      getOptionTotalCnt().toString(),
+                      style: TextStyle(
+                        color: ColorConstant.primary,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      '개',
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
+                Text(
+                  '${Constants.numberAddComma(getOptionTotalPrice())}원',
+                  style: TextStyle(
+                    color: ColorConstant.black,
+                    fontSize: 14.sp,
+                    fontFamily: 'Noto Sans KR',
+                    fontWeight: FontWeight.w700,
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: Divider(
+              height: 1.h,
+              thickness: 1,
+              color: ColorConstant.black,
+            ),
+          ),
+          SizedBox(height: 39.h,),
+
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 55.h,
+                  child: ElevatedButton(
+                    onPressed: (){
+                      cartController.addCart(context,productData.value!.item!.it_id,qty.value);
+                      Get.back();
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorConstant.primary,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero
+                        )
+                    ),
+                    child: Text(
+                      '장바구니',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 14.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 55.h,
+                  child: ElevatedButton(
+                    onPressed: (){
+                      //Get.offAllNamed(AppRoutes.loginScreen);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorConstant.accent,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero
+                        )
+                    ),
+                    child: Text(
+                      '바로 구매',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 14.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )
+        ],
+      )),
+      backgroundColor: ColorConstant.white,
+      enterBottomSheetDuration: Duration(seconds: 0),
+      exitBottomSheetDuration: Duration(seconds: 0),
+      isScrollControlled: true,
+    );
+  }
+
+  void showEmptyOptionBottomSheet(context,type){
+    Get.bottomSheet(
+      Obx(() => Wrap(
+        children: [
+          Container(
+            width: Get.width,
+            padding: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 39.h),
+            child: Column(
+              children: [
+                SizedBox(height: 24.h,),
+                Row(
+                  children: [
+                    Text(
+                      '옵션 제목',
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 22.h,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            if(productData.value!.item!.it_min_qty != 0){
+                              if(productData.value!.item!.it_min_qty <= qty.value){
+                                return;
+                              }
+                            }
+                            if(qty.value != 1){
+                              qty.value--;
+                            }
+                          },
+                          child: Container(
+                            width: 20.w,
+                            height: 20.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(width: 1,color: ColorConstant.gray2)
+                            ),
+                            child: Icon(Icons.remove,color: ColorConstant.gray19,size: 10,),
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        Text(
+                          qty.value.toString(),
+                          style: TextStyle(
+                            color: ColorConstant.black,
+                            fontSize: 14.sp,
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        SizedBox(width: 20,),
+                        GestureDetector(
+                          onTap: (){
+                            if(productData.value!.item!.it_max_qty != 0) {
+                              if (productData.value!.item!.it_max_qty >=
+                                  qty.value) {
+                                return;
+                              }
+                            }
+                            qty.value++;
+                          },
+                          child: Container(
+                            width: 20.w,
+                            height: 20.h,
+                            decoration: BoxDecoration(
+                                border: Border.all(width: 1,color: ColorConstant.gray2)
+                            ),
+                            child: Icon(Icons.add,color: ColorConstant.gray19,size: 10,),
+                          ),
+                        )
+                      ],
+                    ),
+                    Text(
+                      '${Constants.numberAddComma(productData.value!.item!.it_price * qty.value)}원',
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 14.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 22.h,),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: Divider(
+              height: 1.h,
+              thickness: 1,
+              color: ColorConstant.black,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(30.w, 8.h, 30.w, 11.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      '총 수량  ',
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      qty.value.toString(),
+                      style: TextStyle(
+                        color: ColorConstant.primary,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      '개',
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 16.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ],
+                ),
+                Text(
+                  '${Constants.numberAddComma(productData.value!.item!.it_price * qty.value)}원',
+                  style: TextStyle(
+                    color: ColorConstant.black,
+                    fontSize: 14.sp,
+                    fontFamily: 'Noto Sans KR',
+                    fontWeight: FontWeight.w700,
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: Divider(
+              height: 1.h,
+              thickness: 1,
+              color: ColorConstant.black,
+            ),
+          ),
+          SizedBox(height: 39.h,),
+
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 55.h,
+                  child: ElevatedButton(
+                    onPressed: (){
+                      cartController.addCart(context,productData.value!.item!.it_id,qty.value);
+                      Get.back();
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorConstant.primary,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero
+                        )
+                    ),
+                    child: Text(
+                      '장바구니',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 14.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 55.h,
+                  child: ElevatedButton(
+                    onPressed: (){
+                      //Get.offAllNamed(AppRoutes.loginScreen);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorConstant.accent,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero
+                        )
+                    ),
+                    child: Text(
+                      '바로 구매',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 14.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )
+        ],
+      )),
+      backgroundColor: ColorConstant.white,
+      enterBottomSheetDuration: Duration(seconds: 0),
+      exitBottomSheetDuration: Duration(seconds: 0),
+      isScrollControlled: true,
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_tab_info.dart';
@@ -168,15 +169,15 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                 ],
                               ),
                             ) : SizedBox(),
-                            Padding(
+                            controller.optionList.isEmpty ? Padding(
                               padding: EdgeInsets.fromLTRB(30.w, 13.h, 30.w, 8.h),
                               child: Divider(
                                 thickness: 1,
                                 height: 1,
                                 color: ColorConstant.gray17,
                               ),
-                            ),
-                            Container(
+                            ) : SizedBox(height: 13.h,),
+                            controller.optionList.isEmpty ? Container(
                               padding: EdgeInsets.symmetric(horizontal: 30),
                               width: Get.width,
                               height: 50.h,
@@ -311,74 +312,65 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                   )
                                 ],
                               ),
-                            ),
-                            Padding(
+                            ) : SizedBox(),
+                            controller.optionList.isEmpty ? Padding(
                               padding: EdgeInsets.fromLTRB(30.w, 15.h, 30.w, 10.h),
                               child: Divider(
                                 thickness: 1,
                                 height: 1,
                                 color: ColorConstant.gray17,
                               ),
-                            ),
-                            controller.productData.value != null && controller.productData.value!.option!.isNotEmpty ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                  child: Text(
-                                    '옵션 추가',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 16.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
+                            ) : SizedBox(),
+                            controller.productData.value != null && controller.productData.value!.option!.isNotEmpty ? Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 30.w),
+                              child: Text(
+                                '옵션 추가',
+                                style: TextStyle(
+                                  color: ColorConstant.black,
+                                  fontSize: 16.sp,
+                                  fontFamily: 'Noto Sans KR',
+                                  fontWeight: FontWeight.w700,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(30.w, 9.h, 30.w, 10.h),
-                                  child: Divider(
-                                    thickness: 1,
-                                    height: 1,
-                                    color: ColorConstant.gray17,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: (){
+                              ),
+                            ) : SizedBox(),
+                            controller.productData.value != null && controller.productData.value!.option!.isNotEmpty ? Padding(
+                              padding: EdgeInsets.fromLTRB(30.w, 9.h, 30.w, 10.h),
+                              child: Divider(
+                                thickness: 1,
+                                height: 1,
+                                color: ColorConstant.gray17,
+                              ),
+                            ) : SizedBox(),
+                            controller.productData.value != null && controller.optionList.isNotEmpty ? ListView.separated(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: controller.optionList.length,
+                              padding: EdgeInsets.symmetric(horizontal: 30.w),
+                              itemBuilder: (context, index){
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: (){
+                                        bool isCheck = controller.optionList[index].isCheck ?? false;
 
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  width: 20.w,
-                                                  height: 20.h,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.all(Radius.circular(47)),
-                                                    border: Border.all(width: 5,color: ColorConstant.primary),
-                                                  ),
-                                                ),
-                                                SizedBox(width: 10.w,),
-                                                Text(
-                                                  '1박스',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 14.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                )
-                                              ],
+                                        controller.optionList[index] = controller.optionList[index].copyWith(isCheck: !isCheck);
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Obx(() => Container(
+                                            width: 20.w,
+                                            height: 20.h,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(Radius.circular(47)),
+                                              border: controller.optionList[index].isCheck ?? false
+                                                  ? Border.all(width: 5,color: ColorConstant.primary)
+                                                  : Border.all(width: 1,color: ColorConstant.gray20),
                                             ),
-                                          ),
+                                          )),
+                                          SizedBox(width: 10.w,),
                                           Text(
-                                            '+50,000원',
+                                            '옵션 제목 $index',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 14.sp,
@@ -388,61 +380,31 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           )
                                         ],
                                       ),
-                                      SizedBox(height: 6.h,),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          GestureDetector(
-                                            onTap: (){
-
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                  width: 20.w,
-                                                  height: 20.h,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.all(Radius.circular(47)),
-                                                    border: Border.all(width: 1,color: ColorConstant.gray20),
-                                                  ),
-                                                ),
-                                                SizedBox(width: 10.w,),
-                                                Text(
-                                                  '3박스',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 14.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Text(
-                                            '+85,000원',
-                                            style: TextStyle(
-                                              color: ColorConstant.black,
-                                              fontSize: 14.sp,
-                                              fontFamily: 'Noto Sans KR',
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(30.w, 22.h, 30.w, 33.h),
-                                  child: Divider(
-                                    thickness: 1,
-                                    height: 1,
-                                    color: ColorConstant.gray17,
-                                  ),
-                                ),
-                              ],
+                                    ),
+                                    Text(
+                                      '${Constants.numberAddComma(controller.productData.value!.item!.it_price + controller.optionList[index].io_price)}원',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 14.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                              separatorBuilder: (context, index){
+                                return SizedBox(height: 6.h,);
+                              },
                             ) : SizedBox(),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(30.w, 22.h, 30.w, 33.h),
+                              child: Divider(
+                                thickness: 1,
+                                height: 1,
+                                color: ColorConstant.gray17,
+                              ),
+                            ),
                           ]
                       ),
                     )),
@@ -1156,6 +1118,14 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                     height: 55.h,
                     child: ElevatedButton(
                       onPressed: (){
+                        if(controller.productData.value!.option!.isNotEmpty){
+                          controller.getOptionSelectList();
+                          controller.showOptionBottomSheet(context,'cart');
+                        }else{
+                          controller.showEmptyOptionBottomSheet(context,'cart');
+                        }
+
+                        /*
                         if(controller.productData.value!.item!.it_stock_qty == 0){
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             elevation: 6.0,
@@ -1167,6 +1137,8 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                           ));
                         }
                         cartController.addCart(context,controller.productData.value!.item!.it_id,controller.qty.value);
+
+                         */
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorConstant.primary,
@@ -1192,7 +1164,12 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                     height: 55.h,
                     child: ElevatedButton(
                       onPressed: (){
-                        //Get.offAllNamed(AppRoutes.loginScreen);
+                        if(controller.productData.value!.option!.isNotEmpty){
+                          controller.getOptionSelectList();
+                          controller.showOptionBottomSheet(context,'buy');
+                        }else{
+                          controller.showEmptyOptionBottomSheet(context,'buy');
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorConstant.accent,

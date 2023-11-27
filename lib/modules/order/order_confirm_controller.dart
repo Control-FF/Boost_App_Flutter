@@ -1,10 +1,13 @@
 import 'package:boostapp/data/models/order_confirm.dart';
+import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class OrderConfirmController extends GetxController{
   final UserService _userService = Get.find();
+  final ShopService _shopService = Get.find();
 
   RxString odId = ''.obs;
   RxList<OrderItem> orderItem = RxList<OrderItem>([]);
@@ -29,16 +32,16 @@ class OrderConfirmController extends GetxController{
     super.onInit();
 
     if (Get.arguments != null) {
-      String odId = Get.arguments['odId'];
-      getOrderConfirm(odId);
+      odId.value = Get.arguments['odId'];
+      getOrderConfirm();
     }
 
     print(selectedDay.toString());
 
   }
 
-  Future<void> getOrderConfirm(String confirmOdId) async {
-    final result = await _userService.getOrderConfirm(odId: confirmOdId);
+  Future<void> getOrderConfirm() async {
+    final result = await _userService.getOrderConfirm(odId: odId.value);
     result.fold(
       (failure) => print(failure.message),
       (response){
@@ -49,6 +52,33 @@ class OrderConfirmController extends GetxController{
         shippingRequest.value = List<ShippingRequest>.from(response.data!.shippingRequest!.toList(growable: false));
         paymentMethod.value = List<PaymentMethod>.from(response.data!.paymentMethod!.toList(growable: false));
         totalPayment.value = List<TotalPayment>.from(response.data!.totalPayment!.toList(growable: false));
+      },
+    );
+  }
+
+  Future<void> setPayment(BuildContext context) async {
+    final result = await _shopService.setPayment(odId: odId.value);
+    result.fold(
+      (failure){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            failure.message,
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+      },
+      (response){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            '결제가 완료되었습니다',
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+        Get.back(result: 'OK');
       },
     );
   }

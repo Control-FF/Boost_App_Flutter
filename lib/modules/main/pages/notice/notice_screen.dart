@@ -101,7 +101,8 @@ class NoticeScreen extends GetView<NoticeController>{
                               margin: EdgeInsets.fromLTRB(18.w, 7.h, 18.h, 7.w),
                               child: GestureDetector(
                                 onTap: (){
-
+                                  controller.getNoticeList();
+                                  FocusManager.instance.primaryFocus?.unfocus();
                                 },
                                 child: Image.asset('assets/images/ic_search_primary.png'),
                               ),

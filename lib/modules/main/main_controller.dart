@@ -56,6 +56,7 @@ class MainController extends GetxController{
     //await getAddressCheck();
     await getCategoryList('');
     await getCategoryFirstList();
+    await getShopMain();
 
     String popupDate = _storageService.getPopupDate();
 
@@ -66,6 +67,15 @@ class MainController extends GetxController{
     if(popupDate != strToday){
       showAdBottomSheet();
     }
+  }
+
+  Future<void> getShopMain() async {
+
+    final result = await _shopService.getShopMain();
+    result.fold(
+          (failure) => print(failure.message),
+          (response) => print(response),
+    );
   }
 
   Future<void> getAddressCheck() async {

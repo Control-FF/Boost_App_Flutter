@@ -477,10 +477,10 @@ class SearchScreen extends GetView<ProductSearchController> {
                 },
                 onSubmitted: (String str){
                   if(str != ''){
-                    controller.searchStatus.value = 'search';
+                    controller.searchStatus.value = 'result';
                     controller.saveSearchText(str);
+                    controller.getKeywordResultList();
                   }
-
                 },
               ),
             ),
@@ -676,6 +676,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                               controller.searchController.text = controller.keywordRankList[index].keyword;
                                               controller.searchStatus.value = 'search';
                                               controller.saveSearchText(controller.keywordRankList[index].keyword);
+                                              controller.getKeywordAutoList();
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -698,13 +699,16 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                     ),
                                                   ),
                                                   SizedBox(width: 14.3.w,),
-                                                  Text(
-                                                    controller.keywordRankList[index].keyword,
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w400,
+                                                  Expanded(
+                                                    child: Text(
+                                                      controller.keywordRankList[index].keyword,
+                                                      style: TextStyle(
+                                                        color: ColorConstant.black,
+                                                        fontSize: 12.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w400,
+                                                        overflow: TextOverflow.ellipsis
+                                                      ),
                                                     ),
                                                   ),
                                                 ],

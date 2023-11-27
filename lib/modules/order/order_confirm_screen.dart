@@ -625,7 +625,7 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
 
                                   if(res != null){
                                     controller.paymentMethod[0] = controller.paymentMethod[0].copyWith(subject: res['subject']);
-                                    controller.paymentMethod[0] = controller.paymentMethod[0].copyWith(number: res['number']);
+                                    //controller.paymentMethod[0] = controller.paymentMethod[0].copyWith(number: res['number']);
                                   }
                                 },
                                 child: Container(
@@ -842,6 +842,8 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                           padding: EdgeInsets.only(top: 38.h),
                           child: ElevatedButton(
                             onPressed: () async {
+                              controller.setPayment(context);
+                              /*
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 elevation: 6.0,
                                 behavior: SnackBarBehavior.floating,
@@ -851,6 +853,8 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                 ),
                               ));
                               Get.back(result: 'OK');
+
+                               */
                             },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: ColorConstant.primary,

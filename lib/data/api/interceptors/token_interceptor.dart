@@ -25,7 +25,7 @@ class TokenInterceptor extends InterceptorsWrapper {
 
   @override
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
-    if(err.response?.statusCode == 401){
+    if(err.response?.statusCode == 403){
       final accessToken = _storageService.getToken()?.accessToken;
       final refreshToken = _storageService.getToken()?.refreshToken;
 

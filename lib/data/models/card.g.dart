@@ -7,28 +7,30 @@ part of 'card.dart';
 // **************************************************************************
 
 _$_Card _$$_CardFromJson(Map<String, dynamic> json) => _$_Card(
-      cd_no: json['cd_no'] as int? ?? 0,
-      type: json['type'] as String? ?? '',
-      subject: json['subject'] as String? ?? '',
-      number: json['number'] as String? ?? '',
-      expired_MM: json['expired_MM'] as String? ?? '',
-      expired_YY: json['expired_YY'] as String? ?? '',
+      id: json['id'] as int? ?? 0,
+      billingkey: json['billingkey'] as String? ?? '',
+      card_name: json['card_name'] as String? ?? '',
+      is_default: json['is_default'] as int? ?? 0,
+      mb_id: json['mb_id'] as String? ?? '',
+      disabled: json['disabled'] as int? ?? 0,
+      is_company: json['is_company'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
-      'cd_no': instance.cd_no,
-      'type': instance.type,
-      'subject': instance.subject,
-      'number': instance.number,
-      'expired_MM': instance.expired_MM,
-      'expired_YY': instance.expired_YY,
+      'id': instance.id,
+      'billingkey': instance.billingkey,
+      'card_name': instance.card_name,
+      'is_default': instance.is_default,
+      'mb_id': instance.mb_id,
+      'disabled': instance.disabled,
+      'is_company': instance.is_company,
     };
 
 _$_CardResponse _$$_CardResponseFromJson(Map<String, dynamic> json) =>
     _$_CardResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
-      items: (json['lists'] as List<dynamic>?)
+      items: (json['data'] as List<dynamic>?)
               ?.map((e) => Card.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -38,5 +40,5 @@ Map<String, dynamic> _$$_CardResponseToJson(_$_CardResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
-      'lists': instance.items,
+      'data': instance.items,
     };

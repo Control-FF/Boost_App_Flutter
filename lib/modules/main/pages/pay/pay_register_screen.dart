@@ -25,7 +25,7 @@ class PayRegisterScreen extends GetView<PayController>{
     type: MaskAutoCompletionType.lazy,
   );
   final expireMaskFormatter = MaskTextInputFormatter(
-    mask: '## / ##',
+    mask: '#### - ##',
     filter: {"#": RegExp(r'[0-9]')},
     type: MaskAutoCompletionType.lazy,
   );
@@ -373,7 +373,7 @@ class PayRegisterScreen extends GetView<PayController>{
                                   focusNode: controller.expireFocus,
                                   controller: controller.expireController,
                                   decoration: InputDecoration(
-                                      hintText: 'MM / YY',
+                                      hintText: 'YYYY - MM',
                                       hintStyle: TextStyle(
                                         color: ColorConstant.gray1,
                                         fontSize: 14.sp,
@@ -407,7 +407,7 @@ class PayRegisterScreen extends GetView<PayController>{
                                     expireMaskFormatter
                                   ],
                                   onChanged: (value){
-                                    if(value.length != 7){
+                                    if(value.length != 9){
                                       controller.expireStatus.value = 2;
                                     }else{
                                       controller.expireStatus.value = 1;
