@@ -38,8 +38,8 @@ class RegisterController extends GetxController {
   RxBool checkAll = false.obs;
   RxBool check1 = false.obs;
   RxBool check2 = false.obs;
-  RxBool check3 = false.obs;
-  RxBool check4 = false.obs;
+  //RxBool check3 = false.obs;
+  //RxBool check4 = false.obs;
 
   RxString fileName = ''.obs;
   Rx<File?> bizFile = Rx<File?>(null);
@@ -64,12 +64,13 @@ class RegisterController extends GetxController {
   void allCheck(){
     check1.value = checkAll.value;
     check2.value = checkAll.value;
-    check3.value = checkAll.value;
-    check4.value = checkAll.value;
+    //check3.value = checkAll.value;
+    //check4.value = checkAll.value;
   }
 
   void checkPolicyUI(){
-    checkAll.value = check1.value && check2.value && check3.value && check4.value;
+    //checkAll.value = check1.value && check2.value && check3.value && check4.value;
+    checkAll.value = check1.value && check2.value;
   }
 
   String secondsToString(){
@@ -139,6 +140,7 @@ class RegisterController extends GetxController {
   }
 
   Future<void> registerUser(context) async {
+    String name = nameController.text;
     String phone = phoneController.text;
     String pw1 = passwordController1.text;
     String pw2 = passwordController2.text;
@@ -152,9 +154,9 @@ class RegisterController extends GetxController {
     var result;
 
     if(type.value == 'nor'){
-      result = await _userService.registerUser(type: type.value, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode);
+      result = await _userService.registerUser(type: type.value, name: name, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode);
     }else{
-      result = await _userService.registerBizUser(type: type.value, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode,bizLicense: bizFile.value);
+      result = await _userService.registerBizUser(type: type.value, name: name, phone: phone, pw1: pw1, pw2: pw2, authCode: authCode, recommendCode: recommendCode,bizLicense: bizFile.value);
     }
 
     result.fold(

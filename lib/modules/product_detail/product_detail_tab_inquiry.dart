@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
@@ -120,7 +121,7 @@ class ProductDetailInquiryInfo extends GetView<ProductDetailController>{
                   controller.inquiryList[index].iq_question != '' ? Padding(
                     padding: EdgeInsets.only(top: 4.h),
                     child: Text(
-                        controller.inquiryList[index].iq_question,
+                        Constants.parseHtmlString(controller.inquiryList[index].iq_question),
                         style: TextStyle(
                           color: ColorConstant.black,
                           fontSize: 14.sp,
@@ -194,7 +195,7 @@ class ProductDetailInquiryInfo extends GetView<ProductDetailController>{
                   controller.inquiryList[index].iq_answer != '' ? Padding(
                     padding: EdgeInsets.only(top: 4.h),
                     child: Text(
-                        controller.inquiryList[index].iq_answer,
+                        Constants.parseHtmlString(controller.inquiryList[index].iq_answer),
                         style: TextStyle(
                           color: ColorConstant.black,
                           fontSize: 14.sp,

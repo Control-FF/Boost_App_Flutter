@@ -1,7 +1,9 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/data/models/buyInfo.dart';
 import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/product_detail.dart';
+import 'package:boostapp/data/models/product_review.dart';
 import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
@@ -42,6 +44,13 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
   RxString inquiryType = '상품'.obs;
   RxBool inquiryIsSecret = false.obs;
 
+  RxList<ProductReview> reviewList = <ProductReview>[].obs;
+  RxInt reviewPage = 1.obs;
+  RxInt reviewTotalPage = 1.obs;
+  RxBool reviewIsLastPage = false.obs;
+
+  RxList<BuyInfo> buyInfoList = <BuyInfo>[].obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -54,7 +63,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
       tabs.clear();
       tabs.add('상품 정보');
       tabs.add('구매 정보');
-      tabs.add('후기(0)');
+      tabs.add('후기(${Constants.numberAddComma(reviewList.length)})');
       tabs.add('Q&A(${Constants.numberAddComma(inquiryList.length)})');
 
       pageController = PageController(initialPage: 0);
@@ -71,6 +80,8 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
         tagIndex.value = tabController.index;
       });
     }
+
+    getBuyInfo();
   }
 
   Future<void> getProductDetail() async {
@@ -89,6 +100,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
         }
         
         getInquiry();
+        getReview();
       },
     );
   }
@@ -109,6 +121,30 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
     );
   }
 */
+
+  void getBuyInfo(){
+    buyInfoList.clear();
+    buyInfoList.add(BuyInfo(title: '결제 안내',contents: 'assets/images/buy_info1.png', isExpand: false));
+    buyInfoList.add(BuyInfo(title: '주문단계 안내',contents: 'assets/images/buy_info2.png', isExpand: false));
+    buyInfoList.add(BuyInfo(title: '취소 안내',contents: 'assets/images/buy_info3.png', isExpand: false));
+    buyInfoList.add(BuyInfo(title: '배송 안내',contents: 'assets/images/buy_info4.png', isExpand: false));
+    buyInfoList.add(BuyInfo(title: '교환 및 반품 안내',contents: 'assets/images/buy_info5.png', isExpand: false));
+  }
+
+  Future<void> getReview() async {
+    final result = await _shopService.getProductReview(page: reviewPage.value.toString(),itId: productId.value);
+    result.fold(
+      (failure) => print(failure.message),
+      (response){
+        reviewList.value = List<ProductReview>.from(response.items!.toList(growable: false));
+
+        reviewTotalPage.value = response.totalPage;
+        reviewIsLastPage.value = response.isLastPage == 'true';
+
+      },
+    );
+  }
+
   Future<void> getInquiry() async {
     final result = await _shopService.getInquiry(page: inquiryPage.value.toString(),itId: productId.value);
     result.fold(
@@ -301,6 +337,29 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
     }
 
     return totalCnt;
+  }
+
+  List<Widget> getReviewRating(double rating){
+    List<Widget> ratingList = [];
+    for(int i=1; i<=5; i++){
+      if(i <= rating){
+        ratingList.add(
+          Image.asset('assets/images/ic_rating_fill.png',width: 14.w,height: 14.h,)
+        );
+      }else{
+        ratingList.add(
+            Image.asset('assets/images/ic_rating_empty.png',width: 14.w,height: 14.h,)
+        );
+      }
+
+      if(i != 5){
+        ratingList.add(
+          SizedBox(width: 5,)
+        );
+      }
+    }
+
+    return ratingList;
   }
 
   void showInquiryTypePopup(context){
@@ -787,7 +846,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                 Row(
                   children: [
                     Text(
-                      '옵션 제목',
+                      productData.value!.item!.it_name,
                       style: TextStyle(
                         color: ColorConstant.black,
                         fontSize: 16.sp,

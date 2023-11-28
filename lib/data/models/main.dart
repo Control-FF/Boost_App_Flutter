@@ -32,6 +32,7 @@ class BannerList with _$BannerList {
   factory BannerList({
 
     @Default(0) int bn_id,
+    @Default('') String bn_alt,
     @Default('') String bn_url,
     @Default('') String bn_img,
   }) = _BannerList;
@@ -44,7 +45,7 @@ class BannerList with _$BannerList {
 class CategoryData with _$CategoryData {
   factory CategoryData({
 
-    @Default(0) int ca_id,
+    @Default('') String ca_id,
     @Default('') String ca_name,
     @Default('false') String sub_flag,
   }) = _CategoryData;

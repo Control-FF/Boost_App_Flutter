@@ -12,6 +12,7 @@ import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
+import 'package:boostapp/data/models/main.dart';
 import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/order.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
@@ -20,6 +21,7 @@ import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/policy.dart';
 import 'package:boostapp/data/models/product_detail.dart';
+import 'package:boostapp/data/models/product_review.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -124,6 +126,7 @@ abstract class ApiClient {
   @POST('/api/user')
   Future<DataResponse> registerUser(
       @Part() String? type,
+      @Part() String? name,
       @Part() String? phone,
       @Part() String? pw1,
       @Part() String? pw2,
@@ -135,6 +138,7 @@ abstract class ApiClient {
   @POST('/api/user')
   Future<DataResponse> registerBizUser(
       @Part() String? type,
+      @Part() String? name,
       @Part() String? phone,
       @Part() String? pw1,
       @Part() String? pw2,
@@ -143,9 +147,9 @@ abstract class ApiClient {
       @Part() File biz_license,
   );
 
-  //내정보
+  //메인 페이지
   @GET('/api/shop/')
-  Future<UserInfoResponse> shopMain();
+  Future<MainResponse> shopMain();
 
   //내정보
   @GET('/api/user/mypage')
@@ -260,6 +264,13 @@ abstract class ApiClient {
   Future<InquiryResponse> inquiry(
       @Query('page') String page,
       @Query('it_id') String idId
+      );
+
+  //상품 리뷰
+  @GET('/api/shop/item-reviews')
+  Future<ProductReviewResponse> productReview(
+      @Query('page') String page,
+      @Query('it_id') String idId
   );
 
   //상품 문의등록
@@ -293,6 +304,7 @@ abstract class ApiClient {
   Future<DataResponse> addCart(
       @Field('it_id') String itId,
       @Field('ct_qty') String qty,
+      @Field('io_no') String ioNo,
   );
 
   //주문페이지

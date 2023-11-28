@@ -3,8 +3,10 @@ import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
+import 'package:boostapp/modules/product_detail/product_detail_tab_buy.dart';
 import 'package:boostapp/modules/product_detail/product_detail_tab_info.dart';
 import 'package:boostapp/modules/product_detail/product_detail_tab_inquiry.dart';
+import 'package:boostapp/modules/product_detail/product_detail_tab_review.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -417,8 +419,8 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                     controller: controller.tabController,
                     children: [
                       ProductDetailTabInfo(),
-                      SizedBox(),
-                      SizedBox(),
+                      ProductDetailTabBuy(),
+                      ProductDetailTabReview(),
                       ProductDetailInquiryInfo()
                     ],
                   ),
@@ -1214,9 +1216,18 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate{
         child: Obx(() => TabBar(
           padding: EdgeInsets.symmetric(horizontal: 15),
           controller: controller.tabController,
+          tabs: [
+            Tab(text: '상품 정보'),
+            Tab(text: '구매 정보'),
+            Tab(text: '후기(${Constants.numberAddComma(controller.reviewList.length)})'),
+            Tab(text: 'Q&A(${Constants.numberAddComma(controller.inquiryList.length)})'),
+          ],
+          /*
           tabs: controller.tabs
               .map((String title) => Tab(text: title))
               .toList(),
+
+           */
           indicatorColor: ColorConstant.primary,
           indicatorSize: TabBarIndicatorSize.label,
           indicatorWeight: 3,

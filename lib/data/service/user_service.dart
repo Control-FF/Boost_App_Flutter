@@ -262,6 +262,7 @@ class UserService extends GetxService{
 
   Future<Either<Failure, DataResponse>> registerUser({
     required type,
+    required name,
     required phone,
     required pw1,
     required pw2,
@@ -270,7 +271,7 @@ class UserService extends GetxService{
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().registerUser(type,phone,pw1,pw2,authCode,recommendCode);
+      await _apiService.getApiClient().registerUser(type,name,phone,pw1,pw2,authCode,recommendCode);
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -286,6 +287,7 @@ class UserService extends GetxService{
 
   Future<Either<Failure, DataResponse>> registerBizUser({
     required type,
+    required name,
     required phone,
     required pw1,
     required pw2,
@@ -295,7 +297,7 @@ class UserService extends GetxService{
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().registerBizUser(type,phone,pw1,pw2,authCode,recommendCode,bizLicense);
+      await _apiService.getApiClient().registerBizUser(type,name,phone,pw1,pw2,authCode,recommendCode,bizLicense);
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -592,11 +594,12 @@ class UserService extends GetxService{
 
   Future<Either<Failure, DataResponse>> addCart({
     required itId,
-    required qty
+    required qty,
+    required ioNo
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().addCart(itId, qty);
+      await _apiService.getApiClient().addCart(itId, qty, ioNo);
       if (response.status == 200) {
         return Right(response);
       } else {

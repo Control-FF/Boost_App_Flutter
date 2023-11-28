@@ -7,11 +7,13 @@ import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
+import 'package:boostapp/data/models/main.dart';
 import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/policy.dart';
 import 'package:boostapp/data/models/product_detail.dart';
+import 'package:boostapp/data/models/product_review.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:boostapp/modules/order/order_confirm_controller.dart';
 import 'package:dartz/dartz.dart';
@@ -31,9 +33,9 @@ class ShopService extends GetxService{
     return this;
   }
 
-  Future<Either<Failure, UserInfoResponse>> getShopMain() async {
+  Future<Either<Failure, MainResponse>> getShopMain() async {
     try {
-      final UserInfoResponse response =
+      final MainResponse response =
       await _apiService.getApiClient().shopMain();
       if (response.status == 200) {
         return Right(response);
@@ -188,6 +190,26 @@ class ShopService extends GetxService{
     try {
       final PolicyResponse response =
       await _apiService.getApiClient().policyList(coId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, ProductReviewResponse>> getProductReview({
+    required page,
+    required itId
+  }) async {
+    try {
+      final ProductReviewResponse response =
+      await _apiService.getApiClient().productReview(page,itId);
       if (response.status == 200) {
         return Right(response);
       } else {

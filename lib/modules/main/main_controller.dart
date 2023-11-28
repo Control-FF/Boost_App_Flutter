@@ -1,4 +1,5 @@
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/data/models/main.dart';
 import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/storage_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
@@ -28,6 +29,11 @@ class MainController extends GetxController{
 
   RxList categoryList = [].obs;
   RxList categoryFirstList = [].obs;
+
+  RxList<BannerList> mainBannerList = <BannerList>[].obs;
+  RxList<CategoryData> mainCategoryList = <CategoryData>[].obs;
+  RxList<ProductItem> mainMdList = <ProductItem>[].obs;
+  RxList<ProductItem> mainRecommendList = <ProductItem>[].obs;
 
   @override
   Future<void> onInit() async {
@@ -73,9 +79,57 @@ class MainController extends GetxController{
 
     final result = await _shopService.getShopMain();
     result.fold(
-          (failure) => print(failure.message),
-          (response) => print(response),
+      (failure) => print(failure.message),
+      (response){
+        mainBannerList.value = response.data!.banner!.mainBanner!;
+        mainCategoryList.value = response.data!.categoryData!;
+        mainMdList.value = response.data!.mdItems!;
+        mainRecommendList.value = response.data!.recommendItems!;
+      },
     );
+  }
+
+  List<Widget> getMainBanner(){
+    List<Widget> banner = [];
+
+    for(int i=0; i<mainBannerList.length; i++){
+      banner.add(
+        GestureDetector(
+          onTap: (){
+            String bnUrl = mainBannerList[i].bn_url;
+
+            if(bnUrl != '' && bnUrl.startsWith('http')){
+              String scheme = bnUrl.replaceAll("http://", '').replaceAll("https://", '').split('/')[0];
+              String data = bnUrl.replaceAll("http://", '').replaceAll("https://", '').split('/')[1];
+
+              if(scheme == 'category'){
+                Get.toNamed(AppRoutes.category,arguments: {
+                  'category':'',
+                  'caId':data,
+                });
+              }else if(scheme == 'item'){
+                Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                  'productId' : data
+                });
+              }
+            }
+          },
+          child: Container(
+            width: Get.width,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(16),
+                  topLeft: Radius.circular(16)
+              ),
+              child: Image.network(
+                mainBannerList[i].bn_img,
+              ),
+            ),
+          ),
+        )
+      );
+    }
+    return banner;
   }
 
   Future<void> getAddressCheck() async {

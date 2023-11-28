@@ -51,6 +51,7 @@ Map<String, dynamic> _$$_BannerToJson(_$_Banner instance) => <String, dynamic>{
 _$_BannerList _$$_BannerListFromJson(Map<String, dynamic> json) =>
     _$_BannerList(
       bn_id: json['bn_id'] as int? ?? 0,
+      bn_alt: json['bn_alt'] as String? ?? '',
       bn_url: json['bn_url'] as String? ?? '',
       bn_img: json['bn_img'] as String? ?? '',
     );
@@ -58,13 +59,14 @@ _$_BannerList _$$_BannerListFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_BannerListToJson(_$_BannerList instance) =>
     <String, dynamic>{
       'bn_id': instance.bn_id,
+      'bn_alt': instance.bn_alt,
       'bn_url': instance.bn_url,
       'bn_img': instance.bn_img,
     };
 
 _$_CategoryData _$$_CategoryDataFromJson(Map<String, dynamic> json) =>
     _$_CategoryData(
-      ca_id: json['ca_id'] as int? ?? 0,
+      ca_id: json['ca_id'] as String? ?? '',
       ca_name: json['ca_name'] as String? ?? '',
       sub_flag: json['sub_flag'] as String? ?? 'false',
     );

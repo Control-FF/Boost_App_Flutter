@@ -33,7 +33,7 @@ class CartController extends GetxController{
   }
 
   Future<void> addCart(context, String itId, int qty) async {
-    final result = await _userService.addCart(itId: itId,qty: qty.toString());
+    final result = await _userService.addCart(itId: itId,qty: qty.toString(),ioNo: '');
     result.fold(
       (failure) => print(failure.message),
       (response) {

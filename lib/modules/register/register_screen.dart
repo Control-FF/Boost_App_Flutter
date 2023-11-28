@@ -717,6 +717,7 @@ class RegisterScreen extends GetView<RegisterController>{
                           ),
                         ],
                       ),
+                      /*
                       SizedBox(height: 12.h,),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -803,6 +804,8 @@ class RegisterScreen extends GetView<RegisterController>{
                           ),
                         ],
                       ),
+
+                       */
                       Container(
                         margin: EdgeInsets.only(top: 56.h),
                         alignment: Alignment.center,

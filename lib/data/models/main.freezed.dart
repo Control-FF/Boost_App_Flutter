@@ -465,6 +465,7 @@ BannerList _$BannerListFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BannerList {
   int get bn_id => throw _privateConstructorUsedError;
+  String get bn_alt => throw _privateConstructorUsedError;
   String get bn_url => throw _privateConstructorUsedError;
   String get bn_img => throw _privateConstructorUsedError;
 
@@ -480,7 +481,7 @@ abstract class $BannerListCopyWith<$Res> {
           BannerList value, $Res Function(BannerList) then) =
       _$BannerListCopyWithImpl<$Res, BannerList>;
   @useResult
-  $Res call({int bn_id, String bn_url, String bn_img});
+  $Res call({int bn_id, String bn_alt, String bn_url, String bn_img});
 }
 
 /// @nodoc
@@ -497,6 +498,7 @@ class _$BannerListCopyWithImpl<$Res, $Val extends BannerList>
   @override
   $Res call({
     Object? bn_id = null,
+    Object? bn_alt = null,
     Object? bn_url = null,
     Object? bn_img = null,
   }) {
@@ -505,6 +507,10 @@ class _$BannerListCopyWithImpl<$Res, $Val extends BannerList>
           ? _value.bn_id
           : bn_id // ignore: cast_nullable_to_non_nullable
               as int,
+      bn_alt: null == bn_alt
+          ? _value.bn_alt
+          : bn_alt // ignore: cast_nullable_to_non_nullable
+              as String,
       bn_url: null == bn_url
           ? _value.bn_url
           : bn_url // ignore: cast_nullable_to_non_nullable
@@ -525,7 +531,7 @@ abstract class _$$_BannerListCopyWith<$Res>
       __$$_BannerListCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int bn_id, String bn_url, String bn_img});
+  $Res call({int bn_id, String bn_alt, String bn_url, String bn_img});
 }
 
 /// @nodoc
@@ -540,6 +546,7 @@ class __$$_BannerListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bn_id = null,
+    Object? bn_alt = null,
     Object? bn_url = null,
     Object? bn_img = null,
   }) {
@@ -548,6 +555,10 @@ class __$$_BannerListCopyWithImpl<$Res>
           ? _value.bn_id
           : bn_id // ignore: cast_nullable_to_non_nullable
               as int,
+      bn_alt: null == bn_alt
+          ? _value.bn_alt
+          : bn_alt // ignore: cast_nullable_to_non_nullable
+              as String,
       bn_url: null == bn_url
           ? _value.bn_url
           : bn_url // ignore: cast_nullable_to_non_nullable
@@ -563,7 +574,8 @@ class __$$_BannerListCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_BannerList implements _BannerList {
-  _$_BannerList({this.bn_id = 0, this.bn_url = '', this.bn_img = ''});
+  _$_BannerList(
+      {this.bn_id = 0, this.bn_alt = '', this.bn_url = '', this.bn_img = ''});
 
   factory _$_BannerList.fromJson(Map<String, dynamic> json) =>
       _$$_BannerListFromJson(json);
@@ -573,6 +585,9 @@ class _$_BannerList implements _BannerList {
   final int bn_id;
   @override
   @JsonKey()
+  final String bn_alt;
+  @override
+  @JsonKey()
   final String bn_url;
   @override
   @JsonKey()
@@ -580,7 +595,7 @@ class _$_BannerList implements _BannerList {
 
   @override
   String toString() {
-    return 'BannerList(bn_id: $bn_id, bn_url: $bn_url, bn_img: $bn_img)';
+    return 'BannerList(bn_id: $bn_id, bn_alt: $bn_alt, bn_url: $bn_url, bn_img: $bn_img)';
   }
 
   @override
@@ -589,13 +604,14 @@ class _$_BannerList implements _BannerList {
         (other.runtimeType == runtimeType &&
             other is _$_BannerList &&
             (identical(other.bn_id, bn_id) || other.bn_id == bn_id) &&
+            (identical(other.bn_alt, bn_alt) || other.bn_alt == bn_alt) &&
             (identical(other.bn_url, bn_url) || other.bn_url == bn_url) &&
             (identical(other.bn_img, bn_img) || other.bn_img == bn_img));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, bn_id, bn_url, bn_img);
+  int get hashCode => Object.hash(runtimeType, bn_id, bn_alt, bn_url, bn_img);
 
   @JsonKey(ignore: true)
   @override
@@ -614,6 +630,7 @@ class _$_BannerList implements _BannerList {
 abstract class _BannerList implements BannerList {
   factory _BannerList(
       {final int bn_id,
+      final String bn_alt,
       final String bn_url,
       final String bn_img}) = _$_BannerList;
 
@@ -622,6 +639,8 @@ abstract class _BannerList implements BannerList {
 
   @override
   int get bn_id;
+  @override
+  String get bn_alt;
   @override
   String get bn_url;
   @override
@@ -638,7 +657,7 @@ CategoryData _$CategoryDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CategoryData {
-  int get ca_id => throw _privateConstructorUsedError;
+  String get ca_id => throw _privateConstructorUsedError;
   String get ca_name => throw _privateConstructorUsedError;
   String get sub_flag => throw _privateConstructorUsedError;
 
@@ -654,7 +673,7 @@ abstract class $CategoryDataCopyWith<$Res> {
           CategoryData value, $Res Function(CategoryData) then) =
       _$CategoryDataCopyWithImpl<$Res, CategoryData>;
   @useResult
-  $Res call({int ca_id, String ca_name, String sub_flag});
+  $Res call({String ca_id, String ca_name, String sub_flag});
 }
 
 /// @nodoc
@@ -678,7 +697,7 @@ class _$CategoryDataCopyWithImpl<$Res, $Val extends CategoryData>
       ca_id: null == ca_id
           ? _value.ca_id
           : ca_id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       ca_name: null == ca_name
           ? _value.ca_name
           : ca_name // ignore: cast_nullable_to_non_nullable
@@ -699,7 +718,7 @@ abstract class _$$_CategoryDataCopyWith<$Res>
       __$$_CategoryDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int ca_id, String ca_name, String sub_flag});
+  $Res call({String ca_id, String ca_name, String sub_flag});
 }
 
 /// @nodoc
@@ -721,7 +740,7 @@ class __$$_CategoryDataCopyWithImpl<$Res>
       ca_id: null == ca_id
           ? _value.ca_id
           : ca_id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       ca_name: null == ca_name
           ? _value.ca_name
           : ca_name // ignore: cast_nullable_to_non_nullable
@@ -737,14 +756,15 @@ class __$$_CategoryDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CategoryData implements _CategoryData {
-  _$_CategoryData({this.ca_id = 0, this.ca_name = '', this.sub_flag = 'false'});
+  _$_CategoryData(
+      {this.ca_id = '', this.ca_name = '', this.sub_flag = 'false'});
 
   factory _$_CategoryData.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryDataFromJson(json);
 
   @override
   @JsonKey()
-  final int ca_id;
+  final String ca_id;
   @override
   @JsonKey()
   final String ca_name;
@@ -788,7 +808,7 @@ class _$_CategoryData implements _CategoryData {
 
 abstract class _CategoryData implements CategoryData {
   factory _CategoryData(
-      {final int ca_id,
+      {final String ca_id,
       final String ca_name,
       final String sub_flag}) = _$_CategoryData;
 
@@ -796,7 +816,7 @@ abstract class _CategoryData implements CategoryData {
       _$_CategoryData.fromJson;
 
   @override
-  int get ca_id;
+  String get ca_id;
   @override
   String get ca_name;
   @override

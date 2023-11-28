@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:html/parser.dart';
 
 class Constants {
   static const String baseUrl = 'http://boost.bnewb.kr';
@@ -42,5 +43,17 @@ class Constants {
     }
 
     return maskingCard;
+  }
+
+  static String parseHtmlString(String htmlString) {
+    htmlString = htmlString.replaceAll('</p>', '\n');
+    final document = parse(htmlString);
+    final String parsedString = parse(document.body!.text).documentElement!.text;
+
+    return parsedString;
+  }
+
+  static int getPercent(int salePrice, int originPrice){
+    return 100 - ((salePrice.toDouble() / originPrice.toDouble()) * 100).toInt();
   }
 }
