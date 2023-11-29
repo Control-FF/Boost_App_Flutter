@@ -1253,6 +1253,137 @@ class _ApiClient implements ApiClient {
     return value;
   }
 
+  @override
+  Future<DataResponse> registerReview(
+    ct_id,
+    is_subject,
+    is_content,
+    is_score,
+    review_img,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (ct_id != null) {
+      _data.fields.add(MapEntry(
+        'ct_id',
+        ct_id,
+      ));
+    }
+    if (is_subject != null) {
+      _data.fields.add(MapEntry(
+        'is_subject',
+        is_subject,
+      ));
+    }
+    if (is_content != null) {
+      _data.fields.add(MapEntry(
+        'is_content',
+        is_content,
+      ));
+    }
+    if (is_score != null) {
+      _data.fields.add(MapEntry(
+        'is_score',
+        is_score,
+      ));
+    }
+    if (review_img != null) {
+      _data.files.addAll(review_img.map((i) => MapEntry('review_img', i)));
+    }
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/item-reviews',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> updateReview(
+    isId,
+    is_subject,
+    is_content,
+    is_score,
+    review_img,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    if (is_subject != null) {
+      _data.fields.add(MapEntry(
+        'is_subject',
+        is_subject,
+      ));
+    }
+    if (is_content != null) {
+      _data.fields.add(MapEntry(
+        'is_content',
+        is_content,
+      ));
+    }
+    if (is_score != null) {
+      _data.fields.add(MapEntry(
+        'is_score',
+        is_score,
+      ));
+    }
+    if (review_img != null) {
+      _data.files.addAll(review_img.map((i) => MapEntry('review_img', i)));
+    }
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/review/${isId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<DataResponse> deleteReview(isId) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/api/shop/review/${isId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = DataResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

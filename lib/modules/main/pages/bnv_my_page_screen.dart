@@ -511,7 +511,7 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                                 alignment: Alignment.centerRight,
                                 child: InkWell(
                                   onTap: (){
-
+                                    Get.toNamed(AppRoutes.reviewList);
                                   },
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,

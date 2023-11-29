@@ -1,6 +1,7 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/main/pages/buy/buy_controller.dart';
+import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -214,7 +215,11 @@ class BuyListScreen extends GetView<BuyController>{
                               width: Get.width,
                               child: ElevatedButton(
                                 onPressed: (){
-
+                                  Get.toNamed(AppRoutes.reviewEdit,arguments: {
+                                    'ctId' : state.items[index].ct_id,
+                                    'itName' : state.items[index].it_name,
+                                    'type' : 'register'
+                                  });
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: ColorConstant.accent,

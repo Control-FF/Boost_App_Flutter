@@ -245,7 +245,9 @@ class HomeTabPopular extends GetView<HomeController>{
                                           Stack(
                                             children: [
                                               mainController.mainMdList[index].it_img1 != ''
-                                                  ? Image.network(Constants.fileUrl+mainController.mainMdList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,)
+                                                  ? Image.network(Constants.fileUrl+mainController.mainMdList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
+                                                    return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
+                                              },)
                                                   : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
                                               Positioned(
                                                 left: 9,
@@ -446,14 +448,11 @@ class HomeTabPopular extends GetView<HomeController>{
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Stack(
-                                            children: [
-                                              mainController.mainRecommendList[index].it_img1 != ''
-                                                  ? Image.network(Constants.fileUrl+mainController.mainRecommendList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,)
-                                                  : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-
-                                            ],
-                                          ),
+                                          mainController.mainRecommendList[index].it_img1 != ''
+                                              ? Image.network(Constants.fileUrl+mainController.mainRecommendList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
+                                                  return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
+                                                })
+                                              : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
                                           SizedBox(height: 9.h,),
                                           SizedBox(
                                             width: 146.w,

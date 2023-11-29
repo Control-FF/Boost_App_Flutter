@@ -324,4 +324,30 @@ abstract class ApiClient {
   Future<DataResponse> setPayment(
       @Query('od_id') String odId
   );
+
+  //리뷰 등록
+  @POST('/api/shop/item-reviews')
+  Future<DataResponse> registerReview(
+      @Part() String? ct_id,
+      @Part() String? is_subject,
+      @Part() String? is_content,
+      @Part() String? is_score,
+      @Part() List<MultipartFile>? review_img,
+  );
+
+  //리뷰 수정
+  @PATCH('/api/shop/review/{isId}')
+  Future<DataResponse> updateReview(
+      @Path('isId') String isId,
+      @Part() String? is_subject,
+      @Part() String? is_content,
+      @Part() String? is_score,
+      @Part() List<MultipartFile>? review_img,
+  );
+
+  //리뷰 삭제
+  @DELETE('/api/shop/review/{isId}')
+  Future<DataResponse> deleteReview(
+      @Path('isId') String isId,
+  );
 }

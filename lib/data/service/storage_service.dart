@@ -40,6 +40,19 @@ class StorageService extends GetxService {
     _storage.write(Constants.tokenKey, token);
   }
 
+  String? getName() {
+    final userName = _storage.read(Constants.userName);
+    if (userName != null) {
+      return userName;
+    } else {
+      return '';
+    }
+  }
+
+  void saveName(String name) {
+    _storage.write(Constants.userName,name);
+  }
+
   void deleteToken() {
     _storage.remove(Constants.tokenKey);
   }

@@ -31,6 +31,7 @@ class MainController extends GetxController{
   RxList categoryFirstList = [].obs;
 
   RxList<BannerList> mainBannerList = <BannerList>[].obs;
+  RxList<BannerList> bottomBannerList = <BannerList>[].obs;
   RxList<CategoryData> mainCategoryList = <CategoryData>[].obs;
   RxList<ProductItem> mainMdList = <ProductItem>[].obs;
   RxList<ProductItem> mainRecommendList = <ProductItem>[].obs;
@@ -63,16 +64,6 @@ class MainController extends GetxController{
     await getCategoryList('');
     await getCategoryFirstList();
     await getShopMain();
-
-    String popupDate = _storageService.getPopupDate();
-
-    DateTime now = DateTime.now();
-    DateFormat formatter = DateFormat('yyyy-MM-dd');
-    String strToday = formatter.format(now);
-
-    if(popupDate != strToday){
-      showAdBottomSheet();
-    }
   }
 
   Future<void> getShopMain() async {
@@ -82,9 +73,22 @@ class MainController extends GetxController{
       (failure) => print(failure.message),
       (response){
         mainBannerList.value = response.data!.banner!.mainBanner!;
+        bottomBannerList.value = response.data!.banner!.bottomBanner!;
         mainCategoryList.value = response.data!.categoryData!;
         mainMdList.value = response.data!.mdItems!;
         mainRecommendList.value = response.data!.recommendItems!;
+
+        if(bottomBannerList.isNotEmpty){
+          String popupDate = _storageService.getPopupDate();
+
+          DateTime now = DateTime.now();
+          DateFormat formatter = DateFormat('yyyy-MM-dd');
+          String strToday = formatter.format(now);
+
+          if(popupDate != strToday){
+            showAdBottomSheet();
+          }
+        }
       },
     );
   }
@@ -254,13 +258,34 @@ class MainController extends GetxController{
         children: [
           Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    topLeft: Radius.circular(30)
-                ),
-                child: Image.asset(
-                  'assets/images/sample_bottom_banner.jpg',
+              GestureDetector(
+                onTap: (){
+                  String bnUrl = bottomBannerList[0].bn_url;
+
+                  if(bnUrl != '' && bnUrl.startsWith('http')){
+                    String scheme = bnUrl.replaceAll("http://", '').replaceAll("https://", '').split('/')[0];
+                    String data = bnUrl.replaceAll("http://", '').replaceAll("https://", '').split('/')[1];
+
+                    if(scheme == 'category'){
+                      Get.toNamed(AppRoutes.category,arguments: {
+                        'category':'',
+                        'caId':data,
+                      });
+                    }else if(scheme == 'item'){
+                      Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                        'productId' : data
+                      });
+                    }
+                  }
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30),
+                      topLeft: Radius.circular(30)
+                  ),
+                  child: Image.network(
+                    bottomBannerList[0].bn_img,
+                  ),
                 ),
               ),
               Row(

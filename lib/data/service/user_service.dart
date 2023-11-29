@@ -10,14 +10,17 @@ import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
+import 'package:boostapp/data/models/product_review.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dartz/dartz.dart';
 import 'package:boostapp/data/models/token.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/service/api_service.dart';
 import 'package:boostapp/data/service/storage_service.dart';
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:dio/dio.dart';
+
+import 'package:http/http.dart' as http;
 
 class UserService extends GetxService{
   static late ApiService _apiService;
@@ -619,6 +622,71 @@ class UserService extends GetxService{
     try {
       final OrderConfirmResponse response =
       await _apiService.getApiClient().orderConfirm(odId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> registerReview({
+    required ctId,
+    required subject,
+    required contents,
+    required score,
+    required reviewImg,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().registerReview(ctId,subject,contents,score,reviewImg);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> updateReview({
+    required ctId,
+    required subject,
+    required contents,
+    required score,
+    required reviewImg,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().updateReview(ctId,subject,contents,score,reviewImg);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> deleteReview({
+    required isId,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().deleteReview(isId);
       if (response.status == 200) {
         return Right(response);
       } else {

@@ -32,6 +32,10 @@ import 'package:boostapp/modules/main/pages/point/point_binding.dart';
 import 'package:boostapp/modules/main/pages/point/point_controller.dart';
 import 'package:boostapp/modules/main/pages/point/point_screen.dart';
 import 'package:boostapp/modules/main/pages/point/point_use_screen.dart';
+import 'package:boostapp/modules/main/pages/review/review_binding.dart';
+import 'package:boostapp/modules/main/pages/review/review_edit_binding.dart';
+import 'package:boostapp/modules/main/pages/review/review_edit_screen.dart';
+import 'package:boostapp/modules/main/pages/review/review_screen.dart';
 import 'package:boostapp/modules/order/order_confirm_binding.dart';
 import 'package:boostapp/modules/order/order_confirm_screen.dart';
 import 'package:boostapp/modules/policy/policy_binding.dart';
@@ -81,6 +85,8 @@ class AppRoutes {
   static const couponList = '/coupon_list';
   static const couponUse = '/coupon_use';
   static const couponRegister = '/coupon_register';
+  static const reviewList = '/review_list';
+  static const reviewEdit = '/review_edit';
   static const pointList = '/point_list';
   static const pointUse = '/point_use';
   static const payList = '/pay_list';
@@ -239,6 +245,20 @@ class AppRoutes {
       page: () => CouponUseScreen(),
       bindings: [
         CouponBinding(),
+      ],
+    ),
+    GetPage(
+      name: reviewList,
+      page: () => ReviewScreen(),
+      bindings: [
+        ReviewBinding(),
+      ],
+    ),
+    GetPage(
+      name: reviewEdit,
+      page: () => ReviewEditScreen(),
+      bindings: [
+        ReviewEditBinding(),
       ],
     ),
     GetPage(

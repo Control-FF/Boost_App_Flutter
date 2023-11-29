@@ -8,6 +8,7 @@ class Constants {
   static const timeout = Duration(seconds: 30);
 
   static const String tokenKey = 'Token';
+  static const String userName = 'Name';
   static const String searchTextKey = 'SearchText';
   static const String popupDate = 'PopupDate';
 

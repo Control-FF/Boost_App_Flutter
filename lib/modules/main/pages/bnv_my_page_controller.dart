@@ -28,6 +28,7 @@ class MyPageController extends GetxController with StateMixin{
         change(null, status: RxStatus.error(failure.message));
       },
       (response) {
+        _storageService.saveName(response.data!.name);
         change(response, status: RxStatus.success());
       },
     );

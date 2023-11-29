@@ -892,39 +892,17 @@ class SearchScreen extends GetView<ProductSearchController> {
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Stack(
-                                              children: [
-                                                controller.keywordResultList[index].it_img1 == ""
-                                                    ? Image.asset(
-                                                        'assets/images/product_sample.png',
-                                                        fit: BoxFit.cover,
-                                                    )
-                                                    : AspectRatio(
-                                                        aspectRatio: 1/1,
-                                                        child: Image.network(
-                                                          '${Constants.fileUrl}${controller.keywordResultList[index].it_img1}',
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      )
-                                                ,
-                                                Positioned(
-                                                  right: 0,
-                                                  bottom: 0,
-                                                  child: Container(
-                                                    color: ColorConstant.accent,
-                                                    width: 20.w,
-                                                    height: 20.h,
-                                                    child: IconButton(padding: EdgeInsets.zero,
-                                                      color: ColorConstant.accent,
-                                                      alignment: Alignment.center,
-                                                      onPressed: (){
-
-                                                      },
-                                                      icon: Icon(Icons.favorite_border_outlined,color: ColorConstant.white,size: 10),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                            controller.keywordResultList[index].it_img1 == ""
+                                                ? Image.asset(
+                                              'assets/images/product_sample.png',
+                                              fit: BoxFit.cover,
+                                            )
+                                                : AspectRatio(
+                                              aspectRatio: 1/1,
+                                              child: Image.network(
+                                                '${Constants.fileUrl}${controller.keywordResultList[index].it_img1}',
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                             SizedBox(height: 9.h,),
                                             SizedBox(
@@ -951,6 +929,15 @@ class SearchScreen extends GetView<ProductSearchController> {
                                               child: Text.rich(
                                                   TextSpan(
                                                       children: [
+                                                        controller.keywordResultList[index].it_cust_price != controller.keywordResultList[index].it_price ? TextSpan(
+                                                          text: '${Constants.getPercent(controller.keywordResultList[index].it_price, controller.keywordResultList[index].it_cust_price)}%',
+                                                          style: TextStyle(
+                                                            color: ColorConstant.primary,
+                                                            fontSize: 12.sp,
+                                                            fontFamily: 'Noto Sans KR',
+                                                            fontWeight: FontWeight.w700,
+                                                          ),
+                                                        ) : TextSpan(),
                                                         TextSpan(
                                                           text: ' ${Constants.numberAddComma(controller.keywordResultList[index].it_price)}원',
                                                           style: TextStyle(
@@ -964,7 +951,16 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                   )
                                               ),
                                             ),
-
+                                            controller.keywordResultList[index].it_cust_price != controller.keywordResultList[index].it_price ? Text(
+                                              '${Constants.numberAddComma(controller.keywordResultList[index].it_cust_price)}원',
+                                              style: TextStyle(
+                                                  color: ColorConstant.gray1,
+                                                  fontSize: 8.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w700,
+                                                  decoration: TextDecoration.lineThrough
+                                              ),
+                                            ) : SizedBox()
                                           ],
                                         ),
                                       );

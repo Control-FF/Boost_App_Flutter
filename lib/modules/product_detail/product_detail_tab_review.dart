@@ -144,6 +144,62 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
                       ],
                     ),
                     SizedBox(height: 12.h,),
+                    Row(
+                      children: [
+                        controller.reviewList[index].is_img1 != '' ? Container(
+                          width: 60.w,
+                          height: 60.h,
+                          margin: EdgeInsets.only(right: 4.w),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(5),
+                                topLeft: Radius.circular(5)
+                            ),
+                            child: Image.network(
+                              controller.reviewList[index].is_img1,
+                            ),
+                          ),
+                        ) : SizedBox(),
+                        controller.reviewList[index].is_img2 != '' ? Container(
+                          width: 60.w,
+                          height: 60.h,
+                          margin: EdgeInsets.only(right: 4.w),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(5),
+                                topLeft: Radius.circular(5)
+                            ),
+                            child: Image.network(
+                              controller.reviewList[index].is_img2,
+                            ),
+                          ),
+                        ) : SizedBox(),
+                        controller.reviewList[index].is_img3 != '' ? Container(
+                          width: 60.w,
+                          height: 60.h,
+                          margin: EdgeInsets.only(right: 4.w),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(5),
+                                topLeft: Radius.circular(5)
+                            ),
+                            child: Image.network(
+                              controller.reviewList[index].is_img3,
+                            ),
+                          ),
+                        ) : SizedBox()
+                      ],
+                    ),
+                    SizedBox(height: 9.h,),
+                    Text(
+                      controller.reviewList[index].is_name,
+                      style: TextStyle(
+                        color: ColorConstant.black,
+                        fontSize: 12.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
                   ],
                 ),
               );
