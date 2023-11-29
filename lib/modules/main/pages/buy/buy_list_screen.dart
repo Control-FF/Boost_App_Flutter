@@ -62,7 +62,7 @@ class BuyListScreen extends GetView<BuyController>{
                             controller.isShowDate(index) ? Padding(
                               padding: EdgeInsets.only(bottom: 11.h),
                               child: Text(
-                                state.items[index].ct_select_time.split(' ')[0],
+                                state.items[index].ct_time.split(' ')[0],
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 12.sp,
@@ -75,7 +75,9 @@ class BuyListScreen extends GetView<BuyController>{
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                                  child: Image.asset(
+                                  child: state.items[index].it_img1 != '' ? Image.network(
+                                    state.items[index].it_img1,width: 96.w,height: 96.h,fit: BoxFit.cover,
+                                  ) : Image.asset(
                                     'assets/images/product_sample.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
                                   ),
                                 ),
@@ -211,7 +213,7 @@ class BuyListScreen extends GetView<BuyController>{
                               ],
                             ),
                             SizedBox(height: 11.h,),
-                            Container(
+                            state.items[index].ct_status == '완료' ? Container(
                               width: Get.width,
                               child: ElevatedButton(
                                 onPressed: (){
@@ -239,7 +241,7 @@ class BuyListScreen extends GetView<BuyController>{
                                   ),
                                 ),
                               ),
-                            ),
+                            ) : SizedBox(),
                           ],
                         );
                       },

@@ -74,6 +74,7 @@ class ProductDetailResponse with _$ProductDetailResponse {
     required int status,
     @Default('') String message,
     @Default(0) int reviews,
+    @Default('0') String reviewAvg,
     @Default(0) int qna,
     Item? item,
     ItemInfo? item_info,

@@ -1210,6 +1210,7 @@ mixin _$ProductDetailResponse {
   int get status => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   int get reviews => throw _privateConstructorUsedError;
+  String get reviewAvg => throw _privateConstructorUsedError;
   int get qna => throw _privateConstructorUsedError;
   Item? get item => throw _privateConstructorUsedError;
   ItemInfo? get item_info => throw _privateConstructorUsedError;
@@ -1232,6 +1233,7 @@ abstract class $ProductDetailResponseCopyWith<$Res> {
       {int status,
       String message,
       int reviews,
+      String reviewAvg,
       int qna,
       Item? item,
       ItemInfo? item_info,
@@ -1258,6 +1260,7 @@ class _$ProductDetailResponseCopyWithImpl<$Res,
     Object? status = null,
     Object? message = null,
     Object? reviews = null,
+    Object? reviewAvg = null,
     Object? qna = null,
     Object? item = freezed,
     Object? item_info = freezed,
@@ -1276,6 +1279,10 @@ class _$ProductDetailResponseCopyWithImpl<$Res,
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as int,
+      reviewAvg: null == reviewAvg
+          ? _value.reviewAvg
+          : reviewAvg // ignore: cast_nullable_to_non_nullable
+              as String,
       qna: null == qna
           ? _value.qna
           : qna // ignore: cast_nullable_to_non_nullable
@@ -1332,6 +1339,7 @@ abstract class _$$_ProductDetailResponseCopyWith<$Res>
       {int status,
       String message,
       int reviews,
+      String reviewAvg,
       int qna,
       Item? item,
       ItemInfo? item_info,
@@ -1357,6 +1365,7 @@ class __$$_ProductDetailResponseCopyWithImpl<$Res>
     Object? status = null,
     Object? message = null,
     Object? reviews = null,
+    Object? reviewAvg = null,
     Object? qna = null,
     Object? item = freezed,
     Object? item_info = freezed,
@@ -1375,6 +1384,10 @@ class __$$_ProductDetailResponseCopyWithImpl<$Res>
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as int,
+      reviewAvg: null == reviewAvg
+          ? _value.reviewAvg
+          : reviewAvg // ignore: cast_nullable_to_non_nullable
+              as String,
       qna: null == qna
           ? _value.qna
           : qna // ignore: cast_nullable_to_non_nullable
@@ -1402,6 +1415,7 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
       {required this.status,
       this.message = '',
       this.reviews = 0,
+      this.reviewAvg = '0',
       this.qna = 0,
       this.item,
       this.item_info,
@@ -1419,6 +1433,9 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
   @override
   @JsonKey()
   final int reviews;
+  @override
+  @JsonKey()
+  final String reviewAvg;
   @override
   @JsonKey()
   final int qna;
@@ -1439,7 +1456,7 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
 
   @override
   String toString() {
-    return 'ProductDetailResponse(status: $status, message: $message, reviews: $reviews, qna: $qna, item: $item, item_info: $item_info, option: $option)';
+    return 'ProductDetailResponse(status: $status, message: $message, reviews: $reviews, reviewAvg: $reviewAvg, qna: $qna, item: $item, item_info: $item_info, option: $option)';
   }
 
   @override
@@ -1450,6 +1467,8 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.reviews, reviews) || other.reviews == reviews) &&
+            (identical(other.reviewAvg, reviewAvg) ||
+                other.reviewAvg == reviewAvg) &&
             (identical(other.qna, qna) || other.qna == qna) &&
             (identical(other.item, item) || other.item == item) &&
             (identical(other.item_info, item_info) ||
@@ -1459,8 +1478,16 @@ class _$_ProductDetailResponse implements _ProductDetailResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, message, reviews, qna,
-      item, item_info, const DeepCollectionEquality().hash(_option));
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      message,
+      reviews,
+      reviewAvg,
+      qna,
+      item,
+      item_info,
+      const DeepCollectionEquality().hash(_option));
 
   @JsonKey(ignore: true)
   @override
@@ -1482,6 +1509,7 @@ abstract class _ProductDetailResponse implements ProductDetailResponse {
           {required final int status,
           final String message,
           final int reviews,
+          final String reviewAvg,
           final int qna,
           final Item? item,
           final ItemInfo? item_info,
@@ -1497,6 +1525,8 @@ abstract class _ProductDetailResponse implements ProductDetailResponse {
   String get message;
   @override
   int get reviews;
+  @override
+  String get reviewAvg;
   @override
   int get qna;
   @override

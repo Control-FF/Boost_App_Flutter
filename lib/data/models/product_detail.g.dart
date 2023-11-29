@@ -107,6 +107,7 @@ _$_ProductDetailResponse _$$_ProductDetailResponseFromJson(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       reviews: json['reviews'] as int? ?? 0,
+      reviewAvg: json['reviewAvg'] as String? ?? '0',
       qna: json['qna'] as int? ?? 0,
       item: json['item'] == null
           ? null
@@ -126,6 +127,7 @@ Map<String, dynamic> _$$_ProductDetailResponseToJson(
       'status': instance.status,
       'message': instance.message,
       'reviews': instance.reviews,
+      'reviewAvg': instance.reviewAvg,
       'qna': instance.qna,
       'item': instance.item,
       'item_info': instance.item_info,

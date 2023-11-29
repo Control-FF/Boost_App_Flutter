@@ -35,7 +35,7 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
                 Image.asset('assets/images/ic_rating_fill.png',width: 14.w,height: 14.w,),
                 SizedBox(width: 3.w,),
                 Text(
-                  '4.6',
+                  controller.productData.value!.reviewAvg,
                   style: TextStyle(
                     color: ColorConstant.black,
                     fontSize: 16.sp,
@@ -55,6 +55,7 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
               return Padding(
                 padding: EdgeInsets.only(top: 18.h,bottom: 17.h),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,12 +152,12 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
                           height: 60.h,
                           margin: EdgeInsets.only(right: 4.w),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(5),
-                                topLeft: Radius.circular(5)
-                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
                             child: Image.network(
                               controller.reviewList[index].is_img1,
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ) : SizedBox(),
@@ -165,12 +166,12 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
                           height: 60.h,
                           margin: EdgeInsets.only(right: 4.w),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(5),
-                                topLeft: Radius.circular(5)
-                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
                             child: Image.network(
                               controller.reviewList[index].is_img2,
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ) : SizedBox(),
@@ -179,20 +180,21 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
                           height: 60.h,
                           margin: EdgeInsets.only(right: 4.w),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(5),
-                                topLeft: Radius.circular(5)
-                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
                             child: Image.network(
                               controller.reviewList[index].is_img3,
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ) : SizedBox()
                       ],
                     ),
                     SizedBox(height: 9.h,),
+                    /*
                     Text(
-                      controller.reviewList[index].is_name,
+                      controller.reviewList[index].is_name,새
                       style: TextStyle(
                         color: ColorConstant.black,
                         fontSize: 12.sp,
@@ -200,6 +202,8 @@ class ProductDetailTabReview extends GetView<ProductDetailController>{
                         fontWeight: FontWeight.w700,
                       ),
                     )
+
+                     */
                   ],
                 ),
               );
