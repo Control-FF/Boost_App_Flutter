@@ -9,6 +9,7 @@ part of 'payment.dart';
 _$_Payment _$$_PaymentFromJson(Map<String, dynamic> json) => _$_Payment(
       ct_id: json['ct_id'] as int? ?? 0,
       od_id: json['od_id'] as int? ?? 0,
+      is_id: json['is_id'] as int? ?? 0,
       it_name: json['it_name'] as String? ?? '',
       it_id: json['it_id'] as String? ?? '',
       ct_status: json['ct_status'] as String? ?? '',
@@ -20,6 +21,7 @@ _$_Payment _$$_PaymentFromJson(Map<String, dynamic> json) => _$_Payment(
       io_price: json['io_price'] as int? ?? 0,
       it_basic: json['it_basic'] as String? ?? '',
       ct_time: json['ct_time'] as String? ?? '',
+      completion_time: json['completion_time'] as String? ?? '',
       it_img1: json['it_img1'] as String? ?? '',
       it_img2: json['it_img2'] as String? ?? '',
       it_img3: json['it_img3'] as String? ?? '',
@@ -36,6 +38,7 @@ Map<String, dynamic> _$$_PaymentToJson(_$_Payment instance) =>
     <String, dynamic>{
       'ct_id': instance.ct_id,
       'od_id': instance.od_id,
+      'is_id': instance.is_id,
       'it_name': instance.it_name,
       'it_id': instance.it_id,
       'ct_status': instance.ct_status,
@@ -47,6 +50,7 @@ Map<String, dynamic> _$$_PaymentToJson(_$_Payment instance) =>
       'io_price': instance.io_price,
       'it_basic': instance.it_basic,
       'ct_time': instance.ct_time,
+      'completion_time': instance.completion_time,
       'it_img1': instance.it_img1,
       'it_img2': instance.it_img2,
       'it_img3': instance.it_img3,

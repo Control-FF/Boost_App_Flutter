@@ -963,6 +963,7 @@ Option _$OptionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Option {
   String get io_id => throw _privateConstructorUsedError;
+  int get io_no => throw _privateConstructorUsedError;
   int get io_price => throw _privateConstructorUsedError;
   int get io_stock_qty => throw _privateConstructorUsedError;
   bool get is_soldout => throw _privateConstructorUsedError;
@@ -981,6 +982,7 @@ abstract class $OptionCopyWith<$Res> {
   @useResult
   $Res call(
       {String io_id,
+      int io_no,
       int io_price,
       int io_stock_qty,
       bool is_soldout,
@@ -1002,6 +1004,7 @@ class _$OptionCopyWithImpl<$Res, $Val extends Option>
   @override
   $Res call({
     Object? io_id = null,
+    Object? io_no = null,
     Object? io_price = null,
     Object? io_stock_qty = null,
     Object? is_soldout = null,
@@ -1013,6 +1016,10 @@ class _$OptionCopyWithImpl<$Res, $Val extends Option>
           ? _value.io_id
           : io_id // ignore: cast_nullable_to_non_nullable
               as String,
+      io_no: null == io_no
+          ? _value.io_no
+          : io_no // ignore: cast_nullable_to_non_nullable
+              as int,
       io_price: null == io_price
           ? _value.io_price
           : io_price // ignore: cast_nullable_to_non_nullable
@@ -1045,6 +1052,7 @@ abstract class _$$_OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
   @useResult
   $Res call(
       {String io_id,
+      int io_no,
       int io_price,
       int io_stock_qty,
       bool is_soldout,
@@ -1063,6 +1071,7 @@ class __$$_OptionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? io_id = null,
+    Object? io_no = null,
     Object? io_price = null,
     Object? io_stock_qty = null,
     Object? is_soldout = null,
@@ -1074,6 +1083,10 @@ class __$$_OptionCopyWithImpl<$Res>
           ? _value.io_id
           : io_id // ignore: cast_nullable_to_non_nullable
               as String,
+      io_no: null == io_no
+          ? _value.io_no
+          : io_no // ignore: cast_nullable_to_non_nullable
+              as int,
       io_price: null == io_price
           ? _value.io_price
           : io_price // ignore: cast_nullable_to_non_nullable
@@ -1103,6 +1116,7 @@ class __$$_OptionCopyWithImpl<$Res>
 class _$_Option implements _Option {
   _$_Option(
       {this.io_id = '',
+      this.io_no = 0,
       this.io_price = 0,
       this.io_stock_qty = 0,
       this.is_soldout = false,
@@ -1115,6 +1129,9 @@ class _$_Option implements _Option {
   @override
   @JsonKey()
   final String io_id;
+  @override
+  @JsonKey()
+  final int io_no;
   @override
   @JsonKey()
   final int io_price;
@@ -1133,7 +1150,7 @@ class _$_Option implements _Option {
 
   @override
   String toString() {
-    return 'Option(io_id: $io_id, io_price: $io_price, io_stock_qty: $io_stock_qty, is_soldout: $is_soldout, io_qty: $io_qty, isCheck: $isCheck)';
+    return 'Option(io_id: $io_id, io_no: $io_no, io_price: $io_price, io_stock_qty: $io_stock_qty, is_soldout: $is_soldout, io_qty: $io_qty, isCheck: $isCheck)';
   }
 
   @override
@@ -1142,6 +1159,7 @@ class _$_Option implements _Option {
         (other.runtimeType == runtimeType &&
             other is _$_Option &&
             (identical(other.io_id, io_id) || other.io_id == io_id) &&
+            (identical(other.io_no, io_no) || other.io_no == io_no) &&
             (identical(other.io_price, io_price) ||
                 other.io_price == io_price) &&
             (identical(other.io_stock_qty, io_stock_qty) ||
@@ -1154,8 +1172,8 @@ class _$_Option implements _Option {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, io_id, io_price, io_stock_qty, is_soldout, io_qty, isCheck);
+  int get hashCode => Object.hash(runtimeType, io_id, io_no, io_price,
+      io_stock_qty, is_soldout, io_qty, isCheck);
 
   @JsonKey(ignore: true)
   @override
@@ -1174,6 +1192,7 @@ class _$_Option implements _Option {
 abstract class _Option implements Option {
   factory _Option(
       {final String io_id,
+      final int io_no,
       final int io_price,
       final int io_stock_qty,
       final bool is_soldout,
@@ -1184,6 +1203,8 @@ abstract class _Option implements Option {
 
   @override
   String get io_id;
+  @override
+  int get io_no;
   @override
   int get io_price;
   @override

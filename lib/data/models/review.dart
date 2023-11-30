@@ -8,6 +8,8 @@ class Review with _$Review {
   factory Review({
     @Default(0) int is_id,
     @Default('') String it_id,
+    @Default('') String it_name,
+    @Default('') String io_id,
     @Default('') String is_name,
     @Default(0) int is_score,
     @Default('') String is_subject,

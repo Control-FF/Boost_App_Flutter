@@ -6,6 +6,7 @@ import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/card.dart';
 import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/models/category.dart';
+import 'package:boostapp/data/models/category_product.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/inquiry.dart';
@@ -22,6 +23,7 @@ import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/policy.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/data/models/product_review.dart';
+import 'package:boostapp/data/models/review.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -100,6 +102,14 @@ abstract class ApiClient {
       @Query('ca_id') String caId,
   );
 
+  //카테고리 상세
+  @GET('/api/shop/category-item')
+  Future<CategoryProductResponse> getCategoryProduct(
+      @Query('ca_id') String caId,
+      @Query('sort') String sort,
+      @Query('pageNum') String page,
+  );
+
   //인증 번호 요청
   @POST('/api/user/auth-phone')
   Future<DataResponse> authPhone(
@@ -154,6 +164,12 @@ abstract class ApiClient {
   //내정보
   @GET('/api/user/mypage')
   Future<UserInfoResponse> getMyInfo();
+
+  //내정보
+  @PATCH('/api/user/leave')
+  Future<DataResponse> memberLeave(
+      @Body() Map<String, dynamic> map
+  );
 
   //비밀번호 확인
   @POST('/api/user/verify-password')
@@ -302,9 +318,7 @@ abstract class ApiClient {
   //장바구니 담기
   @POST('/api/shop/cart')
   Future<DataResponse> addCart(
-      @Field('it_id') String itId,
-      @Field('ct_qty') String qty,
-      @Field('io_no') String ioNo,
+      @Body() Map<String, dynamic> map
   );
 
   //주문페이지
@@ -327,7 +341,7 @@ abstract class ApiClient {
 
   //내 리뷰 목록
   @GET('/api/user/review')
-  Future<ProductReviewResponse> getReview();
+  Future<ReviewResponse> getReview();
 
   //리뷰 등록
   @POST('/api/shop/item-reviews')

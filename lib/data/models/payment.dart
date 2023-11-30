@@ -8,6 +8,7 @@ class Payment with _$Payment {
   factory Payment({
     @Default(0) int ct_id,
     @Default(0) int od_id,
+    @Default(0) int? is_id,
     @Default('') String it_name,
     @Default('') String it_id,
     @Default('') String ct_status,
@@ -19,6 +20,7 @@ class Payment with _$Payment {
     @Default(0) int io_price,
     @Default('') String it_basic,
     @Default('') String ct_time,
+    @Default('') String completion_time,
     @Default('') String it_img1,
     @Default('') String it_img2,
     @Default('') String it_img3,

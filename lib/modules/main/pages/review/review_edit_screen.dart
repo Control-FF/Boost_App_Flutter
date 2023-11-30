@@ -96,7 +96,7 @@ class ReviewEditScreen extends GetView<ReviewController>{
                       ),
                       SizedBox(height: 1.h,),
                       RatingBar(
-                        initialRating: 0,
+                        initialRating: controller.editRating.value.toDouble(),
                         minRating: 1,
                         direction: Axis.horizontal,
                         allowHalfRating: false,
@@ -345,8 +345,12 @@ class ReviewEditScreen extends GetView<ReviewController>{
                           ));
                           return;
                         }
+                        if(controller.type.value == 'register'){
+                          controller.registerReview(context);
+                        }else if(controller.type.value == 'update'){
+                          controller.updateReview(context);
+                        }
 
-                        controller.registerReview(context);
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: ColorConstant.primary,
@@ -356,7 +360,7 @@ class ReviewEditScreen extends GetView<ReviewController>{
                           )
                       ),
                       child: Text(
-                        '리뷰 작성하기',
+                        controller.type.value == 'update' ? '리뷰 수정하기' : '리뷰 작성하기',
                         style: TextStyle(
                           color: ColorConstant.white,
                           fontSize: 14.sp,

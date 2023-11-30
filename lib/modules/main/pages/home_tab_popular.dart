@@ -107,7 +107,7 @@ class HomeTabPopular extends GetView<HomeController>{
                       sliver: SliverGrid(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 5,
-                          childAspectRatio: 58.63 / 85.19,
+                          childAspectRatio: 58.63 / 90,
                           mainAxisSpacing: 5,
                           crossAxisSpacing: 5,
                         ),

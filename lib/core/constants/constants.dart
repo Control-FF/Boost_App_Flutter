@@ -57,4 +57,15 @@ class Constants {
   static int getPercent(int salePrice, int originPrice){
     return 100 - ((salePrice.toDouble() / originPrice.toDouble()) * 100).toInt();
   }
+
+  static int diffDate(String date1){
+    var _toDay = DateTime.now();
+
+    int difference = int.parse(
+        _toDay.difference(DateTime.parse(date1)).inDays.toString());
+    print('diffDay : $difference');
+
+    return difference;
+  }
+
 }

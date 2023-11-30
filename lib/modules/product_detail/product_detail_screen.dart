@@ -18,9 +18,30 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class ProductDetailScreen extends GetView<ProductDetailController>{
   CartController cartController = Get.put(CartController());
 
+  ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     cartController.getCartList();
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset == _scrollController.position.maxScrollExtent
+          && !_scrollController.position.outOfRange) {
+        if(controller.tagIndex.value == 2){
+          controller.reviewPage++;
+          controller.getReview();
+          print('스크롤이 맨 밑에 위치해 있습니다');
+        }else if(controller.tagIndex.value == 3){
+          controller.inquiryPage++;
+          controller.getInquiry();
+          print('스크롤이 맨 밑에 위치해 있습니다');
+        }
+
+      } else if (_scrollController.offset == _scrollController.position.minScrollExtent
+          && !_scrollController.position.outOfRange) {
+        print('스크롤이 맨 위에 위치해 있습니다');
+      }
+    });
 
     return SafeArea(
       child: Scaffold(
@@ -98,6 +119,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
           children: [
             Expanded(
                 child: NestedScrollView(
+                  controller: _scrollController,
                   headerSliverBuilder: (context, innerBoxIsScrolled) => [
                     Obx(() => SliverList(
                       delegate: SliverChildListDelegate(
@@ -372,7 +394,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           )),
                                           SizedBox(width: 10.w,),
                                           Text(
-                                            '옵션 제목 $index',
+                                            controller.optionList[index].io_id,
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 14.sp,

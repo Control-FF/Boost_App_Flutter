@@ -9,6 +9,8 @@ part of 'review.dart';
 _$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
       is_id: json['is_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
+      it_name: json['it_name'] as String? ?? '',
+      io_id: json['io_id'] as String? ?? '',
       is_name: json['is_name'] as String? ?? '',
       is_score: json['is_score'] as int? ?? 0,
       is_subject: json['is_subject'] as String? ?? '',
@@ -27,6 +29,8 @@ _$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
 Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
       'is_id': instance.is_id,
       'it_id': instance.it_id,
+      'it_name': instance.it_name,
+      'io_id': instance.io_id,
       'is_name': instance.is_name,
       'is_score': instance.is_score,
       'is_subject': instance.is_subject,

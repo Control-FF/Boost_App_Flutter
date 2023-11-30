@@ -60,7 +60,16 @@ class ProductSearchController extends GetxController{
     result.fold(
           (failure) => print(failure.message),
           (response){
-            keywordResultList.value = response.items!;
+            if(keywordResultPage.value == 1){
+              keywordResultList.value = List<KeywordResult>.from(response.items!.toList(growable: false));
+            }else{
+              if(response.items!.isEmpty){
+                keywordResultPage.value--;
+                return;
+              }
+              keywordResultList.addAll(response.items!);
+            }
+
             keywordResultTotal.value = response.total_cnt;
           },
     );

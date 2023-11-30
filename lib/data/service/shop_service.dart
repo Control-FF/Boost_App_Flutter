@@ -1,6 +1,7 @@
 import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/category.dart';
+import 'package:boostapp/data/models/category_product.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
 import 'package:boostapp/data/models/inquiry.dart';
@@ -54,6 +55,27 @@ class ShopService extends GetxService{
     try {
       final CategoryResponse response =
       await _apiService.getApiClient().getCategory(caId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, CategoryProductResponse>> getCategoryProduct({
+    required caId,
+    required sort,
+    required page,
+  }) async {
+    try {
+      final CategoryProductResponse response =
+      await _apiService.getApiClient().getCategoryProduct(caId,sort,page);
       if (response.status == 200) {
         return Right(response);
       } else {

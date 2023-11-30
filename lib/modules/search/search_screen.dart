@@ -11,6 +11,8 @@ class SearchScreen extends GetView<ProductSearchController> {
 
   final cartController = Get.put(CartController());
 
+  ScrollController _scrollController = ScrollController();
+
   void _showFilterPopup(context){
     showDialog(
         context: context,
@@ -36,6 +38,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.filter.value = 'boost';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -79,6 +82,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.filter.value = 'seller';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -145,6 +149,8 @@ class SearchScreen extends GetView<ProductSearchController> {
                         }else{
                           controller.sort.value = 'latest';
                         }
+
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -188,6 +194,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.sort.value = 'review';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -231,6 +238,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.sort.value = 'price_high';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -274,6 +282,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.sort.value = 'price_low';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -317,6 +326,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.sort.value = 'rating';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -360,6 +370,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                           controller.sort.value = 'sales';
                         }
 
+                        controller.keywordResultPage.value = 1;
                         controller.getKeywordResultList();
                         Get.back();
                       },
@@ -405,6 +416,21 @@ class SearchScreen extends GetView<ProductSearchController> {
   @override
   Widget build(BuildContext context) {
     cartController.getCartList();
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset == _scrollController.position.maxScrollExtent
+          && !_scrollController.position.outOfRange) {
+        if(controller.searchStatus.value == 'result'){
+          controller.keywordResultPage++;
+          controller.getKeywordResultList();
+        }
+
+        print('스크롤이 맨 밑에 위치해 있습니다');
+      } else if (_scrollController.offset == _scrollController.position.minScrollExtent
+          && !_scrollController.position.outOfRange) {
+        print('스크롤이 맨 위에 위치해 있습니다');
+      }
+    });
 
     return SafeArea(
       child: WillPopScope(
@@ -541,6 +567,7 @@ class SearchScreen extends GetView<ProductSearchController> {
             ],
           ),
           body: SingleChildScrollView(
+              controller: _scrollController,
               physics: BouncingScrollPhysics(),
               child: Obx(() {
                 if(controller.searchStatus.value == ''){
@@ -794,7 +821,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '${controller.keywordResultList.length}개의 상품',
+                                '${controller.keywordResultTotal.value}개의 상품',
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 10.sp,
@@ -877,7 +904,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                               SliverGrid(
                                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
-                                  childAspectRatio: 58.63 / 85.19,
+                                  childAspectRatio: 58.63 / 90,
                                   mainAxisSpacing: 37,
                                   crossAxisSpacing: 23,
                                 ),

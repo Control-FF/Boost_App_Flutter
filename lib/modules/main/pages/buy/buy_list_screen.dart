@@ -10,8 +10,21 @@ import 'package:get/get.dart';
 
 class BuyListScreen extends GetView<BuyController>{
 
+  ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
+    _scrollController.addListener(() {
+      if (_scrollController.offset == _scrollController.position.maxScrollExtent
+          && !_scrollController.position.outOfRange) {
+        controller.page++;
+        controller.getBuyList();
+      } else if (_scrollController.offset == _scrollController.position.minScrollExtent
+          && !_scrollController.position.outOfRange) {
+        print('스크롤이 맨 위에 위치해 있습니다');
+      }
+    });
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -40,55 +53,55 @@ class BuyListScreen extends GetView<BuyController>{
             Expanded(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 30.w),
-                child: controller.obx(
-                    (state) => ListView.separated(
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: state.items.length,
-                      separatorBuilder: (context, index){
-                        return Padding(
-                          padding: EdgeInsets.only(top: 27.h,bottom: 18.h),
-                          child: Divider(
-                            height: 0.5.h,
-                            thickness: 0.5,
-                            color: ColorConstant.black.withOpacity(0.15),
+                child: Obx(() => ListView.separated(
+                  controller: _scrollController,
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: controller.buyList.length,
+                  separatorBuilder: (context, index){
+                    return Padding(
+                      padding: EdgeInsets.only(top: 27.h,bottom: 18.h),
+                      child: Divider(
+                        height: 0.5.h,
+                        thickness: 0.5,
+                        color: ColorConstant.black.withOpacity(0.15),
+                      ),
+                    );
+                  },
+                  itemBuilder: (context, index){
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        controller.isShowDate(index) ? Padding(
+                          padding: EdgeInsets.only(bottom: 11.h),
+                          child: Text(
+                            controller.buyList[index].ct_time.split(' ')[0],
+                            style: TextStyle(
+                              color: ColorConstant.gray12,
+                              fontSize: 12.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        );
-                      },
-                      itemBuilder: (context, index){
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        ) : SizedBox(),
+                        Row(
                           children: [
-                            controller.isShowDate(index) ? Padding(
-                              padding: EdgeInsets.only(bottom: 11.h),
-                              child: Text(
-                                state.items[index].ct_time.split(' ')[0],
-                                style: TextStyle(
-                                  color: ColorConstant.gray12,
-                                  fontSize: 12.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(6.r)),
+                              child: controller.buyList[index].it_img1 != '' ? Image.network(
+                                controller.buyList[index].it_img1,width: 96.w,height: 96.h,fit: BoxFit.cover,
+                              ) : Image.asset(
+                                'assets/images/product_sample.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
                               ),
-                            ) : SizedBox(),
-                            Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                                  child: state.items[index].it_img1 != '' ? Image.network(
-                                    state.items[index].it_img1,width: 96.w,height: 96.h,fit: BoxFit.cover,
-                                  ) : Image.asset(
-                                    'assets/images/product_sample.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
-                                  ),
-                                ),
-                                SizedBox(width: 4.w,),
-                                Expanded(
-                                  child: Container(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        /*
+                            ),
+                            SizedBox(width: 4.w,),
+                            Expanded(
+                              child: Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    /*
                                         Row(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
@@ -123,21 +136,21 @@ class BuyListScreen extends GetView<BuyController>{
                                           ],
                                         ),
                                          */
-                                        SizedBox(height: 5.h,),
-                                        Wrap(
-                                          children: [
-                                            Text(
-                                              state.items[index].it_name,
-                                              style: TextStyle(
-                                                color: ColorConstant.black,
-                                                fontSize: 10.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        /*
+                                    SizedBox(height: 5.h,),
+                                    Wrap(
+                                      children: [
+                                        Text(
+                                          controller.buyList[index].it_name,
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    /*
                                         SizedBox(height: 5.h,),
                                         Wrap(
                                           children: [
@@ -154,10 +167,10 @@ class BuyListScreen extends GetView<BuyController>{
                                         ),
 
                                          */
-                                        Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  /*
+                                    Text.rich(
+                                        TextSpan(
+                                            children: [
+                                              /*
                                                   TextSpan(
                                                     text: '50%',
                                                     style: TextStyle(
@@ -169,84 +182,91 @@ class BuyListScreen extends GetView<BuyController>{
                                                   ),
 
                                                    */
-                                                  TextSpan(
-                                                    text: '${Constants.numberAddComma(state.items[index].ct_price)}원',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerRight,
-                                          child: ElevatedButton(
-                                            onPressed: (){
-                                              //add cart
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor: ColorConstant.primary,
-                                                elevation: 0,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.all(Radius.circular(4.r))
+                                              TextSpan(
+                                                text: '${Constants.numberAddComma(controller.buyList[index].ct_price)}원',
+                                                style: TextStyle(
+                                                  color: ColorConstant.black,
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w700,
                                                 ),
-                                                minimumSize: Size(77.w,24.h)
-                                            ),
-                                            child: Text(
-                                              '장바구니 담기',
-                                              style: TextStyle(
-                                                color: ColorConstant.white,
-                                                fontSize: 10.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          ),
+                                              )
+                                            ]
                                         )
-                                      ],
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 11.h,),
-                            state.items[index].ct_status == '완료' ? Container(
-                              width: Get.width,
-                              child: ElevatedButton(
-                                onPressed: (){
-                                  Get.toNamed(AppRoutes.reviewEdit,arguments: {
-                                    'ctId' : state.items[index].ct_id,
-                                    'itName' : state.items[index].it_name,
-                                    'type' : 'register'
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: ColorConstant.accent,
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(4.r))
-                                    ),
-                                    minimumSize: Size(0.w,28.h)
-                                ),
-                                child: Text(
-                                  '리뷰 작성하기',
-                                  style: TextStyle(
-                                    color: ColorConstant.white,
-                                    fontSize: 11.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: ElevatedButton(
+                                        onPressed: (){
+                                          //add cart
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: ColorConstant.primary,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(4.r))
+                                            ),
+                                            minimumSize: Size(77.w,24.h)
+                                        ),
+                                        child: Text(
+                                          '장바구니 담기',
+                                          style: TextStyle(
+                                            color: ColorConstant.white,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
-                            ) : SizedBox(),
+                            )
                           ],
-                        );
-                      },
-                    )
-                ),
+                        ),
+                        SizedBox(height: 11.h,),
+                        controller.buyList[index].ct_status == '완료'
+                            && controller.buyList[index].is_id == null
+                            && Constants.diffDate(controller.buyList[index].completion_time) <= 7 ? Container(
+                          width: Get.width,
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              var res = await Get.toNamed(AppRoutes.reviewEdit,arguments: {
+                                'ctId' : controller.buyList[index].ct_id,
+                                'itName' : controller.buyList[index].it_name,
+                                'type' : 'register'
+                              });
+
+                              if(res != null){
+                                controller.getBuyList();
+                              }else{
+                                controller.getBuyList();
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: ColorConstant.accent,
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(4.r))
+                                ),
+                                minimumSize: Size(0.w,28.h)
+                            ),
+                            child: Text(
+                              '리뷰 작성하기',
+                              style: TextStyle(
+                                color: ColorConstant.white,
+                                fontSize: 11.sp,
+                                fontFamily: 'Noto Sans KR',
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ) : SizedBox(),
+                      ],
+                    );
+                  },
+                )),
               ),
             ),
           ],

@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class CategoryScreen extends GetView<CategoryController>{
+  ScrollController _scrollController = ScrollController();
 
   void _showFilterPopup(context){
     showDialog(
@@ -34,6 +35,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.filter.value = 'boost';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -77,6 +79,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.filter.value = 'seller';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -143,6 +146,7 @@ class CategoryScreen extends GetView<CategoryController>{
                         }else{
                           controller.sort.value = 'latest';
                         }
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -186,6 +190,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.sort.value = 'review';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -229,6 +234,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.sort.value = 'price_high';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -272,6 +278,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.sort.value = 'price_low';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -315,6 +322,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.sort.value = 'rating';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -358,6 +366,7 @@ class CategoryScreen extends GetView<CategoryController>{
                           controller.sort.value = 'sales';
                         }
 
+                        controller.page.value = 1;
                         controller.getCategoryProduct();
                         Get.back();
                       },
@@ -402,6 +411,17 @@ class CategoryScreen extends GetView<CategoryController>{
 
   @override
   Widget build(BuildContext context) {
+    _scrollController.addListener(() {
+      if (_scrollController.offset == _scrollController.position.maxScrollExtent
+          && !_scrollController.position.outOfRange) {
+        controller.page++;
+        controller.getCategoryProduct();
+      } else if (_scrollController.offset == _scrollController.position.minScrollExtent
+          && !_scrollController.position.outOfRange) {
+        print('스크롤이 맨 위에 위치해 있습니다');
+      }
+    });
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -426,6 +446,7 @@ class CategoryScreen extends GetView<CategoryController>{
         backgroundColor: ColorConstant.white,
         body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
+            controller: _scrollController,
             child: Obx(() => Container(
               margin: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 0.h),
               color: ColorConstant.white,
@@ -435,7 +456,7 @@ class CategoryScreen extends GetView<CategoryController>{
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '${controller.keywordResultList.length}개의 상품',
+                        '${controller.totalCnt.value}개의 상품',
                         style: TextStyle(
                           color: ColorConstant.gray12,
                           fontSize: 10.sp,
@@ -511,13 +532,13 @@ class CategoryScreen extends GetView<CategoryController>{
                   ),
                   SizedBox(height: 7,),
                   CustomScrollView(
-                      shrinkWrap: true,
+                    shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       slivers: [
                         SliverGrid(
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 58.63 / 85.19,
+                            childAspectRatio: 58.63 / 90,
                             mainAxisSpacing: 37,
                             crossAxisSpacing: 23,
                           ),
@@ -526,45 +547,23 @@ class CategoryScreen extends GetView<CategoryController>{
                                 return InkWell(
                                   onTap: (){
                                     Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                      'productId' : controller.keywordResultList[index].it_id
+                                      'productId' : controller.categoryProductList[index].it_id
                                     });
                                   },
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Stack(
-                                        children: [
-                                          controller.keywordResultList[index].it_img1 == ""
-                                              ? Image.asset(
-                                            'assets/images/product_sample.png',
-                                            fit: BoxFit.cover,
-                                          )
-                                              : AspectRatio(
-                                            aspectRatio: 1/1,
-                                            child: Image.network(
-                                              '${Constants.fileUrl}${controller.keywordResultList[index].it_img1}',
-                                              fit: BoxFit.cover,
-                                            ),
-                                          )
-                                          ,
-                                          Positioned(
-                                            right: 0,
-                                            bottom: 0,
-                                            child: Container(
-                                              color: ColorConstant.accent,
-                                              width: 20.w,
-                                              height: 20.h,
-                                              child: IconButton(padding: EdgeInsets.zero,
-                                                color: ColorConstant.accent,
-                                                alignment: Alignment.center,
-                                                onPressed: (){
-
-                                                },
-                                                icon: Icon(Icons.favorite_border_outlined,color: ColorConstant.white,size: 10),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      controller.categoryProductList[index].it_img1 == ""
+                                          ? Image.asset(
+                                        'assets/images/product_sample.png',
+                                        fit: BoxFit.cover,
+                                      )
+                                          : AspectRatio(
+                                        aspectRatio: 1/1,
+                                        child: Image.network(
+                                          '${Constants.fileUrl}${controller.categoryProductList[index].it_img1}',
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                       SizedBox(height: 9.h,),
                                       SizedBox(
@@ -573,7 +572,7 @@ class CategoryScreen extends GetView<CategoryController>{
                                             TextSpan(
                                                 children: [
                                                   TextSpan(
-                                                    text: controller.keywordResultList[index].it_name,
+                                                    text: controller.categoryProductList[index].it_name,
                                                     style: TextStyle(
                                                       color: ColorConstant.black,
                                                       fontSize: 10.sp,
@@ -591,8 +590,17 @@ class CategoryScreen extends GetView<CategoryController>{
                                         child: Text.rich(
                                             TextSpan(
                                                 children: [
+                                                  controller.categoryProductList[index].it_cust_price != controller.categoryProductList[index].it_price ? TextSpan(
+                                                    text: '${Constants.getPercent(controller.categoryProductList[index].it_price, controller.categoryProductList[index].it_cust_price)}%',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 12.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w700,
+                                                    ),
+                                                  ) : TextSpan(),
                                                   TextSpan(
-                                                    text: ' ${Constants.numberAddComma(controller.keywordResultList[index].it_price)}원',
+                                                    text: ' ${Constants.numberAddComma(controller.categoryProductList[index].it_price)}원',
                                                     style: TextStyle(
                                                       color: ColorConstant.black,
                                                       fontSize: 12.sp,
@@ -604,12 +612,22 @@ class CategoryScreen extends GetView<CategoryController>{
                                             )
                                         ),
                                       ),
+                                      controller.categoryProductList[index].it_cust_price != controller.categoryProductList[index].it_price ? Text(
+                                        '${Constants.numberAddComma(controller.categoryProductList[index].it_cust_price)}원',
+                                        style: TextStyle(
+                                            color: ColorConstant.gray1,
+                                            fontSize: 8.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                            decoration: TextDecoration.lineThrough
+                                        ),
+                                      ) : SizedBox()
 
                                     ],
                                   ),
                                 );
                               },
-                              childCount: controller.keywordResultList.length
+                              childCount: controller.categoryProductList.length
                           ),
                         ),
                         SliverList(

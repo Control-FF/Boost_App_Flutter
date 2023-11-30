@@ -11,6 +11,7 @@ import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/product_review.dart';
+import 'package:boostapp/data/models/review.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dartz/dartz.dart';
 import 'package:boostapp/data/models/token.dart';
@@ -331,6 +332,25 @@ class UserService extends GetxService{
     }
   }
 
+  Future<Either<Failure, DataResponse>> memberLeave({
+    required data
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().memberLeave(data);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, DataResponse>> verifyPassword({
     required password,
   }) async {
@@ -596,13 +616,11 @@ class UserService extends GetxService{
   }
 
   Future<Either<Failure, DataResponse>> addCart({
-    required itId,
-    required qty,
-    required ioNo
+    required data
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().addCart(itId, qty, ioNo);
+      await _apiService.getApiClient().addCart(data);
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -635,15 +653,15 @@ class UserService extends GetxService{
     }
   }
 
-  Future<Either<Failure, ProductReviewResponse>> getReview() async {
+  Future<Either<Failure, ReviewResponse>> getReview() async {
     try {
-      final ProductReviewResponse response =
+      final ReviewResponse response =
       await _apiService.getApiClient().getReview();
-      if (response.status == 200) {
+      //if (response.status == 200) {
         return Right(response);
-      } else {
-        return Left(Failure.from(response.message));
-      }
+      //} else {
+      //  return Left(Failure.from(response.message));
+      //}
     } on DioError catch (e) {
       final DataResponse response = DataResponse.fromJson(e.response?.data);
       return Left(Failure.from(response.message));

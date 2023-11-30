@@ -85,6 +85,7 @@ Map<String, dynamic> _$$_ItemInfoToJson(_$_ItemInfo instance) =>
 
 _$_Option _$$_OptionFromJson(Map<String, dynamic> json) => _$_Option(
       io_id: json['io_id'] as String? ?? '',
+      io_no: json['io_no'] as int? ?? 0,
       io_price: json['io_price'] as int? ?? 0,
       io_stock_qty: json['io_stock_qty'] as int? ?? 0,
       is_soldout: json['is_soldout'] as bool? ?? false,
@@ -94,6 +95,7 @@ _$_Option _$$_OptionFromJson(Map<String, dynamic> json) => _$_Option(
 
 Map<String, dynamic> _$$_OptionToJson(_$_Option instance) => <String, dynamic>{
       'io_id': instance.io_id,
+      'io_no': instance.io_no,
       'io_price': instance.io_price,
       'io_stock_qty': instance.io_stock_qty,
       'is_soldout': instance.is_soldout,

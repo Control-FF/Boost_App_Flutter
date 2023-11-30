@@ -32,8 +32,16 @@ class CartController extends GetxController{
     );
   }
 
-  Future<void> addCart(context, String itId, int qty) async {
-    final result = await _userService.addCart(itId: itId,qty: qty.toString(),ioNo: '');
+  Future<void> addCart(context, String itId, List<dynamic> ctItems) async {
+    var map = <String, dynamic>{};
+    map.addAll(
+        {
+          'it_id' : itId,
+          'items' : ctItems,
+        }
+    );
+
+    final result = await _userService.addCart(data: map);
     result.fold(
       (failure) => print(failure.message),
       (response) {

@@ -22,6 +22,7 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) {
 mixin _$Payment {
   int get ct_id => throw _privateConstructorUsedError;
   int get od_id => throw _privateConstructorUsedError;
+  int? get is_id => throw _privateConstructorUsedError;
   String get it_name => throw _privateConstructorUsedError;
   String get it_id => throw _privateConstructorUsedError;
   String get ct_status => throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$Payment {
   int get io_price => throw _privateConstructorUsedError;
   String get it_basic => throw _privateConstructorUsedError;
   String get ct_time => throw _privateConstructorUsedError;
+  String get completion_time => throw _privateConstructorUsedError;
   String get it_img1 => throw _privateConstructorUsedError;
   String get it_img2 => throw _privateConstructorUsedError;
   String get it_img3 => throw _privateConstructorUsedError;
@@ -57,6 +59,7 @@ abstract class $PaymentCopyWith<$Res> {
   $Res call(
       {int ct_id,
       int od_id,
+      int? is_id,
       String it_name,
       String it_id,
       String ct_status,
@@ -68,6 +71,7 @@ abstract class $PaymentCopyWith<$Res> {
       int io_price,
       String it_basic,
       String ct_time,
+      String completion_time,
       String it_img1,
       String it_img2,
       String it_img3,
@@ -95,6 +99,7 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
   $Res call({
     Object? ct_id = null,
     Object? od_id = null,
+    Object? is_id = freezed,
     Object? it_name = null,
     Object? it_id = null,
     Object? ct_status = null,
@@ -106,6 +111,7 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
     Object? io_price = null,
     Object? it_basic = null,
     Object? ct_time = null,
+    Object? completion_time = null,
     Object? it_img1 = null,
     Object? it_img2 = null,
     Object? it_img3 = null,
@@ -126,6 +132,10 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
           ? _value.od_id
           : od_id // ignore: cast_nullable_to_non_nullable
               as int,
+      is_id: freezed == is_id
+          ? _value.is_id
+          : is_id // ignore: cast_nullable_to_non_nullable
+              as int?,
       it_name: null == it_name
           ? _value.it_name
           : it_name // ignore: cast_nullable_to_non_nullable
@@ -169,6 +179,10 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
       ct_time: null == ct_time
           ? _value.ct_time
           : ct_time // ignore: cast_nullable_to_non_nullable
+              as String,
+      completion_time: null == completion_time
+          ? _value.completion_time
+          : completion_time // ignore: cast_nullable_to_non_nullable
               as String,
       it_img1: null == it_img1
           ? _value.it_img1
@@ -224,6 +238,7 @@ abstract class _$$_PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
   $Res call(
       {int ct_id,
       int od_id,
+      int? is_id,
       String it_name,
       String it_id,
       String ct_status,
@@ -235,6 +250,7 @@ abstract class _$$_PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
       int io_price,
       String it_basic,
       String ct_time,
+      String completion_time,
       String it_img1,
       String it_img2,
       String it_img3,
@@ -259,6 +275,7 @@ class __$$_PaymentCopyWithImpl<$Res>
   $Res call({
     Object? ct_id = null,
     Object? od_id = null,
+    Object? is_id = freezed,
     Object? it_name = null,
     Object? it_id = null,
     Object? ct_status = null,
@@ -270,6 +287,7 @@ class __$$_PaymentCopyWithImpl<$Res>
     Object? io_price = null,
     Object? it_basic = null,
     Object? ct_time = null,
+    Object? completion_time = null,
     Object? it_img1 = null,
     Object? it_img2 = null,
     Object? it_img3 = null,
@@ -290,6 +308,10 @@ class __$$_PaymentCopyWithImpl<$Res>
           ? _value.od_id
           : od_id // ignore: cast_nullable_to_non_nullable
               as int,
+      is_id: freezed == is_id
+          ? _value.is_id
+          : is_id // ignore: cast_nullable_to_non_nullable
+              as int?,
       it_name: null == it_name
           ? _value.it_name
           : it_name // ignore: cast_nullable_to_non_nullable
@@ -333,6 +355,10 @@ class __$$_PaymentCopyWithImpl<$Res>
       ct_time: null == ct_time
           ? _value.ct_time
           : ct_time // ignore: cast_nullable_to_non_nullable
+              as String,
+      completion_time: null == completion_time
+          ? _value.completion_time
+          : completion_time // ignore: cast_nullable_to_non_nullable
               as String,
       it_img1: null == it_img1
           ? _value.it_img1
@@ -384,6 +410,7 @@ class _$_Payment implements _Payment {
   _$_Payment(
       {this.ct_id = 0,
       this.od_id = 0,
+      this.is_id = 0,
       this.it_name = '',
       this.it_id = '',
       this.ct_status = '',
@@ -395,6 +422,7 @@ class _$_Payment implements _Payment {
       this.io_price = 0,
       this.it_basic = '',
       this.ct_time = '',
+      this.completion_time = '',
       this.it_img1 = '',
       this.it_img2 = '',
       this.it_img3 = '',
@@ -415,6 +443,9 @@ class _$_Payment implements _Payment {
   @override
   @JsonKey()
   final int od_id;
+  @override
+  @JsonKey()
+  final int? is_id;
   @override
   @JsonKey()
   final String it_name;
@@ -450,6 +481,9 @@ class _$_Payment implements _Payment {
   final String ct_time;
   @override
   @JsonKey()
+  final String completion_time;
+  @override
+  @JsonKey()
   final String it_img1;
   @override
   @JsonKey()
@@ -481,7 +515,7 @@ class _$_Payment implements _Payment {
 
   @override
   String toString() {
-    return 'Payment(ct_id: $ct_id, od_id: $od_id, it_name: $it_name, it_id: $it_id, ct_status: $ct_status, ct_price: $ct_price, cp_price: $cp_price, ct_qty: $ct_qty, ct_point_use: $ct_point_use, io_id: $io_id, io_price: $io_price, it_basic: $it_basic, ct_time: $ct_time, it_img1: $it_img1, it_img2: $it_img2, it_img3: $it_img3, it_img4: $it_img4, it_img5: $it_img5, it_img6: $it_img6, it_img7: $it_img7, it_img8: $it_img8, it_img9: $it_img9, it_img10: $it_img10)';
+    return 'Payment(ct_id: $ct_id, od_id: $od_id, is_id: $is_id, it_name: $it_name, it_id: $it_id, ct_status: $ct_status, ct_price: $ct_price, cp_price: $cp_price, ct_qty: $ct_qty, ct_point_use: $ct_point_use, io_id: $io_id, io_price: $io_price, it_basic: $it_basic, ct_time: $ct_time, completion_time: $completion_time, it_img1: $it_img1, it_img2: $it_img2, it_img3: $it_img3, it_img4: $it_img4, it_img5: $it_img5, it_img6: $it_img6, it_img7: $it_img7, it_img8: $it_img8, it_img9: $it_img9, it_img10: $it_img10)';
   }
 
   @override
@@ -491,6 +525,7 @@ class _$_Payment implements _Payment {
             other is _$_Payment &&
             (identical(other.ct_id, ct_id) || other.ct_id == ct_id) &&
             (identical(other.od_id, od_id) || other.od_id == od_id) &&
+            (identical(other.is_id, is_id) || other.is_id == is_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.ct_status, ct_status) ||
@@ -508,6 +543,8 @@ class _$_Payment implements _Payment {
             (identical(other.it_basic, it_basic) ||
                 other.it_basic == it_basic) &&
             (identical(other.ct_time, ct_time) || other.ct_time == ct_time) &&
+            (identical(other.completion_time, completion_time) ||
+                other.completion_time == completion_time) &&
             (identical(other.it_img1, it_img1) || other.it_img1 == it_img1) &&
             (identical(other.it_img2, it_img2) || other.it_img2 == it_img2) &&
             (identical(other.it_img3, it_img3) || other.it_img3 == it_img3) &&
@@ -527,6 +564,7 @@ class _$_Payment implements _Payment {
         runtimeType,
         ct_id,
         od_id,
+        is_id,
         it_name,
         it_id,
         ct_status,
@@ -538,6 +576,7 @@ class _$_Payment implements _Payment {
         io_price,
         it_basic,
         ct_time,
+        completion_time,
         it_img1,
         it_img2,
         it_img3,
@@ -568,6 +607,7 @@ abstract class _Payment implements Payment {
   factory _Payment(
       {final int ct_id,
       final int od_id,
+      final int? is_id,
       final String it_name,
       final String it_id,
       final String ct_status,
@@ -579,6 +619,7 @@ abstract class _Payment implements Payment {
       final int io_price,
       final String it_basic,
       final String ct_time,
+      final String completion_time,
       final String it_img1,
       final String it_img2,
       final String it_img3,
@@ -596,6 +637,8 @@ abstract class _Payment implements Payment {
   int get ct_id;
   @override
   int get od_id;
+  @override
+  int? get is_id;
   @override
   String get it_name;
   @override
@@ -618,6 +661,8 @@ abstract class _Payment implements Payment {
   String get it_basic;
   @override
   String get ct_time;
+  @override
+  String get completion_time;
   @override
   String get it_img1;
   @override

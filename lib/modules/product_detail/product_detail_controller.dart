@@ -136,11 +136,18 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
     result.fold(
       (failure) => print(failure.message),
       (response){
-        reviewList.value = List<ProductReview>.from(response.items!.toList(growable: false));
+        if(reviewPage.value == 1){
+          reviewList.value = List<ProductReview>.from(response.items!.toList(growable: false));
+        }else{
+          if(response.items!.isEmpty){
+            reviewPage.value--;
+            return;
+          }
+          reviewList.addAll(response.items!);
+        }
 
         reviewTotalPage.value = response.totalPage;
         reviewIsLastPage.value = response.isLastPage == 'true';
-
       },
     );
   }
@@ -150,6 +157,16 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
     result.fold(
       (failure) => print(failure.message),
       (response){
+        if(inquiryPage.value == 1){
+          inquiryList.value = List<Inquiry>.from(response.items!.toList(growable: false));
+        }else{
+          if(response.items!.isEmpty){
+            inquiryPage.value--;
+            return;
+          }
+          inquiryList.addAll(response.items!);
+        }
+
         inquiryList.value = response.items!;
         inquiryTotalPage.value = response.totalPage;
         inquiryIsLastPage.value = response.isLastPage == 'true';
@@ -612,7 +629,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                         ),
                         SizedBox(width: 10.w,),
                         Text(
-                          '옵션 제목 $index',
+                          optionSelectList[index].io_id,
                           style: TextStyle(
                             color: ColorConstant.black,
                             fontSize: 16.sp,
@@ -774,7 +791,19 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                   height: 55.h,
                   child: ElevatedButton(
                     onPressed: (){
-                      cartController.addCart(context,productData.value!.item!.it_id,qty.value);
+                      //복수옵션 담기
+                      List<dynamic> ctItems = [];
+
+                      for(int i=0; i<optionSelectList.length; i++){
+                        if(optionSelectList[i].isCheck ?? false){
+                          ctItems.add({
+                            'io_no' : optionSelectList[i].io_no,
+                            'ct_qty' : optionSelectList[i].io_qty
+                          });
+                        }
+                      }
+
+                      cartController.addCart(context,productData.value!.item!.it_id,ctItems);
                       Get.back();
                     },
                     style: ElevatedButton.styleFrom(
@@ -1003,7 +1032,14 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                   height: 55.h,
                   child: ElevatedButton(
                     onPressed: (){
-                      cartController.addCart(context,productData.value!.item!.it_id,qty.value);
+                      //단일옵션 담기
+                      List<dynamic> ctItems = [];
+
+                      ctItems.add({
+                        'ct_qty' : qty.value
+                      });
+
+                      cartController.addCart(context,productData.value!.item!.it_id,ctItems);
                       Get.back();
                     },
                     style: ElevatedButton.styleFrom(

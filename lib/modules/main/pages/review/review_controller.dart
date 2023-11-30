@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:boostapp/data/models/review.dart';
 import 'package:dio/dio.dart' as dio;
@@ -11,15 +12,13 @@ import 'package:boostapp/data/service/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+
 
 class ReviewController extends GetxController{
   final UserService _userService = Get.find();
   final StorageService _storageService = Get.find();
-
-  RxBool isExpand = false.obs;
-  RxString is_img1 = ''.obs;
-  RxString is_img2 = ''.obs;
-  RxString is_img3 = ''.obs;
 
 
   late PageController pageController;
@@ -73,6 +72,7 @@ class ReviewController extends GetxController{
       (failure) => print(failure.message),
       (response){
         reviewList.value = List<Review>.from(response.items!.toList(growable: false));
+        editImgList.clear();
       },
     );
   }
@@ -145,7 +145,7 @@ class ReviewController extends GetxController{
         ),
       )),
       (response){
-        //getReview
+        getReview();
       },
     );
   }
@@ -171,6 +171,24 @@ class ReviewController extends GetxController{
     }
 
     return ratingList;
+  }
+
+  Future<File> urlToFile(String imageUrl) async {
+// generate random number.
+    var rng = new Random();
+// get temporary directory of device.
+    Directory tempDir = await getTemporaryDirectory();
+// get temporary path from temporary directory.
+    String tempPath = tempDir.path;
+// create a new file in temporary path with random file name.
+    File file = new File('$tempPath'+ (rng.nextInt(100)).toString() +'.png');
+// call http.get method and pass imageUrl into it to get response.
+    http.Response response = await http.get(Uri.parse(imageUrl));
+// write bodyBytes received in response to file.
+    await file.writeAsBytes(response.bodyBytes);
+// now return the file which is created with random name in
+// temporary directory and image bytes from response is written to // that file.
+    return file;
   }
 
   void showReviewPopup(context,type,index){
@@ -229,6 +247,10 @@ class ReviewController extends GetxController{
                               ),
                               onPressed: (){
                                 Get.back();
+
+                                if(type == 'update' || type == 'register'){
+                                  Get.back();
+                                }
                               },
                               child: Text(
                                 '취소',
@@ -251,10 +273,11 @@ class ReviewController extends GetxController{
 
                                 if(type == 'update' || type == 'register'){
                                   Get.back();
+                                  getReview();
                                 }else if(type == 'delete'){
                                   deleteReview(context,index);
                                 }
-                                //getReviewList
+
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: ColorConstant.primary,

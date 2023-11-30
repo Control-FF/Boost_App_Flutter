@@ -22,6 +22,8 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 mixin _$Review {
   int get is_id => throw _privateConstructorUsedError;
   String get it_id => throw _privateConstructorUsedError;
+  String get it_name => throw _privateConstructorUsedError;
+  String get io_id => throw _privateConstructorUsedError;
   String get is_name => throw _privateConstructorUsedError;
   int get is_score => throw _privateConstructorUsedError;
   String get is_subject => throw _privateConstructorUsedError;
@@ -49,6 +51,8 @@ abstract class $ReviewCopyWith<$Res> {
   $Res call(
       {int is_id,
       String it_id,
+      String it_name,
+      String io_id,
       String is_name,
       int is_score,
       String is_subject,
@@ -79,6 +83,8 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
   $Res call({
     Object? is_id = null,
     Object? it_id = null,
+    Object? it_name = null,
+    Object? io_id = null,
     Object? is_name = null,
     Object? is_score = null,
     Object? is_subject = null,
@@ -101,6 +107,14 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      it_name: null == it_name
+          ? _value.it_name
+          : it_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      io_id: null == io_id
+          ? _value.io_id
+          : io_id // ignore: cast_nullable_to_non_nullable
               as String,
       is_name: null == is_name
           ? _value.is_name
@@ -167,6 +181,8 @@ abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
   $Res call(
       {int is_id,
       String it_id,
+      String it_name,
+      String io_id,
       String is_name,
       int is_score,
       String is_subject,
@@ -194,6 +210,8 @@ class __$$_ReviewCopyWithImpl<$Res>
   $Res call({
     Object? is_id = null,
     Object? it_id = null,
+    Object? it_name = null,
+    Object? io_id = null,
     Object? is_name = null,
     Object? is_score = null,
     Object? is_subject = null,
@@ -216,6 +234,14 @@ class __$$_ReviewCopyWithImpl<$Res>
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
+              as String,
+      it_name: null == it_name
+          ? _value.it_name
+          : it_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      io_id: null == io_id
+          ? _value.io_id
+          : io_id // ignore: cast_nullable_to_non_nullable
               as String,
       is_name: null == is_name
           ? _value.is_name
@@ -279,6 +305,8 @@ class _$_Review implements _Review {
   _$_Review(
       {this.is_id = 0,
       this.it_id = '',
+      this.it_name = '',
+      this.io_id = '',
       this.is_name = '',
       this.is_score = 0,
       this.is_subject = '',
@@ -302,6 +330,12 @@ class _$_Review implements _Review {
   @override
   @JsonKey()
   final String it_id;
+  @override
+  @JsonKey()
+  final String it_name;
+  @override
+  @JsonKey()
+  final String io_id;
   @override
   @JsonKey()
   final String is_name;
@@ -344,7 +378,7 @@ class _$_Review implements _Review {
 
   @override
   String toString() {
-    return 'Review(is_id: $is_id, it_id: $it_id, is_name: $is_name, is_score: $is_score, is_subject: $is_subject, is_content: $is_content, is_time: $is_time, is_reply_subject: $is_reply_subject, is_reply_content: $is_reply_content, is_reply_name: $is_reply_name, is_confirm: $is_confirm, is_img1: $is_img1, is_img2: $is_img2, is_img3: $is_img3, isExpand: $isExpand)';
+    return 'Review(is_id: $is_id, it_id: $it_id, it_name: $it_name, io_id: $io_id, is_name: $is_name, is_score: $is_score, is_subject: $is_subject, is_content: $is_content, is_time: $is_time, is_reply_subject: $is_reply_subject, is_reply_content: $is_reply_content, is_reply_name: $is_reply_name, is_confirm: $is_confirm, is_img1: $is_img1, is_img2: $is_img2, is_img3: $is_img3, isExpand: $isExpand)';
   }
 
   @override
@@ -354,6 +388,8 @@ class _$_Review implements _Review {
             other is _$_Review &&
             (identical(other.is_id, is_id) || other.is_id == is_id) &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
+            (identical(other.it_name, it_name) || other.it_name == it_name) &&
+            (identical(other.io_id, io_id) || other.io_id == io_id) &&
             (identical(other.is_name, is_name) || other.is_name == is_name) &&
             (identical(other.is_score, is_score) ||
                 other.is_score == is_score) &&
@@ -383,6 +419,8 @@ class _$_Review implements _Review {
       runtimeType,
       is_id,
       it_id,
+      it_name,
+      io_id,
       is_name,
       is_score,
       is_subject,
@@ -415,6 +453,8 @@ abstract class _Review implements Review {
   factory _Review(
       {final int is_id,
       final String it_id,
+      final String it_name,
+      final String io_id,
       final String is_name,
       final int is_score,
       final String is_subject,
@@ -435,6 +475,10 @@ abstract class _Review implements Review {
   int get is_id;
   @override
   String get it_id;
+  @override
+  String get it_name;
+  @override
+  String get io_id;
   @override
   String get is_name;
   @override

@@ -181,8 +181,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: (){
-                              Get.toNamed(AppRoutes.orderList,arguments: {'status' : 0});
+                            onTap: () async {
+                              var res = await Get.toNamed(AppRoutes.orderList,arguments: {'status' : 0});
+
+                              if(res != null){
+                                controller.getMyInfo();
+                              }else{
+                                controller.getMyInfo();
+                              }
                             },
                             child: Container(
                               width: 53.w,
@@ -228,8 +234,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                             ),
                           ),
                           InkWell(
-                            onTap: (){
-                              Get.toNamed(AppRoutes.orderList,arguments: {'status' : 1});
+                            onTap: () async {
+                              var res = await Get.toNamed(AppRoutes.orderList,arguments: {'status' : 1});
+
+                              if(res != null){
+                                controller.getMyInfo();
+                              }else{
+                                controller.getMyInfo();
+                              }
                             },
                             child:
                             Container(
@@ -276,8 +288,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                             ),
                           ),
                           InkWell(
-                            onTap: (){
-                              Get.toNamed(AppRoutes.orderList,arguments: {'status' : 2});
+                            onTap: () async {
+                              var res = await Get.toNamed(AppRoutes.orderList,arguments: {'status' : 2});
+
+                              if(res != null){
+                                controller.getMyInfo();
+                              }else{
+                                controller.getMyInfo();
+                              }
                             },
                             child:
                             Container(
@@ -324,8 +342,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                             ),
                           ),
                           InkWell(
-                            onTap: (){
-                              Get.toNamed(AppRoutes.orderList,arguments: {'status' : 3});
+                            onTap: () async {
+                              var res = await Get.toNamed(AppRoutes.orderList,arguments: {'status' : 3});
+
+                              if(res != null){
+                                controller.getMyInfo();
+                              }else{
+                                controller.getMyInfo();
+                              }
                             },
                             child:
                             Container(
@@ -372,8 +396,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                             ),
                           ),
                           InkWell(
-                            onTap: (){
-                              Get.toNamed(AppRoutes.orderList,arguments: {'status' : 4});
+                            onTap: () async {
+                              var res = await Get.toNamed(AppRoutes.orderList,arguments: {'status' : 4});
+
+                              if(res != null){
+                                controller.getMyInfo();
+                              }else{
+                                controller.getMyInfo();
+                              }
                             },
                             child:
                             Container(
@@ -438,8 +468,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                               child: Container(
                                 alignment: Alignment.centerLeft,
                                 child: InkWell(
-                                  onTap: (){
-                                    Get.toNamed(AppRoutes.pointList);
+                                  onTap: () async {
+                                    var res = await Get.toNamed(AppRoutes.pointList);
+
+                                    if(res != null){
+                                      controller.getMyInfo();
+                                    }else{
+                                      controller.getMyInfo();
+                                    }
                                   },
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -474,8 +510,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                               child: Container(
                                 alignment: Alignment.center,
                                 child: InkWell(
-                                  onTap: (){
-                                    Get.toNamed(AppRoutes.couponList);
+                                  onTap: () async {
+                                    var res = await Get.toNamed(AppRoutes.couponList);
+
+                                    if(res != null){
+                                      controller.getMyInfo();
+                                    }else{
+                                      controller.getMyInfo();
+                                    }
                                   },
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -510,8 +552,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
                               child: Container(
                                 alignment: Alignment.centerRight,
                                 child: InkWell(
-                                  onTap: (){
-                                    Get.toNamed(AppRoutes.reviewList);
+                                  onTap: () async {
+                                    var res = await Get.toNamed(AppRoutes.reviewList);
+
+                                    if(res != null){
+                                      controller.getMyInfo();
+                                    }else{
+                                      controller.getMyInfo();
+                                    }
                                   },
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -759,7 +807,7 @@ class BnvMyPageScreen extends GetView<MyPageController>{
             ),
             InkWell(
               onTap: (){
-
+                controller.showLeavePopup(context);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 26.w),

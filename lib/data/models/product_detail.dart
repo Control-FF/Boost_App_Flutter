@@ -57,6 +57,7 @@ class ItemInfo with _$ItemInfo {
 class Option with _$Option {
   factory Option({
     @Default('') String io_id,
+    @Default(0) int io_no,
     @Default(0) int io_price,
     @Default(0) int io_stock_qty,
     @Default(false) bool is_soldout,
