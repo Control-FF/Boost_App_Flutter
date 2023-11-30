@@ -635,6 +635,23 @@ class UserService extends GetxService{
     }
   }
 
+  Future<Either<Failure, ProductReviewResponse>> getReview() async {
+    try {
+      final ProductReviewResponse response =
+      await _apiService.getApiClient().getReview();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, DataResponse>> registerReview({
     required ctId,
     required subject,

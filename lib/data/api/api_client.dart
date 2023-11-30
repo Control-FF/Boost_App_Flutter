@@ -325,6 +325,10 @@ abstract class ApiClient {
       @Query('od_id') String odId
   );
 
+  //내 리뷰 목록
+  @GET('/api/user/review')
+  Future<ProductReviewResponse> getReview();
+
   //리뷰 등록
   @POST('/api/shop/item-reviews')
   Future<DataResponse> registerReview(

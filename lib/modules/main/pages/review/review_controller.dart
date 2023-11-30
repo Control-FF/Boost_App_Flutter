@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:boostapp/data/models/review.dart';
 import 'package:dio/dio.dart' as dio;
 
 import 'package:boostapp/core/utils/color_constant.dart';
@@ -24,10 +25,7 @@ class ReviewController extends GetxController{
   late PageController pageController;
   RxInt currentIndex = 0.obs;
 
-  RxList<ProductReview> reviewList = <ProductReview>[].obs;
-  RxInt reviewPage = 1.obs;
-  RxInt reviewTotalPage = 1.obs;
-  RxBool reviewIsLastPage = false.obs;
+  RxList<Review> reviewList = <Review>[].obs;
 
   TextEditingController editContentsController = TextEditingController();
   RxInt editRating = 0.obs;
@@ -65,22 +63,20 @@ class ReviewController extends GetxController{
       editImgList = RxList<File?>([]);
     }
     name.value = _storageService.getName() ?? '';
+
+    getReview();
   }
-/*
+
   Future<void> getReview() async {
-    final result = await _shopService.getReview(page: reviewPage.value.toString());
+    final result = await _userService.getReview();
     result.fold(
       (failure) => print(failure.message),
       (response){
-        reviewList.value = List<ProductReview>.from(response.items!.toList(growable: false));
-
-        reviewTotalPage.value = response.totalPage;
-        reviewIsLastPage.value = response.isLastPage == 'true';
-
+        reviewList.value = List<Review>.from(response.items!.toList(growable: false));
       },
     );
   }
-*/
+
   Future<void> registerReview(context) async {
     String subject = '리뷰제목';
     String contents = editContentsController.text;

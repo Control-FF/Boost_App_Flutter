@@ -48,7 +48,7 @@ class ReviewScreen extends GetView<ReviewController>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        '신선신선야채맨',
+                        controller.reviewList[index].is_name,
                         style: TextStyle(
                           color: ColorConstant.black,
                           fontSize: 14.sp,
@@ -57,7 +57,7 @@ class ReviewScreen extends GetView<ReviewController>{
                         ),
                       ),
                       Text(
-                        '2023-06-02',
+                        controller.reviewList[index].is_time.split(' ')[0],
                         style: TextStyle(
                           color: ColorConstant.gray32,
                           fontSize: 10.sp,
@@ -72,8 +72,8 @@ class ReviewScreen extends GetView<ReviewController>{
                     children: controller.getReviewRating(4.6),
                   ),
                   SizedBox(height: 9.h,),
-                  controller.isExpand.value ? Text(
-                    '[옵션] 제주삼다수 / 1박스',
+                  controller.reviewList[index].isExpand! ? Text(
+                    '[옵션] 욥션들어갈자리',
                     style: TextStyle(
                       color: ColorConstant.black,
                       fontSize: 12.sp,
@@ -81,16 +81,16 @@ class ReviewScreen extends GetView<ReviewController>{
                       fontWeight: FontWeight.w700,
                     ),
                   ) : SizedBox(),
-                  controller.isExpand.value ? Container(
+                  controller.reviewList[index].isExpand! ? Container(
                     margin: EdgeInsets.only(top: 17.h,bottom: 12.h),
                     width: Get.width,
                     height: 187.h,
                     child: PageView(
                       controller: controller.pageController,
                       children: [
-                        Image.network(controller.is_img1.value,width: Get.width,),
-                        Image.network(controller.is_img2.value,width: Get.width,),
-                        Image.network(controller.is_img3.value,width: Get.width,),
+                        Image.network(controller.reviewList[index].is_img1,width: Get.width,),
+                        Image.network(controller.reviewList[index].is_img2,width: Get.width,),
+                        Image.network(controller.reviewList[index].is_img3,width: Get.width,),
                       ],
                     ),
                   ) : SizedBox(),
@@ -101,7 +101,7 @@ class ReviewScreen extends GetView<ReviewController>{
                         children: [
                           Expanded(
                               child: Text(
-                                Constants.parseHtmlString('물맛이 좋고 깨끗해요. 지하 암반수에서 체취한 물을 담은것 같아요. 물맛도 좋지만 정말 깨끗한 물을 마시는 것 같은 느낌이 들어요. 등산하고 나서 먹는 약수터 물 같아요. 정말 깨끗합니다.  산약수물 일부터 뜨러 안다녀도 될거같아요. 삼다수 드셔보신분 중 제 리뷰 보신 분들은 제말이 무슨 말인지 아실거예요.'),
+                                controller.reviewList[index].is_content,
                                 maxLines: controller.isExpand.value ? null : 2,
                                 style: TextStyle(
                                   color: ColorConstant.black,
@@ -113,13 +113,12 @@ class ReviewScreen extends GetView<ReviewController>{
                           ),
                         ],
                       ),
-                      !(controller.isExpand.value ?? false) ? Positioned(
+                      !(controller.reviewList[index].isExpand ?? false) ? Positioned(
                           bottom: 0,
                           right: 0,
                           child: InkWell(
                             onTap: (){
-                              controller.isExpand.value = true;
-                              //controller.reviewList[index] = controller.reviewList[index].copyWith(isExpand: true);
+                              controller.reviewList[index] = controller.reviewList[index].copyWith(isExpand: true);
                             },
                             child: Container(
                               color: ColorConstant.white,
@@ -156,53 +155,53 @@ class ReviewScreen extends GetView<ReviewController>{
                   SizedBox(height: 12.h,),
                   Row(
                     children: [
-                      controller.is_img1.value != '' ? Container(
+                      controller.reviewList[index].is_img1 != '' ? Container(
                         width: 60.w,
                         height: 60.h,
                         margin: EdgeInsets.only(right: 4.w),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(5),
-                              topLeft: Radius.circular(5)
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                           child: Image.network(
-                            controller.is_img1.value,
+                            controller.reviewList[index].is_img1,
+                            width: 60.w,
+                            height: 60.h,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ) : SizedBox(),
-                      controller.is_img2.value != '' ? Container(
+                      controller.reviewList[index].is_img2 != '' ? Container(
                         width: 60.w,
                         height: 60.h,
                         margin: EdgeInsets.only(right: 4.w),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(5),
-                              topLeft: Radius.circular(5)
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                           child: Image.network(
-                            controller.is_img2.value,
+                            controller.reviewList[index].is_img2,
+                            width: 60.w,
+                            height: 60.h,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ) : SizedBox(),
-                      controller.is_img3.value != '' ? Container(
+                      controller.reviewList[index].is_img3 != '' ? Container(
                         width: 60.w,
                         height: 60.h,
                         margin: EdgeInsets.only(right: 4.w),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(5),
-                              topLeft: Radius.circular(5)
-                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
                           child: Image.network(
-                            controller.is_img3.value,
+                            controller.reviewList[index].is_img3,
+                            width: 60.w,
+                            height: 60.h,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                      ) : SizedBox()
+                      ) : SizedBox(),
                     ],
                   ),
                   SizedBox(height: 9.h,),
-                  !controller.isExpand.value ? Text(
-                    '[옵션] 제주삼다수 / 1박스',
+                  !(controller.reviewList[index].isExpand ?? false) ? Text(
+                    '[옵션] 옵션들어갈곳',
                     style: TextStyle(
                       color: ColorConstant.black,
                       fontSize: 12.sp,
@@ -210,7 +209,7 @@ class ReviewScreen extends GetView<ReviewController>{
                       fontWeight: FontWeight.w700,
                     ),
                   ) : SizedBox(),
-                  !controller.isExpand.value ? Padding(
+                  !(controller.reviewList[index].isExpand ?? false) ? Padding(
                     padding: EdgeInsets.only(top: 22),
                     child: Row(
                       children: [
@@ -271,7 +270,7 @@ class ReviewScreen extends GetView<ReviewController>{
                       ],
                     ),
                   ) : SizedBox(),
-                  controller.isExpand.value ? Padding(
+                  controller.reviewList[index].isExpand ?? false ? Padding(
                     padding: EdgeInsets.only(top: 14.h),
                     child: Column(
                       children: [
@@ -280,7 +279,7 @@ class ReviewScreen extends GetView<ReviewController>{
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              '사장님 댓글 0개',
+                              '사장님 댓글 ${controller.reviewList[index].is_reply_content == '' ? 0 : 1}개',
                               style: TextStyle(
                                 color: ColorConstant.gray12,
                                 fontSize: 12.sp,
@@ -300,11 +299,11 @@ class ReviewScreen extends GetView<ReviewController>{
                           ],
                         ),
                         SizedBox(height: 13.h,),
-                        Row(
+                        controller.reviewList[index].is_reply_content != '' ? Row(
                           children: [
                             Expanded(
                               child: Text(
-                                Constants.parseHtmlString('고객님 안녕하세요. 부스트 운영자 입니다.해당상품에 대해 좋은 평가 주셔서 감사합니다.  앞으로도 더 좋은 상품 판매하도록 노력하겠습니다.  감사합니다.'),
+                                controller.reviewList[index].is_reply_content,
                                 style: TextStyle(
                                   color: ColorConstant.gray12,
                                   fontSize: 12.sp,
@@ -314,7 +313,7 @@ class ReviewScreen extends GetView<ReviewController>{
                               ),
                             )
                           ],
-                        )
+                        ) : SizedBox()
                       ],
                     ),
                   ) : SizedBox(),
@@ -335,7 +334,7 @@ class ReviewScreen extends GetView<ReviewController>{
                                   padding: EdgeInsets.all(0)
                               ),
                               onPressed: (){
-                                Get.back();
+                                controller.showReviewPopup(context, 'delete', index);
                               },
                               child: Text(
                                 '리뷰 삭제하기',
@@ -383,7 +382,7 @@ class ReviewScreen extends GetView<ReviewController>{
               ),
             ));
           },
-          itemCount: 10
+          itemCount: controller.reviewList.length
         ),
       ),
     );
