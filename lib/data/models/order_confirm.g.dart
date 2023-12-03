@@ -122,7 +122,7 @@ _$_TotalPayment _$$_TotalPaymentFromJson(Map<String, dynamic> json) =>
     _$_TotalPayment(
       od_cart_price: json['od_cart_price'] as int? ?? 0,
       od_coupon: json['od_coupon'] as int? ?? 0,
-      od_cash: json['od_cash'] as int? ?? 0,
+      od_receipt_point: json['od_receipt_point'] as int? ?? 0,
       od_send_cost: json['od_send_cost'] as int? ?? 0,
       total_payment: json['total_payment'] as String? ?? '',
       expected_points: json['expected_points'] as String? ?? '',
@@ -132,7 +132,7 @@ Map<String, dynamic> _$$_TotalPaymentToJson(_$_TotalPayment instance) =>
     <String, dynamic>{
       'od_cart_price': instance.od_cart_price,
       'od_coupon': instance.od_coupon,
-      'od_cash': instance.od_cash,
+      'od_receipt_point': instance.od_receipt_point,
       'od_send_cost': instance.od_send_cost,
       'total_payment': instance.total_payment,
       'expected_points': instance.expected_points,

@@ -1,6 +1,7 @@
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/service/user_service.dart';
+import 'package:boostapp/modules/main/pages/buy/buy_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,24 @@ class CartController extends GetxController{
     );
   }
 
-  Future<void> addCart(context, String itId, List<dynamic> ctItems) async {
+  Future<void> updateCart(int ctId, int qty) async {
+    final result = await _userService.updateCart(ctId: ctId.toString(), qty: qty.toString());
+    result.fold(
+      (failure) => print(failure.message),
+      (response) => getCartList(),
+    );
+  }
+
+  Future<void> deleteCart(int ctId) async {
+    final result = await _userService.deleteCart(ctId: ctId.toString(),);
+    result.fold(
+          (failure) => print(failure.message),
+          (response) => getCartList(),
+    );
+  }
+
+
+  Future<void> addCart(context, String itId, List<dynamic> ctItems, {String type = ''}) async {
     var map = <String, dynamic>{};
     map.addAll(
         {
@@ -45,6 +63,39 @@ class CartController extends GetxController{
     result.fold(
       (failure) => print(failure.message),
       (response) {
+        if(type == 'oneTouch'){
+          showOneTouchPopup(context);
+        }else{
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            elevation: 6.0,
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              '장바구니에 추가되었습니다.',
+              style: TextStyle(color: Colors.white),
+            ),
+          ));
+        }
+
+        getCartList();
+      },
+    );
+  }
+
+  Future<void> directBuy(context, String itId, List<dynamic> ctItems) async {
+    var map = <String, dynamic>{};
+    map.addAll(
+        {
+          'it_id' : itId,
+          'items' : ctItems,
+        }
+    );
+
+    final result = await _userService.directBuy(data: map);
+    result.fold(
+      (failure) => print(failure.message),
+      (response) {
+        print(response);
+        /*
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           elevation: 6.0,
           behavior: SnackBarBehavior.floating,
@@ -53,7 +104,10 @@ class CartController extends GetxController{
             style: TextStyle(color: Colors.white),
           ),
         ));
+
         getCartList();
+
+         */
       },
     );
   }
@@ -66,7 +120,7 @@ class CartController extends GetxController{
 
     var map = <String, dynamic>{};
     map.addAll(
-      {'mb_id' : '','ct_items' : ctItems,'cp_no' : '','use_point' : '','location' : '','accesscode' : '','notes' : ''},
+      {'mb_id' : '','ct_items' : ctItems,'cp_no' : 0,'use_point' : 0,'location' : '','accesscode' : '','notes' : ''},
     );
 
     final result = await _userService.addOrder(data: map);
@@ -128,6 +182,7 @@ class CartController extends GetxController{
   }
 
   void showOneTouchPopup(context){
+    getCartList();
     showDialog(
         context: context,
         builder: (context) {

@@ -8,22 +8,29 @@ import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/category_product.dart';
 import 'package:boostapp/data/models/coupon.dart';
+import 'package:boostapp/data/models/cs.dart';
 import 'package:boostapp/data/models/data_response.dart';
+import 'package:boostapp/data/models/faq.dart';
 import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
 import 'package:boostapp/data/models/main.dart';
+import 'package:boostapp/data/models/more.dart';
 import 'package:boostapp/data/models/notice.dart';
+import 'package:boostapp/data/models/onetouch.dart';
 import 'package:boostapp/data/models/order.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
+import 'package:boostapp/data/models/order_info.dart';
 import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/payment.dart';
 import 'package:boostapp/data/models/point.dart';
 import 'package:boostapp/data/models/policy.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/data/models/product_review.dart';
+import 'package:boostapp/data/models/recommend.dart';
 import 'package:boostapp/data/models/review.dart';
+import 'package:boostapp/data/models/time.dart';
 import 'package:boostapp/data/models/token_response.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -161,11 +168,43 @@ abstract class ApiClient {
   @GET('/api/shop/')
   Future<MainResponse> shopMain();
 
+  //타임 세일 페이지
+  @GET('/api/shop/sale')
+  Future<TimeResponse> shopTime();
+
+  //이런상품은 어때요?
+  @GET('/api/shop/recommend-item')
+  Future<RecommendResponse> recommend(
+      @Query('sort') String sort,
+      @Query('pageNum') int page,
+  );
+
+  //오늘 들어온상품 상세
+  @GET('/api/shop/md-items')
+  Future<MoreResponse> moreRecommend(
+      @Query('sort') String sort,
+      @Query('pageNum') int page,
+  );
+
+  //이런상품 상세
+  @GET('/api/shop/recommend-item')
+  Future<MoreResponse> moreMd(
+      @Query('sort') String sort,
+      @Query('pageNum') int page,
+  );
+
+  //원터치 리스트
+  @GET('/api/shop/onetouch')
+  Future<OneTouchResponse> oneTouch(
+      @Query('sort') String sort,
+      @Query('pageNum') int page,
+  );
+
   //내정보
   @GET('/api/user/mypage')
   Future<UserInfoResponse> getMyInfo();
 
-  //내정보
+  //회원 탈퇴
   @PATCH('/api/user/leave')
   Future<DataResponse> memberLeave(
       @Body() Map<String, dynamic> map
@@ -267,14 +306,6 @@ abstract class ApiClient {
       @Query('it_id') String itId,
   );
 
-  //바로 구매
-  @GET('/api/shop/buy-now')
-  Future<OrderRequestResponse> buyNow(
-      @Query('it_id') String itId,
-      @Query('ct_qty') String qty,
-      @Query('io_no') String ioNo,
-  );
-
   //상품 문의목록
   @GET('/api/shop/item-inquiry')
   Future<InquiryResponse> inquiry(
@@ -305,6 +336,18 @@ abstract class ApiClient {
       @Query('keyword') String keyword,
   );
 
+  //고객섽터
+  @GET('/api/user/inquiry')
+  Future<CSResponse> csList(
+      @Query('keyword') String keyword,
+  );
+
+  //고객섽터
+  @GET('/api/user/faq')
+  Future<FAQResponse> faqList(
+      @Query('isHTML') String isHtml,
+  );
+
   //이용약관
   @GET('/api/user/co-content')
   Future<PolicyResponse> policyList(
@@ -321,11 +364,28 @@ abstract class ApiClient {
       @Body() Map<String, dynamic> map
   );
 
-  //주문페이지
-  @GET('/api/shop/order-confirm')
-  Future<OrderConfirmResponse> orderConfirm(
-      @Query('od_id') String odId
+  //장바구니 수정
+  @PATCH('/api/shop/cart')
+  Future<DataResponse> updateCart(
+      @Field('ct_id') String ctId,
+      @Field('ct_qty') String qty,
   );
+
+  //장바구니 삭제
+  @PATCH('/api/shop/delet-cart-item')
+  Future<DataResponse> deleteCart(
+      @Field('ct_id') String ctId,
+  );
+
+  //바로구매
+  @POST('/api/shop/buy-now')
+  Future<DataResponse> directBuy(
+      @Body() Map<String, dynamic> map
+  );
+
+  //주문페이지
+  @GET('/api/shop/order-page')
+  Future<OrderInfoResponse> orderInfo();
 
   //주문서 작성
   @POST('/api/shop/order')

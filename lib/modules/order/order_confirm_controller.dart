@@ -1,57 +1,63 @@
-import 'package:boostapp/data/models/order_confirm.dart';
+import 'package:boostapp/data/models/cart.dart';
+import 'package:boostapp/data/models/order_info.dart';
 import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class OrderConfirmController extends GetxController{
   final UserService _userService = Get.find();
   final ShopService _shopService = Get.find();
+  CartController cartController = Get.put(CartController());
+
+  RxList<CartItem> cartList = RxList<CartItem>([]);
+  Rx<OrderInfoAddress?> orderInfoAddress = Rx<OrderInfoAddress?>(null);
+  Rx<OrderInfoPayment?> orderInfoPayment = Rx<OrderInfoPayment?>(null);
+  RxInt mbPoint = 0.obs;
+  RxInt mbCouponCnt = 0.obs;
 
   RxString odId = ''.obs;
-  RxList<OrderItem> orderItem = RxList<OrderItem>([]);
-  RxList<OrderShipping> orderShipping = RxList<OrderShipping>([]);
-  RxList<OrderCoupon> orderCoupon = RxList<OrderCoupon>([]);
-  RxList<ShippingRequest> shippingRequest = RxList<ShippingRequest>([]);
-  RxList<PaymentMethod> paymentMethod = RxList<PaymentMethod>([]);
-  RxList<TotalPayment> totalPayment = RxList<TotalPayment>([]);
 
   RxBool isShipping = true.obs;
 
   RxInt usePoint = 0.obs;
   RxInt cpNo = 0.obs;
   RxInt cpPrice = 0.obs;
+  RxInt location = 0.obs;
   RxString enter = ''.obs;
   RxString etc = ''.obs;
   Rx<DateTime>? selectedDay = DateTime.now().obs;
   Rx<String> selectedDate = ''.obs;
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
 
-    if (Get.arguments != null) {
-      odId.value = Get.arguments['odId'];
-      getOrderConfirm();
+    //if (Get.arguments != null) {
+    //  odId.value = Get.arguments['odId'];
+    //  getOrderConfirm();
+    //}
+
+    //print(selectedDay.toString());
+
+    for(int i=0; i<cartController.cartList.length; i++){
+      if(cartController.cartList[i].isCheck){
+        cartList.add(cartController.cartList[i]);
+      }
     }
-
-    print(selectedDay.toString());
-
+    getOrderInfo();
   }
 
-  Future<void> getOrderConfirm() async {
-    final result = await _userService.getOrderConfirm(odId: odId.value);
+  Future<void> getOrderInfo() async {
+    final result = await _userService.getOrderInfo();
     result.fold(
       (failure) => print(failure.message),
       (response){
-        odId.value = response.data!.od_id;
-        orderItem.value = response.data!.orderItem!;
-        orderShipping.value = List<OrderShipping>.from(response.data!.orderShipping!.toList(growable: false));
-        orderCoupon.value = List<OrderCoupon>.from(response.data!.orderCoupon!.toList(growable: false));
-        shippingRequest.value = List<ShippingRequest>.from(response.data!.shippingRequest!.toList(growable: false));
-        paymentMethod.value = List<PaymentMethod>.from(response.data!.paymentMethod!.toList(growable: false));
-        totalPayment.value = List<TotalPayment>.from(response.data!.totalPayment!.toList(growable: false));
+        mbPoint.value = response.mb_point;
+        mbCouponCnt.value = response.mb_coupon_cnt;
+        orderInfoAddress.value = response.addressItem;
+        orderInfoPayment.value = response.paymentItem;
       },
     );
   }
@@ -83,11 +89,22 @@ class OrderConfirmController extends GetxController{
     );
   }
 
-  int getFinalPrice(){
-    if(totalPayment.isEmpty){
-      return 0;
+  int getTotalPrice(){
+    int totalPrice = 0;
+
+    for(int i=0; i<cartList.length; i++){
+      totalPrice += cartList[i].ct_price * cartList[i].ct_qty;
     }
-    int totalPrice = int.parse(totalPayment[0].total_payment);
+
+    return totalPrice;
+  }
+
+  int getFinalPrice(){
+    int totalPrice = 0;
+
+    for(int i=0; i<cartList.length; i++){
+      totalPrice += cartList[i].ct_price * cartList[i].ct_qty;
+    }
 
     return totalPrice - usePoint.value - cpPrice.value;
   }

@@ -1311,7 +1311,7 @@ TotalPayment _$TotalPaymentFromJson(Map<String, dynamic> json) {
 mixin _$TotalPayment {
   int get od_cart_price => throw _privateConstructorUsedError;
   int get od_coupon => throw _privateConstructorUsedError;
-  int get od_cash => throw _privateConstructorUsedError;
+  int get od_receipt_point => throw _privateConstructorUsedError;
   int get od_send_cost => throw _privateConstructorUsedError;
   String get total_payment => throw _privateConstructorUsedError;
   String get expected_points => throw _privateConstructorUsedError;
@@ -1331,7 +1331,7 @@ abstract class $TotalPaymentCopyWith<$Res> {
   $Res call(
       {int od_cart_price,
       int od_coupon,
-      int od_cash,
+      int od_receipt_point,
       int od_send_cost,
       String total_payment,
       String expected_points});
@@ -1352,7 +1352,7 @@ class _$TotalPaymentCopyWithImpl<$Res, $Val extends TotalPayment>
   $Res call({
     Object? od_cart_price = null,
     Object? od_coupon = null,
-    Object? od_cash = null,
+    Object? od_receipt_point = null,
     Object? od_send_cost = null,
     Object? total_payment = null,
     Object? expected_points = null,
@@ -1366,9 +1366,9 @@ class _$TotalPaymentCopyWithImpl<$Res, $Val extends TotalPayment>
           ? _value.od_coupon
           : od_coupon // ignore: cast_nullable_to_non_nullable
               as int,
-      od_cash: null == od_cash
-          ? _value.od_cash
-          : od_cash // ignore: cast_nullable_to_non_nullable
+      od_receipt_point: null == od_receipt_point
+          ? _value.od_receipt_point
+          : od_receipt_point // ignore: cast_nullable_to_non_nullable
               as int,
       od_send_cost: null == od_send_cost
           ? _value.od_send_cost
@@ -1397,7 +1397,7 @@ abstract class _$$_TotalPaymentCopyWith<$Res>
   $Res call(
       {int od_cart_price,
       int od_coupon,
-      int od_cash,
+      int od_receipt_point,
       int od_send_cost,
       String total_payment,
       String expected_points});
@@ -1416,7 +1416,7 @@ class __$$_TotalPaymentCopyWithImpl<$Res>
   $Res call({
     Object? od_cart_price = null,
     Object? od_coupon = null,
-    Object? od_cash = null,
+    Object? od_receipt_point = null,
     Object? od_send_cost = null,
     Object? total_payment = null,
     Object? expected_points = null,
@@ -1430,9 +1430,9 @@ class __$$_TotalPaymentCopyWithImpl<$Res>
           ? _value.od_coupon
           : od_coupon // ignore: cast_nullable_to_non_nullable
               as int,
-      od_cash: null == od_cash
-          ? _value.od_cash
-          : od_cash // ignore: cast_nullable_to_non_nullable
+      od_receipt_point: null == od_receipt_point
+          ? _value.od_receipt_point
+          : od_receipt_point // ignore: cast_nullable_to_non_nullable
               as int,
       od_send_cost: null == od_send_cost
           ? _value.od_send_cost
@@ -1456,7 +1456,7 @@ class _$_TotalPayment implements _TotalPayment {
   _$_TotalPayment(
       {this.od_cart_price = 0,
       this.od_coupon = 0,
-      this.od_cash = 0,
+      this.od_receipt_point = 0,
       this.od_send_cost = 0,
       this.total_payment = '',
       this.expected_points = ''});
@@ -1472,7 +1472,7 @@ class _$_TotalPayment implements _TotalPayment {
   final int od_coupon;
   @override
   @JsonKey()
-  final int od_cash;
+  final int od_receipt_point;
   @override
   @JsonKey()
   final int od_send_cost;
@@ -1485,7 +1485,7 @@ class _$_TotalPayment implements _TotalPayment {
 
   @override
   String toString() {
-    return 'TotalPayment(od_cart_price: $od_cart_price, od_coupon: $od_coupon, od_cash: $od_cash, od_send_cost: $od_send_cost, total_payment: $total_payment, expected_points: $expected_points)';
+    return 'TotalPayment(od_cart_price: $od_cart_price, od_coupon: $od_coupon, od_receipt_point: $od_receipt_point, od_send_cost: $od_send_cost, total_payment: $total_payment, expected_points: $expected_points)';
   }
 
   @override
@@ -1497,7 +1497,8 @@ class _$_TotalPayment implements _TotalPayment {
                 other.od_cart_price == od_cart_price) &&
             (identical(other.od_coupon, od_coupon) ||
                 other.od_coupon == od_coupon) &&
-            (identical(other.od_cash, od_cash) || other.od_cash == od_cash) &&
+            (identical(other.od_receipt_point, od_receipt_point) ||
+                other.od_receipt_point == od_receipt_point) &&
             (identical(other.od_send_cost, od_send_cost) ||
                 other.od_send_cost == od_send_cost) &&
             (identical(other.total_payment, total_payment) ||
@@ -1509,7 +1510,7 @@ class _$_TotalPayment implements _TotalPayment {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, od_cart_price, od_coupon,
-      od_cash, od_send_cost, total_payment, expected_points);
+      od_receipt_point, od_send_cost, total_payment, expected_points);
 
   @JsonKey(ignore: true)
   @override
@@ -1529,7 +1530,7 @@ abstract class _TotalPayment implements TotalPayment {
   factory _TotalPayment(
       {final int od_cart_price,
       final int od_coupon,
-      final int od_cash,
+      final int od_receipt_point,
       final int od_send_cost,
       final String total_payment,
       final String expected_points}) = _$_TotalPayment;
@@ -1542,7 +1543,7 @@ abstract class _TotalPayment implements TotalPayment {
   @override
   int get od_coupon;
   @override
-  int get od_cash;
+  int get od_receipt_point;
   @override
   int get od_send_cost;
   @override

@@ -12,6 +12,8 @@ class Constants {
   static const String searchTextKey = 'SearchText';
   static const String popupDate = 'PopupDate';
 
+  static const List<String> locations = ['문 앞','직접 받고 부재중 문 앞','경비실','택배함'];
+
   static String numberAddComma(int number){
     return NumberFormat('###,###,###,###').format(number);
   }
@@ -66,6 +68,30 @@ class Constants {
     print('diffDay : $difference');
 
     return difference;
+  }
+
+  static String getDateTime(String date){
+    if(date == ''){
+      return '';
+    }
+    final duration = DateTime.now().difference(DateTime.parse(date));
+
+    if (duration.inMinutes < 1) {
+      return "방금 전";
+    }
+
+    if (duration.inHours < 1) {
+      return "${duration.inMinutes}분 전";
+    }
+    if (duration.inDays < 1) {
+      return "${duration.inHours}시간 전";
+    }
+
+    if (duration.inDays < 10) {
+      return "${duration.inDays}일 전";
+    }
+
+    return DateFormat("yyyy년 M월 d일").format(DateTime.parse(date));
   }
 
 }

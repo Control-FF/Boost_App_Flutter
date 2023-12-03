@@ -16,6 +16,7 @@ class Payment with _$Payment {
     @Default(0) int cp_price,
     @Default(0) int ct_qty,
     @Default(0) int ct_point_use,
+    @Default(0) int? io_no,
     @Default('') String io_id,
     @Default(0) int io_price,
     @Default('') String it_basic,

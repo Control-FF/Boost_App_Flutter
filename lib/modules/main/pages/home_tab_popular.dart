@@ -186,7 +186,10 @@ class HomeTabPopular extends GetView<HomeController>{
                             ),
                             TextButton(
                               onPressed: (){
-
+                                Get.toNamed(AppRoutes.moreScreen,arguments: {
+                                  'title' : '오늘 들어온 상품',
+                                  'type' : 'md'
+                                });
                               },
                               style: TextButton.styleFrom(
                                   padding: EdgeInsets.zero,
@@ -392,7 +395,10 @@ class HomeTabPopular extends GetView<HomeController>{
                             ),
                             TextButton(
                               onPressed: (){
-
+                                Get.toNamed(AppRoutes.moreScreen,arguments: {
+                                  'title' : '이런 상품은 어떠세요?',
+                                  'type' : 'recommend'
+                                });
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,

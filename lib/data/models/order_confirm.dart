@@ -86,7 +86,7 @@ class TotalPayment with _$TotalPayment {
   factory TotalPayment({
     @Default(0) int od_cart_price,
     @Default(0) int od_coupon,
-    @Default(0) int od_cash,
+    @Default(0) int od_receipt_point,
     @Default(0) int od_send_cost,
     @Default('') String total_payment,
     @Default('') String expected_points,

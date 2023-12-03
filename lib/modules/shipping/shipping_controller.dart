@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -10,18 +11,16 @@ class ShippingController extends GetxController{
   RxInt enter = 0.obs;
   RxInt etc = 0.obs;
 
-  List<String> locations = ['문 앞','직접 받고 부재중 문 앞','경비실','택배함'];
-
   @override
   void onInit() {
     super.onInit();
 
     if (Get.arguments != null) {
-      String strLocation = Get.arguments['location'];
+      String strLocation = Constants.locations[Get.arguments['location']];
       String strEnter = Get.arguments['enter'];
       String strEtc = Get.arguments['etc'];
 
-      location.value = locations.indexOf(strLocation);
+      location.value = Constants.locations.indexOf(strLocation);
 
       if(strEnter == ''){
         enter.value = 0;

@@ -14,7 +14,7 @@ class BuyController extends GetxController{
   void onInit() {
     super.onInit();
 
-    getBuyList();
+    //getBuyList();
   }
 
   Future<void> getBuyList() async {
@@ -32,6 +32,10 @@ class BuyController extends GetxController{
             return;
           }
           buyList.addAll(response.items!);
+        }
+
+        for(int i=0; i<buyList.length; i++){
+          print(buyList[i].is_id.toString());
         }
       },
     );

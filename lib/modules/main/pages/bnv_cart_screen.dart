@@ -1,6 +1,8 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
+import 'package:boostapp/modules/main/main_controller.dart';
+import 'package:boostapp/modules/main/pages/buy/buy_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,10 +16,13 @@ class BnvCartScreen extends StatefulWidget{
 
 class _BnvCartScreenState extends State<BnvCartScreen>{
   CartController controller = Get.put(CartController());
+  BuyController buyController = Get.put(BuyController());
+  MainController mainController = Get.put(MainController());
 
   @override
   Widget build(BuildContext context) {
     controller.getCartList();
+    buyController.getBuyList();
 
     return Scaffold(
       extendBody: true,
@@ -318,7 +323,7 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                                           padding: EdgeInsets.only(top: 2.h),
                                                           child: GestureDetector(
                                                             onTap: (){
-
+                                                              controller.deleteCart(controller.cartList[index].ct_id);
                                                             },
                                                             child: Icon(Icons.close_sharp,color: ColorConstant.black,size: 14),
                                                           ),
@@ -352,7 +357,12 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                                           children: [
                                                             GestureDetector(
                                                               onTap: (){
-
+                                                                int qty = controller.cartList[index].ct_qty;
+                                                                if(qty > 1){
+                                                                  qty--;
+                                                                  controller.cartList[index] = controller.cartList[index].copyWith(ct_qty: qty);
+                                                                  controller.updateCart(controller.cartList[index].ct_id,qty);
+                                                                }
                                                               },
                                                               child: Container(
                                                                 width: 20.w,
@@ -376,7 +386,10 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                                             SizedBox(width: 20,),
                                                             GestureDetector(
                                                               onTap: (){
-
+                                                                int qty = controller.cartList[index].ct_qty;
+                                                                qty++;
+                                                                controller.cartList[index] = controller.cartList[index].copyWith(ct_qty: qty);
+                                                                controller.updateCart(controller.cartList[index].ct_id,qty);
                                                               },
                                                               child: Container(
                                                                 width: 20.w,
@@ -952,90 +965,69 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                   physics: BouncingScrollPhysics(),
                                   padding: EdgeInsets.only(top: 20.h),
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: 5,
+                                  itemCount: buyController.buyList.length,
                                   shrinkWrap: true,
                                   itemBuilder: (context, index){
                                     return Column(
                                       children: [
-                                        GestureDetector(
-                                          onTap: (){
-                                            Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                              'productId' : 1
-                                            });
-                                          },
-                                          child: Padding(
-                                            padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Image.asset('assets/images/sample_product2.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                                SizedBox(height: 9.h,),
-                                                SizedBox(
-                                                  width: 146.w,
-                                                  child: Text.rich(
-                                                      TextSpan(
-                                                          children: [
-                                                            TextSpan(
-                                                              text: '[J마트]',
-                                                              style: TextStyle(
-                                                                color: ColorConstant.accent,
-                                                                fontSize: 10.sp,
-                                                                fontFamily: 'Noto Sans KR',
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                            ),
-                                                            TextSpan(
-                                                              text: '칠레산 생 블루베리 2(택1)',
-                                                              style: TextStyle(
-                                                                color: ColorConstant.black,
-                                                                fontSize: 10.sp,
-                                                                fontFamily: 'Noto Sans KR',
-                                                                fontWeight: FontWeight.w400,
-                                                              ),
-                                                            )
-                                                          ]
-                                                      )
+                                        Container(
+                                          height: 215.h,
+                                          child: GestureDetector(
+                                            onTap: (){
+                                              Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                                                'productId' : buyController.buyList[index].it_id
+                                              });
+                                            },
+                                            child: Padding(
+                                              padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  buyController.buyList[index].it_img1 != ''
+                                                      ? Image.network(buyController.buyList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
+                                                    return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
+                                                  },)
+                                                      : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                                  SizedBox(height: 9.h,),
+                                                  SizedBox(
+                                                    width: 146.w,
+                                                    child: Text.rich(
+                                                        TextSpan(
+                                                            children: [
+                                                              TextSpan(
+                                                                text: buyController.buyList[index].it_name,
+                                                                style: TextStyle(
+                                                                  color: ColorConstant.black,
+                                                                  fontSize: 10.sp,
+                                                                  fontFamily: 'Noto Sans KR',
+                                                                  fontWeight: FontWeight.w400,
+                                                                ),
+                                                              )
+                                                            ]
+                                                        )
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(height: 2.h,),
-                                                SizedBox(
-                                                  width: 146.w,
-                                                  child: Text.rich(
-                                                      TextSpan(
-                                                          children: [
-                                                            TextSpan(
-                                                              text: '50%',
-                                                              style: TextStyle(
-                                                                color: ColorConstant.primary,
-                                                                fontSize: 12.sp,
-                                                                fontFamily: 'Noto Sans KR',
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                            ),
-                                                            TextSpan(
-                                                              text: ' 3,600원',
-                                                              style: TextStyle(
-                                                                color: ColorConstant.black,
-                                                                fontSize: 12.sp,
-                                                                fontFamily: 'Noto Sans KR',
-                                                                fontWeight: FontWeight.w700,
-                                                              ),
-                                                            )
-                                                          ]
-                                                      )
+                                                  SizedBox(height: 2.h,),
+                                                  SizedBox(
+                                                    width: 146.w,
+                                                    child: Text.rich(
+                                                        TextSpan(
+                                                            children: [
+                                                              TextSpan(
+                                                                text: ' ${Constants.numberAddComma(buyController.buyList[index].ct_price)}원',
+                                                                style: TextStyle(
+                                                                  color: ColorConstant.black,
+                                                                  fontSize: 12.sp,
+                                                                  fontFamily: 'Noto Sans KR',
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                              )
+                                                            ]
+                                                        )
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  '7,800원',
-                                                  style: TextStyle(
-                                                      color: ColorConstant.gray1,
-                                                      fontSize: 8.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                      decoration: TextDecoration.lineThrough
-                                                  ),
-                                                )
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1052,7 +1044,22 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                                 padding: EdgeInsets.all(0)
                                             ),
                                             onPressed: (){
-                                              controller.showOneTouchPopup(context);
+
+                                              List<dynamic> ctItems = [];
+
+                                              if(buyController.buyList[index].io_no != 0){
+                                                //옵션 있을때
+                                                ctItems.add({
+                                                  'io_no' : buyController.buyList[index].io_no,
+                                                  'ct_qty' : 1
+                                                });
+                                              }else{
+                                                ctItems.add({
+                                                  'ct_qty' : 1
+                                                });
+                                              }
+
+                                              controller.addCart(context, buyController.buyList[index].it_id.toString(), ctItems,type: 'oneTouch');
                                             },
                                             child: Text(
                                               '함께 구매',
@@ -1109,14 +1116,11 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                               padding: EdgeInsets.only(top: 38.h,bottom: 120.h),
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  //var res = await Get.toNamed(AppRoutes.orderConfirm);
-
-                                  //if(res != null){
-                                  //  controller.cartList();
-                                  //}
+                                  //mainController.isLoading.value = true;
+                                  //return;
 
                                   if(controller.cartList.isEmpty){
-                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                       elevation: 6.0,
                                       behavior: SnackBarBehavior.floating,
                                       content: Text(
@@ -1127,7 +1131,13 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                     return;
                                   }
 
-                                  controller.addOrder();
+                                  var res = await Get.toNamed(AppRoutes.orderConfirm);
+
+                                  if(res != null){
+                                    controller.getCartList();
+                                  }
+
+                                  //controller.addOrder();
 
 
                                 },

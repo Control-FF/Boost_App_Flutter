@@ -1,4 +1,6 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/main/main_controller.dart';
 import 'package:boostapp/modules/main/pages/bnv_home_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/gestures.dart';
@@ -10,6 +12,8 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeTabTime extends GetView<HomeController>{
+  final mainController = Get.put(MainController());
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,38 +26,19 @@ class HomeTabTime extends GetView<HomeController>{
               SliverList(
                 delegate: SliverChildListDelegate(
                     [
-                      Container(
+                      Obx(() => Container(
                         margin: EdgeInsets.fromLTRB(30.w, 7.h, 30.w, 21.h),
                         width: Get.width,
                         height: 187.h,
                         child: PageView(
                           controller: controller.pageController2,
-                          children: [
-                            GestureDetector(
-                              onTap: (){
-
-                              },
-                              child: Image.asset('assets/images/banner_sample4.png'),
-                            ),
-                            GestureDetector(
-                              onTap: (){
-
-                              },
-                              child: Image.asset('assets/images/banner_sample5.png'),
-                            ),
-                            GestureDetector(
-                              onTap: (){
-
-                              },
-                              child: Image.asset('assets/images/banner_sample6.png'),
-                            ),
-                          ],
+                          children: mainController.getTimeBanner(),
                         ),
-                      ),
-                      Center(
+                      )),
+                      Obx(() => Center(
                         child: SmoothPageIndicator(
                           controller: controller.pageController2,
-                          count: 3,
+                          count: mainController.timeBannerList.length,
                           axisDirection: Axis.horizontal,
                           effect: ExpandingDotsEffect(
                             dotHeight: 9.w,
@@ -62,14 +47,15 @@ class HomeTabTime extends GetView<HomeController>{
                             activeDotColor: ColorConstant.primary,
                           ),
                         ),
-                      ),
-                      Container(
-                        color: ColorConstant.green,
-                        margin: EdgeInsets.fromLTRB(30.w, 21.h, 30.w, 0),
-                        padding: EdgeInsets.symmetric(vertical: 9),
+                      )),
+                      Obx(() => Container(
+                        width: Get.width,
+                        height: 30.h,
+                        margin: EdgeInsets.fromLTRB(30.w, 14.h, 30.w, 11.h),
                         alignment: Alignment.center,
+                        color: ColorConstant.green,
                         child: Text(
-                          '24 : 00 : 00',
+                          mainController.timeSaleTime.value,
                           style: TextStyle(
                             color: ColorConstant.white,
                             fontSize: 14.sp,
@@ -77,405 +63,7 @@ class HomeTabTime extends GetView<HomeController>{
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                      )
-                    ]
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildListDelegate(
-                    [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(30.w, 11.h, 30.w, 17.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '건강한 루틴! 내 몸 챙기기',
-                                  style: TextStyle(
-                                    color: ColorConstant.gray11,
-                                    fontSize: 10.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '식습관 하나 부터, 그래놀라',
-                                      style: TextStyle(
-                                        color: ColorConstant.black,
-                                        fontSize: 16.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            TextButton(
-                              onPressed: (){
-
-                              },
-                              style: TextButton.styleFrom(
-                                padding: EdgeInsets.zero,
-                                minimumSize: Size(0,20)
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '더보러 가기',
-                                    style: TextStyle(
-                                      color: ColorConstant.gray12,
-                                      fontSize: 10.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Icon(Icons.arrow_forward_ios_sharp,size: 10,color: ColorConstant.gray12,)
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Divider(
-                          color: ColorConstant.gray10,
-                          height: 1.h,
-                          thickness: 1.h,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Container(
-                          height: 290,
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            padding: EdgeInsets.only(top: 20.h,bottom: 30.h),
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            shrinkWrap: true,
-
-                            itemBuilder: (context, index){
-                              return GestureDetector(
-                                onTap: (){
-                                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                    'productId' : 1
-                                  });
-                                },
-                                child: Padding(
-                                  padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Stack(
-                                        children: [
-                                          Image.asset('assets/images/sample_product3.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                          Positioned(
-                                            left: 9,
-                                            top: 4,
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              width: 29.w,
-                                              height: 12.h,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(Radius.circular(2.r)),
-                                                  color: ColorConstant.primary
-                                              ),
-                                              child: Text(
-                                                '기획 상품',
-                                                style: TextStyle(
-                                                  color: ColorConstant.white,
-                                                  fontSize: 6.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w700,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 9.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '[부스트 상품]',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.primary,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: '그레놀라 (500X2EA)',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w400,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      SizedBox(height: 2.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '50%',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.primary,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: ' 3,600원',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      Text(
-                                        '7,800원',
-                                        style: TextStyle(
-                                            color: ColorConstant.gray1,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w700,
-                                            decoration: TextDecoration.lineThrough
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      )
-                    ]
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildListDelegate(
-                    [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(30.w, 0.h, 30.w, 17.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '같이먹으면 더 맛있어요!',
-                                  style: TextStyle(
-                                    color: ColorConstant.gray11,
-                                    fontSize: 10.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      '맛있는 요거트',
-                                      style: TextStyle(
-                                        color: ColorConstant.black,
-                                        fontSize: 16.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            TextButton(
-                              onPressed: (){
-
-                              },
-                              style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                  minimumSize: Size(0,20)
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    '더보러 가기',
-                                    style: TextStyle(
-                                      color: ColorConstant.gray12,
-                                      fontSize: 10.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Icon(Icons.arrow_forward_ios_sharp,size: 10,color: ColorConstant.gray12,)
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Divider(
-                          color: ColorConstant.gray10,
-                          height: 1.h,
-                          thickness: 1.h,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Container(
-                          height: 290,
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            padding: EdgeInsets.only(top: 20.h,bottom: 30.h),
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            shrinkWrap: true,
-
-                            itemBuilder: (context, index){
-                              return GestureDetector(
-                                onTap: (){
-                                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                    'productId' : 1
-                                  });
-                                },
-                                child: Padding(
-                                  padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Stack(
-                                        children: [
-                                          Image.asset('assets/images/sample_product4.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                          Positioned(
-                                            left: 9,
-                                            top: 4,
-                                            child: Container(
-                                              alignment: Alignment.center,
-                                              width: 29.w,
-                                              height: 12.h,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(Radius.circular(2.r)),
-                                                  color: ColorConstant.primary
-                                              ),
-                                              child: Text(
-                                                '기획 상품',
-                                                style: TextStyle(
-                                                  color: ColorConstant.white,
-                                                  fontSize: 6.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w700,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(height: 9.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '[부스트 상품]',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.primary,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: '요거트 (500X2EA)',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w400,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      SizedBox(height: 2.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '50%',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.primary,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: ' 3,600원',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      Text(
-                                        '7,800원',
-                                        style: TextStyle(
-                                            color: ColorConstant.gray1,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w700,
-                                            decoration: TextDecoration.lineThrough
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      )
+                      ))
                     ]
                 ),
               ),
@@ -519,11 +107,17 @@ class HomeTabTime extends GetView<HomeController>{
                             ),
                             TextButton(
                               onPressed: (){
+                                /*
+                                Get.toNamed(AppRoutes.moreScreen,arguments: {
+                                  'title' : '타임세일',
+                                  'type' : 'time'
+                                });
 
+                                 */
                               },
                               style: TextButton.styleFrom(
-                                  padding: EdgeInsets.zero,
-                                  minimumSize: Size(0,20)
+                                padding: EdgeInsets.zero,
+                                minimumSize: Size(0,20),
                               ),
                               child: Row(
                                 children: [
@@ -551,123 +145,110 @@ class HomeTabTime extends GetView<HomeController>{
                           thickness: 1.h,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
-                        child: Container(
-                          height: 290,
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            padding: EdgeInsets.only(top: 20.h,bottom: 30.h),
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index){
-                              return GestureDetector(
-                                onTap: (){
-                                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                    'productId' : 1
-                                  });
-                                },
-                                child: Padding(
-                                  padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Stack(
+                      GetX<MainController>(
+                        builder: (_){
+                          return Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 30),
+                            child: Container(
+                              height: 290,
+                              child: ListView.builder(
+                                physics: BouncingScrollPhysics(),
+                                padding: EdgeInsets.only(top: 20.h,bottom: 30.h),
+                                scrollDirection: Axis.horizontal,
+                                itemCount: mainController.timeSaleList.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index){
+                                  return GestureDetector(
+                                    onTap: (){
+                                      Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                                        'productId' : mainController.timeSaleList[index].it_id
+                                      });
+                                    },
+                                    child: Padding(
+                                      padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Image.asset('assets/images/sample_product2.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                          Positioned(
-                                            right: 0,
-                                            bottom: 0,
-                                            child: Container(
-                                              color: ColorConstant.red,
-                                              width: 20.w,
-                                              height: 20.h,
-                                              child: IconButton(padding: EdgeInsets.zero,
-                                                color: Colors.red,
-                                                alignment: Alignment.center,
-                                                onPressed: (){
-
-                                                },
-                                                icon: Icon(Icons.favorite_border_outlined,color: ColorConstant.white,size: 10),
-                                              ),
+                                          mainController.timeSaleList[index].it_img1 != ''
+                                              ? Image.network(Constants.fileUrl+mainController.timeSaleList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
+                                            return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
+                                          })
+                                              : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                          SizedBox(height: 9.h,),
+                                          SizedBox(
+                                            width: 146.w,
+                                            child: Text.rich(
+                                                TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text: '[부스트 상품]',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.primary,
+                                                          fontSize: 10.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: mainController.timeSaleList[index].it_name,
+                                                        style: TextStyle(
+                                                          color: ColorConstant.black,
+                                                          fontSize: 10.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w400,
+                                                        ),
+                                                      )
+                                                    ]
+                                                )
                                             ),
                                           ),
+                                          SizedBox(height: 2.h,),
+                                          SizedBox(
+                                            width: 146.w,
+                                            child: Text.rich(
+                                                TextSpan(
+                                                    children: [
+                                                      mainController.timeSaleList[index].it_cust_price != mainController.timeSaleList[index].it_price ? TextSpan(
+                                                        text: '${Constants.getPercent(mainController.timeSaleList[index].it_price, mainController.timeSaleList[index].it_cust_price)}%',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.primary,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                      ) : TextSpan(),
+                                                      TextSpan(
+                                                        text: ' ${Constants.numberAddComma(mainController.timeSaleList[index].it_price)}원',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.black,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                      )
+                                                    ]
+                                                )
+                                            ),
+                                          ),
+                                          mainController.timeSaleList[index].it_cust_price != mainController.timeSaleList[index].it_price ? Text(
+                                            '${Constants.numberAddComma(mainController.timeSaleList[index].it_cust_price)}원',
+                                            style: TextStyle(
+                                                color: ColorConstant.gray1,
+                                                fontSize: 8.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w700,
+                                                decoration: TextDecoration.lineThrough
+                                            ),
+                                          ) : SizedBox()
                                         ],
                                       ),
-                                      SizedBox(height: 9.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '[J마트]',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.red,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: '칠레산 생 블루베리 2(택1)',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w400,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      SizedBox(height: 2.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: '50%',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.primary,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ),
-                                                  TextSpan(
-                                                    text: ' 3,600원',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      Text(
-                                        '7,800원',
-                                        style: TextStyle(
-                                            color: ColorConstant.gray1,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w700,
-                                            decoration: TextDecoration.lineThrough
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        },
                       )
                     ]
                 ),
@@ -807,17 +388,17 @@ class HomeTabTime extends GetView<HomeController>{
                                         ),
                                       ),
                                       TextSpan(
-                                        text: '[사업자정보확인]',
-                                        style: TextStyle(
-                                          color: ColorConstant.gray12,
-                                          fontSize: 8.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w400,
-                                          decoration: TextDecoration.underline
-                                        ),
-                                        recognizer: TapGestureRecognizer()..onTap = (){
-                                          print('biz info');
-                                        }
+                                          text: '[사업자정보확인]',
+                                          style: TextStyle(
+                                              color: ColorConstant.gray12,
+                                              fontSize: 8.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                              decoration: TextDecoration.underline
+                                          ),
+                                          recognizer: TapGestureRecognizer()..onTap = (){
+                                            print('biz info');
+                                          }
                                       ),
                                       TextSpan(
                                         text: '전화 : 1533-0818 팩스 : 051-728-7803 주소 : 46004 부산광역시 기장군 정관읍 용수로 60 /62 개인정보보호책임자 : ',
@@ -831,11 +412,11 @@ class HomeTabTime extends GetView<HomeController>{
                                       TextSpan(
                                           text: '김지창(boost051@naver.com)',
                                           style: TextStyle(
-                                            color: ColorConstant.gray12,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w400,
-                                            decoration: TextDecoration.underline
+                                              color: ColorConstant.gray12,
+                                              fontSize: 8.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                              decoration: TextDecoration.underline
                                           ),
                                           recognizer: TapGestureRecognizer()..onTap = (){
                                             print('biz info');
@@ -847,8 +428,6 @@ class HomeTabTime extends GetView<HomeController>{
                           ],
                         ),
                       )
-
-
                     ]
                 ),
               ),

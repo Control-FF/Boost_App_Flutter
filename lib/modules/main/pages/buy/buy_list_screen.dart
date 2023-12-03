@@ -11,17 +11,24 @@ import 'package:get/get.dart';
 class BuyListScreen extends GetView<BuyController>{
 
   ScrollController _scrollController = ScrollController();
+  bool _showedMessage = false;
 
   @override
   Widget build(BuildContext context) {
+
+    controller.getBuyList();
+
     _scrollController.addListener(() {
-      if (_scrollController.offset == _scrollController.position.maxScrollExtent
-          && !_scrollController.position.outOfRange) {
+      double maxScroll = _scrollController.position.maxScrollExtent;
+      double currentScroll = _scrollController.position.pixels;
+      double delta = maxScroll - currentScroll;
+
+      if (delta <= 300 && !_showedMessage) {
+        _showedMessage = true;
         controller.page++;
         controller.getBuyList();
-      } else if (_scrollController.offset == _scrollController.position.minScrollExtent
-          && !_scrollController.position.outOfRange) {
-        print('스크롤이 맨 위에 위치해 있습니다');
+      } else if (delta > 300) {
+        _showedMessage = false;
       }
     });
 
@@ -227,11 +234,12 @@ class BuyListScreen extends GetView<BuyController>{
                         ),
                         SizedBox(height: 11.h,),
                         controller.buyList[index].ct_status == '완료'
-                            && controller.buyList[index].is_id == null
+                            && controller.buyList[index].is_id == 0
                             && Constants.diffDate(controller.buyList[index].completion_time) <= 7 ? Container(
                           width: Get.width,
                           child: ElevatedButton(
                             onPressed: () async {
+
                               var res = await Get.toNamed(AppRoutes.reviewEdit,arguments: {
                                 'ctId' : controller.buyList[index].ct_id,
                                 'itName' : controller.buyList[index].it_name,
@@ -239,8 +247,7 @@ class BuyListScreen extends GetView<BuyController>{
                               });
 
                               if(res != null){
-                                controller.getBuyList();
-                              }else{
+                                controller.page.value = 1;
                                 controller.getBuyList();
                               }
                             },

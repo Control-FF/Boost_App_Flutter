@@ -454,8 +454,10 @@ class AddressScreen extends GetView<AddressController>{
                       Get.back(result: {
                         'addressIdx' : controller.addressList[controller.selectIndex.value].ad_id,
                         'addressName' : controller.addressList[controller.selectIndex.value].name,
+                        'phone' : controller.addressList[controller.selectIndex.value].phone,
                         'address1' : controller.addressList[controller.selectIndex.value].address1,
                         'address2' : controller.addressList[controller.selectIndex.value].address2,
+                        'address3' : controller.addressList[controller.selectIndex.value].address3,
                       });
                     }
                   },

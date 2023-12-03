@@ -19,11 +19,12 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
   CartController cartController = Get.put(CartController());
 
   ScrollController _scrollController = ScrollController();
+  bool _showedMessage = false;
 
   @override
   Widget build(BuildContext context) {
     cartController.getCartList();
-
+/*
     _scrollController.addListener(() {
       if (_scrollController.offset == _scrollController.position.maxScrollExtent
           && !_scrollController.position.outOfRange) {
@@ -40,6 +41,27 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
       } else if (_scrollController.offset == _scrollController.position.minScrollExtent
           && !_scrollController.position.outOfRange) {
         print('스크롤이 맨 위에 위치해 있습니다');
+      }
+    });
+
+ */
+
+    _scrollController.addListener(() {
+      double maxScroll = _scrollController.position.maxScrollExtent;
+      double currentScroll = _scrollController.position.pixels;
+      double delta = maxScroll - currentScroll;
+
+      if (delta <= 300 && !_showedMessage) {
+        _showedMessage = true;
+        if(controller.tagIndex.value == 2){
+          controller.reviewPage++;
+          controller.getReview();
+        }else if(controller.tagIndex.value == 3){
+          controller.inquiryPage++;
+          controller.getInquiry();
+        }
+      } else if (delta > 300) {
+        _showedMessage = false;
       }
     });
 
@@ -210,7 +232,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                 children: [
                                   Flexible(
                                     flex: 1,
-                                    child: Container(
+                                    child: controller.productData.value != null && controller.productData.value!.item!.it_img1! != '' ? Container(
                                       width: 50.w,
                                       child: controller.productData.value != null ? ClipRRect(
                                         borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -219,7 +241,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                           child: Image.network(Constants.fileUrl+controller.productData.value!.item!.it_img1!, fit: BoxFit.cover,),
                                         ),
                                       ) : SizedBox(),
-                                    ),
+                                    ) : SizedBox(),
                                   ),
                                   Flexible(
                                     flex: 1,

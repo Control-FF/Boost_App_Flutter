@@ -2,19 +2,25 @@ import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/category_product.dart';
+import 'package:boostapp/data/models/cs.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
+import 'package:boostapp/data/models/faq.dart';
 import 'package:boostapp/data/models/inquiry.dart';
 import 'package:boostapp/data/models/keyword_auto.dart';
 import 'package:boostapp/data/models/keyword_rank.dart';
 import 'package:boostapp/data/models/keyword_result.dart';
 import 'package:boostapp/data/models/main.dart';
+import 'package:boostapp/data/models/more.dart';
 import 'package:boostapp/data/models/notice.dart';
+import 'package:boostapp/data/models/onetouch.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/policy.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/data/models/product_review.dart';
+import 'package:boostapp/data/models/recommend.dart';
+import 'package:boostapp/data/models/time.dart';
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:boostapp/modules/order/order_confirm_controller.dart';
 import 'package:dartz/dartz.dart';
@@ -38,6 +44,83 @@ class ShopService extends GetxService{
     try {
       final MainResponse response =
       await _apiService.getApiClient().shopMain();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, RecommendResponse>> getRecommend({
+    required sort,
+    required page,
+  }) async {
+    try {
+      final RecommendResponse response =
+      await _apiService.getApiClient().recommend(sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, MoreResponse>> getMoreMd({
+    required sort,
+    required page,
+  }) async {
+    try {
+      final MoreResponse response =
+      await _apiService.getApiClient().moreMd(sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, MoreResponse>> getMoreRecommend({
+    required sort,
+    required page,
+  }) async {
+    try {
+      final MoreResponse response =
+      await _apiService.getApiClient().moreRecommend(sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, TimeResponse>> getShopTime() async {
+    try {
+      final TimeResponse response =
+      await _apiService.getApiClient().shopTime();
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -76,6 +159,26 @@ class ShopService extends GetxService{
     try {
       final CategoryProductResponse response =
       await _apiService.getApiClient().getCategoryProduct(caId,sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, OneTouchResponse>> getOneTouch({
+    required sort,
+    required page,
+  }) async {
+    try {
+      final OneTouchResponse response =
+      await _apiService.getApiClient().oneTouch(sort,page);
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -165,14 +268,13 @@ class ShopService extends GetxService{
     }
   }
 
-  Future<Either<Failure, OrderRequestResponse>> buyNow({
-    required itId,
-    required qty,
-    required ioNo
+  Future<Either<Failure, NoticeResponse>> getNotice({
+    required isHtml,
+    required keyword,
   }) async {
     try {
-      final OrderRequestResponse response =
-      await _apiService.getApiClient().buyNow(itId,qty,ioNo);
+      final NoticeResponse response =
+      await _apiService.getApiClient().noticeList(isHtml,keyword);
       if (response.status == 200) {
         return Right(response);
       } else {
@@ -186,13 +288,31 @@ class ShopService extends GetxService{
     }
   }
 
-  Future<Either<Failure, NoticeResponse>> getNotice({
-    required isHtml,
+  Future<Either<Failure, CSResponse>> getCS({
     required keyword,
   }) async {
     try {
-      final NoticeResponse response =
-      await _apiService.getApiClient().noticeList(isHtml,keyword);
+      final CSResponse response =
+      await _apiService.getApiClient().csList(keyword);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, FAQResponse>> getFAQ({
+    required isHtml,
+  }) async {
+    try {
+      final FAQResponse response =
+      await _apiService.getApiClient().faqList(isHtml);
       if (response.status == 200) {
         return Right(response);
       } else {

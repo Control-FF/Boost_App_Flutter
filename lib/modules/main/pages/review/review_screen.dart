@@ -86,13 +86,22 @@ class ReviewScreen extends GetView<ReviewController>{
                     controller.reviewList[index].isExpand! ? Container(
                       margin: EdgeInsets.only(top: 17.h,bottom: 12.h),
                       width: Get.width,
-                      height: 187.h,
+                      height: Get.width,
                       child: PageView(
                         controller: controller.pageController,
                         children: [
-                          Image.network(controller.reviewList[index].is_img1,width: Get.width,),
-                          Image.network(controller.reviewList[index].is_img2,width: Get.width,),
-                          Image.network(controller.reviewList[index].is_img3,width: Get.width,),
+                          AspectRatio(
+                            aspectRatio: 1/1,
+                            child: Image.network(controller.reviewList[index].is_img1,width: Get.width,fit: BoxFit.cover,),
+                          ),
+                          AspectRatio(
+                            aspectRatio: 1/1,
+                            child: Image.network(controller.reviewList[index].is_img2,width: Get.width,fit: BoxFit.cover,),
+                          ),
+                          AspectRatio(
+                            aspectRatio: 1/1,
+                            child: Image.network(controller.reviewList[index].is_img3,width: Get.width,fit: BoxFit.cover,),
+                          ),
                         ],
                       ),
                     ) : SizedBox(),

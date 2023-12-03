@@ -263,7 +263,8 @@ class PayScreen extends GetView<PayController>{
                                               _showDeletePopup(context,state.items[index].id);
                                             }else{
                                               Get.back(result: {
-                                                'subject' : state.items[index].card_name,
+                                                'name' : state.items[index].card_name,
+                                                'id' : state.items[index].id,
                                                 //'number' : state.items[index].number,
                                               });
                                             }

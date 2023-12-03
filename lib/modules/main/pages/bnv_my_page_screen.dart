@@ -727,7 +727,7 @@ class BnvMyPageScreen extends GetView<MyPageController>{
             ),
             InkWell(
               onTap: (){
-
+                Get.toNamed(AppRoutes.inquiry);
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 26.w),

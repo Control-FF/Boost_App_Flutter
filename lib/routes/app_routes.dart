@@ -18,6 +18,8 @@ import 'package:boostapp/modules/main/pages/coupon/coupon_binding.dart';
 import 'package:boostapp/modules/main/pages/coupon/coupon_list_screen.dart';
 import 'package:boostapp/modules/main/pages/coupon/coupon_register_screen.dart';
 import 'package:boostapp/modules/main/pages/coupon/coupon_use_screen.dart';
+import 'package:boostapp/modules/main/pages/inquiry/inquiry_binding.dart';
+import 'package:boostapp/modules/main/pages/inquiry/inquiry_screen.dart';
 import 'package:boostapp/modules/main/pages/notice/notice_binding.dart';
 import 'package:boostapp/modules/main/pages/notice/notice_screen.dart';
 import 'package:boostapp/modules/main/pages/order/order_binding.dart';
@@ -36,6 +38,8 @@ import 'package:boostapp/modules/main/pages/review/review_binding.dart';
 import 'package:boostapp/modules/main/pages/review/review_edit_binding.dart';
 import 'package:boostapp/modules/main/pages/review/review_edit_screen.dart';
 import 'package:boostapp/modules/main/pages/review/review_screen.dart';
+import 'package:boostapp/modules/more/more_binding.dart';
+import 'package:boostapp/modules/more/more_screen.dart';
 import 'package:boostapp/modules/order/order_confirm_binding.dart';
 import 'package:boostapp/modules/order/order_confirm_screen.dart';
 import 'package:boostapp/modules/policy/policy_binding.dart';
@@ -92,9 +96,11 @@ class AppRoutes {
   static const payList = '/pay_list';
   static const payRegister = '/pay_register';
 
+  static const inquiry = '/inquiry';
   static const notice = '/notice';
   static const policy = '/policy';
   static const category = '/category';
+  static const moreScreen = '/more';
 
   static const orderConfirm = '/order_confirm';
   static const shipping = '/shipping';
@@ -290,6 +296,13 @@ class AppRoutes {
       ],
     ),
     GetPage(
+      name: inquiry,
+      page: () => InquiryScreen(),
+      bindings: [
+        InquiryBinding(),
+      ],
+    ),
+    GetPage(
       name: notice,
       page: () => NoticeScreen(),
       bindings: [
@@ -308,6 +321,13 @@ class AppRoutes {
       page: () => CategoryScreen(),
       bindings: [
         CategoryBinding(),
+      ],
+    ),
+    GetPage(
+      name: moreScreen,
+      page: () => MoreScreen(),
+      bindings: [
+        MoreBinding(),
       ],
     ),
     GetPage(

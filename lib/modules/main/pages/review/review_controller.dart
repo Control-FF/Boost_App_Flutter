@@ -37,6 +37,7 @@ class ReviewController extends GetxController{
   RxString name = ''.obs;
   RxString type = ''.obs;
 
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {
@@ -90,15 +91,19 @@ class ReviewController extends GetxController{
     final result = await _userService.registerReview(ctId: ctId.toString(),subject: subject,contents: contents,score: editRating.value.toString(),reviewImg: _files);
 
     result.fold(
-      (failure) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        elevation: 6.0,
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          failure.message,
-          style: TextStyle(color: Colors.white),
-        ),
-      )),
+      (failure){
+        isLoading.value = false;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            failure.message,
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+      },
       (response){
+        isLoading.value = false;
         showReviewPopup(context, 'register',0);
       },
     );
@@ -112,20 +117,25 @@ class ReviewController extends GetxController{
 
     for(int i=0; i<editImgList.length; i++){
       _files.add(await dio.MultipartFile.fromFile(editImgList[i]!.path),);
+      print(editImgList[i]!.path.toString());
     }
 
     final result = await _userService.updateReview(ctId: ctId.toString(),subject: subject,contents: contents,score: editRating.value.toString(),reviewImg: _files);
 
     result.fold(
-      (failure) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        elevation: 6.0,
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          failure.message,
-          style: TextStyle(color: Colors.white),
-        ),
-      )),
+      (failure){
+        isLoading.value = false;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            failure.message,
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+      },
       (response){
+        isLoading.value = false;
         showReviewPopup(context, 'update',0);
       },
     );
@@ -306,5 +316,12 @@ class ReviewController extends GetxController{
             ),
           );
         });
+  }
+
+  onWillPop(BuildContext context) {
+    if(isLoading.value){
+      return false;
+    }
+    return true;
   }
 }

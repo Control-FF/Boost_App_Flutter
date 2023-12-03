@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/main.dart';
+import 'package:boostapp/data/models/recommend.dart';
+import 'package:boostapp/data/models/time.dart';
 import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/storage_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
@@ -9,7 +13,7 @@ import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:boostapp/modules/main/pages/bnv_delivery_screen.dart';
+import 'package:boostapp/modules/main/pages/bnv_onetouch_screen.dart';
 import 'package:boostapp/modules/main/pages/bnv_cart_screen.dart';
 import 'package:boostapp/modules/main/pages/bnv_home_screen.dart';
 import 'package:boostapp/modules/main/pages/bnv_my_page_screen.dart';
@@ -24,6 +28,7 @@ class MainController extends GetxController{
 
   DateTime? currentBackPressTime;
   RxInt currentIndex = 0.obs;
+  RxBool isLoading = false.obs;
 
   RxList pages = [].obs;
 
@@ -36,6 +41,12 @@ class MainController extends GetxController{
   RxList<ProductItem> mainMdList = <ProductItem>[].obs;
   RxList<ProductItem> mainRecommendList = <ProductItem>[].obs;
 
+  RxList<TimeBannerList> timeBannerList = <TimeBannerList>[].obs;
+  RxList<TimeSaleItem> timeSaleList = <TimeSaleItem>[].obs;
+  RxString timeSaleTime = ''.obs;
+
+  RxList<Recommend> recommendList = <Recommend>[].obs;
+
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -45,7 +56,7 @@ class MainController extends GetxController{
         'page' : BnvHomeScreen(),
       },
       {
-        'page' : BnvDeliveryScreen(),
+        'page' : BnvOneTouchScreen(),
       },
       {
         'page' : BnvGiftScreen(),
@@ -58,12 +69,14 @@ class MainController extends GetxController{
       },
     ];
 
-    await Future.delayed(Duration(milliseconds: 500));
+    //await Future.delayed(Duration(milliseconds: 500));
 
     //await getAddressCheck();
     await getCategoryList('');
     await getCategoryFirstList();
     await getShopMain();
+    await getShopTime();
+    await getRecommendList();
   }
 
   Future<void> getShopMain() async {
@@ -89,6 +102,31 @@ class MainController extends GetxController{
             showAdBottomSheet();
           }
         }
+      },
+    );
+  }
+
+  Future<void> getShopTime() async {
+
+    final result = await _shopService.getShopTime();
+    result.fold(
+      (failure) => print(failure.message),
+      (response){
+        timeBannerList.value = response.data!.banner!.mainBanner!;
+        timeSaleList.value = response.data!.timeSaleData!;
+
+        setTimer();
+      },
+    );
+  }
+
+  Future<void> getRecommendList() async {
+
+    final result = await _shopService.getRecommend(sort: '', page: 1);
+    result.fold(
+      (failure) => print(failure.message),
+      (response){
+        recommendList.value = response.items!;
       },
     );
   }
@@ -131,6 +169,49 @@ class MainController extends GetxController{
             ),
           ),
         )
+      );
+    }
+    return banner;
+  }
+
+  List<Widget> getTimeBanner(){
+    List<Widget> banner = [];
+
+    for(int i=0; i<timeBannerList.length; i++){
+      banner.add(
+          GestureDetector(
+            onTap: (){
+              String bnUrl = timeBannerList[i].bn_url;
+
+              if(bnUrl != '' && bnUrl.startsWith('http')){
+                String scheme = bnUrl.replaceAll("http://", '').replaceAll("https://", '').split('/')[0];
+                String data = bnUrl.replaceAll("http://", '').replaceAll("https://", '').split('/')[1];
+
+                if(scheme == 'category'){
+                  Get.toNamed(AppRoutes.category,arguments: {
+                    'category':'',
+                    'caId':data,
+                  });
+                }else if(scheme == 'item'){
+                  Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                    'productId' : data
+                  });
+                }
+              }
+            },
+            child: Container(
+              width: Get.width,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(16),
+                    topLeft: Radius.circular(16)
+                ),
+                child: Image.network(
+                  timeBannerList[i].bn_img,
+                ),
+              ),
+            ),
+          )
       );
     }
     return banner;
@@ -184,6 +265,40 @@ class MainController extends GetxController{
     );
   }
 
+  void setTimer(){
+    if(timeSaleList.isNotEmpty){
+      Timer.periodic(Duration(seconds: 1), (timer) {
+        DateTime toDay = DateTime.now();
+        DateTime endDay = DateTime.parse(timeSaleList[0].sale_end_time);
+
+        int diffTime = endDay.difference(toDay).inSeconds;
+        int seconds = diffTime % 60;
+        int minutes = diffTime~/60%60;
+        int hours = diffTime/60~/60;
+
+        String strSeconds = seconds.toString();
+        String strMinutes = minutes.toString();
+        String strHours = hours.toString();
+
+        if(seconds < 10){
+          strSeconds = '0$strSeconds';
+        }
+
+        if(minutes < 10){
+          strMinutes = '0$strMinutes';
+        }
+
+        if(hours < 10){
+          strHours = '0$strHours';
+        }
+
+        timeSaleTime.value = '$strHours : $strMinutes : $strSeconds';
+      });
+    }else{
+      timeSaleTime.value = '현재 진행중인 타임세일 품목이 없습니다.';
+    }
+  }
+
   bool isChild(int index){
     return categoryList[index].sub_flag == "true" && categoryList[index].ca_id.length == 2;
   }
@@ -214,6 +329,10 @@ class MainController extends GetxController{
   }
 
   onWillPop(BuildContext context) {
+    if(isLoading.value){
+      return false;
+    }
+
     if(scaffoldKey.currentState!.isDrawerOpen){
       scaffoldKey.currentState!.closeDrawer();
       return;

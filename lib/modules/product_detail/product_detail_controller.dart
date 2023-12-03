@@ -104,23 +104,6 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
       },
     );
   }
-/*
-  Future<void> buyNow() async {
-    final result = await _shopService.buyNow(itId: productId.value,qty: , ioNo: );
-    result.fold(
-      (failure) => print(failure.message),
-      (response) async {
-        String odId = response.od_id;
-
-        var res = await Get.toNamed(AppRoutes.orderConfirm,arguments: {'odId' : odId});
-
-        if(res != null){
-          Get.back();
-        }
-      },
-    );
-  }
-*/
 
   void getBuyInfo(){
     buyInfoList.clear();
@@ -830,7 +813,20 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                   height: 55.h,
                   child: ElevatedButton(
                     onPressed: (){
-                      //Get.offAllNamed(AppRoutes.loginScreen);
+                      //복수옵션 바로 구매
+                      List<dynamic> ctItems = [];
+
+                      for(int i=0; i<optionSelectList.length; i++){
+                        if(optionSelectList[i].isCheck ?? false){
+                          ctItems.add({
+                            'io_no' : optionSelectList[i].io_no,
+                            'ct_qty' : optionSelectList[i].io_qty
+                          });
+                        }
+                      }
+
+                      cartController.directBuy(context,productData.value!.item!.it_id,ctItems);
+                      Get.back();
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorConstant.accent,
@@ -1066,7 +1062,15 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                   height: 55.h,
                   child: ElevatedButton(
                     onPressed: (){
-                      //Get.offAllNamed(AppRoutes.loginScreen);
+                      //단일옵션 바로 구매
+                      List<dynamic> ctItems = [];
+
+                      ctItems.add({
+                        'ct_qty' : qty.value
+                      });
+
+                      cartController.directBuy(context,productData.value!.item!.it_id,ctItems);
+                      Get.back();
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: ColorConstant.accent,

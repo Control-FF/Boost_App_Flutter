@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/shipping/shipping_controller.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +84,7 @@ class ShippingScreen extends GetView<ShippingController>{
                                     ),
                                     SizedBox(width: 11.w,),
                                     Text(
-                                      controller.locations[0],
+                                      Constants.locations[0],
                                       style: TextStyle(
                                         color: ColorConstant.gray25,
                                         fontSize: 12.sp,
@@ -118,7 +119,7 @@ class ShippingScreen extends GetView<ShippingController>{
                                     ),
                                     SizedBox(width: 11.w,),
                                     Text(
-                                      controller.locations[1],
+                                      Constants.locations[1],
                                       style: TextStyle(
                                         color: ColorConstant.gray25,
                                         fontSize: 12.sp,
@@ -153,7 +154,7 @@ class ShippingScreen extends GetView<ShippingController>{
                                     ),
                                     SizedBox(width: 11.w,),
                                     Text(
-                                      controller.locations[2],
+                                      Constants.locations[2],
                                       style: TextStyle(
                                         color: ColorConstant.gray25,
                                         fontSize: 12.sp,
@@ -188,7 +189,7 @@ class ShippingScreen extends GetView<ShippingController>{
                                     ),
                                     SizedBox(width: 11.w,),
                                     Text(
-                                      controller.locations[3],
+                                      Constants.locations[3],
                                       style: TextStyle(
                                         color: ColorConstant.gray25,
                                         fontSize: 12.sp,
@@ -506,7 +507,7 @@ class ShippingScreen extends GetView<ShippingController>{
                     }
 
                     Get.back(result: {
-                      'location' : controller.locations[controller.location.value],
+                      'location' : controller.location.value,
                       'enter' : controller.enter.value == 0 ? '' : controller.enterPwdController.text,
                       'etc' : controller.etc.value == 0 ? '' : controller.etcController.text,
                     });
