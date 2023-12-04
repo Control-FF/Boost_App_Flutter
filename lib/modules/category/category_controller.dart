@@ -13,7 +13,7 @@ class CategoryController extends GetxController{
 
   RxList<CategoryProduct> categoryProductList = RxList<CategoryProduct>([]);
   RxString filter = ''.obs; //'': 필터 적용전, 'boost': 부스트 배송, 'seller': 판매자 배송
-  RxString sort = ''.obs; //'': 필터 적용전, 'latest': 최근 등록, 'review': 리뷰, 'price_high': 가격 높은, 'price_low': 가격 낮은, 'rating': 평점, 'sales': 판매
+  RxString sort = ''.obs; //'': 필터 적용전, 'latest': 최근 등록, 'reviews': 리뷰, 'price_high': 가격 높은, 'price_low': 가격 낮은, 'rating': 평점, 'sales': 판매
 
   @override
   void onInit() {

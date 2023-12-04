@@ -184,7 +184,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                               child: Row(
                                 children: [
                                   Text(
-                                    controller.productData.value!.item!.it_explan,
+                                    Constants.parseHtmlString(controller.productData.value!.item!.it_explan),
                                     style: TextStyle(
                                       color: ColorConstant.black,
                                       fontSize: 16.sp,
@@ -211,7 +211,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                               padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 0.h),
                               child: Row(
                                 children: [
-                                  Image.asset('assets/images/ic_boost.png',width: 68.w,height: 24.h,)
+                                  Image.asset('assets/images/ic_boost.png',width: 98.w,height: 24.h,)
                                 ],
                               ),
                             ) : SizedBox(),
@@ -398,7 +398,14 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                   children: [
                                     GestureDetector(
                                       onTap: (){
+
+                                        int checkCnt = controller.optionList.where((c) => c.isCheck ?? false).length;
+
                                         bool isCheck = controller.optionList[index].isCheck ?? false;
+
+                                        if(isCheck && checkCnt == 1){
+                                          return;
+                                        }
 
                                         controller.optionList[index] = controller.optionList[index].copyWith(isCheck: !isCheck);
                                       },

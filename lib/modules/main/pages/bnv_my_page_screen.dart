@@ -603,8 +603,14 @@ class BnvMyPageScreen extends GetView<MyPageController>{
               color: ColorConstant.gray22,
             ),
             InkWell(
-              onTap: (){
-                Get.toNamed(AppRoutes.buyList);
+              onTap: () async {
+                var res = await Get.toNamed(AppRoutes.buyList);
+
+                if(res != null){
+                  controller.getMyInfo();
+                }else{
+                  controller.getMyInfo();
+                }
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 26.w),

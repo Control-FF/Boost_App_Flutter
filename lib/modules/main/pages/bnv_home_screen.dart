@@ -126,18 +126,23 @@ class _BnvHomeScreenState extends State<BnvHomeScreen>
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 6),
-                  child: Text(
-                    '부산 기장군 정관읍 504-3 >',
-                    style: TextStyle(
-                      color: ColorConstant.white,
-                      fontSize: 7.sp,
-                      fontFamily: 'Noto Sans KR',
-                      fontWeight: FontWeight.w700,
+                Obx(() => GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.addressScreen);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 6),
+                    child: Text(
+                      mainController.defaultAddress.value != '' ? '${mainController.defaultAddress.value} >' : '주소 등록',
+                      style: TextStyle(
+                        color: ColorConstant.white,
+                        fontSize: 7.sp,
+                        fontFamily: 'Noto Sans KR',
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                )
+                ))
               ],
             ),
           ),

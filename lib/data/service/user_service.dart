@@ -2,6 +2,7 @@ import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/card.dart';
 import 'package:boostapp/data/models/cart.dart';
+import 'package:boostapp/data/models/cart_add_response.dart';
 import 'package:boostapp/data/models/coupon.dart';
 import 'package:boostapp/data/models/data_response.dart';
 import 'package:boostapp/data/models/failure.dart';
@@ -655,11 +656,11 @@ class UserService extends GetxService{
     }
   }
 
-  Future<Either<Failure, DataResponse>> addCart({
+  Future<Either<Failure, CartAddResponse>> addCart({
     required data
   }) async {
     try {
-      final DataResponse response =
+      final CartAddResponse response =
       await _apiService.getApiClient().addCart(data);
       if (response.status == 200) {
         return Right(response);

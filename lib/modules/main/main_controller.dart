@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/main.dart';
 import 'package:boostapp/data/models/recommend.dart';
 import 'package:boostapp/data/models/time.dart';
@@ -34,6 +35,9 @@ class MainController extends GetxController{
 
   RxList categoryList = [].obs;
   RxList categoryFirstList = [].obs;
+
+  RxList<Address> addressList = <Address>[].obs;
+  RxString defaultAddress = ''.obs;
 
   RxList<BannerList> mainBannerList = <BannerList>[].obs;
   RxList<BannerList> bottomBannerList = <BannerList>[].obs;
@@ -69,9 +73,9 @@ class MainController extends GetxController{
       },
     ];
 
-    //await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(Duration(milliseconds: 500));
 
-    //await getAddressCheck();
+    await getAddressCheck();
     await getCategoryList('');
     await getCategoryFirstList();
     await getShopMain();
@@ -221,9 +225,13 @@ class MainController extends GetxController{
     final result = await _userService.getAddressList();
     result.fold(
         (failure) => print(failure.message),
-        (response) => {
-          if(response.items!.isEmpty){
-            Get.toNamed(AppRoutes.addressScreen)
+        (response){
+          addressList.value = response.items!;
+
+          for(int i=0; i<addressList.length; i++){
+            if(addressList[i].ad_default == 'true'){
+              defaultAddress.value = addressList[i].address1;
+            }
           }
         },
     );

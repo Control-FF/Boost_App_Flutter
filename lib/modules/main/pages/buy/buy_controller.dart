@@ -33,10 +33,6 @@ class BuyController extends GetxController{
           }
           buyList.addAll(response.items!);
         }
-
-        for(int i=0; i<buyList.length; i++){
-          print(buyList[i].is_id.toString());
-        }
       },
     );
   }

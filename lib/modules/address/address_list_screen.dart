@@ -382,7 +382,7 @@ class AddressScreen extends GetView<AddressController>{
                                         )
                                       ],
                                     ),
-                                    Container(
+                                    state.items[index].ad_default == "false" ? Container(
                                       width: 50.w,
                                       height: 23.h,
                                       child: ElevatedButton(
@@ -408,7 +408,7 @@ class AddressScreen extends GetView<AddressController>{
                                           ),
                                         ),
                                       ),
-                                    ),
+                                    ) : SizedBox(),
                                     SizedBox(height: 18.h,)
                                   ],
                                 ),

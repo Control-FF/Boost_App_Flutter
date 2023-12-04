@@ -827,25 +827,65 @@ class RegisterScreen extends GetView<RegisterController>{
                             onPressed: (){
                               if(controller.validNameStatus.value != 1){
                                 controller.validNameStatus.value = 2;
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  elevation: 6.0,
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text(
+                                    '성함을 확인해주세요.',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ));
                                 return;
                               }
 
                               if(controller.validPhoneStatus.value != 1){
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  elevation: 6.0,
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text(
+                                    '휴대폰 번호를 입력해주세요.',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ));
                                 controller.validPhoneStatus.value = 2;
                                 return;
                               }
 
                               if(controller.validAuthStatus.value != 1){
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  elevation: 6.0,
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text(
+                                    '휴대폰 인증을 진행해주세요.',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ));
                                 return;
                               }
 
                               if(controller.validPasswordStatus1.value != 1){
                                 controller.validPasswordStatus1.value = 2;
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  elevation: 6.0,
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text(
+                                    '비밀번호를 확인해주세요.',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ));
                                 return;
                               }
 
                               if(controller.validPasswordStatus2.value != 1){
                                 controller.validPasswordStatus2.value = 2;
+                                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  elevation: 6.0,
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text(
+                                    '비밀번호가 일치하지않습니다.',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ));
                                 return;
                               }
 

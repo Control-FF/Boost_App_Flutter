@@ -35,7 +35,7 @@ class ReviewScreen extends GetView<ReviewController>{
           ),
         ),
         backgroundColor: ColorConstant.white,
-        body: Obx(() => ListView.builder(
+        body: Obx(() => controller.reviewList.isNotEmpty ? ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
@@ -83,26 +83,17 @@ class ReviewScreen extends GetView<ReviewController>{
                         fontWeight: FontWeight.w700,
                       ),
                     ) : SizedBox(),
-                    controller.reviewList[index].isExpand! ? Container(
+                    controller.reviewList[index].isExpand!
+                        && (controller.reviewList[index].is_img1 != ''
+                        || controller.reviewList[index].is_img2 != ''
+                        || controller.reviewList[index].is_img3 != '' )
+                        ? Container(
                       margin: EdgeInsets.only(top: 17.h,bottom: 12.h),
                       width: Get.width,
                       height: Get.width,
                       child: PageView(
                         controller: controller.pageController,
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 1/1,
-                            child: Image.network(controller.reviewList[index].is_img1,width: Get.width,fit: BoxFit.cover,),
-                          ),
-                          AspectRatio(
-                            aspectRatio: 1/1,
-                            child: Image.network(controller.reviewList[index].is_img2,width: Get.width,fit: BoxFit.cover,),
-                          ),
-                          AspectRatio(
-                            aspectRatio: 1/1,
-                            child: Image.network(controller.reviewList[index].is_img3,width: Get.width,fit: BoxFit.cover,),
-                          ),
-                        ],
+                        children: controller.getReviewImg(index),
                       ),
                     ) : SizedBox(),
                     Stack(
@@ -467,6 +458,17 @@ class ReviewScreen extends GetView<ReviewController>{
               ));
             },
             itemCount: controller.reviewList.length
+        ) : Padding(
+          padding: EdgeInsets.only(left: 30.w,top: 47.w),
+          child: Text(
+            '등록된 리뷰가 없습니다.',
+            style: TextStyle(
+              color: ColorConstant.primary,
+              fontSize: 12.sp,
+              fontFamily: 'Noto Sans KR',
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         )),
       ),
     );

@@ -40,10 +40,24 @@ class OrderConfirmController extends GetxController{
     //}
 
     //print(selectedDay.toString());
+    if (Get.arguments != null) {
+      List<int> ctItems = Get.arguments['items'];
 
-    for(int i=0; i<cartController.cartList.length; i++){
-      if(cartController.cartList[i].isCheck){
-        cartList.add(cartController.cartList[i]);
+      for(int i=0; i<ctItems.length; i++){
+
+        for (int j = 0; j < cartController.cartList.length; j++) {
+          if (cartController.cartList[j].ct_id == ctItems[i]) {
+
+            cartList.add(cartController.cartList[j]);
+          }
+        }
+      }
+
+    }else{
+      for (int i = 0; i < cartController.cartList.length; i++) {
+        if (cartController.cartList[i].isCheck) {
+          cartList.add(cartController.cartList[i]);
+        }
       }
     }
     getOrderInfo();

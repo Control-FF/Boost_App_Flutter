@@ -267,8 +267,8 @@ class InquiryScreen extends GetView<InquiryController>{
                                         padding: EdgeInsets.only(right: 4.w),
                                         child: ClipRRect(
                                           borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                                          child: Image.asset(
-                                            'assets/images/product_sample.png',width: 27.w,height: 27.h,
+                                          child: Image.network(
+                                            controller.inquiryList[index].qa_file1,width: 27.w,height: 27.h,
                                           ),
                                         ),
                                       ) : SizedBox(),
@@ -277,7 +277,7 @@ class InquiryScreen extends GetView<InquiryController>{
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.all(Radius.circular(5.r)),
                                         child: Image.network(
-                                          '${Constants.fileUrl}${controller.inquiryList[index].qa_file2}',width: 27.w,height: 27.h,
+                                          controller.inquiryList[index].qa_file2,width: 27.w,height: 27.h,
                                         ),
                                       ),
                                     ) : SizedBox()

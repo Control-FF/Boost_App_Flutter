@@ -606,6 +606,12 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                             checkColor: ColorConstant.white,
                             activeColor: ColorConstant.accent,
                             onChanged: (bool? checkValue){
+                              int checkCnt = optionSelectList.where((c) => c.isCheck ?? false).length;
+
+                              if(!checkValue! && checkCnt == 1){
+                                return;
+                              }
+
                               optionSelectList[index] = optionSelectList[index].copyWith(isCheck: checkValue);
                             },
                           ),
@@ -813,7 +819,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                   height: 55.h,
                   child: ElevatedButton(
                     onPressed: (){
-                      //복수옵션 바로 구매
+                      //복수옵션 바로구매
                       List<dynamic> ctItems = [];
 
                       for(int i=0; i<optionSelectList.length; i++){
@@ -826,6 +832,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                       }
 
                       cartController.directBuy(context,productData.value!.item!.it_id,ctItems);
+
                       Get.back();
                     },
                     style: ElevatedButton.styleFrom(
@@ -1070,6 +1077,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
                       });
 
                       cartController.directBuy(context,productData.value!.item!.it_id,ctItems);
+
                       Get.back();
                     },
                     style: ElevatedButton.styleFrom(

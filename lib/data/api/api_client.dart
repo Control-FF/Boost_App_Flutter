@@ -5,6 +5,7 @@ import 'package:boostapp/data/models/address.dart';
 import 'package:boostapp/data/models/address_detail.dart';
 import 'package:boostapp/data/models/card.dart';
 import 'package:boostapp/data/models/cart.dart';
+import 'package:boostapp/data/models/cart_add_response.dart';
 import 'package:boostapp/data/models/category.dart';
 import 'package:boostapp/data/models/category_product.dart';
 import 'package:boostapp/data/models/coupon.dart';
@@ -360,7 +361,7 @@ abstract class ApiClient {
 
   //장바구니 담기
   @POST('/api/shop/cart')
-  Future<DataResponse> addCart(
+  Future<CartAddResponse> addCart(
       @Body() Map<String, dynamic> map
   );
 

@@ -187,11 +187,16 @@ mixin _$CartItem {
   int get od_id => throw _privateConstructorUsedError;
   String get it_id => throw _privateConstructorUsedError;
   String get it_name => throw _privateConstructorUsedError;
+  int get it_cust_price => throw _privateConstructorUsedError;
   int get ct_price => throw _privateConstructorUsedError;
   int get ct_qty => throw _privateConstructorUsedError;
   String get ct_option => throw _privateConstructorUsedError;
   int get it_stock_qty => throw _privateConstructorUsedError;
   String get img => throw _privateConstructorUsedError;
+  int get it_sc_type => throw _privateConstructorUsedError;
+  int get it_sc_price => throw _privateConstructorUsedError;
+  int get it_sc_qty => throw _privateConstructorUsedError;
+  int get sendcost => throw _privateConstructorUsedError;
   bool get outOfStock => throw _privateConstructorUsedError;
   String get stockStatus => throw _privateConstructorUsedError;
   bool get isCheck => throw _privateConstructorUsedError;
@@ -212,11 +217,16 @@ abstract class $CartItemCopyWith<$Res> {
       int od_id,
       String it_id,
       String it_name,
+      int it_cust_price,
       int ct_price,
       int ct_qty,
       String ct_option,
       int it_stock_qty,
       String img,
+      int it_sc_type,
+      int it_sc_price,
+      int it_sc_qty,
+      int sendcost,
       bool outOfStock,
       String stockStatus,
       bool isCheck});
@@ -239,11 +249,16 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
     Object? od_id = null,
     Object? it_id = null,
     Object? it_name = null,
+    Object? it_cust_price = null,
     Object? ct_price = null,
     Object? ct_qty = null,
     Object? ct_option = null,
     Object? it_stock_qty = null,
     Object? img = null,
+    Object? it_sc_type = null,
+    Object? it_sc_price = null,
+    Object? it_sc_qty = null,
+    Object? sendcost = null,
     Object? outOfStock = null,
     Object? stockStatus = null,
     Object? isCheck = null,
@@ -265,6 +280,10 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
           ? _value.it_name
           : it_name // ignore: cast_nullable_to_non_nullable
               as String,
+      it_cust_price: null == it_cust_price
+          ? _value.it_cust_price
+          : it_cust_price // ignore: cast_nullable_to_non_nullable
+              as int,
       ct_price: null == ct_price
           ? _value.ct_price
           : ct_price // ignore: cast_nullable_to_non_nullable
@@ -285,6 +304,22 @@ class _$CartItemCopyWithImpl<$Res, $Val extends CartItem>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String,
+      it_sc_type: null == it_sc_type
+          ? _value.it_sc_type
+          : it_sc_type // ignore: cast_nullable_to_non_nullable
+              as int,
+      it_sc_price: null == it_sc_price
+          ? _value.it_sc_price
+          : it_sc_price // ignore: cast_nullable_to_non_nullable
+              as int,
+      it_sc_qty: null == it_sc_qty
+          ? _value.it_sc_qty
+          : it_sc_qty // ignore: cast_nullable_to_non_nullable
+              as int,
+      sendcost: null == sendcost
+          ? _value.sendcost
+          : sendcost // ignore: cast_nullable_to_non_nullable
+              as int,
       outOfStock: null == outOfStock
           ? _value.outOfStock
           : outOfStock // ignore: cast_nullable_to_non_nullable
@@ -313,11 +348,16 @@ abstract class _$$_CartItemCopyWith<$Res> implements $CartItemCopyWith<$Res> {
       int od_id,
       String it_id,
       String it_name,
+      int it_cust_price,
       int ct_price,
       int ct_qty,
       String ct_option,
       int it_stock_qty,
       String img,
+      int it_sc_type,
+      int it_sc_price,
+      int it_sc_qty,
+      int sendcost,
       bool outOfStock,
       String stockStatus,
       bool isCheck});
@@ -338,11 +378,16 @@ class __$$_CartItemCopyWithImpl<$Res>
     Object? od_id = null,
     Object? it_id = null,
     Object? it_name = null,
+    Object? it_cust_price = null,
     Object? ct_price = null,
     Object? ct_qty = null,
     Object? ct_option = null,
     Object? it_stock_qty = null,
     Object? img = null,
+    Object? it_sc_type = null,
+    Object? it_sc_price = null,
+    Object? it_sc_qty = null,
+    Object? sendcost = null,
     Object? outOfStock = null,
     Object? stockStatus = null,
     Object? isCheck = null,
@@ -364,6 +409,10 @@ class __$$_CartItemCopyWithImpl<$Res>
           ? _value.it_name
           : it_name // ignore: cast_nullable_to_non_nullable
               as String,
+      it_cust_price: null == it_cust_price
+          ? _value.it_cust_price
+          : it_cust_price // ignore: cast_nullable_to_non_nullable
+              as int,
       ct_price: null == ct_price
           ? _value.ct_price
           : ct_price // ignore: cast_nullable_to_non_nullable
@@ -384,6 +433,22 @@ class __$$_CartItemCopyWithImpl<$Res>
           ? _value.img
           : img // ignore: cast_nullable_to_non_nullable
               as String,
+      it_sc_type: null == it_sc_type
+          ? _value.it_sc_type
+          : it_sc_type // ignore: cast_nullable_to_non_nullable
+              as int,
+      it_sc_price: null == it_sc_price
+          ? _value.it_sc_price
+          : it_sc_price // ignore: cast_nullable_to_non_nullable
+              as int,
+      it_sc_qty: null == it_sc_qty
+          ? _value.it_sc_qty
+          : it_sc_qty // ignore: cast_nullable_to_non_nullable
+              as int,
+      sendcost: null == sendcost
+          ? _value.sendcost
+          : sendcost // ignore: cast_nullable_to_non_nullable
+              as int,
       outOfStock: null == outOfStock
           ? _value.outOfStock
           : outOfStock // ignore: cast_nullable_to_non_nullable
@@ -408,11 +473,16 @@ class _$_CartItem implements _CartItem {
       this.od_id = 0,
       this.it_id = '',
       this.it_name = '',
+      this.it_cust_price = 0,
       this.ct_price = 0,
       this.ct_qty = 0,
       this.ct_option = '',
       this.it_stock_qty = 0,
       this.img = '',
+      this.it_sc_type = 0,
+      this.it_sc_price = 0,
+      this.it_sc_qty = 0,
+      this.sendcost = 0,
       this.outOfStock = false,
       this.stockStatus = '',
       this.isCheck = true});
@@ -434,6 +504,9 @@ class _$_CartItem implements _CartItem {
   final String it_name;
   @override
   @JsonKey()
+  final int it_cust_price;
+  @override
+  @JsonKey()
   final int ct_price;
   @override
   @JsonKey()
@@ -449,6 +522,18 @@ class _$_CartItem implements _CartItem {
   final String img;
   @override
   @JsonKey()
+  final int it_sc_type;
+  @override
+  @JsonKey()
+  final int it_sc_price;
+  @override
+  @JsonKey()
+  final int it_sc_qty;
+  @override
+  @JsonKey()
+  final int sendcost;
+  @override
+  @JsonKey()
   final bool outOfStock;
   @override
   @JsonKey()
@@ -459,7 +544,7 @@ class _$_CartItem implements _CartItem {
 
   @override
   String toString() {
-    return 'CartItem(ct_id: $ct_id, od_id: $od_id, it_id: $it_id, it_name: $it_name, ct_price: $ct_price, ct_qty: $ct_qty, ct_option: $ct_option, it_stock_qty: $it_stock_qty, img: $img, outOfStock: $outOfStock, stockStatus: $stockStatus, isCheck: $isCheck)';
+    return 'CartItem(ct_id: $ct_id, od_id: $od_id, it_id: $it_id, it_name: $it_name, it_cust_price: $it_cust_price, ct_price: $ct_price, ct_qty: $ct_qty, ct_option: $ct_option, it_stock_qty: $it_stock_qty, img: $img, it_sc_type: $it_sc_type, it_sc_price: $it_sc_price, it_sc_qty: $it_sc_qty, sendcost: $sendcost, outOfStock: $outOfStock, stockStatus: $stockStatus, isCheck: $isCheck)';
   }
 
   @override
@@ -471,6 +556,8 @@ class _$_CartItem implements _CartItem {
             (identical(other.od_id, od_id) || other.od_id == od_id) &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
+            (identical(other.it_cust_price, it_cust_price) ||
+                other.it_cust_price == it_cust_price) &&
             (identical(other.ct_price, ct_price) ||
                 other.ct_price == ct_price) &&
             (identical(other.ct_qty, ct_qty) || other.ct_qty == ct_qty) &&
@@ -479,6 +566,14 @@ class _$_CartItem implements _CartItem {
             (identical(other.it_stock_qty, it_stock_qty) ||
                 other.it_stock_qty == it_stock_qty) &&
             (identical(other.img, img) || other.img == img) &&
+            (identical(other.it_sc_type, it_sc_type) ||
+                other.it_sc_type == it_sc_type) &&
+            (identical(other.it_sc_price, it_sc_price) ||
+                other.it_sc_price == it_sc_price) &&
+            (identical(other.it_sc_qty, it_sc_qty) ||
+                other.it_sc_qty == it_sc_qty) &&
+            (identical(other.sendcost, sendcost) ||
+                other.sendcost == sendcost) &&
             (identical(other.outOfStock, outOfStock) ||
                 other.outOfStock == outOfStock) &&
             (identical(other.stockStatus, stockStatus) ||
@@ -494,11 +589,16 @@ class _$_CartItem implements _CartItem {
       od_id,
       it_id,
       it_name,
+      it_cust_price,
       ct_price,
       ct_qty,
       ct_option,
       it_stock_qty,
       img,
+      it_sc_type,
+      it_sc_price,
+      it_sc_qty,
+      sendcost,
       outOfStock,
       stockStatus,
       isCheck);
@@ -523,11 +623,16 @@ abstract class _CartItem implements CartItem {
       final int od_id,
       final String it_id,
       final String it_name,
+      final int it_cust_price,
       final int ct_price,
       final int ct_qty,
       final String ct_option,
       final int it_stock_qty,
       final String img,
+      final int it_sc_type,
+      final int it_sc_price,
+      final int it_sc_qty,
+      final int sendcost,
       final bool outOfStock,
       final String stockStatus,
       final bool isCheck}) = _$_CartItem;
@@ -543,6 +648,8 @@ abstract class _CartItem implements CartItem {
   @override
   String get it_name;
   @override
+  int get it_cust_price;
+  @override
   int get ct_price;
   @override
   int get ct_qty;
@@ -552,6 +659,14 @@ abstract class _CartItem implements CartItem {
   int get it_stock_qty;
   @override
   String get img;
+  @override
+  int get it_sc_type;
+  @override
+  int get it_sc_price;
+  @override
+  int get it_sc_qty;
+  @override
+  int get sendcost;
   @override
   bool get outOfStock;
   @override

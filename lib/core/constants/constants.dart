@@ -11,6 +11,8 @@ class Constants {
   static const String userName = 'Name';
   static const String searchTextKey = 'SearchText';
   static const String popupDate = 'PopupDate';
+  static const int shippingPrice = 3000;
+  static const int shippingPrice2 = 2000;
 
   static const List<String> locations = ['문 앞','직접 받고 부재중 문 앞','경비실','택배함'];
 
@@ -61,11 +63,11 @@ class Constants {
   }
 
   static int diffDate(String date1){
+
     var _toDay = DateTime.now();
 
     int difference = int.parse(
         _toDay.difference(DateTime.parse(date1)).inDays.toString());
-    print('diffDay : $difference');
 
     return difference;
   }

@@ -191,10 +191,10 @@ class SearchScreen extends GetView<ProductSearchController> {
                     SizedBox(height: 5,),
                     GestureDetector(
                       onTap: (){
-                        if(controller.sort.value == 'review'){
+                        if(controller.sort.value == 'reviews'){
                           controller.sort.value = '';
                         }else{
-                          controller.sort.value = 'review';
+                          controller.sort.value = 'reviews';
                         }
 
                         controller.keywordResultPage.value = 1;

@@ -104,6 +104,7 @@ class ReviewController extends GetxController{
       },
       (response){
         isLoading.value = false;
+
         showReviewPopup(context, 'register',0);
       },
     );
@@ -259,7 +260,7 @@ class ReviewController extends GetxController{
                                 Get.back();
 
                                 if(type == 'update' || type == 'register'){
-                                  Get.back();
+                                  Get.back(result: 'OK');
                                 }
                               },
                               child: Text(
@@ -282,7 +283,7 @@ class ReviewController extends GetxController{
                                 Get.back();
 
                                 if(type == 'update' || type == 'register'){
-                                  Get.back();
+                                  Get.back(result: 'OK');
                                   getReview();
                                 }else if(type == 'delete'){
                                   deleteReview(context,index);
@@ -316,6 +317,38 @@ class ReviewController extends GetxController{
             ),
           );
         });
+  }
+
+  List<Widget> getReviewImg(int index){
+    List<Widget> imgList = [];
+    if(reviewList[index].is_img1 != ''){
+      imgList.add(
+          AspectRatio(
+            aspectRatio: 1/1,
+            child: Image.network(reviewList[index].is_img1,width: Get.width,fit: BoxFit.cover,),
+          )
+      );
+    }
+
+    if(reviewList[index].is_img2 != ''){
+      imgList.add(
+          AspectRatio(
+            aspectRatio: 1/1,
+            child: Image.network(reviewList[index].is_img2,width: Get.width,fit: BoxFit.cover,),
+          )
+      );
+    }
+
+    if(reviewList[index].is_img3 != ''){
+      imgList.add(
+          AspectRatio(
+            aspectRatio: 1/1,
+            child: Image.network(reviewList[index].is_img3,width: Get.width,fit: BoxFit.cover,),
+          )
+      );
+    }
+
+    return imgList;
   }
 
   onWillPop(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/service/user_service.dart';
@@ -17,6 +18,7 @@ class CartController extends GetxController{
   RxBool sellerAll = true.obs;
 
   RxInt odId = 0.obs;
+  List<int> addCartItems = [];
 
   //RxBool isPeriod = false.obs;
 
@@ -81,6 +83,20 @@ class CartController extends GetxController{
     );
   }
 
+  Future<void> getDirectCartList() async {
+    final result = await _userService.getCartList();
+    result.fold(
+          (failure) => print(failure.message),
+          (response){
+            cartList.value = List<CartItem>.from(response.data!.items!.toList(growable: false));
+
+            Get.toNamed(AppRoutes.orderConfirm,arguments: {
+              'items' : addCartItems
+            });
+          },
+    );
+  }
+
   Future<void> directBuy(context, String itId, List<dynamic> ctItems) async {
     var map = <String, dynamic>{};
     map.addAll(
@@ -90,24 +106,23 @@ class CartController extends GetxController{
         }
     );
 
-    final result = await _userService.directBuy(data: map);
+    final result = await _userService.addCart(data: map);
     result.fold(
       (failure) => print(failure.message),
-      (response) {
-        print(response);
-        /*
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          elevation: 6.0,
-          behavior: SnackBarBehavior.floating,
-          content: Text(
-            '장바구니에 추가되었습니다.',
-            style: TextStyle(color: Colors.white),
-          ),
-        ));
+      (response) async {
+        List<dynamic> tmpItems = [];
 
-        getCartList();
+        addCartItems = response.items!;
 
-         */
+        for(int i=0; i<addCartItems.length; i++){
+          updateCart(addCartItems[i],ctItems[i]['ct_qty']);
+          tmpItems.add({
+            'ct_id' : addCartItems[i],
+            'ct_qty' : ctItems[i]['ct_qty']
+          });
+        }
+
+        getDirectCartList();
       },
     );
   }
@@ -167,6 +182,34 @@ class CartController extends GetxController{
     }
 
     return sumPrice;
+  }
+
+  int getShippingPrice(){
+    int shippingPrice = 0;
+
+    for(int i=0; i<cartList.length; i++){
+      if(cartList[i].isCheck){
+        int scType = cartList[i].it_sc_type;
+        int scPrice = cartList[i].it_sc_price;
+        int scQty = cartList[i].it_sc_qty;
+        int sendCost = cartList[i].sendcost;
+
+        if(scType == 1){
+          continue;
+        }else if(scType == 2){
+          if(getSumPrice() < 30000){
+            shippingPrice = Constants.shippingPrice;
+          }
+        }else if(scType == 3){
+          shippingPrice = Constants.shippingPrice;
+        }else if(scType == 4){
+
+        }
+      }
+      shippingPrice += cartList[i].ct_price * cartList[i].ct_qty;
+    }
+
+    return shippingPrice;
   }
 
   int getCheckCnt(){

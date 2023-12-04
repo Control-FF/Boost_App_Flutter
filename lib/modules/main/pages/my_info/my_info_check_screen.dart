@@ -75,7 +75,7 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
                             child: ElevatedButton(
                               onPressed: (){
                                 Get.back();
-
+                                controller.logout();
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: ColorConstant.primary,

@@ -1362,14 +1362,14 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<DataResponse> addCart(map) async {
+  Future<CartAddResponse> addCart(map) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(map);
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<DataResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<CartAddResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -1381,7 +1381,7 @@ class _ApiClient implements ApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = DataResponse.fromJson(_result.data!);
+    final value = CartAddResponse.fromJson(_result.data!);
     return value;
   }
 
