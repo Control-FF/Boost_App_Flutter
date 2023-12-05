@@ -48,7 +48,9 @@ class ResetScreen extends GetView<ResetController>{
                           fontWeight: FontWeight.w500,
                         ),
                         suffixIcon: IconButton(
-                          icon: Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
+                          icon: controller.isObscureText1.value
+                              ? Icon(Icons.visibility_off_outlined,color: ColorConstant.gray2,)
+                              : Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
                           onPressed: (){
                             controller.isObscureText1.value = !controller.isObscureText1.value;
                           },
@@ -123,7 +125,9 @@ class ResetScreen extends GetView<ResetController>{
                           fontWeight: FontWeight.w500,
                         ),
                         suffixIcon: IconButton(
-                          icon: Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
+                          icon: controller.isObscureText2.value
+                              ? Icon(Icons.visibility_off_outlined,color: ColorConstant.gray2,)
+                              : Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
                           onPressed: (){
                             controller.isObscureText2.value = !controller.isObscureText2.value;
                           },

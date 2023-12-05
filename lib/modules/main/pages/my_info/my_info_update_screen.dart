@@ -252,7 +252,9 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                               ),
                               contentPadding: EdgeInsets.zero,
                               suffixIcon: IconButton(
-                                icon: Icon(Icons.visibility_outlined,color: ColorConstant.gray1,),
+                                icon: controller.isObscureText1.value
+                                    ? Icon(Icons.visibility_off_outlined,color: ColorConstant.gray2,)
+                                    : Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
                                 onPressed: (){
                                   controller.isObscureText1.value = !controller.isObscureText1.value;
                                 },
@@ -313,7 +315,9 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                                 ),
                                 contentPadding: EdgeInsets.zero,
                                 suffixIcon: IconButton(
-                                  icon: Icon(Icons.visibility_outlined,color: ColorConstant.gray1,),
+                                  icon: controller.isObscureText2.value
+                                      ? Icon(Icons.visibility_off_outlined,color: ColorConstant.gray2,)
+                                      : Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
                                   onPressed: (){
                                     controller.isObscureText2.value = !controller.isObscureText2.value;
                                   },
@@ -374,7 +378,9 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
                               ),
                               contentPadding: EdgeInsets.zero,
                               suffixIcon: IconButton(
-                                icon: Icon(Icons.visibility_outlined,color: ColorConstant.gray1,),
+                                icon: controller.isObscureText3.value
+                                    ? Icon(Icons.visibility_off_outlined,color: ColorConstant.gray2,)
+                                    : Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
                                 onPressed: (){
                                   controller.isObscureText3.value = !controller.isObscureText3.value;
                                 },

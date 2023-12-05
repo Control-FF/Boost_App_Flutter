@@ -189,7 +189,9 @@ class LoginScreen extends GetView<LoginController>{
                         fontWeight: FontWeight.w500,
                       ),
                       suffixIcon: IconButton(
-                        icon: Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
+                        icon: controller.isObscureText.value
+                            ? Icon(Icons.visibility_off_outlined,color: ColorConstant.gray2,)
+                            : Icon(Icons.visibility_outlined,color: ColorConstant.gray2,),
                         onPressed: (){
                           controller.isObscureText.value = !controller.isObscureText.value;
                         },
