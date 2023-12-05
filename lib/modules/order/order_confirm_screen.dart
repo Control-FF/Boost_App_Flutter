@@ -17,91 +17,101 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
     initializeDateFormatting();
 
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorConstant.white,
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '주문하기 / 배송정보 입력',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
-          ),
-        ),
-        body: CustomScrollView(
-            shrinkWrap: true,
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              Obx(() => SliverList(
-                  delegate: SliverChildListDelegate(
-                      [
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 30.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 20.h,),
-                              Text(
-                                '상품 확인',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 16.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              SizedBox(height: 18.h,),
-                              Container(
-                                color: ColorConstant.gray16,
-                                child: ListView.separated(
-                                    shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemBuilder: (context, index){
-                                      return Column(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(16.w, 22.h, 16.w, 5.h),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  controller.cartList.isNotEmpty ? controller.cartList[index].it_name : '',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w500,
+      child: WillPopScope(
+        onWillPop: () async {
+          bool backStatus = controller.onWillPop(context);
+          if (backStatus) {
+            return Future.value(true);
+          }
+          return Future.value(false);
+        },
+        child: Stack(
+          children: [
+            Scaffold(
+                backgroundColor: ColorConstant.white,
+                appBar: AppBar(
+                  backgroundColor: ColorConstant.white,
+                  elevation: 0,
+                  title: Text(
+                    '주문하기 / 배송정보 입력',
+                    style: TextStyle(
+                      color: ColorConstant.black2,
+                      fontSize: 16.sp,
+                      fontFamily: 'Noto Sans KR',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  centerTitle: true,
+                  leading: IconButton(
+                    onPressed: (){
+                      Get.back();
+                    },
+                    icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+                  ),
+                ),
+                body: CustomScrollView(
+                    shrinkWrap: true,
+                    physics: BouncingScrollPhysics(),
+                    slivers: [
+                      Obx(() => SliverList(
+                          delegate: SliverChildListDelegate(
+                              [
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: 20.h,),
+                                      Text(
+                                        '상품 확인',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(height: 18.h,),
+                                      Container(
+                                        color: ColorConstant.gray16,
+                                        child: ListView.separated(
+                                            shrinkWrap: true,
+                                            physics: NeverScrollableScrollPhysics(),
+                                            itemBuilder: (context, index){
+                                              return Column(
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.fromLTRB(16.w, 22.h, 16.w, 5.h),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          controller.cartList.isNotEmpty ? controller.cartList[index].it_name : '',
+                                                          style: TextStyle(
+                                                            color: ColorConstant.black,
+                                                            fontSize: 12.sp,
+                                                            fontFamily: 'Noto Sans KR',
+                                                            fontWeight: FontWeight.w500,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          controller.cartList.isNotEmpty ? '${controller.cartList[index].ct_qty}개' : '',
+                                                          style: TextStyle(
+                                                            color: ColorConstant.black,
+                                                            fontSize: 12.sp,
+                                                            fontFamily: 'Noto Sans KR',
+                                                            fontWeight: FontWeight.w500,
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  controller.cartList.isNotEmpty ? '${controller.cartList[index].ct_qty}개' : '',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(16.w, 0.h, 16.w, 11.h),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                /*
+                                                  Padding(
+                                                    padding: EdgeInsets.fromLTRB(16.w, 0.h, 16.w, 11.h),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        /*
                                                 Container(
                                                   padding: EdgeInsets.symmetric(horizontal: 4.w),
                                                   decoration: BoxDecoration(
@@ -128,295 +138,296 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                                 ),
 
                                                  */
+                                                        Text(
+                                                          controller.cartList.isNotEmpty ? '${Constants.numberAddComma(controller.cartList[index].ct_price)}원' : '',
+                                                          style: TextStyle(
+                                                            color: ColorConstant.red,
+                                                            fontSize: 12.sp,
+                                                            fontFamily: 'Noto Sans KR',
+                                                            fontWeight: FontWeight.w500,
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                            separatorBuilder: (context, index){
+                                              return Padding(
+                                                padding: EdgeInsets.symmetric(horizontal: 13.w),
+                                                child: Divider(
+                                                  height: 0.5.h,
+                                                  thickness: 0.5,
+                                                  color: ColorConstant.gray7,
+                                                ),
+                                              );
+                                            },
+                                            itemCount: controller.cartList.length
+                                        ),
+                                      ),
+                                      SizedBox(height: 23.h,),
+                                      Text(
+                                        '배송지 확인',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(height: 27.h,),
+                                      GestureDetector(
+                                        onTap: () async {
+
+                                          var res = await Get.toNamed(AppRoutes.addressScreen,arguments: {'title':'배송지 선택','type' : 'order'});
+
+                                          if(res != null){
+                                            int addressIdx = res['addressIdx'];
+                                            String addressName = res['addressName'];
+                                            String phone = res['phone'];
+                                            String address1 = res['address1'];
+                                            String address2 = res['address2'];
+                                            String address3 = res['address3'];
+
+                                            controller.orderInfoAddress.value = controller.orderInfoAddress.value!.copyWith(
+                                              ad_id: addressIdx,
+                                              ad_name: addressName,
+                                              ad_hp: phone,
+                                              address1: address1,
+                                              address2: address2,
+                                            );
+
+                                          }
+                                        },
+                                        child: Container(
+                                          width: Get.width,
+                                          color: ColorConstant.gray16,
+                                          padding: EdgeInsets.fromLTRB(17.w, 19.h, 17.w, 22.h),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                controller.orderInfoAddress.value != null ? controller.orderInfoAddress.value!.ad_name : '',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray25,
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                controller.orderInfoAddress.value != null ? controller.orderInfoAddress.value!.ad_hp : '',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray25,
+                                                  fontSize: 10.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              SizedBox(height: 6.h,),
+                                              Text(
+                                                controller.orderInfoAddress.value != null
+                                                    ? '${controller.orderInfoAddress.value!.address1}\n${controller.orderInfoAddress.value!.address2}'
+                                                    : '',
+                                                style: TextStyle(
+                                                  color: ColorConstant.gray25,
+                                                  fontSize: 10.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 23.h,),
+                                      Text(
+                                        '할인정보 확인',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(height: 27.h,),
+                                      Container(
+                                        width: Get.width,
+                                        color: ColorConstant.gray16,
+                                        padding: EdgeInsets.fromLTRB(12.w, 13.h, 14.w, 17.h),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () async {
+                                                    var res = await Get.toNamed(AppRoutes.pointUse);
+
+                                                    if(res != null){
+                                                      controller.usePoint.value = res['point'];
+
+                                                    }
+                                                  },
+                                                  child: Row(
+                                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        '포인트 ',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.gray25,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        '(${Constants.numberAddComma(controller.mbPoint.value)}원 보유)',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.gray1,
+                                                          fontSize: 8.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                                 Text(
-                                                  controller.cartList.isNotEmpty ? '${Constants.numberAddComma(controller.cartList[index].ct_price)}원' : '',
+                                                  '${Constants.numberAddComma(controller.usePoint.value)}원',
                                                   style: TextStyle(
-                                                    color: ColorConstant.red,
-                                                    fontSize: 12.sp,
+                                                    color: ColorConstant.primary,
+                                                    fontSize: 8.sp,
                                                     fontFamily: 'Noto Sans KR',
                                                     fontWeight: FontWeight.w500,
                                                   ),
-                                                )
+                                                ),
                                               ],
                                             ),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                    separatorBuilder: (context, index){
-                                      return Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 13.w),
-                                        child: Divider(
-                                          height: 0.5.h,
-                                          thickness: 0.5,
-                                          color: ColorConstant.gray7,
-                                        ),
-                                      );
-                                    },
-                                    itemCount: controller.cartList.length
-                                ),
-                              ),
-                              SizedBox(height: 23.h,),
-                              Text(
-                                '배송지 확인',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 16.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              SizedBox(height: 27.h,),
-                              GestureDetector(
-                                onTap: () async {
-
-                                  var res = await Get.toNamed(AppRoutes.addressScreen,arguments: {'title':'배송지 선택','type' : 'order'});
-
-                                  if(res != null){
-                                    int addressIdx = res['addressIdx'];
-                                    String addressName = res['addressName'];
-                                    String phone = res['phone'];
-                                    String address1 = res['address1'];
-                                    String address2 = res['address2'];
-                                    String address3 = res['address3'];
-
-                                    controller.orderInfoAddress.value = controller.orderInfoAddress.value!.copyWith(
-                                      ad_id: addressIdx,
-                                      ad_name: addressName,
-                                      ad_hp: phone,
-                                      address1: address1,
-                                      address2: address2,
-                                    );
-
-                                  }
-                                },
-                                child: Container(
-                                  width: Get.width,
-                                  color: ColorConstant.gray16,
-                                  padding: EdgeInsets.fromLTRB(17.w, 19.h, 17.w, 22.h),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        controller.orderInfoAddress.value != null ? controller.orderInfoAddress.value!.ad_name : '',
-                                        style: TextStyle(
-                                          color: ColorConstant.gray25,
-                                          fontSize: 12.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      Text(
-                                        controller.orderInfoAddress.value != null ? controller.orderInfoAddress.value!.ad_hp : '',
-                                        style: TextStyle(
-                                          color: ColorConstant.gray25,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(height: 6.h,),
-                                      Text(
-                                        controller.orderInfoAddress.value != null
-                                            ? '${controller.orderInfoAddress.value!.address1}\n${controller.orderInfoAddress.value!.address2}'
-                                            : '',
-                                        style: TextStyle(
-                                          color: ColorConstant.gray25,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 23.h,),
-                              Text(
-                                '할인정보 확인',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 16.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              SizedBox(height: 27.h,),
-                              Container(
-                                width: Get.width,
-                                color: ColorConstant.gray16,
-                                padding: EdgeInsets.fromLTRB(12.w, 13.h, 14.w, 17.h),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () async {
-                                            var res = await Get.toNamed(AppRoutes.pointUse);
-
-                                            if(res != null){
-                                              controller.usePoint.value = res['point'];
-
-                                            }
-                                          },
-                                          child: Row(
-                                            crossAxisAlignment: CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                '포인트 ',
-                                                style: TextStyle(
-                                                  color: ColorConstant.gray25,
-                                                  fontSize: 12.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              Text(
-                                                '(${Constants.numberAddComma(controller.mbPoint.value)}원 보유)',
-                                                style: TextStyle(
-                                                  color: ColorConstant.gray1,
-                                                  fontSize: 8.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Text(
-                                          '${Constants.numberAddComma(controller.usePoint.value)}원',
-                                          style: TextStyle(
-                                            color: ColorConstant.primary,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 9.h,),
-                                    Divider(
-                                      height: 0.5.h,
-                                      thickness: 0.5,
-                                      color: ColorConstant.gray7,
-                                    ),
-                                    SizedBox(height: 9.h,),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        var res = await Get.toNamed(AppRoutes.couponUse);
-
-                                        if(res != null){
-                                          controller.cpNo.value = res['cpNo'];
-                                          controller.cpPrice.value = res['cpPrice'];
-                                        }
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Row(
-                                            crossAxisAlignment: CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                '쿠폰 ',
-                                                style: TextStyle(
-                                                  color: ColorConstant.gray25,
-                                                  fontSize: 12.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              Text(
-                                                '(${Constants.numberAddComma(controller.mbCouponCnt.value)}장 보유)',
-                                                style: TextStyle(
-                                                  color: ColorConstant.gray1,
-                                                  fontSize: 8.sp,
-                                                  fontFamily: 'Noto Sans KR',
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            '${Constants.numberAddComma(controller.cpPrice.value)}원',
-                                            style: TextStyle(
-                                              color: ColorConstant.primary,
-                                              fontSize: 8.sp,
-                                              fontFamily: 'Noto Sans KR',
-                                              fontWeight: FontWeight.w500,
+                                            SizedBox(height: 9.h,),
+                                            Divider(
+                                              height: 0.5.h,
+                                              thickness: 0.5,
+                                              color: ColorConstant.gray7,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 22.h,),
-                              Text(
-                                '배송 요청사항',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 16.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              SizedBox(height: 27.h,),
-                              GestureDetector(
-                                onTap: () async {
-                                  var res = await Get.toNamed(AppRoutes.shipping,arguments: {
-                                    'location': controller.location.value,
-                                    'enter': controller.enter.value,
-                                    'etc': controller.etc.value,
-                                  });
+                                            SizedBox(height: 9.h,),
+                                            GestureDetector(
+                                              onTap: () async {
+                                                var res = await Get.toNamed(AppRoutes.couponUse);
 
-                                  if(res != null){
-                                    controller.enter.value = res['enter'];
-                                    controller.etc.value = res['etc'];
-                                    controller.location.value = res['location'];
-                                  }
-                                },
-                                child: Container(
-                                    width: Get.width,
-                                    color: ColorConstant.gray16,
-                                    padding: EdgeInsets.fromLTRB(12.w, 13.h, 14.w, 16.h),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              Constants.locations[controller.location.value],
-                                              style: TextStyle(
-                                                color: ColorConstant.gray25,
-                                                fontSize: 12.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            Text(
-                                              controller.enter.value == '' ? '' : '(벨${controller.enter.value})'
-                                              '${controller.etc.value != '' ? '\n${controller.etc}' : ''}',
-                                              style: TextStyle(
-                                                color: ColorConstant.gray1,
-                                                fontSize: 8.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
+                                                if(res != null){
+                                                  controller.cpNo.value = res['cpNo'];
+                                                  controller.cpPrice.value = res['cpPrice'];
+
+
+                                                }
+                                              },
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Row(
+                                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        '쿠폰 ',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.gray25,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        '(${Constants.numberAddComma(controller.mbCouponCnt.value)}장 보유)',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.gray1,
+                                                          fontSize: 8.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Text(
+                                                    '${Constants.numberAddComma(controller.cpPrice.value)}원',
+                                                    style: TextStyle(
+                                                      color: ColorConstant.primary,
+                                                      fontSize: 8.sp,
+                                                      fontFamily: 'Noto Sans KR',
+                                                      fontWeight: FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ],
                                         ),
-                                        Image.asset('assets/images/ic_next_order.png',width: 5.w,height: 16.h,)
-                                      ],
-                                    )
-                                ),
-                              ),
-                              /*
+                                      ),
+                                      SizedBox(height: 22.h,),
+                                      Text(
+                                        '배송 요청사항',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(height: 27.h,),
+                                      GestureDetector(
+                                        onTap: () async {
+                                          var res = await Get.toNamed(AppRoutes.shipping,arguments: {
+                                            'location': controller.location.value,
+                                            'enter': controller.enter.value,
+                                            'etc': controller.etc.value,
+                                          });
+
+                                          if(res != null){
+                                            controller.enter.value = res['enter'];
+                                            controller.etc.value = res['etc'];
+                                            controller.location.value = res['location'];
+                                          }
+                                        },
+                                        child: Container(
+                                            width: Get.width,
+                                            color: ColorConstant.gray16,
+                                            padding: EdgeInsets.fromLTRB(12.w, 13.h, 14.w, 16.h),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                                  children: [
+                                                    Text(
+                                                      Constants.locations[controller.location.value],
+                                                      style: TextStyle(
+                                                        color: ColorConstant.gray25,
+                                                        fontSize: 12.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      controller.enter.value == '' ? '' : '(벨${controller.enter.value})',
+                                                      style: TextStyle(
+                                                        color: ColorConstant.gray1,
+                                                        fontSize: 8.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Image.asset('assets/images/ic_next_order.png',width: 5.w,height: 16.h,)
+                                              ],
+                                            )
+                                        ),
+                                      ),
+                                      /*
                               SizedBox(height: 14.h,),
                               Divider(
                                 height: 0.5.h,
@@ -623,276 +634,298 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                                 ),
                               ) : SizedBox(),
                               */
-                              SizedBox(height: 30.h,),
-                              Text(
-                                '결제 수단',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 16.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                              SizedBox(height: 27.h,),
-                              GestureDetector(
-                                onTap: () async {
-                                  var res = await Get.toNamed(AppRoutes.payList,arguments: {'type' : 'order'});
+                                      SizedBox(height: 30.h,),
+                                      Text(
+                                        '결제 수단',
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(height: 27.h,),
+                                      GestureDetector(
+                                        onTap: () async {
+                                          var res = await Get.toNamed(AppRoutes.payList,arguments: {'type' : 'order'});
 
-                                  if(res != null){
-                                    int payId = res['id'];
-                                    String payName = res['name'];
-                                    controller.orderInfoPayment.value = controller.orderInfoPayment.value!.copyWith(pay_id: payId,pay_name: payName);
-                                  }
-                                },
-                                child: Container(
-                                    width: Get.width,
-                                    color: ColorConstant.gray16,
-                                    padding: EdgeInsets.fromLTRB(12.w, 13.h, 12.w, 16.h),
+                                          if(res != null){
+                                            int payId = res['id'];
+                                            String payName = res['name'];
+                                            controller.orderInfoPayment.value = controller.orderInfoPayment.value!.copyWith(pay_id: payId,pay_name: payName);
+                                          }
+                                        },
+                                        child: Container(
+                                            width: Get.width,
+                                            color: ColorConstant.gray16,
+                                            padding: EdgeInsets.fromLTRB(12.w, 13.h, 12.w, 16.h),
+                                            child: Text(
+                                              controller.orderInfoPayment.value != null ? controller.orderInfoPayment.value!.pay_name : '',
+                                              style: TextStyle(
+                                                color: ColorConstant.gray25,
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            )
+                                        ),
+                                      ),
+                                      SizedBox(height: 39.h,),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(24.w, 8.h, 24.w, 8.h),
+                                  color: ColorConstant.gray27.withOpacity(0.2),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '총 상품 금액',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${Constants.numberAddComma(controller.getTotalPrice())}원',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 16.h,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '총 할인 금액',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          Text(
+                                            '0원',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10.h,),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              '포인트',
+                                              style: TextStyle(
+                                                color: ColorConstant.black.withOpacity(0.4),
+                                                fontSize: 10.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            Text(
+                                              '-${Constants.numberAddComma(controller.usePoint.value)}P',
+                                              style: TextStyle(
+                                                color: ColorConstant.black.withOpacity(0.4),
+                                                fontSize: 10.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: 4.h,),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 40.w),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              '쿠폰',
+                                              style: TextStyle(
+                                                color: ColorConstant.black.withOpacity(0.4),
+                                                fontSize: 10.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            Text(
+                                              '-${Constants.numberAddComma(controller.cpPrice.value)}원',
+                                              style: TextStyle(
+                                                color: ColorConstant.black.withOpacity(0.4),
+                                                fontSize: 10.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: 16.h,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '총 배송비',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${Constants.numberAddComma(controller.shippingPrice.value)}원',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 16.h,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '예상 적립 포인트',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${Constants.numberAddComma(controller.getPointReward())}P',
+                                            style: TextStyle(
+                                              color: ColorConstant.black,
+                                              fontSize: 14.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 16.h,),
+                                      Divider(
+                                        height: 1.h,
+                                        thickness: 1,
+                                        color: ColorConstant.gray28,
+                                      ),
+                                      SizedBox(height: 16.h,),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '총 결제금액',
+                                            style: TextStyle(
+                                              color: ColorConstant.black.withOpacity(0.85),
+                                              fontSize: 16.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${Constants.numberAddComma(controller.getFinalPrice())}원',
+                                            style: TextStyle(
+                                              color: ColorConstant.red,
+                                              fontSize: 16.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 38.h),
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      if(controller.orderInfoPayment.value == null || controller.orderInfoPayment.value!.pay_id == 0){
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                          elevation: 6.0,
+                                          behavior: SnackBarBehavior.floating,
+                                          content: Text(
+                                            '결제수단을 선택해주세요.',
+                                            style: TextStyle(color: Colors.white),
+                                          ),
+                                        ));
+                                        return;
+                                      }
+
+                                      if(controller.orderInfoAddress.value == null || controller.orderInfoAddress.value!.ad_id == 0){
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                          elevation: 6.0,
+                                          behavior: SnackBarBehavior.floating,
+                                          content: Text(
+                                            '배송지를 선택해주세요.',
+                                            style: TextStyle(color: Colors.white),
+                                          ),
+                                        ));
+                                        return;
+                                      }
+
+                                      controller.addOrder(context);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: ColorConstant.primary,
+                                        elevation: 0,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero
+                                        ),
+                                        minimumSize: Size(Get.width,55.h)
+                                    ),
                                     child: Text(
-                                      controller.orderInfoPayment.value != null ? controller.orderInfoPayment.value!.pay_name : '',
+                                      '${Constants.numberAddComma(controller.getFinalPrice())}원 바로 결제하기',
                                       style: TextStyle(
-                                        color: ColorConstant.gray25,
-                                        fontSize: 12.sp,
+                                        color: ColorConstant.white,
+                                        fontSize: 14.sp,
                                         fontFamily: 'Noto Sans KR',
                                         fontWeight: FontWeight.w500,
                                       ),
-                                    )
-                                ),
-                              ),
-                              SizedBox(height: 39.h,),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(24.w, 8.h, 24.w, 8.h),
-                          color: ColorConstant.gray27.withOpacity(0.2),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '총 상품 금액',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
                                     ),
-                                  ),
-                                  Text(
-                                    '${Constants.numberAddComma(controller.getTotalPrice())}원',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 16.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '총 할인 금액',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  Text(
-                                    '0원',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10.h,),
-                              Padding(
-                                padding: EdgeInsets.only(left: 40.w),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      '포인트',
-                                      style: TextStyle(
-                                        color: ColorConstant.black.withOpacity(0.4),
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    Text(
-                                      '-${Constants.numberAddComma(controller.usePoint.value)}P',
-                                      style: TextStyle(
-                                        color: ColorConstant.black.withOpacity(0.4),
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 4.h,),
-                              Padding(
-                                padding: EdgeInsets.only(left: 40.w),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      '쿠폰',
-                                      style: TextStyle(
-                                        color: ColorConstant.black.withOpacity(0.4),
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                    Text(
-                                      '-${Constants.numberAddComma(controller.cpPrice.value)}원',
-                                      style: TextStyle(
-                                        color: ColorConstant.black.withOpacity(0.4),
-                                        fontSize: 10.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 16.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '총 배송비',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  Text(
-                                    '500원',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 16.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '예상 적립 포인트',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                  Text(
-                                    '100P',
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 14.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 16.h,),
-                              Divider(
-                                height: 1.h,
-                                thickness: 1,
-                                color: ColorConstant.gray28,
-                              ),
-                              SizedBox(height: 16.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '총 결제금액',
-                                    style: TextStyle(
-                                      color: ColorConstant.black.withOpacity(0.85),
-                                      fontSize: 16.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  Text(
-                                    '${Constants.numberAddComma(controller.getFinalPrice())}원',
-                                    style: TextStyle(
-                                      color: ColorConstant.red,
-                                      fontSize: 16.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 38.h),
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              controller.setPayment(context);
-                              /*
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                elevation: 6.0,
-                                behavior: SnackBarBehavior.floating,
-                                content: Text(
-                                  '결제가 완료되었습니다',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ));
-                              Get.back(result: 'OK');
 
-                               */
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: ColorConstant.primary,
-                                elevation: 0,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.zero
-                                ),
-                                minimumSize: Size(Get.width,55.h)
-                            ),
-                            child: Text(
-                              '${Constants.numberAddComma(controller.getFinalPrice())}원 바로 결제하기',
-                              style: TextStyle(
-                                color: ColorConstant.white,
-                                fontSize: 14.sp,
-                                fontFamily: 'Noto Sans KR',
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-
-                          ),
-                        )
-                      ]
-                  )
-              ))
-            ]
-        )
+                                  ),
+                                )
+                              ]
+                          )
+                      ))
+                    ]
+                )
+            ),
+            Obx(() => controller.isLoading.value ? const Opacity(
+              opacity: 0.8,
+              child: ModalBarrier(dismissible: false, color: Colors.black),
+            ) : SizedBox()),
+            Obx(() => controller.isLoading.value ? const Center(
+              child: CircularProgressIndicator(),
+            ) : SizedBox()),
+          ],
+        ),
       ),
     );
   }

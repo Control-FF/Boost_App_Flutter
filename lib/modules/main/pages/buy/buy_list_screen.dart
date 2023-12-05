@@ -1,5 +1,6 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/main/pages/buy/buy_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class BuyListScreen extends GetView<BuyController>{
+  CartController cartController = Get.put(CartController());
 
   ScrollController _scrollController = ScrollController();
   bool _showedMessage = false;
@@ -206,6 +208,21 @@ class BuyListScreen extends GetView<BuyController>{
                                       child: ElevatedButton(
                                         onPressed: (){
                                           //add cart
+                                          List<dynamic> ctItems = [];
+
+                                          if(controller.buyList[index].io_no != 0){
+                                            //옵션 있을때
+                                            ctItems.add({
+                                              'io_no' : controller.buyList[index].io_no,
+                                              'ct_qty' : 1
+                                            });
+                                          }else{
+                                            ctItems.add({
+                                              'ct_qty' : 1
+                                            });
+                                          }
+
+                                          cartController.addCart(context, controller.buyList[index].it_id.toString(), ctItems);
                                         },
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: ColorConstant.primary,

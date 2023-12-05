@@ -502,7 +502,7 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                           ),
                                         ),
                                         Text(
-                                          '0원',
+                                          '${Constants.numberAddComma(controller.getShippingPrice())}원',
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -551,7 +551,7 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                           ),
                                         ),
                                         Text(
-                                          '${Constants.numberAddComma(controller.getSumPrice())}원',
+                                          '${Constants.numberAddComma(controller.getSumPrice() + controller.getShippingPrice())}원',
                                           style: TextStyle(
                                             color: ColorConstant.black,
                                             fontSize: 12.sp,
@@ -1101,7 +1101,7 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                     ),
                                   ),
                                   Text(
-                                    '${Constants.numberAddComma(controller.getSumPrice())}원',
+                                    '${Constants.numberAddComma(controller.getSumPrice() + controller.getShippingPrice())}원',
                                     style: TextStyle(
                                       color: ColorConstant.black,
                                       fontSize: 18.sp,
@@ -1125,6 +1125,20 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                       behavior: SnackBarBehavior.floating,
                                       content: Text(
                                         '장바구니가 비었습니다.',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ));
+                                    return;
+                                  }
+
+                                  int checkCnt = controller.cartList.where((c) => c.isCheck).length;
+
+                                  if(checkCnt == 0){
+                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                      elevation: 6.0,
+                                      behavior: SnackBarBehavior.floating,
+                                      content: Text(
+                                        '주문하실 상품을 체크해주세요.',
                                         style: TextStyle(color: Colors.white),
                                       ),
                                     ));

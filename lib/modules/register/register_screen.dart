@@ -384,7 +384,7 @@ class RegisterScreen extends GetView<RegisterController>{
                           textInputAction: TextInputAction.next,
                           onSubmitted: (_) => FocusScope.of(context).requestFocus(controller.password2FocusNode),
                           onChanged: (value){
-                            RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                            RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                             if(value == "" || !regex.hasMatch(value) || value.length < 8 || value.length > 12){
                               controller.validPasswordStatus1.value = 2;
                             }else{

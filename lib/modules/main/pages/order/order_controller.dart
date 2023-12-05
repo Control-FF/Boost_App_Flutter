@@ -1,6 +1,7 @@
+import 'package:boostapp/data/models/order.dart' as order;
 import 'package:boostapp/data/models/user_info.dart';
 import 'package:boostapp/data/service/user_service.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OrderController extends GetxController with StateMixin{
@@ -15,6 +16,8 @@ class OrderController extends GetxController with StateMixin{
   RxBool orderListRefundCheck3 = false.obs;
   RxBool orderListRefundCheck4 = false.obs;
   Rx<UserInfo?> userData = Rx<UserInfo?>(null);
+
+  RxList<order.Order> orderList = <order.Order>[].obs;
 
 
 
@@ -98,6 +101,7 @@ class OrderController extends GetxController with StateMixin{
       },
       (response) {
         change(response, status: RxStatus.success());
+        orderList.value = response.items!;
       },
     );
   }

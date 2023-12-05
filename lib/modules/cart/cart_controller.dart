@@ -127,32 +127,6 @@ class CartController extends GetxController{
     );
   }
 
-  Future<void> addOrder() async {
-    List<int> ctItems = List.empty(growable: true);
-    for(int i=0; i<cartList.length; i++){
-      ctItems.add(cartList[i].ct_id);
-    }
-
-    var map = <String, dynamic>{};
-    map.addAll(
-      {'mb_id' : '','ct_items' : ctItems,'cp_no' : 0,'use_point' : 0,'location' : '','accesscode' : '','notes' : ''},
-    );
-
-    final result = await _userService.addOrder(data: map);
-    result.fold(
-          (failure) => print(failure.message),
-          (response) async {
-            String odId = response.od_id;
-
-            var res = await Get.toNamed(AppRoutes.orderConfirm,arguments: {'odId' : odId});
-
-            if(res != null){
-              getCartList();
-            }
-          },
-    );
-  }
-
   void updateCheck(index,isCheck){
     cartList[index] = cartList[index].copyWith(isCheck: isCheck);
 
@@ -187,26 +161,27 @@ class CartController extends GetxController{
   int getShippingPrice(){
     int shippingPrice = 0;
 
+    List<String> tmpList = [];
+
     for(int i=0; i<cartList.length; i++){
       if(cartList[i].isCheck){
         int scType = cartList[i].it_sc_type;
-        int scPrice = cartList[i].it_sc_price;
-        int scQty = cartList[i].it_sc_qty;
-        int sendCost = cartList[i].sendcost;
 
         if(scType == 1){
           continue;
         }else if(scType == 2){
-          if(getSumPrice() < 30000){
-            shippingPrice = Constants.shippingPrice;
+
+          if(cartList[i].ct_price * cartList[i].ct_qty < 30000){
+            shippingPrice += Constants.shippingPrice;
           }
         }else if(scType == 3){
-          shippingPrice = Constants.shippingPrice;
+          shippingPrice += Constants.shippingPrice;
         }else if(scType == 4){
-
+          shippingPrice += cartList[i].it_sc_price * (cartList[i].ct_qty.toDouble() / cartList[i].it_sc_qty.toDouble()).ceil();
         }
+
+        tmpList.add(cartList[i].it_id);
       }
-      shippingPrice += cartList[i].ct_price * cartList[i].ct_qty;
     }
 
     return shippingPrice;

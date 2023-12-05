@@ -194,6 +194,13 @@ abstract class ApiClient {
       @Query('pageNum') int page,
   );
 
+  //타임세일 상세
+  @GET('/api/shop//time-sale')
+  Future<MoreResponse> moreTime(
+      @Query('sort') String sort,
+      @Query('pageNum') int page,
+  );
+
   //원터치 리스트
   @GET('/api/shop/onetouch')
   Future<OneTouchResponse> oneTouch(

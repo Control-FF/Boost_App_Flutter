@@ -32,7 +32,7 @@ class MoreController extends GetxController{
     if(type.value == 'recommend'){
       result = await _shopService.getMoreRecommend(sort: sort.value,page: page.value);
     }else if(type.value == 'time'){
-      //result = await _shopService.getMoreTime(sort: sort.value,page: page.value);
+      result = await _shopService.getMoreTime(sort: sort.value,page: page.value);
     }else{
       result = await _shopService.getMoreMd(sort: sort.value,page: page.value);
     }

@@ -117,6 +117,26 @@ class ShopService extends GetxService{
     }
   }
 
+  Future<Either<Failure, MoreResponse>> getMoreTime({
+    required sort,
+    required page,
+  }) async {
+    try {
+      final MoreResponse response =
+      await _apiService.getApiClient().moreTime(sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, TimeResponse>> getShopTime() async {
     try {
       final TimeResponse response =

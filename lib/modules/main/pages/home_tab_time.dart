@@ -107,13 +107,10 @@ class HomeTabTime extends GetView<HomeController>{
                             ),
                             TextButton(
                               onPressed: (){
-                                /*
                                 Get.toNamed(AppRoutes.moreScreen,arguments: {
                                   'title' : '타임세일',
                                   'type' : 'time'
                                 });
-
-                                 */
                               },
                               style: TextButton.styleFrom(
                                 padding: EdgeInsets.zero,

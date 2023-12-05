@@ -2,6 +2,7 @@ import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -319,7 +320,12 @@ class ProductDetailTabInfo extends GetView<ProductDetailController>{
                 color: ColorConstant.gray17,
               ),
               SizedBox(height: 11.h,),
-              Image.network('https://thumbnail6.coupangcdn.com/thumbnails/remote/q89/image/retail/images/2023/06/30/16/4/bb930f1f-5014-4bf7-9b68-cb92ee1efbe1.jpg')
+              Container(
+                width: Get.width,
+                child: Html(
+                  data: controller.nullCheck(controller.productData.value?.item?.it_explan),
+                ),
+              )
             ],
           ),
         )

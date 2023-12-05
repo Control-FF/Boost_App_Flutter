@@ -1,3 +1,4 @@
+import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/data/models/cart.dart';
 import 'package:boostapp/data/models/order_info.dart';
 import 'package:boostapp/data/service/shop_service.dart';
@@ -11,13 +12,13 @@ class OrderConfirmController extends GetxController{
   final ShopService _shopService = Get.find();
   CartController cartController = Get.put(CartController());
 
+  RxBool isLoading = false.obs;
+
   RxList<CartItem> cartList = RxList<CartItem>([]);
   Rx<OrderInfoAddress?> orderInfoAddress = Rx<OrderInfoAddress?>(null);
   Rx<OrderInfoPayment?> orderInfoPayment = Rx<OrderInfoPayment?>(null);
   RxInt mbPoint = 0.obs;
   RxInt mbCouponCnt = 0.obs;
-
-  RxString odId = ''.obs;
 
   RxBool isShipping = true.obs;
 
@@ -29,6 +30,7 @@ class OrderConfirmController extends GetxController{
   RxString etc = ''.obs;
   Rx<DateTime>? selectedDay = DateTime.now().obs;
   Rx<String> selectedDate = ''.obs;
+  RxInt shippingPrice = 0.obs;
 
   @override
   Future<void> onInit() async {
@@ -60,6 +62,9 @@ class OrderConfirmController extends GetxController{
         }
       }
     }
+
+    shippingPrice.value = cartController.getShippingPrice();
+
     getOrderInfo();
   }
 
@@ -76,10 +81,46 @@ class OrderConfirmController extends GetxController{
     );
   }
 
-  Future<void> setPayment(BuildContext context) async {
-    final result = await _shopService.setPayment(odId: odId.value);
+  Future<void> addOrder(BuildContext context) async {
+    isLoading.value = true;
+    List<int> ctItems = List.empty(growable: true);
+    for(int i=0; i<cartList.length; i++){
+      ctItems.add(cartList[i].ct_id);
+    }
+
+    var map = <String, dynamic>{};
+    map.addAll({
+      'mb_id' : '',
+      'ct_items' : ctItems,
+      'cp_no' : cpNo.value,
+      'use_point' : usePoint.value,
+      'location' : Constants.locations[location.value],
+      'accesscode' : enter.value,
+      'notes' : etc.value,
+      'total_sendcost' : shippingPrice.value,
+      'billingkey_id' : orderInfoPayment.value!.pay_id,
+      'ad_id' : orderInfoAddress.value!.ad_id
+    });
+
+    final result = await _userService.addOrder(data: map);
     result.fold(
       (failure){
+        print(failure.message);
+        isLoading.value = false;
+      },
+      (response) async {
+        String odId = response.od_id;
+
+        setPayment(context, odId);
+      },
+    );
+  }
+
+  Future<void> setPayment(BuildContext context, String odId) async {
+    final result = await _shopService.setPayment(odId: odId);
+    result.fold(
+      (failure){
+        isLoading.value = false;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           elevation: 6.0,
           behavior: SnackBarBehavior.floating,
@@ -90,7 +131,8 @@ class OrderConfirmController extends GetxController{
         ));
       },
       (response){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        isLoading.value = false;
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           elevation: 6.0,
           behavior: SnackBarBehavior.floating,
           content: Text(
@@ -120,6 +162,23 @@ class OrderConfirmController extends GetxController{
       totalPrice += cartList[i].ct_price * cartList[i].ct_qty;
     }
 
-    return totalPrice - usePoint.value - cpPrice.value;
+    return totalPrice - usePoint.value - cpPrice.value + shippingPrice.value;
+  }
+
+  int getPointReward(){
+    int totalPrice = 0;
+
+    for(int i = 0; i<cartList.length; i++){
+      totalPrice += cartList[i].ct_price * cartList[i].ct_qty;
+    }
+
+    return ((totalPrice - cpPrice.value - usePoint.value).toDouble()*0.002).floor();
+  }
+
+  onWillPop(BuildContext context) {
+    if(isLoading.value){
+      return false;
+    }
+    return true;
   }
 }

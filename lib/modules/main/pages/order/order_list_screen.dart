@@ -1,5 +1,6 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
+import 'package:boostapp/modules/cart/cart_controller.dart';
 import 'package:boostapp/modules/main/pages/order/order_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class OrderListScreen extends GetView<OrderController>{
+  CartController cartController = Get.put(CartController());
 
   void _showStep1Popup(context){
     showDialog(
@@ -1326,6 +1328,24 @@ class OrderListScreen extends GetView<OrderController>{
                                           child: ElevatedButton(
                                             onPressed: (){
                                               //add cart
+                                              /*
+                                              List<dynamic> ctItems = [];
+
+                                              if(controller.orderList[index].io_no != 0){
+                                                //옵션 있을때
+                                                ctItems.add({
+                                                  'io_no' : controller.orderList[index].io_no,
+                                                  'ct_qty' : 1
+                                                });
+                                              }else{
+                                                ctItems.add({
+                                                  'ct_qty' : 1
+                                                });
+                                              }
+
+
+                                               */
+                                              //cartController.addCart(context, controller.orderList[index].it_id.toString(), ctItems);
                                             },
                                             style: ElevatedButton.styleFrom(
                                                 backgroundColor: ColorConstant.primary,

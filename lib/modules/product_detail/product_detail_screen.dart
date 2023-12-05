@@ -179,22 +179,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                 )
                               ],
                             ),
-                            controller.productData.value != null && controller.productData.value!.item!.it_explan != '' ? Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 30.w),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    Constants.parseHtmlString(controller.productData.value!.item!.it_explan),
-                                    style: TextStyle(
-                                      color: ColorConstant.black,
-                                      fontSize: 16.sp,
-                                      fontFamily: 'Noto Sans KR',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ) : SizedBox(),
+
                             Padding(
                               padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 8.h),
                               child: Text(
@@ -207,14 +192,38 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                 ),
                               ),
                             ),
-                            controller.productData.value != null && controller.productData.value!.item!.it_seller == '부스트' ? Padding(
-                              padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 0.h),
-                              child: Row(
-                                children: [
-                                  Image.asset('assets/images/ic_boost.png',width: 98.w,height: 24.h,)
-                                ],
-                              ),
-                            ) : SizedBox(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                controller.productData.value != null && controller.productData.value!.item!.it_seller == '부스트' ? Padding(
+                                  padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 0.h),
+                                  child: Row(
+                                    children: [
+                                      Image.asset('assets/images/ic_boost.png',width: 98.w,height: 24.h,)
+                                    ],
+                                  ),
+                                ) : SizedBox(),
+                                controller.productData.value != null ? Padding(
+                                  padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 0.h),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/images/ic_rating_fill.png',width: 14.w,height: 14.w,),
+                                      SizedBox(width: 3.w,),
+                                      Text(
+                                        controller.productData.value!.reviewAvg,
+                                        style: TextStyle(
+                                          color: ColorConstant.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: 'Noto Sans KR',
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ) : SizedBox()
+                              ],
+                            ),
                             controller.optionList.isEmpty ? Padding(
                               padding: EdgeInsets.fromLTRB(30.w, 13.h, 30.w, 8.h),
                               child: Divider(
@@ -224,7 +233,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                               ),
                             ) : SizedBox(height: 13.h,),
                             controller.optionList.isEmpty ? Container(
-                              padding: EdgeInsets.symmetric(horizontal: 30),
+                              padding: EdgeInsets.symmetric(horizontal: 30.w),
                               width: Get.width,
                               height: 50.h,
                               child: Row(

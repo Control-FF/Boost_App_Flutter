@@ -501,7 +501,7 @@ class CartScreen extends GetView<CartController>{
                                             ),
                                           ),
                                           Text(
-                                            '0원',
+                                            '${Constants.numberAddComma(controller.getShippingPrice())}원',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -550,7 +550,7 @@ class CartScreen extends GetView<CartController>{
                                             ),
                                           ),
                                           Text(
-                                            '${Constants.numberAddComma(controller.getSumPrice())}원',
+                                            '${Constants.numberAddComma(controller.getSumPrice() + controller.getShippingPrice())}원',
                                             style: TextStyle(
                                               color: ColorConstant.black,
                                               fontSize: 12.sp,
@@ -1100,7 +1100,7 @@ class CartScreen extends GetView<CartController>{
                                       ),
                                     ),
                                     Text(
-                                      '${Constants.numberAddComma(controller.getSumPrice())}원',
+                                      '${Constants.numberAddComma(controller.getSumPrice() + controller.getShippingPrice())}원',
                                       style: TextStyle(
                                         color: ColorConstant.black,
                                         fontSize: 18.sp,
@@ -1115,14 +1115,11 @@ class CartScreen extends GetView<CartController>{
                                 padding: EdgeInsets.only(top: 38.h),
                                 child: ElevatedButton(
                                   onPressed: () async {
-                                    //var res = await Get.toNamed(AppRoutes.orderConfirm);
-
-                                    //if(res != null){
-                                    //  controller.cartList();
-                                    //}
+                                    //mainController.isLoading.value = true;
+                                    //return;
 
                                     if(controller.cartList.isEmpty){
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                         elevation: 6.0,
                                         behavior: SnackBarBehavior.floating,
                                         content: Text(
@@ -1133,7 +1130,27 @@ class CartScreen extends GetView<CartController>{
                                       return;
                                     }
 
-                                    controller.addOrder();
+                                    int checkCnt = controller.cartList.where((c) => c.isCheck).length;
+
+                                    if(checkCnt == 0){
+                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                        elevation: 6.0,
+                                        behavior: SnackBarBehavior.floating,
+                                        content: Text(
+                                          '주문하실 상품을 체크해주세요.',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ));
+                                      return;
+                                    }
+
+                                    var res = await Get.toNamed(AppRoutes.orderConfirm);
+
+                                    if(res != null){
+                                      controller.getCartList();
+                                    }
+
+                                    //controller.addOrder();
 
 
                                   },
