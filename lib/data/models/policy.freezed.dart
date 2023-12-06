@@ -66,19 +66,21 @@ class _$PolicyCopyWithImpl<$Res, $Val extends Policy>
 }
 
 /// @nodoc
-abstract class _$$_PolicyCopyWith<$Res> implements $PolicyCopyWith<$Res> {
-  factory _$$_PolicyCopyWith(_$_Policy value, $Res Function(_$_Policy) then) =
-      __$$_PolicyCopyWithImpl<$Res>;
+abstract class _$$PolicyImplCopyWith<$Res> implements $PolicyCopyWith<$Res> {
+  factory _$$PolicyImplCopyWith(
+          _$PolicyImpl value, $Res Function(_$PolicyImpl) then) =
+      __$$PolicyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String co_subject, String co_content});
 }
 
 /// @nodoc
-class __$$_PolicyCopyWithImpl<$Res>
-    extends _$PolicyCopyWithImpl<$Res, _$_Policy>
-    implements _$$_PolicyCopyWith<$Res> {
-  __$$_PolicyCopyWithImpl(_$_Policy _value, $Res Function(_$_Policy) _then)
+class __$$PolicyImplCopyWithImpl<$Res>
+    extends _$PolicyCopyWithImpl<$Res, _$PolicyImpl>
+    implements _$$PolicyImplCopyWith<$Res> {
+  __$$PolicyImplCopyWithImpl(
+      _$PolicyImpl _value, $Res Function(_$PolicyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +89,7 @@ class __$$_PolicyCopyWithImpl<$Res>
     Object? co_subject = null,
     Object? co_content = null,
   }) {
-    return _then(_$_Policy(
+    return _then(_$PolicyImpl(
       co_subject: null == co_subject
           ? _value.co_subject
           : co_subject // ignore: cast_nullable_to_non_nullable
@@ -102,11 +104,11 @@ class __$$_PolicyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Policy implements _Policy {
-  _$_Policy({this.co_subject = '', this.co_content = ''});
+class _$PolicyImpl implements _Policy {
+  _$PolicyImpl({this.co_subject = '', this.co_content = ''});
 
-  factory _$_Policy.fromJson(Map<String, dynamic> json) =>
-      _$$_PolicyFromJson(json);
+  factory _$PolicyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PolicyImplFromJson(json);
 
   @override
   @JsonKey()
@@ -124,7 +126,7 @@ class _$_Policy implements _Policy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Policy &&
+            other is _$PolicyImpl &&
             (identical(other.co_subject, co_subject) ||
                 other.co_subject == co_subject) &&
             (identical(other.co_content, co_content) ||
@@ -138,12 +140,12 @@ class _$_Policy implements _Policy {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PolicyCopyWith<_$_Policy> get copyWith =>
-      __$$_PolicyCopyWithImpl<_$_Policy>(this, _$identity);
+  _$$PolicyImplCopyWith<_$PolicyImpl> get copyWith =>
+      __$$PolicyImplCopyWithImpl<_$PolicyImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PolicyToJson(
+    return _$$PolicyImplToJson(
       this,
     );
   }
@@ -151,9 +153,9 @@ class _$_Policy implements _Policy {
 
 abstract class _Policy implements Policy {
   factory _Policy({final String co_subject, final String co_content}) =
-      _$_Policy;
+      _$PolicyImpl;
 
-  factory _Policy.fromJson(Map<String, dynamic> json) = _$_Policy.fromJson;
+  factory _Policy.fromJson(Map<String, dynamic> json) = _$PolicyImpl.fromJson;
 
   @override
   String get co_subject;
@@ -161,7 +163,7 @@ abstract class _Policy implements Policy {
   String get co_content;
   @override
   @JsonKey(ignore: true)
-  _$$_PolicyCopyWith<_$_Policy> get copyWith =>
+  _$$PolicyImplCopyWith<_$PolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -227,11 +229,11 @@ class _$PolicyResponseCopyWithImpl<$Res, $Val extends PolicyResponse>
 }
 
 /// @nodoc
-abstract class _$$_PolicyResponseCopyWith<$Res>
+abstract class _$$PolicyResponseImplCopyWith<$Res>
     implements $PolicyResponseCopyWith<$Res> {
-  factory _$$_PolicyResponseCopyWith(
-          _$_PolicyResponse value, $Res Function(_$_PolicyResponse) then) =
-      __$$_PolicyResponseCopyWithImpl<$Res>;
+  factory _$$PolicyResponseImplCopyWith(_$PolicyResponseImpl value,
+          $Res Function(_$PolicyResponseImpl) then) =
+      __$$PolicyResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -239,11 +241,11 @@ abstract class _$$_PolicyResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PolicyResponseCopyWithImpl<$Res>
-    extends _$PolicyResponseCopyWithImpl<$Res, _$_PolicyResponse>
-    implements _$$_PolicyResponseCopyWith<$Res> {
-  __$$_PolicyResponseCopyWithImpl(
-      _$_PolicyResponse _value, $Res Function(_$_PolicyResponse) _then)
+class __$$PolicyResponseImplCopyWithImpl<$Res>
+    extends _$PolicyResponseCopyWithImpl<$Res, _$PolicyResponseImpl>
+    implements _$$PolicyResponseImplCopyWith<$Res> {
+  __$$PolicyResponseImplCopyWithImpl(
+      _$PolicyResponseImpl _value, $Res Function(_$PolicyResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -253,7 +255,7 @@ class __$$_PolicyResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$_PolicyResponse(
+    return _then(_$PolicyResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -272,15 +274,15 @@ class __$$_PolicyResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PolicyResponse implements _PolicyResponse {
-  _$_PolicyResponse(
+class _$PolicyResponseImpl implements _PolicyResponse {
+  _$PolicyResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<Policy>? items = const []})
       : _items = items;
 
-  factory _$_PolicyResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_PolicyResponseFromJson(json);
+  factory _$PolicyResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PolicyResponseImplFromJson(json);
 
   @override
   final int status;
@@ -307,7 +309,7 @@ class _$_PolicyResponse implements _PolicyResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PolicyResponse &&
+            other is _$PolicyResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -321,12 +323,13 @@ class _$_PolicyResponse implements _PolicyResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PolicyResponseCopyWith<_$_PolicyResponse> get copyWith =>
-      __$$_PolicyResponseCopyWithImpl<_$_PolicyResponse>(this, _$identity);
+  _$$PolicyResponseImplCopyWith<_$PolicyResponseImpl> get copyWith =>
+      __$$PolicyResponseImplCopyWithImpl<_$PolicyResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PolicyResponseToJson(
+    return _$$PolicyResponseImplToJson(
       this,
     );
   }
@@ -336,10 +339,10 @@ abstract class _PolicyResponse implements PolicyResponse {
   factory _PolicyResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<Policy>? items}) = _$_PolicyResponse;
+      @JsonKey(name: 'data') final List<Policy>? items}) = _$PolicyResponseImpl;
 
   factory _PolicyResponse.fromJson(Map<String, dynamic> json) =
-      _$_PolicyResponse.fromJson;
+      _$PolicyResponseImpl.fromJson;
 
   @override
   int get status;
@@ -350,6 +353,6 @@ abstract class _PolicyResponse implements PolicyResponse {
   List<Policy>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$_PolicyResponseCopyWith<_$_PolicyResponse> get copyWith =>
+  _$$PolicyResponseImplCopyWith<_$PolicyResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

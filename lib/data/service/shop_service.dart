@@ -346,6 +346,68 @@ class ShopService extends GetxService{
     }
   }
 
+  Future<Either<Failure, DataResponse>> writeInquiry({
+    required subject,
+    required contents,
+    required img,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().writeInquiry(subject,contents,img);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> updateInquiry({
+    required qaId,
+    required subject,
+    required contents,
+    required img,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().updateInquiry(qaId,subject,contents,img);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> deleteInquiry({
+    required qaId,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().deleteInquiry(qaId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
   Future<Either<Failure, PolicyResponse>> getPolicy({
     required coId,
   }) async {
@@ -405,7 +467,7 @@ class ShopService extends GetxService{
     }
   }
 
-  Future<Either<Failure, DataResponse>> writeInquiry({
+  Future<Either<Failure, DataResponse>> writeProductInquiry({
     required itId,
     required iqType,
     required question,
@@ -413,7 +475,7 @@ class ShopService extends GetxService{
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().inquiryWrite(itId,iqType,question,isSecret);
+      await _apiService.getApiClient().writeProductInquiry(itId,iqType,question,isSecret);
       if (response.status == 200) {
         return Right(response);
       } else {

@@ -6,8 +6,8 @@ part of 'data_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DataResponse _$$_DataResponseFromJson(Map<String, dynamic> json) =>
-    _$_DataResponse(
+_$DataResponseImpl _$$DataResponseImplFromJson(Map<String, dynamic> json) =>
+    _$DataResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       data: json['data'] as String? ?? '',
@@ -15,7 +15,7 @@ _$_DataResponse _$$_DataResponseFromJson(Map<String, dynamic> json) =>
       terms: json['terms'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_DataResponseToJson(_$_DataResponse instance) =>
+Map<String, dynamic> _$$DataResponseImplToJson(_$DataResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

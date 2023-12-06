@@ -111,10 +111,11 @@ class _$OneTouchCopyWithImpl<$Res, $Val extends OneTouch>
 }
 
 /// @nodoc
-abstract class _$$_OneTouchCopyWith<$Res> implements $OneTouchCopyWith<$Res> {
-  factory _$$_OneTouchCopyWith(
-          _$_OneTouch value, $Res Function(_$_OneTouch) then) =
-      __$$_OneTouchCopyWithImpl<$Res>;
+abstract class _$$OneTouchImplCopyWith<$Res>
+    implements $OneTouchCopyWith<$Res> {
+  factory _$$OneTouchImplCopyWith(
+          _$OneTouchImpl value, $Res Function(_$OneTouchImpl) then) =
+      __$$OneTouchImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -129,11 +130,11 @@ abstract class _$$_OneTouchCopyWith<$Res> implements $OneTouchCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OneTouchCopyWithImpl<$Res>
-    extends _$OneTouchCopyWithImpl<$Res, _$_OneTouch>
-    implements _$$_OneTouchCopyWith<$Res> {
-  __$$_OneTouchCopyWithImpl(
-      _$_OneTouch _value, $Res Function(_$_OneTouch) _then)
+class __$$OneTouchImplCopyWithImpl<$Res>
+    extends _$OneTouchCopyWithImpl<$Res, _$OneTouchImpl>
+    implements _$$OneTouchImplCopyWith<$Res> {
+  __$$OneTouchImplCopyWithImpl(
+      _$OneTouchImpl _value, $Res Function(_$OneTouchImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -148,7 +149,7 @@ class __$$_OneTouchCopyWithImpl<$Res>
     Object? it_use_cnt = null,
     Object? it_sum_qty = null,
   }) {
-    return _then(_$_OneTouch(
+    return _then(_$OneTouchImpl(
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
@@ -187,8 +188,8 @@ class __$$_OneTouchCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OneTouch implements _OneTouch {
-  _$_OneTouch(
+class _$OneTouchImpl implements _OneTouch {
+  _$OneTouchImpl(
       {this.it_id = '',
       this.it_name = '',
       this.it_cust_price = 0,
@@ -198,8 +199,8 @@ class _$_OneTouch implements _OneTouch {
       this.it_use_cnt = 0,
       this.it_sum_qty = 0});
 
-  factory _$_OneTouch.fromJson(Map<String, dynamic> json) =>
-      _$$_OneTouchFromJson(json);
+  factory _$OneTouchImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OneTouchImplFromJson(json);
 
   @override
   @JsonKey()
@@ -235,7 +236,7 @@ class _$_OneTouch implements _OneTouch {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OneTouch &&
+            other is _$OneTouchImpl &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
             (identical(other.it_cust_price, it_cust_price) ||
@@ -258,12 +259,12 @@ class _$_OneTouch implements _OneTouch {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OneTouchCopyWith<_$_OneTouch> get copyWith =>
-      __$$_OneTouchCopyWithImpl<_$_OneTouch>(this, _$identity);
+  _$$OneTouchImplCopyWith<_$OneTouchImpl> get copyWith =>
+      __$$OneTouchImplCopyWithImpl<_$OneTouchImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OneTouchToJson(
+    return _$$OneTouchImplToJson(
       this,
     );
   }
@@ -278,9 +279,10 @@ abstract class _OneTouch implements OneTouch {
       final String it_img1,
       final String it_time,
       final int it_use_cnt,
-      final int it_sum_qty}) = _$_OneTouch;
+      final int it_sum_qty}) = _$OneTouchImpl;
 
-  factory _OneTouch.fromJson(Map<String, dynamic> json) = _$_OneTouch.fromJson;
+  factory _OneTouch.fromJson(Map<String, dynamic> json) =
+      _$OneTouchImpl.fromJson;
 
   @override
   String get it_id;
@@ -300,7 +302,7 @@ abstract class _OneTouch implements OneTouch {
   int get it_sum_qty;
   @override
   @JsonKey(ignore: true)
-  _$$_OneTouchCopyWith<_$_OneTouch> get copyWith =>
+  _$$OneTouchImplCopyWith<_$OneTouchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -375,11 +377,11 @@ class _$OneTouchResponseCopyWithImpl<$Res, $Val extends OneTouchResponse>
 }
 
 /// @nodoc
-abstract class _$$_OneTouchResponseCopyWith<$Res>
+abstract class _$$OneTouchResponseImplCopyWith<$Res>
     implements $OneTouchResponseCopyWith<$Res> {
-  factory _$$_OneTouchResponseCopyWith(
-          _$_OneTouchResponse value, $Res Function(_$_OneTouchResponse) then) =
-      __$$_OneTouchResponseCopyWithImpl<$Res>;
+  factory _$$OneTouchResponseImplCopyWith(_$OneTouchResponseImpl value,
+          $Res Function(_$OneTouchResponseImpl) then) =
+      __$$OneTouchResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -390,11 +392,11 @@ abstract class _$$_OneTouchResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OneTouchResponseCopyWithImpl<$Res>
-    extends _$OneTouchResponseCopyWithImpl<$Res, _$_OneTouchResponse>
-    implements _$$_OneTouchResponseCopyWith<$Res> {
-  __$$_OneTouchResponseCopyWithImpl(
-      _$_OneTouchResponse _value, $Res Function(_$_OneTouchResponse) _then)
+class __$$OneTouchResponseImplCopyWithImpl<$Res>
+    extends _$OneTouchResponseCopyWithImpl<$Res, _$OneTouchResponseImpl>
+    implements _$$OneTouchResponseImplCopyWith<$Res> {
+  __$$OneTouchResponseImplCopyWithImpl(_$OneTouchResponseImpl _value,
+      $Res Function(_$OneTouchResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -405,7 +407,7 @@ class __$$_OneTouchResponseCopyWithImpl<$Res>
     Object? items = freezed,
     Object? total_cnt = null,
   }) {
-    return _then(_$_OneTouchResponse(
+    return _then(_$OneTouchResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -428,16 +430,16 @@ class __$$_OneTouchResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OneTouchResponse implements _OneTouchResponse {
-  _$_OneTouchResponse(
+class _$OneTouchResponseImpl implements _OneTouchResponse {
+  _$OneTouchResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<OneTouch>? items = const [],
       this.total_cnt = 0})
       : _items = items;
 
-  factory _$_OneTouchResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_OneTouchResponseFromJson(json);
+  factory _$OneTouchResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OneTouchResponseImplFromJson(json);
 
   @override
   final int status;
@@ -468,7 +470,7 @@ class _$_OneTouchResponse implements _OneTouchResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OneTouchResponse &&
+            other is _$OneTouchResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
@@ -484,12 +486,13 @@ class _$_OneTouchResponse implements _OneTouchResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OneTouchResponseCopyWith<_$_OneTouchResponse> get copyWith =>
-      __$$_OneTouchResponseCopyWithImpl<_$_OneTouchResponse>(this, _$identity);
+  _$$OneTouchResponseImplCopyWith<_$OneTouchResponseImpl> get copyWith =>
+      __$$OneTouchResponseImplCopyWithImpl<_$OneTouchResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OneTouchResponseToJson(
+    return _$$OneTouchResponseImplToJson(
       this,
     );
   }
@@ -500,10 +503,10 @@ abstract class _OneTouchResponse implements OneTouchResponse {
       {required final int status,
       final String message,
       @JsonKey(name: 'data') final List<OneTouch>? items,
-      final int total_cnt}) = _$_OneTouchResponse;
+      final int total_cnt}) = _$OneTouchResponseImpl;
 
   factory _OneTouchResponse.fromJson(Map<String, dynamic> json) =
-      _$_OneTouchResponse.fromJson;
+      _$OneTouchResponseImpl.fromJson;
 
   @override
   int get status;
@@ -516,6 +519,6 @@ abstract class _OneTouchResponse implements OneTouchResponse {
   int get total_cnt;
   @override
   @JsonKey(ignore: true)
-  _$$_OneTouchResponseCopyWith<_$_OneTouchResponse> get copyWith =>
+  _$$OneTouchResponseImplCopyWith<_$OneTouchResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

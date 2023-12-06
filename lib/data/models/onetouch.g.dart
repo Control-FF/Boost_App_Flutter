@@ -6,7 +6,8 @@ part of 'onetouch.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OneTouch _$$_OneTouchFromJson(Map<String, dynamic> json) => _$_OneTouch(
+_$OneTouchImpl _$$OneTouchImplFromJson(Map<String, dynamic> json) =>
+    _$OneTouchImpl(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -17,7 +18,7 @@ _$_OneTouch _$$_OneTouchFromJson(Map<String, dynamic> json) => _$_OneTouch(
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_OneTouchToJson(_$_OneTouch instance) =>
+Map<String, dynamic> _$$OneTouchImplToJson(_$OneTouchImpl instance) =>
     <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -29,8 +30,9 @@ Map<String, dynamic> _$$_OneTouchToJson(_$_OneTouch instance) =>
       'it_sum_qty': instance.it_sum_qty,
     };
 
-_$_OneTouchResponse _$$_OneTouchResponseFromJson(Map<String, dynamic> json) =>
-    _$_OneTouchResponse(
+_$OneTouchResponseImpl _$$OneTouchResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OneTouchResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -40,7 +42,8 @@ _$_OneTouchResponse _$$_OneTouchResponseFromJson(Map<String, dynamic> json) =>
       total_cnt: json['total_cnt'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_OneTouchResponseToJson(_$_OneTouchResponse instance) =>
+Map<String, dynamic> _$$OneTouchResponseImplToJson(
+        _$OneTouchResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

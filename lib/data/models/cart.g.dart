@@ -6,7 +6,7 @@ part of 'cart.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
+_$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
       item_count: json['item_count'] as int? ?? 0,
       items: (json['cart_items'] as List<dynamic>?)
               ?.map((e) => CartItem.fromJson(e as Map<String, dynamic>))
@@ -14,12 +14,14 @@ _$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
           const [],
     );
 
-Map<String, dynamic> _$$_CartToJson(_$_Cart instance) => <String, dynamic>{
+Map<String, dynamic> _$$CartImplToJson(_$CartImpl instance) =>
+    <String, dynamic>{
       'item_count': instance.item_count,
       'cart_items': instance.items,
     };
 
-_$_CartItem _$$_CartItemFromJson(Map<String, dynamic> json) => _$_CartItem(
+_$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
+    _$CartItemImpl(
       ct_id: json['ct_id'] as int? ?? 0,
       od_id: json['od_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
@@ -39,7 +41,7 @@ _$_CartItem _$$_CartItemFromJson(Map<String, dynamic> json) => _$_CartItem(
       isCheck: json['isCheck'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$_CartItemToJson(_$_CartItem instance) =>
+Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>
     <String, dynamic>{
       'ct_id': instance.ct_id,
       'od_id': instance.od_id,
@@ -60,8 +62,8 @@ Map<String, dynamic> _$$_CartItemToJson(_$_CartItem instance) =>
       'isCheck': instance.isCheck,
     };
 
-_$_CartResponse _$$_CartResponseFromJson(Map<String, dynamic> json) =>
-    _$_CartResponse(
+_$CartResponseImpl _$$CartResponseImplFromJson(Map<String, dynamic> json) =>
+    _$CartResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       data: json['data'] == null
@@ -69,7 +71,7 @@ _$_CartResponse _$$_CartResponseFromJson(Map<String, dynamic> json) =>
           : Cart.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_CartResponseToJson(_$_CartResponse instance) =>
+Map<String, dynamic> _$$CartResponseImplToJson(_$CartResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

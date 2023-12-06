@@ -6,7 +6,8 @@ part of 'inquiry.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Inquiry _$$_InquiryFromJson(Map<String, dynamic> json) => _$_Inquiry(
+_$InquiryImpl _$$InquiryImplFromJson(Map<String, dynamic> json) =>
+    _$InquiryImpl(
       iq_id: json['iq_id'] as int? ?? 0,
       iq_type: json['iq_type'] as String? ?? '',
       iq_question: json['iq_question'] as String? ?? '',
@@ -16,7 +17,7 @@ _$_Inquiry _$$_InquiryFromJson(Map<String, dynamic> json) => _$_Inquiry(
       iq_answer_time: json['iq_answer_time'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_InquiryToJson(_$_Inquiry instance) =>
+Map<String, dynamic> _$$InquiryImplToJson(_$InquiryImpl instance) =>
     <String, dynamic>{
       'iq_id': instance.iq_id,
       'iq_type': instance.iq_type,
@@ -27,8 +28,9 @@ Map<String, dynamic> _$$_InquiryToJson(_$_Inquiry instance) =>
       'iq_answer_time': instance.iq_answer_time,
     };
 
-_$_InquiryResponse _$$_InquiryResponseFromJson(Map<String, dynamic> json) =>
-    _$_InquiryResponse(
+_$InquiryResponseImpl _$$InquiryResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$InquiryResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       page: json['page'] as int? ?? 0,
@@ -42,7 +44,8 @@ _$_InquiryResponse _$$_InquiryResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_InquiryResponseToJson(_$_InquiryResponse instance) =>
+Map<String, dynamic> _$$InquiryResponseImplToJson(
+        _$InquiryResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

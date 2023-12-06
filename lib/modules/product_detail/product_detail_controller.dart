@@ -158,7 +158,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
   }
 
   Future<void> writeInquiry(context) async {
-    final result = await _shopService.writeInquiry(
+    final result = await _shopService.writeProductInquiry(
       itId: productId.value,
       iqType: inquiryType.value,
       question: inquiryContentsController.text,

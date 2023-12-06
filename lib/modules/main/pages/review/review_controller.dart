@@ -118,7 +118,6 @@ class ReviewController extends GetxController{
 
     for(int i=0; i<editImgList.length; i++){
       _files.add(await dio.MultipartFile.fromFile(editImgList[i]!.path),);
-      print(editImgList[i]!.path.toString());
     }
 
     final result = await _userService.updateReview(ctId: ctId.toString(),subject: subject,contents: contents,score: editRating.value.toString(),reviewImg: _files);

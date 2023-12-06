@@ -29,6 +29,7 @@ mixin _$CS {
   String get qa_file1 => throw _privateConstructorUsedError;
   String get qa_file2 => throw _privateConstructorUsedError;
   String? get qa_datetime => throw _privateConstructorUsedError;
+  String? get answer_content => throw _privateConstructorUsedError;
   bool? get isExpand => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $CSCopyWith<$Res> {
       String qa_file1,
       String qa_file2,
       String? qa_datetime,
+      String? answer_content,
       bool? isExpand});
 }
 
@@ -75,6 +77,7 @@ class _$CSCopyWithImpl<$Res, $Val extends CS> implements $CSCopyWith<$Res> {
     Object? qa_file1 = null,
     Object? qa_file2 = null,
     Object? qa_datetime = freezed,
+    Object? answer_content = freezed,
     Object? isExpand = freezed,
   }) {
     return _then(_value.copyWith(
@@ -114,6 +117,10 @@ class _$CSCopyWithImpl<$Res, $Val extends CS> implements $CSCopyWith<$Res> {
           ? _value.qa_datetime
           : qa_datetime // ignore: cast_nullable_to_non_nullable
               as String?,
+      answer_content: freezed == answer_content
+          ? _value.answer_content
+          : answer_content // ignore: cast_nullable_to_non_nullable
+              as String?,
       isExpand: freezed == isExpand
           ? _value.isExpand
           : isExpand // ignore: cast_nullable_to_non_nullable
@@ -123,9 +130,9 @@ class _$CSCopyWithImpl<$Res, $Val extends CS> implements $CSCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_CSCopyWith<$Res> implements $CSCopyWith<$Res> {
-  factory _$$_CSCopyWith(_$_CS value, $Res Function(_$_CS) then) =
-      __$$_CSCopyWithImpl<$Res>;
+abstract class _$$CSImplCopyWith<$Res> implements $CSCopyWith<$Res> {
+  factory _$$CSImplCopyWith(_$CSImpl value, $Res Function(_$CSImpl) then) =
+      __$$CSImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -138,13 +145,14 @@ abstract class _$$_CSCopyWith<$Res> implements $CSCopyWith<$Res> {
       String qa_file1,
       String qa_file2,
       String? qa_datetime,
+      String? answer_content,
       bool? isExpand});
 }
 
 /// @nodoc
-class __$$_CSCopyWithImpl<$Res> extends _$CSCopyWithImpl<$Res, _$_CS>
-    implements _$$_CSCopyWith<$Res> {
-  __$$_CSCopyWithImpl(_$_CS _value, $Res Function(_$_CS) _then)
+class __$$CSImplCopyWithImpl<$Res> extends _$CSCopyWithImpl<$Res, _$CSImpl>
+    implements _$$CSImplCopyWith<$Res> {
+  __$$CSImplCopyWithImpl(_$CSImpl _value, $Res Function(_$CSImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -159,9 +167,10 @@ class __$$_CSCopyWithImpl<$Res> extends _$CSCopyWithImpl<$Res, _$_CS>
     Object? qa_file1 = null,
     Object? qa_file2 = null,
     Object? qa_datetime = freezed,
+    Object? answer_content = freezed,
     Object? isExpand = freezed,
   }) {
-    return _then(_$_CS(
+    return _then(_$CSImpl(
       qa_id: null == qa_id
           ? _value.qa_id
           : qa_id // ignore: cast_nullable_to_non_nullable
@@ -198,6 +207,10 @@ class __$$_CSCopyWithImpl<$Res> extends _$CSCopyWithImpl<$Res, _$_CS>
           ? _value.qa_datetime
           : qa_datetime // ignore: cast_nullable_to_non_nullable
               as String?,
+      answer_content: freezed == answer_content
+          ? _value.answer_content
+          : answer_content // ignore: cast_nullable_to_non_nullable
+              as String?,
       isExpand: freezed == isExpand
           ? _value.isExpand
           : isExpand // ignore: cast_nullable_to_non_nullable
@@ -208,8 +221,8 @@ class __$$_CSCopyWithImpl<$Res> extends _$CSCopyWithImpl<$Res, _$_CS>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CS implements _CS {
-  _$_CS(
+class _$CSImpl implements _CS {
+  _$CSImpl(
       {this.qa_id = 0,
       this.mb_id = '',
       this.qa_name = '',
@@ -219,9 +232,11 @@ class _$_CS implements _CS {
       this.qa_file1 = '',
       this.qa_file2 = '',
       this.qa_datetime = '',
+      this.answer_content = '',
       this.isExpand = false});
 
-  factory _$_CS.fromJson(Map<String, dynamic> json) => _$$_CSFromJson(json);
+  factory _$CSImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CSImplFromJson(json);
 
   @override
   @JsonKey()
@@ -252,18 +267,21 @@ class _$_CS implements _CS {
   final String? qa_datetime;
   @override
   @JsonKey()
+  final String? answer_content;
+  @override
+  @JsonKey()
   final bool? isExpand;
 
   @override
   String toString() {
-    return 'CS(qa_id: $qa_id, mb_id: $mb_id, qa_name: $qa_name, qa_subject: $qa_subject, qa_content: $qa_content, qa_status: $qa_status, qa_file1: $qa_file1, qa_file2: $qa_file2, qa_datetime: $qa_datetime, isExpand: $isExpand)';
+    return 'CS(qa_id: $qa_id, mb_id: $mb_id, qa_name: $qa_name, qa_subject: $qa_subject, qa_content: $qa_content, qa_status: $qa_status, qa_file1: $qa_file1, qa_file2: $qa_file2, qa_datetime: $qa_datetime, answer_content: $answer_content, isExpand: $isExpand)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CS &&
+            other is _$CSImpl &&
             (identical(other.qa_id, qa_id) || other.qa_id == qa_id) &&
             (identical(other.mb_id, mb_id) || other.mb_id == mb_id) &&
             (identical(other.qa_name, qa_name) || other.qa_name == qa_name) &&
@@ -279,6 +297,8 @@ class _$_CS implements _CS {
                 other.qa_file2 == qa_file2) &&
             (identical(other.qa_datetime, qa_datetime) ||
                 other.qa_datetime == qa_datetime) &&
+            (identical(other.answer_content, answer_content) ||
+                other.answer_content == answer_content) &&
             (identical(other.isExpand, isExpand) ||
                 other.isExpand == isExpand));
   }
@@ -296,17 +316,18 @@ class _$_CS implements _CS {
       qa_file1,
       qa_file2,
       qa_datetime,
+      answer_content,
       isExpand);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CSCopyWith<_$_CS> get copyWith =>
-      __$$_CSCopyWithImpl<_$_CS>(this, _$identity);
+  _$$CSImplCopyWith<_$CSImpl> get copyWith =>
+      __$$CSImplCopyWithImpl<_$CSImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CSToJson(
+    return _$$CSImplToJson(
       this,
     );
   }
@@ -323,9 +344,10 @@ abstract class _CS implements CS {
       final String qa_file1,
       final String qa_file2,
       final String? qa_datetime,
-      final bool? isExpand}) = _$_CS;
+      final String? answer_content,
+      final bool? isExpand}) = _$CSImpl;
 
-  factory _CS.fromJson(Map<String, dynamic> json) = _$_CS.fromJson;
+  factory _CS.fromJson(Map<String, dynamic> json) = _$CSImpl.fromJson;
 
   @override
   int get qa_id;
@@ -346,10 +368,13 @@ abstract class _CS implements CS {
   @override
   String? get qa_datetime;
   @override
+  String? get answer_content;
+  @override
   bool? get isExpand;
   @override
   @JsonKey(ignore: true)
-  _$$_CSCopyWith<_$_CS> get copyWith => throw _privateConstructorUsedError;
+  _$$CSImplCopyWith<_$CSImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 CSResponse _$CSResponseFromJson(Map<String, dynamic> json) {
@@ -414,11 +439,11 @@ class _$CSResponseCopyWithImpl<$Res, $Val extends CSResponse>
 }
 
 /// @nodoc
-abstract class _$$_CSResponseCopyWith<$Res>
+abstract class _$$CSResponseImplCopyWith<$Res>
     implements $CSResponseCopyWith<$Res> {
-  factory _$$_CSResponseCopyWith(
-          _$_CSResponse value, $Res Function(_$_CSResponse) then) =
-      __$$_CSResponseCopyWithImpl<$Res>;
+  factory _$$CSResponseImplCopyWith(
+          _$CSResponseImpl value, $Res Function(_$CSResponseImpl) then) =
+      __$$CSResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -426,11 +451,11 @@ abstract class _$$_CSResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CSResponseCopyWithImpl<$Res>
-    extends _$CSResponseCopyWithImpl<$Res, _$_CSResponse>
-    implements _$$_CSResponseCopyWith<$Res> {
-  __$$_CSResponseCopyWithImpl(
-      _$_CSResponse _value, $Res Function(_$_CSResponse) _then)
+class __$$CSResponseImplCopyWithImpl<$Res>
+    extends _$CSResponseCopyWithImpl<$Res, _$CSResponseImpl>
+    implements _$$CSResponseImplCopyWith<$Res> {
+  __$$CSResponseImplCopyWithImpl(
+      _$CSResponseImpl _value, $Res Function(_$CSResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -440,7 +465,7 @@ class __$$_CSResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$_CSResponse(
+    return _then(_$CSResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -459,15 +484,15 @@ class __$$_CSResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CSResponse implements _CSResponse {
-  _$_CSResponse(
+class _$CSResponseImpl implements _CSResponse {
+  _$CSResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<CS>? items = const []})
       : _items = items;
 
-  factory _$_CSResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CSResponseFromJson(json);
+  factory _$CSResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CSResponseImplFromJson(json);
 
   @override
   final int status;
@@ -494,7 +519,7 @@ class _$_CSResponse implements _CSResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CSResponse &&
+            other is _$CSResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -508,12 +533,12 @@ class _$_CSResponse implements _CSResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CSResponseCopyWith<_$_CSResponse> get copyWith =>
-      __$$_CSResponseCopyWithImpl<_$_CSResponse>(this, _$identity);
+  _$$CSResponseImplCopyWith<_$CSResponseImpl> get copyWith =>
+      __$$CSResponseImplCopyWithImpl<_$CSResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CSResponseToJson(
+    return _$$CSResponseImplToJson(
       this,
     );
   }
@@ -523,10 +548,10 @@ abstract class _CSResponse implements CSResponse {
   factory _CSResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<CS>? items}) = _$_CSResponse;
+      @JsonKey(name: 'data') final List<CS>? items}) = _$CSResponseImpl;
 
   factory _CSResponse.fromJson(Map<String, dynamic> json) =
-      _$_CSResponse.fromJson;
+      _$CSResponseImpl.fromJson;
 
   @override
   int get status;
@@ -537,6 +562,6 @@ abstract class _CSResponse implements CSResponse {
   List<CS>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$_CSResponseCopyWith<_$_CSResponse> get copyWith =>
+  _$$CSResponseImplCopyWith<_$CSResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ part of 'cs.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CS _$$_CSFromJson(Map<String, dynamic> json) => _$_CS(
+_$CSImpl _$$CSImplFromJson(Map<String, dynamic> json) => _$CSImpl(
       qa_id: json['qa_id'] as int? ?? 0,
       mb_id: json['mb_id'] as String? ?? '',
       qa_name: json['qa_name'] as String? ?? '',
@@ -16,10 +16,11 @@ _$_CS _$$_CSFromJson(Map<String, dynamic> json) => _$_CS(
       qa_file1: json['qa_file1'] as String? ?? '',
       qa_file2: json['qa_file2'] as String? ?? '',
       qa_datetime: json['qa_datetime'] as String? ?? '',
+      answer_content: json['answer_content'] as String? ?? '',
       isExpand: json['isExpand'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_CSToJson(_$_CS instance) => <String, dynamic>{
+Map<String, dynamic> _$$CSImplToJson(_$CSImpl instance) => <String, dynamic>{
       'qa_id': instance.qa_id,
       'mb_id': instance.mb_id,
       'qa_name': instance.qa_name,
@@ -29,11 +30,12 @@ Map<String, dynamic> _$$_CSToJson(_$_CS instance) => <String, dynamic>{
       'qa_file1': instance.qa_file1,
       'qa_file2': instance.qa_file2,
       'qa_datetime': instance.qa_datetime,
+      'answer_content': instance.answer_content,
       'isExpand': instance.isExpand,
     };
 
-_$_CSResponse _$$_CSResponseFromJson(Map<String, dynamic> json) =>
-    _$_CSResponse(
+_$CSResponseImpl _$$CSResponseImplFromJson(Map<String, dynamic> json) =>
+    _$CSResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -42,7 +44,7 @@ _$_CSResponse _$$_CSResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_CSResponseToJson(_$_CSResponse instance) =>
+Map<String, dynamic> _$$CSResponseImplToJson(_$CSResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

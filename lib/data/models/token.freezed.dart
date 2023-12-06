@@ -66,18 +66,21 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
 }
 
 /// @nodoc
-abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
-  factory _$$_TokenCopyWith(_$_Token value, $Res Function(_$_Token) then) =
-      __$$_TokenCopyWithImpl<$Res>;
+abstract class _$$TokenImplCopyWith<$Res> implements $TokenCopyWith<$Res> {
+  factory _$$TokenImplCopyWith(
+          _$TokenImpl value, $Res Function(_$TokenImpl) then) =
+      __$$TokenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String accessToken, String refreshToken});
 }
 
 /// @nodoc
-class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
-    implements _$$_TokenCopyWith<$Res> {
-  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
+class __$$TokenImplCopyWithImpl<$Res>
+    extends _$TokenCopyWithImpl<$Res, _$TokenImpl>
+    implements _$$TokenImplCopyWith<$Res> {
+  __$$TokenImplCopyWithImpl(
+      _$TokenImpl _value, $Res Function(_$TokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +89,7 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
     Object? accessToken = null,
     Object? refreshToken = null,
   }) {
-    return _then(_$_Token(
+    return _then(_$TokenImpl(
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -101,11 +104,11 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Token implements _Token {
-  _$_Token({this.accessToken = '', this.refreshToken = ''});
+class _$TokenImpl implements _Token {
+  _$TokenImpl({this.accessToken = '', this.refreshToken = ''});
 
-  factory _$_Token.fromJson(Map<String, dynamic> json) =>
-      _$$_TokenFromJson(json);
+  factory _$TokenImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TokenImplFromJson(json);
 
   @override
   @JsonKey()
@@ -123,7 +126,7 @@ class _$_Token implements _Token {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Token &&
+            other is _$TokenImpl &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -137,12 +140,12 @@ class _$_Token implements _Token {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
-      __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
+  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
+      __$$TokenImplCopyWithImpl<_$TokenImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenToJson(
+    return _$$TokenImplToJson(
       this,
     );
   }
@@ -150,9 +153,9 @@ class _$_Token implements _Token {
 
 abstract class _Token implements Token {
   factory _Token({final String accessToken, final String refreshToken}) =
-      _$_Token;
+      _$TokenImpl;
 
-  factory _Token.fromJson(Map<String, dynamic> json) = _$_Token.fromJson;
+  factory _Token.fromJson(Map<String, dynamic> json) = _$TokenImpl.fromJson;
 
   @override
   String get accessToken;
@@ -160,6 +163,6 @@ abstract class _Token implements Token {
   String get refreshToken;
   @override
   @JsonKey(ignore: true)
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
+  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

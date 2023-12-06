@@ -173,9 +173,10 @@ class _$ReviewCopyWithImpl<$Res, $Val extends Review>
 }
 
 /// @nodoc
-abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
-  factory _$$_ReviewCopyWith(_$_Review value, $Res Function(_$_Review) then) =
-      __$$_ReviewCopyWithImpl<$Res>;
+abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
+  factory _$$ReviewImplCopyWith(
+          _$ReviewImpl value, $Res Function(_$ReviewImpl) then) =
+      __$$ReviewImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -199,10 +200,11 @@ abstract class _$$_ReviewCopyWith<$Res> implements $ReviewCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ReviewCopyWithImpl<$Res>
-    extends _$ReviewCopyWithImpl<$Res, _$_Review>
-    implements _$$_ReviewCopyWith<$Res> {
-  __$$_ReviewCopyWithImpl(_$_Review _value, $Res Function(_$_Review) _then)
+class __$$ReviewImplCopyWithImpl<$Res>
+    extends _$ReviewCopyWithImpl<$Res, _$ReviewImpl>
+    implements _$$ReviewImplCopyWith<$Res> {
+  __$$ReviewImplCopyWithImpl(
+      _$ReviewImpl _value, $Res Function(_$ReviewImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -226,7 +228,7 @@ class __$$_ReviewCopyWithImpl<$Res>
     Object? is_img3 = null,
     Object? isExpand = freezed,
   }) {
-    return _then(_$_Review(
+    return _then(_$ReviewImpl(
       is_id: null == is_id
           ? _value.is_id
           : is_id // ignore: cast_nullable_to_non_nullable
@@ -301,8 +303,8 @@ class __$$_ReviewCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Review implements _Review {
-  _$_Review(
+class _$ReviewImpl implements _Review {
+  _$ReviewImpl(
       {this.is_id = 0,
       this.it_id = '',
       this.it_name = '',
@@ -321,8 +323,8 @@ class _$_Review implements _Review {
       this.is_img3 = '',
       this.isExpand = false});
 
-  factory _$_Review.fromJson(Map<String, dynamic> json) =>
-      _$$_ReviewFromJson(json);
+  factory _$ReviewImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReviewImplFromJson(json);
 
   @override
   @JsonKey()
@@ -385,7 +387,7 @@ class _$_Review implements _Review {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Review &&
+            other is _$ReviewImpl &&
             (identical(other.is_id, is_id) || other.is_id == is_id) &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
@@ -438,12 +440,12 @@ class _$_Review implements _Review {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReviewCopyWith<_$_Review> get copyWith =>
-      __$$_ReviewCopyWithImpl<_$_Review>(this, _$identity);
+  _$$ReviewImplCopyWith<_$ReviewImpl> get copyWith =>
+      __$$ReviewImplCopyWithImpl<_$ReviewImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReviewToJson(
+    return _$$ReviewImplToJson(
       this,
     );
   }
@@ -467,9 +469,9 @@ abstract class _Review implements Review {
       final String is_img1,
       final String is_img2,
       final String is_img3,
-      final bool? isExpand}) = _$_Review;
+      final bool? isExpand}) = _$ReviewImpl;
 
-  factory _Review.fromJson(Map<String, dynamic> json) = _$_Review.fromJson;
+  factory _Review.fromJson(Map<String, dynamic> json) = _$ReviewImpl.fromJson;
 
   @override
   int get is_id;
@@ -507,7 +509,7 @@ abstract class _Review implements Review {
   bool? get isExpand;
   @override
   @JsonKey(ignore: true)
-  _$$_ReviewCopyWith<_$_Review> get copyWith =>
+  _$$ReviewImplCopyWith<_$ReviewImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -566,22 +568,22 @@ class _$ReviewResponseCopyWithImpl<$Res, $Val extends ReviewResponse>
 }
 
 /// @nodoc
-abstract class _$$_ReviewResponseCopyWith<$Res>
+abstract class _$$ReviewResponseImplCopyWith<$Res>
     implements $ReviewResponseCopyWith<$Res> {
-  factory _$$_ReviewResponseCopyWith(
-          _$_ReviewResponse value, $Res Function(_$_ReviewResponse) then) =
-      __$$_ReviewResponseCopyWithImpl<$Res>;
+  factory _$$ReviewResponseImplCopyWith(_$ReviewResponseImpl value,
+          $Res Function(_$ReviewResponseImpl) then) =
+      __$$ReviewResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message, @JsonKey(name: 'data') List<Review>? items});
 }
 
 /// @nodoc
-class __$$_ReviewResponseCopyWithImpl<$Res>
-    extends _$ReviewResponseCopyWithImpl<$Res, _$_ReviewResponse>
-    implements _$$_ReviewResponseCopyWith<$Res> {
-  __$$_ReviewResponseCopyWithImpl(
-      _$_ReviewResponse _value, $Res Function(_$_ReviewResponse) _then)
+class __$$ReviewResponseImplCopyWithImpl<$Res>
+    extends _$ReviewResponseCopyWithImpl<$Res, _$ReviewResponseImpl>
+    implements _$$ReviewResponseImplCopyWith<$Res> {
+  __$$ReviewResponseImplCopyWithImpl(
+      _$ReviewResponseImpl _value, $Res Function(_$ReviewResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -590,7 +592,7 @@ class __$$_ReviewResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$_ReviewResponse(
+    return _then(_$ReviewResponseImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -605,14 +607,14 @@ class __$$_ReviewResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ReviewResponse implements _ReviewResponse {
-  _$_ReviewResponse(
+class _$ReviewResponseImpl implements _ReviewResponse {
+  _$ReviewResponseImpl(
       {this.message = '',
       @JsonKey(name: 'data') final List<Review>? items = const []})
       : _items = items;
 
-  factory _$_ReviewResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ReviewResponseFromJson(json);
+  factory _$ReviewResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ReviewResponseImplFromJson(json);
 
   @override
   @JsonKey()
@@ -637,7 +639,7 @@ class _$_ReviewResponse implements _ReviewResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ReviewResponse &&
+            other is _$ReviewResponseImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
@@ -650,12 +652,13 @@ class _$_ReviewResponse implements _ReviewResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ReviewResponseCopyWith<_$_ReviewResponse> get copyWith =>
-      __$$_ReviewResponseCopyWithImpl<_$_ReviewResponse>(this, _$identity);
+  _$$ReviewResponseImplCopyWith<_$ReviewResponseImpl> get copyWith =>
+      __$$ReviewResponseImplCopyWithImpl<_$ReviewResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ReviewResponseToJson(
+    return _$$ReviewResponseImplToJson(
       this,
     );
   }
@@ -664,10 +667,10 @@ class _$_ReviewResponse implements _ReviewResponse {
 abstract class _ReviewResponse implements ReviewResponse {
   factory _ReviewResponse(
       {final String message,
-      @JsonKey(name: 'data') final List<Review>? items}) = _$_ReviewResponse;
+      @JsonKey(name: 'data') final List<Review>? items}) = _$ReviewResponseImpl;
 
   factory _ReviewResponse.fromJson(Map<String, dynamic> json) =
-      _$_ReviewResponse.fromJson;
+      _$ReviewResponseImpl.fromJson;
 
   @override
   String get message;
@@ -676,6 +679,6 @@ abstract class _ReviewResponse implements ReviewResponse {
   List<Review>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$_ReviewResponseCopyWith<_$_ReviewResponse> get copyWith =>
+  _$$ReviewResponseImplCopyWith<_$ReviewResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

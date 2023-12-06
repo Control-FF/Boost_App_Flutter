@@ -89,9 +89,10 @@ class _$NoticeCopyWithImpl<$Res, $Val extends Notice>
 }
 
 /// @nodoc
-abstract class _$$_NoticeCopyWith<$Res> implements $NoticeCopyWith<$Res> {
-  factory _$$_NoticeCopyWith(_$_Notice value, $Res Function(_$_Notice) then) =
-      __$$_NoticeCopyWithImpl<$Res>;
+abstract class _$$NoticeImplCopyWith<$Res> implements $NoticeCopyWith<$Res> {
+  factory _$$NoticeImplCopyWith(
+          _$NoticeImpl value, $Res Function(_$NoticeImpl) then) =
+      __$$NoticeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,10 +104,11 @@ abstract class _$$_NoticeCopyWith<$Res> implements $NoticeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NoticeCopyWithImpl<$Res>
-    extends _$NoticeCopyWithImpl<$Res, _$_Notice>
-    implements _$$_NoticeCopyWith<$Res> {
-  __$$_NoticeCopyWithImpl(_$_Notice _value, $Res Function(_$_Notice) _then)
+class __$$NoticeImplCopyWithImpl<$Res>
+    extends _$NoticeCopyWithImpl<$Res, _$NoticeImpl>
+    implements _$$NoticeImplCopyWith<$Res> {
+  __$$NoticeImplCopyWithImpl(
+      _$NoticeImpl _value, $Res Function(_$NoticeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +120,7 @@ class __$$_NoticeCopyWithImpl<$Res>
     Object? fa_order = null,
     Object? isExpand = null,
   }) {
-    return _then(_$_Notice(
+    return _then(_$NoticeImpl(
       fa_id: null == fa_id
           ? _value.fa_id
           : fa_id // ignore: cast_nullable_to_non_nullable
@@ -145,16 +147,16 @@ class __$$_NoticeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Notice implements _Notice {
-  _$_Notice(
+class _$NoticeImpl implements _Notice {
+  _$NoticeImpl(
       {this.fa_id = 0,
       this.fa_subject = '',
       this.fa_content = '',
       this.fa_order = 0,
       this.isExpand = false});
 
-  factory _$_Notice.fromJson(Map<String, dynamic> json) =>
-      _$$_NoticeFromJson(json);
+  factory _$NoticeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NoticeImplFromJson(json);
 
   @override
   @JsonKey()
@@ -181,7 +183,7 @@ class _$_Notice implements _Notice {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Notice &&
+            other is _$NoticeImpl &&
             (identical(other.fa_id, fa_id) || other.fa_id == fa_id) &&
             (identical(other.fa_subject, fa_subject) ||
                 other.fa_subject == fa_subject) &&
@@ -201,12 +203,12 @@ class _$_Notice implements _Notice {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoticeCopyWith<_$_Notice> get copyWith =>
-      __$$_NoticeCopyWithImpl<_$_Notice>(this, _$identity);
+  _$$NoticeImplCopyWith<_$NoticeImpl> get copyWith =>
+      __$$NoticeImplCopyWithImpl<_$NoticeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NoticeToJson(
+    return _$$NoticeImplToJson(
       this,
     );
   }
@@ -218,9 +220,9 @@ abstract class _Notice implements Notice {
       final String fa_subject,
       final String fa_content,
       final int fa_order,
-      final bool isExpand}) = _$_Notice;
+      final bool isExpand}) = _$NoticeImpl;
 
-  factory _Notice.fromJson(Map<String, dynamic> json) = _$_Notice.fromJson;
+  factory _Notice.fromJson(Map<String, dynamic> json) = _$NoticeImpl.fromJson;
 
   @override
   int get fa_id;
@@ -234,7 +236,7 @@ abstract class _Notice implements Notice {
   bool get isExpand;
   @override
   @JsonKey(ignore: true)
-  _$$_NoticeCopyWith<_$_Notice> get copyWith =>
+  _$$NoticeImplCopyWith<_$NoticeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -300,11 +302,11 @@ class _$NoticeResponseCopyWithImpl<$Res, $Val extends NoticeResponse>
 }
 
 /// @nodoc
-abstract class _$$_NoticeResponseCopyWith<$Res>
+abstract class _$$NoticeResponseImplCopyWith<$Res>
     implements $NoticeResponseCopyWith<$Res> {
-  factory _$$_NoticeResponseCopyWith(
-          _$_NoticeResponse value, $Res Function(_$_NoticeResponse) then) =
-      __$$_NoticeResponseCopyWithImpl<$Res>;
+  factory _$$NoticeResponseImplCopyWith(_$NoticeResponseImpl value,
+          $Res Function(_$NoticeResponseImpl) then) =
+      __$$NoticeResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -312,11 +314,11 @@ abstract class _$$_NoticeResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NoticeResponseCopyWithImpl<$Res>
-    extends _$NoticeResponseCopyWithImpl<$Res, _$_NoticeResponse>
-    implements _$$_NoticeResponseCopyWith<$Res> {
-  __$$_NoticeResponseCopyWithImpl(
-      _$_NoticeResponse _value, $Res Function(_$_NoticeResponse) _then)
+class __$$NoticeResponseImplCopyWithImpl<$Res>
+    extends _$NoticeResponseCopyWithImpl<$Res, _$NoticeResponseImpl>
+    implements _$$NoticeResponseImplCopyWith<$Res> {
+  __$$NoticeResponseImplCopyWithImpl(
+      _$NoticeResponseImpl _value, $Res Function(_$NoticeResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -326,7 +328,7 @@ class __$$_NoticeResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$_NoticeResponse(
+    return _then(_$NoticeResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -345,15 +347,15 @@ class __$$_NoticeResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NoticeResponse implements _NoticeResponse {
-  _$_NoticeResponse(
+class _$NoticeResponseImpl implements _NoticeResponse {
+  _$NoticeResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<Notice>? items = const []})
       : _items = items;
 
-  factory _$_NoticeResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_NoticeResponseFromJson(json);
+  factory _$NoticeResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NoticeResponseImplFromJson(json);
 
   @override
   final int status;
@@ -380,7 +382,7 @@ class _$_NoticeResponse implements _NoticeResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoticeResponse &&
+            other is _$NoticeResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -394,12 +396,13 @@ class _$_NoticeResponse implements _NoticeResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoticeResponseCopyWith<_$_NoticeResponse> get copyWith =>
-      __$$_NoticeResponseCopyWithImpl<_$_NoticeResponse>(this, _$identity);
+  _$$NoticeResponseImplCopyWith<_$NoticeResponseImpl> get copyWith =>
+      __$$NoticeResponseImplCopyWithImpl<_$NoticeResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NoticeResponseToJson(
+    return _$$NoticeResponseImplToJson(
       this,
     );
   }
@@ -409,10 +412,10 @@ abstract class _NoticeResponse implements NoticeResponse {
   factory _NoticeResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<Notice>? items}) = _$_NoticeResponse;
+      @JsonKey(name: 'data') final List<Notice>? items}) = _$NoticeResponseImpl;
 
   factory _NoticeResponse.fromJson(Map<String, dynamic> json) =
-      _$_NoticeResponse.fromJson;
+      _$NoticeResponseImpl.fromJson;
 
   @override
   int get status;
@@ -423,6 +426,6 @@ abstract class _NoticeResponse implements NoticeResponse {
   List<Notice>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$_NoticeResponseCopyWith<_$_NoticeResponse> get copyWith =>
+  _$$NoticeResponseImplCopyWith<_$NoticeResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

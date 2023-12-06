@@ -6,7 +6,7 @@ part of 'more.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_More _$$_MoreFromJson(Map<String, dynamic> json) => _$_More(
+_$MoreImpl _$$MoreImplFromJson(Map<String, dynamic> json) => _$MoreImpl(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -17,7 +17,8 @@ _$_More _$$_MoreFromJson(Map<String, dynamic> json) => _$_More(
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_MoreToJson(_$_More instance) => <String, dynamic>{
+Map<String, dynamic> _$$MoreImplToJson(_$MoreImpl instance) =>
+    <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
       'it_cust_price': instance.it_cust_price,
@@ -28,8 +29,8 @@ Map<String, dynamic> _$$_MoreToJson(_$_More instance) => <String, dynamic>{
       'it_sum_qty': instance.it_sum_qty,
     };
 
-_$_MoreResponse _$$_MoreResponseFromJson(Map<String, dynamic> json) =>
-    _$_MoreResponse(
+_$MoreResponseImpl _$$MoreResponseImplFromJson(Map<String, dynamic> json) =>
+    _$MoreResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -39,7 +40,7 @@ _$_MoreResponse _$$_MoreResponseFromJson(Map<String, dynamic> json) =>
       total_cnt: json['total_cnt'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_MoreResponseToJson(_$_MoreResponse instance) =>
+Map<String, dynamic> _$$MoreResponseImplToJson(_$MoreResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

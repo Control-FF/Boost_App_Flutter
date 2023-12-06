@@ -6,8 +6,9 @@ part of 'category_product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_CategoryProduct _$$_CategoryProductFromJson(Map<String, dynamic> json) =>
-    _$_CategoryProduct(
+_$CategoryProductImpl _$$CategoryProductImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CategoryProductImpl(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -18,7 +19,8 @@ _$_CategoryProduct _$$_CategoryProductFromJson(Map<String, dynamic> json) =>
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_CategoryProductToJson(_$_CategoryProduct instance) =>
+Map<String, dynamic> _$$CategoryProductImplToJson(
+        _$CategoryProductImpl instance) =>
     <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -30,9 +32,9 @@ Map<String, dynamic> _$$_CategoryProductToJson(_$_CategoryProduct instance) =>
       'it_sum_qty': instance.it_sum_qty,
     };
 
-_$_CategoryProductResponse _$$_CategoryProductResponseFromJson(
+_$CategoryProductResponseImpl _$$CategoryProductResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_CategoryProductResponse(
+    _$CategoryProductResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -42,8 +44,8 @@ _$_CategoryProductResponse _$$_CategoryProductResponseFromJson(
       total_cnt: json['total_cnt'] ?? 0,
     );
 
-Map<String, dynamic> _$$_CategoryProductResponseToJson(
-        _$_CategoryProductResponse instance) =>
+Map<String, dynamic> _$$CategoryProductResponseImplToJson(
+        _$CategoryProductResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

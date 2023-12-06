@@ -6,7 +6,8 @@ part of 'recommend.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Recommend _$$_RecommendFromJson(Map<String, dynamic> json) => _$_Recommend(
+_$RecommendImpl _$$RecommendImplFromJson(Map<String, dynamic> json) =>
+    _$RecommendImpl(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -18,7 +19,7 @@ _$_Recommend _$$_RecommendFromJson(Map<String, dynamic> json) => _$_Recommend(
       reviews: json['reviews'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_RecommendToJson(_$_Recommend instance) =>
+Map<String, dynamic> _$$RecommendImplToJson(_$RecommendImpl instance) =>
     <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -31,8 +32,9 @@ Map<String, dynamic> _$$_RecommendToJson(_$_Recommend instance) =>
       'reviews': instance.reviews,
     };
 
-_$_RecommendResponse _$$_RecommendResponseFromJson(Map<String, dynamic> json) =>
-    _$_RecommendResponse(
+_$RecommendResponseImpl _$$RecommendResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RecommendResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -42,8 +44,8 @@ _$_RecommendResponse _$$_RecommendResponseFromJson(Map<String, dynamic> json) =>
       total_cnt: json['total_cnt'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_RecommendResponseToJson(
-        _$_RecommendResponse instance) =>
+Map<String, dynamic> _$$RecommendResponseImplToJson(
+        _$RecommendResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

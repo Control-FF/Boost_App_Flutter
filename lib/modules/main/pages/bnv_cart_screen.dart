@@ -217,43 +217,105 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Container(
-                                        width: 20.w,
-                                        height: 20.h,
-                                        child: Checkbox(
-                                          side: BorderSide(
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: 20.w,
+                                            height: 20.h,
+                                            child: Checkbox(
+                                              side: BorderSide(
+                                                  width: 1.w,
+                                                  color: ColorConstant.gray7
+                                              ),
+                                              value: controller.boostAll.value,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(6),
+                                              ),
+                                              checkColor: ColorConstant.white,
+                                              activeColor: ColorConstant.primary,
+                                              onChanged: (bool? value){
+                                                controller.boostAll.value = value!;
+                                                controller.boostAllCheck();
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(width: 4.w,),
+                                          GestureDetector(
+                                            onTap: (){
+                                              controller.boostAll.value = !controller.boostAll.value;
+                                              controller.boostAllCheck();
+                                            },
+                                            child: Text(
+                                              '부스트 배송 (${controller.getCheckCnt()}/${controller.cartList.length})',
+                                              style: TextStyle(
+                                                color: ColorConstant.black,
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          TextButton(
+                                            onPressed: (){
+                                              controller.deleteSoldOutCart();
+                                            },
+                                            style: TextButton.styleFrom(
+                                              padding: EdgeInsets.zero,
+                                              minimumSize: Size(0.w,20.h),
+                                            ),
+                                            child: Text(
+                                              '품절상품 삭제',
+                                              style: TextStyle(
+                                                color: ColorConstant.black,
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 16.h,
+                                            margin: EdgeInsets.symmetric(horizontal: 7.w),
+                                            child: VerticalDivider(
                                               width: 1.w,
-                                              color: ColorConstant.gray7
+                                              thickness: 1,
+                                              color: ColorConstant.black,
+                                            ),
                                           ),
-                                          value: controller.boostAll.value,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(6),
+                                          TextButton(
+                                            onPressed: (){
+
+                                              List<int> items = [];
+
+                                              for(int i=0; i<controller.cartList.length; i++){
+                                                if(controller.cartList[i].isCheck){
+                                                  items.add(controller.cartList[i].ct_id);
+                                                }
+                                              }
+                                              controller.deleteCart(items);
+                                            },
+                                            style: TextButton.styleFrom(
+                                              padding: EdgeInsets.zero,
+                                              minimumSize: Size(0.w,20.h),
+                                            ),
+                                            child: Text(
+                                              '선택상품 삭제',
+                                              style: TextStyle(
+                                                color: ColorConstant.black,
+                                                fontSize: 12.sp,
+                                                fontFamily: 'Noto Sans KR',
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
                                           ),
-                                          checkColor: ColorConstant.white,
-                                          activeColor: ColorConstant.primary,
-                                          onChanged: (bool? value){
-                                            controller.boostAll.value = value!;
-                                            controller.boostAllCheck();
-                                          },
-                                        ),
-                                      ),
-                                      SizedBox(width: 4.w,),
-                                      GestureDetector(
-                                        onTap: (){
-                                          controller.boostAll.value = !controller.boostAll.value;
-                                          controller.boostAllCheck();
-                                        },
-                                        child: Text(
-                                          '부스트 배송 (${controller.getCheckCnt()}/${controller.cartList.length})',
-                                          style: TextStyle(
-                                            color: ColorConstant.black,
-                                            fontSize: 14.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
+                                        ],
+                                      )
                                     ],
                                   ),
                                   ListView.builder(
@@ -323,7 +385,8 @@ class _BnvCartScreenState extends State<BnvCartScreen>{
                                                           padding: EdgeInsets.only(top: 2.h),
                                                           child: GestureDetector(
                                                             onTap: (){
-                                                              controller.deleteCart(controller.cartList[index].ct_id);
+                                                              List<int> items = [controller.cartList[index].ct_id];
+                                                              controller.deleteCart(items);
                                                             },
                                                             child: Icon(Icons.close_sharp,color: ColorConstant.black,size: 14),
                                                           ),

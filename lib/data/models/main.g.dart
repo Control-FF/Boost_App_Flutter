@@ -6,7 +6,8 @@ part of 'main.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MainData _$$_MainDataFromJson(Map<String, dynamic> json) => _$_MainData(
+_$MainDataImpl _$$MainDataImplFromJson(Map<String, dynamic> json) =>
+    _$MainDataImpl(
       banner: json['banner'] == null
           ? null
           : Banner.fromJson(json['banner'] as Map<String, dynamic>),
@@ -24,7 +25,7 @@ _$_MainData _$$_MainDataFromJson(Map<String, dynamic> json) => _$_MainData(
           const [],
     );
 
-Map<String, dynamic> _$$_MainDataToJson(_$_MainData instance) =>
+Map<String, dynamic> _$$MainDataImplToJson(_$MainDataImpl instance) =>
     <String, dynamic>{
       'banner': instance.banner,
       'category_data': instance.categoryData,
@@ -32,7 +33,7 @@ Map<String, dynamic> _$$_MainDataToJson(_$_MainData instance) =>
       'recommendItems': instance.recommendItems,
     };
 
-_$_Banner _$$_BannerFromJson(Map<String, dynamic> json) => _$_Banner(
+_$BannerImpl _$$BannerImplFromJson(Map<String, dynamic> json) => _$BannerImpl(
       mainBanner: (json['mainBanner'] as List<dynamic>?)
               ?.map((e) => BannerList.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -43,20 +44,21 @@ _$_Banner _$$_BannerFromJson(Map<String, dynamic> json) => _$_Banner(
           const [],
     );
 
-Map<String, dynamic> _$$_BannerToJson(_$_Banner instance) => <String, dynamic>{
+Map<String, dynamic> _$$BannerImplToJson(_$BannerImpl instance) =>
+    <String, dynamic>{
       'mainBanner': instance.mainBanner,
       'bottomBanner': instance.bottomBanner,
     };
 
-_$_BannerList _$$_BannerListFromJson(Map<String, dynamic> json) =>
-    _$_BannerList(
+_$BannerListImpl _$$BannerListImplFromJson(Map<String, dynamic> json) =>
+    _$BannerListImpl(
       bn_id: json['bn_id'] as int? ?? 0,
       bn_alt: json['bn_alt'] as String? ?? '',
       bn_url: json['bn_url'] as String? ?? '',
       bn_img: json['bn_img'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_BannerListToJson(_$_BannerList instance) =>
+Map<String, dynamic> _$$BannerListImplToJson(_$BannerListImpl instance) =>
     <String, dynamic>{
       'bn_id': instance.bn_id,
       'bn_alt': instance.bn_alt,
@@ -64,22 +66,22 @@ Map<String, dynamic> _$$_BannerListToJson(_$_BannerList instance) =>
       'bn_img': instance.bn_img,
     };
 
-_$_CategoryData _$$_CategoryDataFromJson(Map<String, dynamic> json) =>
-    _$_CategoryData(
+_$CategoryDataImpl _$$CategoryDataImplFromJson(Map<String, dynamic> json) =>
+    _$CategoryDataImpl(
       ca_id: json['ca_id'] as String? ?? '',
       ca_name: json['ca_name'] as String? ?? '',
       sub_flag: json['sub_flag'] as String? ?? 'false',
     );
 
-Map<String, dynamic> _$$_CategoryDataToJson(_$_CategoryData instance) =>
+Map<String, dynamic> _$$CategoryDataImplToJson(_$CategoryDataImpl instance) =>
     <String, dynamic>{
       'ca_id': instance.ca_id,
       'ca_name': instance.ca_name,
       'sub_flag': instance.sub_flag,
     };
 
-_$_ProductItem _$$_ProductItemFromJson(Map<String, dynamic> json) =>
-    _$_ProductItem(
+_$ProductItemImpl _$$ProductItemImplFromJson(Map<String, dynamic> json) =>
+    _$ProductItemImpl(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -90,7 +92,7 @@ _$_ProductItem _$$_ProductItemFromJson(Map<String, dynamic> json) =>
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_ProductItemToJson(_$_ProductItem instance) =>
+Map<String, dynamic> _$$ProductItemImplToJson(_$ProductItemImpl instance) =>
     <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -102,8 +104,8 @@ Map<String, dynamic> _$$_ProductItemToJson(_$_ProductItem instance) =>
       'it_sum_qty': instance.it_sum_qty,
     };
 
-_$_MainResponse _$$_MainResponseFromJson(Map<String, dynamic> json) =>
-    _$_MainResponse(
+_$MainResponseImpl _$$MainResponseImplFromJson(Map<String, dynamic> json) =>
+    _$MainResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       data: json['data'] == null
@@ -111,7 +113,7 @@ _$_MainResponse _$$_MainResponseFromJson(Map<String, dynamic> json) =>
           : MainData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_MainResponseToJson(_$_MainResponse instance) =>
+Map<String, dynamic> _$$MainResponseImplToJson(_$MainResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

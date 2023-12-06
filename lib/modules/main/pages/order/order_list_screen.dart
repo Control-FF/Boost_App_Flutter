@@ -1328,7 +1328,7 @@ class OrderListScreen extends GetView<OrderController>{
                                           child: ElevatedButton(
                                             onPressed: (){
                                               //add cart
-                                              /*
+
                                               List<dynamic> ctItems = [];
 
                                               if(controller.orderList[index].io_no != 0){
@@ -1342,10 +1342,7 @@ class OrderListScreen extends GetView<OrderController>{
                                                   'ct_qty' : 1
                                                 });
                                               }
-
-
-                                               */
-                                              //cartController.addCart(context, controller.orderList[index].it_id.toString(), ctItems);
+                                              cartController.addCart(context, controller.orderList[index].it_id.toString(), ctItems);
                                             },
                                             style: ElevatedButton.styleFrom(
                                                 backgroundColor: ColorConstant.primary,

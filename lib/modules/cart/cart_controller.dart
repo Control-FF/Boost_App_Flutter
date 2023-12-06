@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/cart.dart';
@@ -43,11 +45,23 @@ class CartController extends GetxController{
     );
   }
 
-  Future<void> deleteCart(int ctId) async {
-    final result = await _userService.deleteCart(ctId: ctId.toString(),);
+  Future<void> deleteCart(List<int> items) async {
+    var map = <String, dynamic>{};
+    map.addAll({'ct_id' : items});
+
+    final result = await _userService.deleteCart(data: map);
     result.fold(
-          (failure) => print(failure.message),
-          (response) => getCartList(),
+      (failure) => print(failure.message),
+      (response) => getCartList(),
+    );
+  }
+
+  Future<void> deleteSoldOutCart() async {
+
+    final result = await _userService.deleteSoldOutCart();
+    result.fold(
+      (failure) => print(failure.message),
+      (response) => getCartList(),
     );
   }
 
@@ -164,6 +178,10 @@ class CartController extends GetxController{
     List<String> tmpList = [];
 
     for(int i=0; i<cartList.length; i++){
+      if(tmpList.contains(cartList[i].it_id)){
+        continue;
+      }
+
       if(cartList[i].isCheck){
         int scType = cartList[i].it_sc_type;
 
@@ -179,8 +197,9 @@ class CartController extends GetxController{
         }else if(scType == 4){
           shippingPrice += cartList[i].it_sc_price * (cartList[i].ct_qty.toDouble() / cartList[i].it_sc_qty.toDouble()).ceil();
         }
-
-        tmpList.add(cartList[i].it_id);
+        if(!tmpList.contains(cartList[i].it_id)){
+          tmpList.add(cartList[i].it_id);
+        }
       }
     }
 

@@ -110,9 +110,10 @@ class _$MoreCopyWithImpl<$Res, $Val extends More>
 }
 
 /// @nodoc
-abstract class _$$_MoreCopyWith<$Res> implements $MoreCopyWith<$Res> {
-  factory _$$_MoreCopyWith(_$_More value, $Res Function(_$_More) then) =
-      __$$_MoreCopyWithImpl<$Res>;
+abstract class _$$MoreImplCopyWith<$Res> implements $MoreCopyWith<$Res> {
+  factory _$$MoreImplCopyWith(
+          _$MoreImpl value, $Res Function(_$MoreImpl) then) =
+      __$$MoreImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,9 +128,10 @@ abstract class _$$_MoreCopyWith<$Res> implements $MoreCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MoreCopyWithImpl<$Res> extends _$MoreCopyWithImpl<$Res, _$_More>
-    implements _$$_MoreCopyWith<$Res> {
-  __$$_MoreCopyWithImpl(_$_More _value, $Res Function(_$_More) _then)
+class __$$MoreImplCopyWithImpl<$Res>
+    extends _$MoreCopyWithImpl<$Res, _$MoreImpl>
+    implements _$$MoreImplCopyWith<$Res> {
+  __$$MoreImplCopyWithImpl(_$MoreImpl _value, $Res Function(_$MoreImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +146,7 @@ class __$$_MoreCopyWithImpl<$Res> extends _$MoreCopyWithImpl<$Res, _$_More>
     Object? it_use_cnt = null,
     Object? it_sum_qty = null,
   }) {
-    return _then(_$_More(
+    return _then(_$MoreImpl(
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
@@ -183,8 +185,8 @@ class __$$_MoreCopyWithImpl<$Res> extends _$MoreCopyWithImpl<$Res, _$_More>
 
 /// @nodoc
 @JsonSerializable()
-class _$_More implements _More {
-  _$_More(
+class _$MoreImpl implements _More {
+  _$MoreImpl(
       {this.it_id = '',
       this.it_name = '',
       this.it_cust_price = 0,
@@ -194,7 +196,8 @@ class _$_More implements _More {
       this.it_use_cnt = 0,
       this.it_sum_qty = 0});
 
-  factory _$_More.fromJson(Map<String, dynamic> json) => _$$_MoreFromJson(json);
+  factory _$MoreImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MoreImplFromJson(json);
 
   @override
   @JsonKey()
@@ -230,7 +233,7 @@ class _$_More implements _More {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_More &&
+            other is _$MoreImpl &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
             (identical(other.it_cust_price, it_cust_price) ||
@@ -253,12 +256,12 @@ class _$_More implements _More {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MoreCopyWith<_$_More> get copyWith =>
-      __$$_MoreCopyWithImpl<_$_More>(this, _$identity);
+  _$$MoreImplCopyWith<_$MoreImpl> get copyWith =>
+      __$$MoreImplCopyWithImpl<_$MoreImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MoreToJson(
+    return _$$MoreImplToJson(
       this,
     );
   }
@@ -273,9 +276,9 @@ abstract class _More implements More {
       final String it_img1,
       final String it_time,
       final int it_use_cnt,
-      final int it_sum_qty}) = _$_More;
+      final int it_sum_qty}) = _$MoreImpl;
 
-  factory _More.fromJson(Map<String, dynamic> json) = _$_More.fromJson;
+  factory _More.fromJson(Map<String, dynamic> json) = _$MoreImpl.fromJson;
 
   @override
   String get it_id;
@@ -295,7 +298,8 @@ abstract class _More implements More {
   int get it_sum_qty;
   @override
   @JsonKey(ignore: true)
-  _$$_MoreCopyWith<_$_More> get copyWith => throw _privateConstructorUsedError;
+  _$$MoreImplCopyWith<_$MoreImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 MoreResponse _$MoreResponseFromJson(Map<String, dynamic> json) {
@@ -369,11 +373,11 @@ class _$MoreResponseCopyWithImpl<$Res, $Val extends MoreResponse>
 }
 
 /// @nodoc
-abstract class _$$_MoreResponseCopyWith<$Res>
+abstract class _$$MoreResponseImplCopyWith<$Res>
     implements $MoreResponseCopyWith<$Res> {
-  factory _$$_MoreResponseCopyWith(
-          _$_MoreResponse value, $Res Function(_$_MoreResponse) then) =
-      __$$_MoreResponseCopyWithImpl<$Res>;
+  factory _$$MoreResponseImplCopyWith(
+          _$MoreResponseImpl value, $Res Function(_$MoreResponseImpl) then) =
+      __$$MoreResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -384,11 +388,11 @@ abstract class _$$_MoreResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MoreResponseCopyWithImpl<$Res>
-    extends _$MoreResponseCopyWithImpl<$Res, _$_MoreResponse>
-    implements _$$_MoreResponseCopyWith<$Res> {
-  __$$_MoreResponseCopyWithImpl(
-      _$_MoreResponse _value, $Res Function(_$_MoreResponse) _then)
+class __$$MoreResponseImplCopyWithImpl<$Res>
+    extends _$MoreResponseCopyWithImpl<$Res, _$MoreResponseImpl>
+    implements _$$MoreResponseImplCopyWith<$Res> {
+  __$$MoreResponseImplCopyWithImpl(
+      _$MoreResponseImpl _value, $Res Function(_$MoreResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -399,7 +403,7 @@ class __$$_MoreResponseCopyWithImpl<$Res>
     Object? items = freezed,
     Object? total_cnt = null,
   }) {
-    return _then(_$_MoreResponse(
+    return _then(_$MoreResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -422,16 +426,16 @@ class __$$_MoreResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MoreResponse implements _MoreResponse {
-  _$_MoreResponse(
+class _$MoreResponseImpl implements _MoreResponse {
+  _$MoreResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<More>? items = const [],
       this.total_cnt = 0})
       : _items = items;
 
-  factory _$_MoreResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_MoreResponseFromJson(json);
+  factory _$MoreResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MoreResponseImplFromJson(json);
 
   @override
   final int status;
@@ -462,7 +466,7 @@ class _$_MoreResponse implements _MoreResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MoreResponse &&
+            other is _$MoreResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
@@ -478,12 +482,12 @@ class _$_MoreResponse implements _MoreResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MoreResponseCopyWith<_$_MoreResponse> get copyWith =>
-      __$$_MoreResponseCopyWithImpl<_$_MoreResponse>(this, _$identity);
+  _$$MoreResponseImplCopyWith<_$MoreResponseImpl> get copyWith =>
+      __$$MoreResponseImplCopyWithImpl<_$MoreResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MoreResponseToJson(
+    return _$$MoreResponseImplToJson(
       this,
     );
   }
@@ -494,10 +498,10 @@ abstract class _MoreResponse implements MoreResponse {
       {required final int status,
       final String message,
       @JsonKey(name: 'data') final List<More>? items,
-      final int total_cnt}) = _$_MoreResponse;
+      final int total_cnt}) = _$MoreResponseImpl;
 
   factory _MoreResponse.fromJson(Map<String, dynamic> json) =
-      _$_MoreResponse.fromJson;
+      _$MoreResponseImpl.fromJson;
 
   @override
   int get status;
@@ -510,6 +514,6 @@ abstract class _MoreResponse implements MoreResponse {
   int get total_cnt;
   @override
   @JsonKey(ignore: true)
-  _$$_MoreResponseCopyWith<_$_MoreResponse> get copyWith =>
+  _$$MoreResponseImplCopyWith<_$MoreResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

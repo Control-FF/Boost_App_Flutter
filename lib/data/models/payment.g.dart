@@ -6,7 +6,8 @@ part of 'payment.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Payment _$$_PaymentFromJson(Map<String, dynamic> json) => _$_Payment(
+_$PaymentImpl _$$PaymentImplFromJson(Map<String, dynamic> json) =>
+    _$PaymentImpl(
       ct_id: json['ct_id'] as int? ?? 0,
       od_id: json['od_id'] as int? ?? 0,
       is_id: json['is_id'] as int? ?? 0,
@@ -35,7 +36,7 @@ _$_Payment _$$_PaymentFromJson(Map<String, dynamic> json) => _$_Payment(
       it_img10: json['it_img10'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_PaymentToJson(_$_Payment instance) =>
+Map<String, dynamic> _$$PaymentImplToJson(_$PaymentImpl instance) =>
     <String, dynamic>{
       'ct_id': instance.ct_id,
       'od_id': instance.od_id,
@@ -65,8 +66,9 @@ Map<String, dynamic> _$$_PaymentToJson(_$_Payment instance) =>
       'it_img10': instance.it_img10,
     };
 
-_$_PaymentResponse _$$_PaymentResponseFromJson(Map<String, dynamic> json) =>
-    _$_PaymentResponse(
+_$PaymentResponseImpl _$$PaymentResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PaymentResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -77,7 +79,8 @@ _$_PaymentResponse _$$_PaymentResponseFromJson(Map<String, dynamic> json) =>
       totalCount: json['totalCount'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_PaymentResponseToJson(_$_PaymentResponse instance) =>
+Map<String, dynamic> _$$PaymentResponseImplToJson(
+        _$PaymentResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

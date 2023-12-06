@@ -75,22 +75,22 @@ class _$OrderRequestResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OrderRequestResponseCopyWith<$Res>
+abstract class _$$OrderRequestResponseImplCopyWith<$Res>
     implements $OrderRequestResponseCopyWith<$Res> {
-  factory _$$_OrderRequestResponseCopyWith(_$_OrderRequestResponse value,
-          $Res Function(_$_OrderRequestResponse) then) =
-      __$$_OrderRequestResponseCopyWithImpl<$Res>;
+  factory _$$OrderRequestResponseImplCopyWith(_$OrderRequestResponseImpl value,
+          $Res Function(_$OrderRequestResponseImpl) then) =
+      __$$OrderRequestResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int status, String message, String od_id});
 }
 
 /// @nodoc
-class __$$_OrderRequestResponseCopyWithImpl<$Res>
-    extends _$OrderRequestResponseCopyWithImpl<$Res, _$_OrderRequestResponse>
-    implements _$$_OrderRequestResponseCopyWith<$Res> {
-  __$$_OrderRequestResponseCopyWithImpl(_$_OrderRequestResponse _value,
-      $Res Function(_$_OrderRequestResponse) _then)
+class __$$OrderRequestResponseImplCopyWithImpl<$Res>
+    extends _$OrderRequestResponseCopyWithImpl<$Res, _$OrderRequestResponseImpl>
+    implements _$$OrderRequestResponseImplCopyWith<$Res> {
+  __$$OrderRequestResponseImplCopyWithImpl(_$OrderRequestResponseImpl _value,
+      $Res Function(_$OrderRequestResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +100,7 @@ class __$$_OrderRequestResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? od_id = null,
   }) {
-    return _then(_$_OrderRequestResponse(
+    return _then(_$OrderRequestResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -119,12 +119,12 @@ class __$$_OrderRequestResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderRequestResponse implements _OrderRequestResponse {
-  _$_OrderRequestResponse(
+class _$OrderRequestResponseImpl implements _OrderRequestResponse {
+  _$OrderRequestResponseImpl(
       {required this.status, this.message = '', this.od_id = ''});
 
-  factory _$_OrderRequestResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderRequestResponseFromJson(json);
+  factory _$OrderRequestResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderRequestResponseImplFromJson(json);
 
   @override
   final int status;
@@ -144,7 +144,7 @@ class _$_OrderRequestResponse implements _OrderRequestResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderRequestResponse &&
+            other is _$OrderRequestResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.od_id, od_id) || other.od_id == od_id));
@@ -157,13 +157,14 @@ class _$_OrderRequestResponse implements _OrderRequestResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderRequestResponseCopyWith<_$_OrderRequestResponse> get copyWith =>
-      __$$_OrderRequestResponseCopyWithImpl<_$_OrderRequestResponse>(
-          this, _$identity);
+  _$$OrderRequestResponseImplCopyWith<_$OrderRequestResponseImpl>
+      get copyWith =>
+          __$$OrderRequestResponseImplCopyWithImpl<_$OrderRequestResponseImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderRequestResponseToJson(
+    return _$$OrderRequestResponseImplToJson(
       this,
     );
   }
@@ -173,10 +174,10 @@ abstract class _OrderRequestResponse implements OrderRequestResponse {
   factory _OrderRequestResponse(
       {required final int status,
       final String message,
-      final String od_id}) = _$_OrderRequestResponse;
+      final String od_id}) = _$OrderRequestResponseImpl;
 
   factory _OrderRequestResponse.fromJson(Map<String, dynamic> json) =
-      _$_OrderRequestResponse.fromJson;
+      _$OrderRequestResponseImpl.fromJson;
 
   @override
   int get status;
@@ -186,6 +187,6 @@ abstract class _OrderRequestResponse implements OrderRequestResponse {
   String get od_id;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderRequestResponseCopyWith<_$_OrderRequestResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OrderRequestResponseImplCopyWith<_$OrderRequestResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

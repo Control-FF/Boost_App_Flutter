@@ -87,11 +87,11 @@ class _$DataResponseCopyWithImpl<$Res, $Val extends DataResponse>
 }
 
 /// @nodoc
-abstract class _$$_DataResponseCopyWith<$Res>
+abstract class _$$DataResponseImplCopyWith<$Res>
     implements $DataResponseCopyWith<$Res> {
-  factory _$$_DataResponseCopyWith(
-          _$_DataResponse value, $Res Function(_$_DataResponse) then) =
-      __$$_DataResponseCopyWithImpl<$Res>;
+  factory _$$DataResponseImplCopyWith(
+          _$DataResponseImpl value, $Res Function(_$DataResponseImpl) then) =
+      __$$DataResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,11 +99,11 @@ abstract class _$$_DataResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DataResponseCopyWithImpl<$Res>
-    extends _$DataResponseCopyWithImpl<$Res, _$_DataResponse>
-    implements _$$_DataResponseCopyWith<$Res> {
-  __$$_DataResponseCopyWithImpl(
-      _$_DataResponse _value, $Res Function(_$_DataResponse) _then)
+class __$$DataResponseImplCopyWithImpl<$Res>
+    extends _$DataResponseCopyWithImpl<$Res, _$DataResponseImpl>
+    implements _$$DataResponseImplCopyWith<$Res> {
+  __$$DataResponseImplCopyWithImpl(
+      _$DataResponseImpl _value, $Res Function(_$DataResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_DataResponseCopyWithImpl<$Res>
     Object? code = freezed,
     Object? terms = freezed,
   }) {
-    return _then(_$_DataResponse(
+    return _then(_$DataResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -142,16 +142,16 @@ class __$$_DataResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DataResponse implements _DataResponse {
-  _$_DataResponse(
+class _$DataResponseImpl implements _DataResponse {
+  _$DataResponseImpl(
       {required this.status,
       this.message = '',
       this.data = '',
       this.code = '',
       this.terms = ''});
 
-  factory _$_DataResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_DataResponseFromJson(json);
+  factory _$DataResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DataResponseImplFromJson(json);
 
   @override
   final int status;
@@ -177,7 +177,7 @@ class _$_DataResponse implements _DataResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataResponse &&
+            other is _$DataResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.data, data) || other.data == data) &&
@@ -193,12 +193,12 @@ class _$_DataResponse implements _DataResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataResponseCopyWith<_$_DataResponse> get copyWith =>
-      __$$_DataResponseCopyWithImpl<_$_DataResponse>(this, _$identity);
+  _$$DataResponseImplCopyWith<_$DataResponseImpl> get copyWith =>
+      __$$DataResponseImplCopyWithImpl<_$DataResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DataResponseToJson(
+    return _$$DataResponseImplToJson(
       this,
     );
   }
@@ -210,10 +210,10 @@ abstract class _DataResponse implements DataResponse {
       final String message,
       final String? data,
       final String? code,
-      final String? terms}) = _$_DataResponse;
+      final String? terms}) = _$DataResponseImpl;
 
   factory _DataResponse.fromJson(Map<String, dynamic> json) =
-      _$_DataResponse.fromJson;
+      _$DataResponseImpl.fromJson;
 
   @override
   int get status;
@@ -227,6 +227,6 @@ abstract class _DataResponse implements DataResponse {
   String? get terms;
   @override
   @JsonKey(ignore: true)
-  _$$_DataResponseCopyWith<_$_DataResponse> get copyWith =>
+  _$$DataResponseImplCopyWith<_$DataResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

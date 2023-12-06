@@ -619,11 +619,28 @@ class UserService extends GetxService{
   }
 
   Future<Either<Failure, DataResponse>> deleteCart({
-    required ctId,
+    required data,
   }) async {
     try {
       final DataResponse response =
-      await _apiService.getApiClient().deleteCart(ctId);
+      await _apiService.getApiClient().deleteCart(data);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> deleteSoldOutCart() async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().deleteSoldOutCart();
       if (response.status == 200) {
         return Right(response);
       } else {

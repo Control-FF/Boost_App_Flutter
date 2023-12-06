@@ -6,7 +6,7 @@ part of 'product_detail.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Item _$$_ItemFromJson(Map<String, dynamic> json) => _$_Item(
+_$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_option_subject: json['it_option_subject'] as String? ?? '',
@@ -33,7 +33,8 @@ _$_Item _$$_ItemFromJson(Map<String, dynamic> json) => _$_Item(
       is_wish: json['is_wish'] as String? ?? 'false',
     );
 
-Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
+Map<String, dynamic> _$$ItemImplToJson(_$ItemImpl instance) =>
+    <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
       'it_option_subject': instance.it_option_subject,
@@ -60,7 +61,8 @@ Map<String, dynamic> _$$_ItemToJson(_$_Item instance) => <String, dynamic>{
       'is_wish': instance.is_wish,
     };
 
-_$_ItemInfo _$$_ItemInfoFromJson(Map<String, dynamic> json) => _$_ItemInfo(
+_$ItemInfoImpl _$$ItemInfoImplFromJson(Map<String, dynamic> json) =>
+    _$ItemInfoImpl(
       material: json['material'] as String? ?? '',
       color: json['color'] as String? ?? '',
       size: json['size'] as String? ?? '',
@@ -71,7 +73,7 @@ _$_ItemInfo _$$_ItemInfoFromJson(Map<String, dynamic> json) => _$_ItemInfo(
       as: json['as'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_ItemInfoToJson(_$_ItemInfo instance) =>
+Map<String, dynamic> _$$ItemInfoImplToJson(_$ItemInfoImpl instance) =>
     <String, dynamic>{
       'material': instance.material,
       'color': instance.color,
@@ -83,7 +85,7 @@ Map<String, dynamic> _$$_ItemInfoToJson(_$_ItemInfo instance) =>
       'as': instance.as,
     };
 
-_$_Option _$$_OptionFromJson(Map<String, dynamic> json) => _$_Option(
+_$OptionImpl _$$OptionImplFromJson(Map<String, dynamic> json) => _$OptionImpl(
       io_id: json['io_id'] as String? ?? '',
       io_no: json['io_no'] as int? ?? 0,
       io_price: json['io_price'] as int? ?? 0,
@@ -93,7 +95,8 @@ _$_Option _$$_OptionFromJson(Map<String, dynamic> json) => _$_Option(
       isCheck: json['isCheck'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_OptionToJson(_$_Option instance) => <String, dynamic>{
+Map<String, dynamic> _$$OptionImplToJson(_$OptionImpl instance) =>
+    <String, dynamic>{
       'io_id': instance.io_id,
       'io_no': instance.io_no,
       'io_price': instance.io_price,
@@ -103,9 +106,9 @@ Map<String, dynamic> _$$_OptionToJson(_$_Option instance) => <String, dynamic>{
       'isCheck': instance.isCheck,
     };
 
-_$_ProductDetailResponse _$$_ProductDetailResponseFromJson(
+_$ProductDetailResponseImpl _$$ProductDetailResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ProductDetailResponse(
+    _$ProductDetailResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       reviews: json['reviews'] as int? ?? 0,
@@ -123,8 +126,8 @@ _$_ProductDetailResponse _$$_ProductDetailResponseFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$_ProductDetailResponseToJson(
-        _$_ProductDetailResponse instance) =>
+Map<String, dynamic> _$$ProductDetailResponseImplToJson(
+        _$ProductDetailResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

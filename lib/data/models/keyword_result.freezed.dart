@@ -112,11 +112,11 @@ class _$KeywordResultCopyWithImpl<$Res, $Val extends KeywordResult>
 }
 
 /// @nodoc
-abstract class _$$_KeywordResultCopyWith<$Res>
+abstract class _$$KeywordResultImplCopyWith<$Res>
     implements $KeywordResultCopyWith<$Res> {
-  factory _$$_KeywordResultCopyWith(
-          _$_KeywordResult value, $Res Function(_$_KeywordResult) then) =
-      __$$_KeywordResultCopyWithImpl<$Res>;
+  factory _$$KeywordResultImplCopyWith(
+          _$KeywordResultImpl value, $Res Function(_$KeywordResultImpl) then) =
+      __$$KeywordResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -131,11 +131,11 @@ abstract class _$$_KeywordResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KeywordResultCopyWithImpl<$Res>
-    extends _$KeywordResultCopyWithImpl<$Res, _$_KeywordResult>
-    implements _$$_KeywordResultCopyWith<$Res> {
-  __$$_KeywordResultCopyWithImpl(
-      _$_KeywordResult _value, $Res Function(_$_KeywordResult) _then)
+class __$$KeywordResultImplCopyWithImpl<$Res>
+    extends _$KeywordResultCopyWithImpl<$Res, _$KeywordResultImpl>
+    implements _$$KeywordResultImplCopyWith<$Res> {
+  __$$KeywordResultImplCopyWithImpl(
+      _$KeywordResultImpl _value, $Res Function(_$KeywordResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -150,7 +150,7 @@ class __$$_KeywordResultCopyWithImpl<$Res>
     Object? it_use_cnt = null,
     Object? it_sum_qty = null,
   }) {
-    return _then(_$_KeywordResult(
+    return _then(_$KeywordResultImpl(
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
@@ -189,8 +189,8 @@ class __$$_KeywordResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KeywordResult implements _KeywordResult {
-  _$_KeywordResult(
+class _$KeywordResultImpl implements _KeywordResult {
+  _$KeywordResultImpl(
       {this.it_id = '',
       this.it_name = '',
       this.it_cust_price = 0,
@@ -200,8 +200,8 @@ class _$_KeywordResult implements _KeywordResult {
       this.it_use_cnt = 0,
       this.it_sum_qty = 0});
 
-  factory _$_KeywordResult.fromJson(Map<String, dynamic> json) =>
-      _$$_KeywordResultFromJson(json);
+  factory _$KeywordResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KeywordResultImplFromJson(json);
 
   @override
   @JsonKey()
@@ -237,7 +237,7 @@ class _$_KeywordResult implements _KeywordResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KeywordResult &&
+            other is _$KeywordResultImpl &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
             (identical(other.it_cust_price, it_cust_price) ||
@@ -260,12 +260,12 @@ class _$_KeywordResult implements _KeywordResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KeywordResultCopyWith<_$_KeywordResult> get copyWith =>
-      __$$_KeywordResultCopyWithImpl<_$_KeywordResult>(this, _$identity);
+  _$$KeywordResultImplCopyWith<_$KeywordResultImpl> get copyWith =>
+      __$$KeywordResultImplCopyWithImpl<_$KeywordResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KeywordResultToJson(
+    return _$$KeywordResultImplToJson(
       this,
     );
   }
@@ -280,10 +280,10 @@ abstract class _KeywordResult implements KeywordResult {
       final String it_img1,
       final String it_time,
       final int it_use_cnt,
-      final int it_sum_qty}) = _$_KeywordResult;
+      final int it_sum_qty}) = _$KeywordResultImpl;
 
   factory _KeywordResult.fromJson(Map<String, dynamic> json) =
-      _$_KeywordResult.fromJson;
+      _$KeywordResultImpl.fromJson;
 
   @override
   String get it_id;
@@ -303,7 +303,7 @@ abstract class _KeywordResult implements KeywordResult {
   int get it_sum_qty;
   @override
   @JsonKey(ignore: true)
-  _$$_KeywordResultCopyWith<_$_KeywordResult> get copyWith =>
+  _$$KeywordResultImplCopyWith<_$KeywordResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -380,11 +380,12 @@ class _$KeywordResultResponseCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_KeywordResultResponseCopyWith<$Res>
+abstract class _$$KeywordResultResponseImplCopyWith<$Res>
     implements $KeywordResultResponseCopyWith<$Res> {
-  factory _$$_KeywordResultResponseCopyWith(_$_KeywordResultResponse value,
-          $Res Function(_$_KeywordResultResponse) then) =
-      __$$_KeywordResultResponseCopyWithImpl<$Res>;
+  factory _$$KeywordResultResponseImplCopyWith(
+          _$KeywordResultResponseImpl value,
+          $Res Function(_$KeywordResultResponseImpl) then) =
+      __$$KeywordResultResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -395,11 +396,12 @@ abstract class _$$_KeywordResultResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_KeywordResultResponseCopyWithImpl<$Res>
-    extends _$KeywordResultResponseCopyWithImpl<$Res, _$_KeywordResultResponse>
-    implements _$$_KeywordResultResponseCopyWith<$Res> {
-  __$$_KeywordResultResponseCopyWithImpl(_$_KeywordResultResponse _value,
-      $Res Function(_$_KeywordResultResponse) _then)
+class __$$KeywordResultResponseImplCopyWithImpl<$Res>
+    extends _$KeywordResultResponseCopyWithImpl<$Res,
+        _$KeywordResultResponseImpl>
+    implements _$$KeywordResultResponseImplCopyWith<$Res> {
+  __$$KeywordResultResponseImplCopyWithImpl(_$KeywordResultResponseImpl _value,
+      $Res Function(_$KeywordResultResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -410,7 +412,7 @@ class __$$_KeywordResultResponseCopyWithImpl<$Res>
     Object? items = freezed,
     Object? total_cnt = null,
   }) {
-    return _then(_$_KeywordResultResponse(
+    return _then(_$KeywordResultResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -433,16 +435,16 @@ class __$$_KeywordResultResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KeywordResultResponse implements _KeywordResultResponse {
-  _$_KeywordResultResponse(
+class _$KeywordResultResponseImpl implements _KeywordResultResponse {
+  _$KeywordResultResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<KeywordResult>? items = const [],
       this.total_cnt = 0})
       : _items = items;
 
-  factory _$_KeywordResultResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_KeywordResultResponseFromJson(json);
+  factory _$KeywordResultResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KeywordResultResponseImplFromJson(json);
 
   @override
   final int status;
@@ -473,7 +475,7 @@ class _$_KeywordResultResponse implements _KeywordResultResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KeywordResultResponse &&
+            other is _$KeywordResultResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
@@ -489,13 +491,13 @@ class _$_KeywordResultResponse implements _KeywordResultResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KeywordResultResponseCopyWith<_$_KeywordResultResponse> get copyWith =>
-      __$$_KeywordResultResponseCopyWithImpl<_$_KeywordResultResponse>(
-          this, _$identity);
+  _$$KeywordResultResponseImplCopyWith<_$KeywordResultResponseImpl>
+      get copyWith => __$$KeywordResultResponseImplCopyWithImpl<
+          _$KeywordResultResponseImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KeywordResultResponseToJson(
+    return _$$KeywordResultResponseImplToJson(
       this,
     );
   }
@@ -506,10 +508,10 @@ abstract class _KeywordResultResponse implements KeywordResultResponse {
       {required final int status,
       final String message,
       @JsonKey(name: 'data') final List<KeywordResult>? items,
-      final int total_cnt}) = _$_KeywordResultResponse;
+      final int total_cnt}) = _$KeywordResultResponseImpl;
 
   factory _KeywordResultResponse.fromJson(Map<String, dynamic> json) =
-      _$_KeywordResultResponse.fromJson;
+      _$KeywordResultResponseImpl.fromJson;
 
   @override
   int get status;
@@ -522,6 +524,6 @@ abstract class _KeywordResultResponse implements KeywordResultResponse {
   int get total_cnt;
   @override
   @JsonKey(ignore: true)
-  _$$_KeywordResultResponseCopyWith<_$_KeywordResultResponse> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KeywordResultResponseImplCopyWith<_$KeywordResultResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

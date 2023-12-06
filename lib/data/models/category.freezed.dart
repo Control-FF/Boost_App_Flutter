@@ -73,21 +73,22 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 }
 
 /// @nodoc
-abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
-  factory _$$_CategoryCopyWith(
-          _$_Category value, $Res Function(_$_Category) then) =
-      __$$_CategoryCopyWithImpl<$Res>;
+abstract class _$$CategoryImplCopyWith<$Res>
+    implements $CategoryCopyWith<$Res> {
+  factory _$$CategoryImplCopyWith(
+          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
+      __$$CategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ca_id, String ca_name, String sub_flag});
 }
 
 /// @nodoc
-class __$$_CategoryCopyWithImpl<$Res>
-    extends _$CategoryCopyWithImpl<$Res, _$_Category>
-    implements _$$_CategoryCopyWith<$Res> {
-  __$$_CategoryCopyWithImpl(
-      _$_Category _value, $Res Function(_$_Category) _then)
+class __$$CategoryImplCopyWithImpl<$Res>
+    extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
+    implements _$$CategoryImplCopyWith<$Res> {
+  __$$CategoryImplCopyWithImpl(
+      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$_CategoryCopyWithImpl<$Res>
     Object? ca_name = null,
     Object? sub_flag = null,
   }) {
-    return _then(_$_Category(
+    return _then(_$CategoryImpl(
       ca_id: null == ca_id
           ? _value.ca_id
           : ca_id // ignore: cast_nullable_to_non_nullable
@@ -116,11 +117,11 @@ class __$$_CategoryCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Category implements _Category {
-  _$_Category({this.ca_id = '', this.ca_name = '', this.sub_flag = ''});
+class _$CategoryImpl implements _Category {
+  _$CategoryImpl({this.ca_id = '', this.ca_name = '', this.sub_flag = ''});
 
-  factory _$_Category.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryFromJson(json);
+  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryImplFromJson(json);
 
   @override
   @JsonKey()
@@ -141,7 +142,7 @@ class _$_Category implements _Category {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Category &&
+            other is _$CategoryImpl &&
             (identical(other.ca_id, ca_id) || other.ca_id == ca_id) &&
             (identical(other.ca_name, ca_name) || other.ca_name == ca_name) &&
             (identical(other.sub_flag, sub_flag) ||
@@ -155,12 +156,12 @@ class _$_Category implements _Category {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
-      __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
+  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
+      __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryToJson(
+    return _$$CategoryImplToJson(
       this,
     );
   }
@@ -170,9 +171,10 @@ abstract class _Category implements Category {
   factory _Category(
       {final String ca_id,
       final String ca_name,
-      final String sub_flag}) = _$_Category;
+      final String sub_flag}) = _$CategoryImpl;
 
-  factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
+  factory _Category.fromJson(Map<String, dynamic> json) =
+      _$CategoryImpl.fromJson;
 
   @override
   String get ca_id;
@@ -182,7 +184,7 @@ abstract class _Category implements Category {
   String get sub_flag;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryCopyWith<_$_Category> get copyWith =>
+  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -250,11 +252,11 @@ class _$CategoryResponseCopyWithImpl<$Res, $Val extends CategoryResponse>
 }
 
 /// @nodoc
-abstract class _$$_CategoryResponseCopyWith<$Res>
+abstract class _$$CategoryResponseImplCopyWith<$Res>
     implements $CategoryResponseCopyWith<$Res> {
-  factory _$$_CategoryResponseCopyWith(
-          _$_CategoryResponse value, $Res Function(_$_CategoryResponse) then) =
-      __$$_CategoryResponseCopyWithImpl<$Res>;
+  factory _$$CategoryResponseImplCopyWith(_$CategoryResponseImpl value,
+          $Res Function(_$CategoryResponseImpl) then) =
+      __$$CategoryResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -264,11 +266,11 @@ abstract class _$$_CategoryResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CategoryResponseCopyWithImpl<$Res>
-    extends _$CategoryResponseCopyWithImpl<$Res, _$_CategoryResponse>
-    implements _$$_CategoryResponseCopyWith<$Res> {
-  __$$_CategoryResponseCopyWithImpl(
-      _$_CategoryResponse _value, $Res Function(_$_CategoryResponse) _then)
+class __$$CategoryResponseImplCopyWithImpl<$Res>
+    extends _$CategoryResponseCopyWithImpl<$Res, _$CategoryResponseImpl>
+    implements _$$CategoryResponseImplCopyWith<$Res> {
+  __$$CategoryResponseImplCopyWithImpl(_$CategoryResponseImpl _value,
+      $Res Function(_$CategoryResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -278,7 +280,7 @@ class __$$_CategoryResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$_CategoryResponse(
+    return _then(_$CategoryResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -297,15 +299,15 @@ class __$$_CategoryResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CategoryResponse implements _CategoryResponse {
-  _$_CategoryResponse(
+class _$CategoryResponseImpl implements _CategoryResponse {
+  _$CategoryResponseImpl(
       {required this.status,
       required this.message,
       @JsonKey(name: 'data') final List<Category>? items = const []})
       : _items = items;
 
-  factory _$_CategoryResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CategoryResponseFromJson(json);
+  factory _$CategoryResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CategoryResponseImplFromJson(json);
 
   @override
   final int status;
@@ -331,7 +333,7 @@ class _$_CategoryResponse implements _CategoryResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CategoryResponse &&
+            other is _$CategoryResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -345,12 +347,13 @@ class _$_CategoryResponse implements _CategoryResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CategoryResponseCopyWith<_$_CategoryResponse> get copyWith =>
-      __$$_CategoryResponseCopyWithImpl<_$_CategoryResponse>(this, _$identity);
+  _$$CategoryResponseImplCopyWith<_$CategoryResponseImpl> get copyWith =>
+      __$$CategoryResponseImplCopyWithImpl<_$CategoryResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryResponseToJson(
+    return _$$CategoryResponseImplToJson(
       this,
     );
   }
@@ -361,10 +364,10 @@ abstract class _CategoryResponse implements CategoryResponse {
           {required final int status,
           required final String message,
           @JsonKey(name: 'data') final List<Category>? items}) =
-      _$_CategoryResponse;
+      _$CategoryResponseImpl;
 
   factory _CategoryResponse.fromJson(Map<String, dynamic> json) =
-      _$_CategoryResponse.fromJson;
+      _$CategoryResponseImpl.fromJson;
 
   @override
   int get status;
@@ -375,6 +378,6 @@ abstract class _CategoryResponse implements CategoryResponse {
   List<Category>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$_CategoryResponseCopyWith<_$_CategoryResponse> get copyWith =>
+  _$$CategoryResponseImplCopyWith<_$CategoryResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

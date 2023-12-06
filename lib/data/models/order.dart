@@ -15,6 +15,7 @@ class Order with _$Order {
     @Default(0) int ct_qty,
     @Default(0) int ct_point_use,
     @Default('') String io_id,
+    @Default(0) int io_no,
     @Default(0) int io_price,
     @Default('') String it_basic,
     @Default('') String ct_time,

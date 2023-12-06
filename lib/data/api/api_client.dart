@@ -330,11 +330,34 @@ abstract class ApiClient {
 
   //상품 문의등록
   @POST('/api/shop/item-inquiry')
-  Future<DataResponse> inquiryWrite(
+  Future<DataResponse> writeProductInquiry(
       @Field('it_id') String idId,
       @Field('iq_type') String iqType,
       @Field('question') String question,
       @Field('is_secret') String isSecret
+  );
+
+  //1:1문의 등록
+  @POST('/api/user/inquiry')
+  Future<DataResponse> writeInquiry(
+      @Part() String? subject,
+      @Part() String? content,
+      @Part() List<MultipartFile>? inquiry_img,
+  );
+
+  //1:1문의 수정
+  @PATCH('/api/user/inquiry/{qaId}')
+  Future<DataResponse> updateInquiry(
+      @Path() int? qaId,
+      @Part() String? subject,
+      @Part() String? content,
+      @Part() List<MultipartFile>? inquiry_img,
+  );
+
+  //1:1문의 삭제
+  @DELETE('/api/user/inquiry/{qaId}')
+  Future<DataResponse> deleteInquiry(
+      @Path() int qaId,
   );
 
   //공지사항
@@ -344,13 +367,13 @@ abstract class ApiClient {
       @Query('keyword') String keyword,
   );
 
-  //고객섽터
+  //고객센터
   @GET('/api/user/inquiry')
   Future<CSResponse> csList(
       @Query('keyword') String keyword,
   );
 
-  //고객섽터
+  //자주 묻는 질문
   @GET('/api/user/faq')
   Future<FAQResponse> faqList(
       @Query('isHTML') String isHtml,
@@ -380,10 +403,14 @@ abstract class ApiClient {
   );
 
   //장바구니 삭제
-  @PATCH('/api/shop/delet-cart-item')
+  @DELETE('/api/shop/delet-cart-item')
   Future<DataResponse> deleteCart(
-      @Field('ct_id') String ctId,
+      @Body() Map<String, dynamic> map
   );
+
+  //장바구니 품절 삭제
+  @DELETE('/api/shop/delete-soldout')
+  Future<DataResponse> deleteSoldOutCart();
 
   //바로구매
   @POST('/api/shop/buy-now')

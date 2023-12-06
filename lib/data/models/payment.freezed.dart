@@ -236,10 +236,10 @@ class _$PaymentCopyWithImpl<$Res, $Val extends Payment>
 }
 
 /// @nodoc
-abstract class _$$_PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
-  factory _$$_PaymentCopyWith(
-          _$_Payment value, $Res Function(_$_Payment) then) =
-      __$$_PaymentCopyWithImpl<$Res>;
+abstract class _$$PaymentImplCopyWith<$Res> implements $PaymentCopyWith<$Res> {
+  factory _$$PaymentImplCopyWith(
+          _$PaymentImpl value, $Res Function(_$PaymentImpl) then) =
+      __$$PaymentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -272,10 +272,11 @@ abstract class _$$_PaymentCopyWith<$Res> implements $PaymentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PaymentCopyWithImpl<$Res>
-    extends _$PaymentCopyWithImpl<$Res, _$_Payment>
-    implements _$$_PaymentCopyWith<$Res> {
-  __$$_PaymentCopyWithImpl(_$_Payment _value, $Res Function(_$_Payment) _then)
+class __$$PaymentImplCopyWithImpl<$Res>
+    extends _$PaymentCopyWithImpl<$Res, _$PaymentImpl>
+    implements _$$PaymentImplCopyWith<$Res> {
+  __$$PaymentImplCopyWithImpl(
+      _$PaymentImpl _value, $Res Function(_$PaymentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -308,7 +309,7 @@ class __$$_PaymentCopyWithImpl<$Res>
     Object? it_img9 = null,
     Object? it_img10 = null,
   }) {
-    return _then(_$_Payment(
+    return _then(_$PaymentImpl(
       ct_id: null == ct_id
           ? _value.ct_id
           : ct_id // ignore: cast_nullable_to_non_nullable
@@ -419,8 +420,8 @@ class __$$_PaymentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Payment implements _Payment {
-  _$_Payment(
+class _$PaymentImpl implements _Payment {
+  _$PaymentImpl(
       {this.ct_id = 0,
       this.od_id = 0,
       this.is_id = 0,
@@ -448,8 +449,8 @@ class _$_Payment implements _Payment {
       this.it_img9 = '',
       this.it_img10 = ''});
 
-  factory _$_Payment.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentFromJson(json);
+  factory _$PaymentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentImplFromJson(json);
 
   @override
   @JsonKey()
@@ -539,7 +540,7 @@ class _$_Payment implements _Payment {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Payment &&
+            other is _$PaymentImpl &&
             (identical(other.ct_id, ct_id) || other.ct_id == ct_id) &&
             (identical(other.od_id, od_id) || other.od_id == od_id) &&
             (identical(other.is_id, is_id) || other.is_id == is_id) &&
@@ -611,12 +612,12 @@ class _$_Payment implements _Payment {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentCopyWith<_$_Payment> get copyWith =>
-      __$$_PaymentCopyWithImpl<_$_Payment>(this, _$identity);
+  _$$PaymentImplCopyWith<_$PaymentImpl> get copyWith =>
+      __$$PaymentImplCopyWithImpl<_$PaymentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentToJson(
+    return _$$PaymentImplToJson(
       this,
     );
   }
@@ -649,9 +650,9 @@ abstract class _Payment implements Payment {
       final String it_img7,
       final String it_img8,
       final String it_img9,
-      final String it_img10}) = _$_Payment;
+      final String it_img10}) = _$PaymentImpl;
 
-  factory _Payment.fromJson(Map<String, dynamic> json) = _$_Payment.fromJson;
+  factory _Payment.fromJson(Map<String, dynamic> json) = _$PaymentImpl.fromJson;
 
   @override
   int get ct_id;
@@ -707,7 +708,7 @@ abstract class _Payment implements Payment {
   String get it_img10;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentCopyWith<_$_Payment> get copyWith =>
+  _$$PaymentImplCopyWith<_$PaymentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -789,11 +790,11 @@ class _$PaymentResponseCopyWithImpl<$Res, $Val extends PaymentResponse>
 }
 
 /// @nodoc
-abstract class _$$_PaymentResponseCopyWith<$Res>
+abstract class _$$PaymentResponseImplCopyWith<$Res>
     implements $PaymentResponseCopyWith<$Res> {
-  factory _$$_PaymentResponseCopyWith(
-          _$_PaymentResponse value, $Res Function(_$_PaymentResponse) then) =
-      __$$_PaymentResponseCopyWithImpl<$Res>;
+  factory _$$PaymentResponseImplCopyWith(_$PaymentResponseImpl value,
+          $Res Function(_$PaymentResponseImpl) then) =
+      __$$PaymentResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -805,11 +806,11 @@ abstract class _$$_PaymentResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PaymentResponseCopyWithImpl<$Res>
-    extends _$PaymentResponseCopyWithImpl<$Res, _$_PaymentResponse>
-    implements _$$_PaymentResponseCopyWith<$Res> {
-  __$$_PaymentResponseCopyWithImpl(
-      _$_PaymentResponse _value, $Res Function(_$_PaymentResponse) _then)
+class __$$PaymentResponseImplCopyWithImpl<$Res>
+    extends _$PaymentResponseCopyWithImpl<$Res, _$PaymentResponseImpl>
+    implements _$$PaymentResponseImplCopyWith<$Res> {
+  __$$PaymentResponseImplCopyWithImpl(
+      _$PaymentResponseImpl _value, $Res Function(_$PaymentResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -821,7 +822,7 @@ class __$$_PaymentResponseCopyWithImpl<$Res>
     Object? page = null,
     Object? totalCount = null,
   }) {
-    return _then(_$_PaymentResponse(
+    return _then(_$PaymentResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -848,8 +849,8 @@ class __$$_PaymentResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PaymentResponse implements _PaymentResponse {
-  _$_PaymentResponse(
+class _$PaymentResponseImpl implements _PaymentResponse {
+  _$PaymentResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<Payment>? items = const [],
@@ -857,8 +858,8 @@ class _$_PaymentResponse implements _PaymentResponse {
       this.totalCount = 0})
       : _items = items;
 
-  factory _$_PaymentResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_PaymentResponseFromJson(json);
+  factory _$PaymentResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentResponseImplFromJson(json);
 
   @override
   final int status;
@@ -892,7 +893,7 @@ class _$_PaymentResponse implements _PaymentResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PaymentResponse &&
+            other is _$PaymentResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
@@ -909,12 +910,13 @@ class _$_PaymentResponse implements _PaymentResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PaymentResponseCopyWith<_$_PaymentResponse> get copyWith =>
-      __$$_PaymentResponseCopyWithImpl<_$_PaymentResponse>(this, _$identity);
+  _$$PaymentResponseImplCopyWith<_$PaymentResponseImpl> get copyWith =>
+      __$$PaymentResponseImplCopyWithImpl<_$PaymentResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PaymentResponseToJson(
+    return _$$PaymentResponseImplToJson(
       this,
     );
   }
@@ -926,10 +928,10 @@ abstract class _PaymentResponse implements PaymentResponse {
       final String message,
       @JsonKey(name: 'data') final List<Payment>? items,
       final int page,
-      final int totalCount}) = _$_PaymentResponse;
+      final int totalCount}) = _$PaymentResponseImpl;
 
   factory _PaymentResponse.fromJson(Map<String, dynamic> json) =
-      _$_PaymentResponse.fromJson;
+      _$PaymentResponseImpl.fromJson;
 
   @override
   int get status;
@@ -944,6 +946,6 @@ abstract class _PaymentResponse implements PaymentResponse {
   int get totalCount;
   @override
   @JsonKey(ignore: true)
-  _$$_PaymentResponseCopyWith<_$_PaymentResponse> get copyWith =>
+  _$$PaymentResponseImplCopyWith<_$PaymentResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

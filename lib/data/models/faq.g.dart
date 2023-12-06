@@ -6,7 +6,7 @@ part of 'faq.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_FAQ _$$_FAQFromJson(Map<String, dynamic> json) => _$_FAQ(
+_$FAQImpl _$$FAQImplFromJson(Map<String, dynamic> json) => _$FAQImpl(
       fa_id: json['fa_id'] as int? ?? 0,
       fa_subject: json['fa_subject'] as String? ?? '',
       fa_content: json['fa_content'] as String? ?? '',
@@ -14,7 +14,7 @@ _$_FAQ _$$_FAQFromJson(Map<String, dynamic> json) => _$_FAQ(
       isExpand: json['isExpand'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_FAQToJson(_$_FAQ instance) => <String, dynamic>{
+Map<String, dynamic> _$$FAQImplToJson(_$FAQImpl instance) => <String, dynamic>{
       'fa_id': instance.fa_id,
       'fa_subject': instance.fa_subject,
       'fa_content': instance.fa_content,
@@ -22,8 +22,8 @@ Map<String, dynamic> _$$_FAQToJson(_$_FAQ instance) => <String, dynamic>{
       'isExpand': instance.isExpand,
     };
 
-_$_FAQResponse _$$_FAQResponseFromJson(Map<String, dynamic> json) =>
-    _$_FAQResponse(
+_$FAQResponseImpl _$$FAQResponseImplFromJson(Map<String, dynamic> json) =>
+    _$FAQResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -32,7 +32,7 @@ _$_FAQResponse _$$_FAQResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_FAQResponseToJson(_$_FAQResponse instance) =>
+Map<String, dynamic> _$$FAQResponseImplToJson(_$FAQResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

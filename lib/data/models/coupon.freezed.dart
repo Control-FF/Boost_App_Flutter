@@ -166,9 +166,10 @@ class _$CouponCopyWithImpl<$Res, $Val extends Coupon>
 }
 
 /// @nodoc
-abstract class _$$_CouponCopyWith<$Res> implements $CouponCopyWith<$Res> {
-  factory _$$_CouponCopyWith(_$_Coupon value, $Res Function(_$_Coupon) then) =
-      __$$_CouponCopyWithImpl<$Res>;
+abstract class _$$CouponImplCopyWith<$Res> implements $CouponCopyWith<$Res> {
+  factory _$$CouponImplCopyWith(
+          _$CouponImpl value, $Res Function(_$CouponImpl) then) =
+      __$$CouponImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -191,10 +192,11 @@ abstract class _$$_CouponCopyWith<$Res> implements $CouponCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CouponCopyWithImpl<$Res>
-    extends _$CouponCopyWithImpl<$Res, _$_Coupon>
-    implements _$$_CouponCopyWith<$Res> {
-  __$$_CouponCopyWithImpl(_$_Coupon _value, $Res Function(_$_Coupon) _then)
+class __$$CouponImplCopyWithImpl<$Res>
+    extends _$CouponCopyWithImpl<$Res, _$CouponImpl>
+    implements _$$CouponImplCopyWith<$Res> {
+  __$$CouponImplCopyWithImpl(
+      _$CouponImpl _value, $Res Function(_$CouponImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -217,7 +219,7 @@ class __$$_CouponCopyWithImpl<$Res>
     Object? od_id = null,
     Object? cp_datetime = null,
   }) {
-    return _then(_$_Coupon(
+    return _then(_$CouponImpl(
       cp_no: null == cp_no
           ? _value.cp_no
           : cp_no // ignore: cast_nullable_to_non_nullable
@@ -288,8 +290,8 @@ class __$$_CouponCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Coupon implements _Coupon {
-  _$_Coupon(
+class _$CouponImpl implements _Coupon {
+  _$CouponImpl(
       {this.cp_no = 0,
       this.cp_id = '',
       this.cp_subject = '',
@@ -307,8 +309,8 @@ class _$_Coupon implements _Coupon {
       this.od_id = 0,
       this.cp_datetime = ''});
 
-  factory _$_Coupon.fromJson(Map<String, dynamic> json) =>
-      _$$_CouponFromJson(json);
+  factory _$CouponImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CouponImplFromJson(json);
 
   @override
   @JsonKey()
@@ -368,7 +370,7 @@ class _$_Coupon implements _Coupon {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Coupon &&
+            other is _$CouponImpl &&
             (identical(other.cp_no, cp_no) || other.cp_no == cp_no) &&
             (identical(other.cp_id, cp_id) || other.cp_id == cp_id) &&
             (identical(other.cp_subject, cp_subject) ||
@@ -420,12 +422,12 @@ class _$_Coupon implements _Coupon {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CouponCopyWith<_$_Coupon> get copyWith =>
-      __$$_CouponCopyWithImpl<_$_Coupon>(this, _$identity);
+  _$$CouponImplCopyWith<_$CouponImpl> get copyWith =>
+      __$$CouponImplCopyWithImpl<_$CouponImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CouponToJson(
+    return _$$CouponImplToJson(
       this,
     );
   }
@@ -448,9 +450,9 @@ abstract class _Coupon implements Coupon {
       final int cp_minimum,
       final int cp_maximum,
       final int od_id,
-      final String cp_datetime}) = _$_Coupon;
+      final String cp_datetime}) = _$CouponImpl;
 
-  factory _Coupon.fromJson(Map<String, dynamic> json) = _$_Coupon.fromJson;
+  factory _Coupon.fromJson(Map<String, dynamic> json) = _$CouponImpl.fromJson;
 
   @override
   int get cp_no;
@@ -486,7 +488,7 @@ abstract class _Coupon implements Coupon {
   String get cp_datetime;
   @override
   @JsonKey(ignore: true)
-  _$$_CouponCopyWith<_$_Coupon> get copyWith =>
+  _$$CouponImplCopyWith<_$CouponImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -552,11 +554,11 @@ class _$CouponResponseCopyWithImpl<$Res, $Val extends CouponResponse>
 }
 
 /// @nodoc
-abstract class _$$_CouponResponseCopyWith<$Res>
+abstract class _$$CouponResponseImplCopyWith<$Res>
     implements $CouponResponseCopyWith<$Res> {
-  factory _$$_CouponResponseCopyWith(
-          _$_CouponResponse value, $Res Function(_$_CouponResponse) then) =
-      __$$_CouponResponseCopyWithImpl<$Res>;
+  factory _$$CouponResponseImplCopyWith(_$CouponResponseImpl value,
+          $Res Function(_$CouponResponseImpl) then) =
+      __$$CouponResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -564,11 +566,11 @@ abstract class _$$_CouponResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CouponResponseCopyWithImpl<$Res>
-    extends _$CouponResponseCopyWithImpl<$Res, _$_CouponResponse>
-    implements _$$_CouponResponseCopyWith<$Res> {
-  __$$_CouponResponseCopyWithImpl(
-      _$_CouponResponse _value, $Res Function(_$_CouponResponse) _then)
+class __$$CouponResponseImplCopyWithImpl<$Res>
+    extends _$CouponResponseCopyWithImpl<$Res, _$CouponResponseImpl>
+    implements _$$CouponResponseImplCopyWith<$Res> {
+  __$$CouponResponseImplCopyWithImpl(
+      _$CouponResponseImpl _value, $Res Function(_$CouponResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -578,7 +580,7 @@ class __$$_CouponResponseCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$_CouponResponse(
+    return _then(_$CouponResponseImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -597,15 +599,15 @@ class __$$_CouponResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CouponResponse implements _CouponResponse {
-  _$_CouponResponse(
+class _$CouponResponseImpl implements _CouponResponse {
+  _$CouponResponseImpl(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<Coupon>? items = const []})
       : _items = items;
 
-  factory _$_CouponResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_CouponResponseFromJson(json);
+  factory _$CouponResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CouponResponseImplFromJson(json);
 
   @override
   final int status;
@@ -632,7 +634,7 @@ class _$_CouponResponse implements _CouponResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CouponResponse &&
+            other is _$CouponResponseImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -646,12 +648,13 @@ class _$_CouponResponse implements _CouponResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CouponResponseCopyWith<_$_CouponResponse> get copyWith =>
-      __$$_CouponResponseCopyWithImpl<_$_CouponResponse>(this, _$identity);
+  _$$CouponResponseImplCopyWith<_$CouponResponseImpl> get copyWith =>
+      __$$CouponResponseImplCopyWithImpl<_$CouponResponseImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CouponResponseToJson(
+    return _$$CouponResponseImplToJson(
       this,
     );
   }
@@ -661,10 +664,10 @@ abstract class _CouponResponse implements CouponResponse {
   factory _CouponResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<Coupon>? items}) = _$_CouponResponse;
+      @JsonKey(name: 'data') final List<Coupon>? items}) = _$CouponResponseImpl;
 
   factory _CouponResponse.fromJson(Map<String, dynamic> json) =
-      _$_CouponResponse.fromJson;
+      _$CouponResponseImpl.fromJson;
 
   @override
   int get status;
@@ -675,6 +678,6 @@ abstract class _CouponResponse implements CouponResponse {
   List<Coupon>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$_CouponResponseCopyWith<_$_CouponResponse> get copyWith =>
+  _$$CouponResponseImplCopyWith<_$CouponResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

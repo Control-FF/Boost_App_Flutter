@@ -15,6 +15,7 @@ class CS with _$CS {
     @Default('') String qa_file1,
     @Default('') String qa_file2,
     @Default('') String? qa_datetime,
+    @Default('') String? answer_content,
     @Default(false) bool? isExpand,
   }) = _CS;
 

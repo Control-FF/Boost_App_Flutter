@@ -6,7 +6,7 @@ part of 'user_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
+_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       deposit_cnt: json['deposit_cnt'] as int? ?? 0,
       prepare_cnt: json['prepare_cnt'] as int? ?? 0,
       delivery_cnt: json['delivery_cnt'] as int? ?? 0,
@@ -14,7 +14,8 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       cancel_cnt: json['cancel_cnt'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
+Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
+    <String, dynamic>{
       'deposit_cnt': instance.deposit_cnt,
       'prepare_cnt': instance.prepare_cnt,
       'delivery_cnt': instance.delivery_cnt,
@@ -22,7 +23,8 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'cancel_cnt': instance.cancel_cnt,
     };
 
-_$_UserInfo _$$_UserInfoFromJson(Map<String, dynamic> json) => _$_UserInfo(
+_$UserInfoImpl _$$UserInfoImplFromJson(Map<String, dynamic> json) =>
+    _$UserInfoImpl(
       name: json['name'] as String? ?? '',
       nickname: json['nickname'] as String? ?? '',
       recommend_code: json['recommend_code'] as String? ?? '',
@@ -34,7 +36,7 @@ _$_UserInfo _$$_UserInfoFromJson(Map<String, dynamic> json) => _$_UserInfo(
           : Order.fromJson(json['order'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserInfoToJson(_$_UserInfo instance) =>
+Map<String, dynamic> _$$UserInfoImplToJson(_$UserInfoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'nickname': instance.nickname,
@@ -45,8 +47,9 @@ Map<String, dynamic> _$$_UserInfoToJson(_$_UserInfo instance) =>
       'order': instance.order,
     };
 
-_$_UserInfoResponse _$$_UserInfoResponseFromJson(Map<String, dynamic> json) =>
-    _$_UserInfoResponse(
+_$UserInfoResponseImpl _$$UserInfoResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserInfoResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String,
       data: json['data'] == null
@@ -54,7 +57,8 @@ _$_UserInfoResponse _$$_UserInfoResponseFromJson(Map<String, dynamic> json) =>
           : UserInfo.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_UserInfoResponseToJson(_$_UserInfoResponse instance) =>
+Map<String, dynamic> _$$UserInfoResponseImplToJson(
+        _$UserInfoResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

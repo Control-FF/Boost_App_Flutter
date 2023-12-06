@@ -6,7 +6,7 @@ part of 'card.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Card _$$_CardFromJson(Map<String, dynamic> json) => _$_Card(
+_$CardImpl _$$CardImplFromJson(Map<String, dynamic> json) => _$CardImpl(
       id: json['id'] as int? ?? 0,
       billingkey: json['billingkey'] as String? ?? '',
       card_name: json['card_name'] as String? ?? '',
@@ -16,7 +16,8 @@ _$_Card _$$_CardFromJson(Map<String, dynamic> json) => _$_Card(
       is_company: json['is_company'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
+Map<String, dynamic> _$$CardImplToJson(_$CardImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'billingkey': instance.billingkey,
       'card_name': instance.card_name,
@@ -26,8 +27,8 @@ Map<String, dynamic> _$$_CardToJson(_$_Card instance) => <String, dynamic>{
       'is_company': instance.is_company,
     };
 
-_$_CardResponse _$$_CardResponseFromJson(Map<String, dynamic> json) =>
-    _$_CardResponse(
+_$CardResponseImpl _$$CardResponseImplFromJson(Map<String, dynamic> json) =>
+    _$CardResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -36,7 +37,7 @@ _$_CardResponse _$$_CardResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_CardResponseToJson(_$_CardResponse instance) =>
+Map<String, dynamic> _$$CardResponseImplToJson(_$CardResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

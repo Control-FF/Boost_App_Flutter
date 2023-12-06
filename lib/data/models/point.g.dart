@@ -6,20 +6,21 @@ part of 'point.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Point _$$_PointFromJson(Map<String, dynamic> json) => _$_Point(
+_$PointImpl _$$PointImplFromJson(Map<String, dynamic> json) => _$PointImpl(
       subject: json['subject'] as String? ?? '',
       point: json['point'] as int? ?? 0,
       reg_time: json['reg_time'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_PointToJson(_$_Point instance) => <String, dynamic>{
+Map<String, dynamic> _$$PointImplToJson(_$PointImpl instance) =>
+    <String, dynamic>{
       'subject': instance.subject,
       'point': instance.point,
       'reg_time': instance.reg_time,
     };
 
-_$_PointResponse _$$_PointResponseFromJson(Map<String, dynamic> json) =>
-    _$_PointResponse(
+_$PointResponseImpl _$$PointResponseImplFromJson(Map<String, dynamic> json) =>
+    _$PointResponseImpl(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       point: json['point'] as int? ?? 0,
@@ -29,7 +30,7 @@ _$_PointResponse _$$_PointResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_PointResponseToJson(_$_PointResponse instance) =>
+Map<String, dynamic> _$$PointResponseImplToJson(_$PointResponseImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
