@@ -68,22 +68,22 @@ class _$KeywordRankCopyWithImpl<$Res, $Val extends KeywordRank>
 }
 
 /// @nodoc
-abstract class _$$KeywordRankImplCopyWith<$Res>
+abstract class _$$_KeywordRankCopyWith<$Res>
     implements $KeywordRankCopyWith<$Res> {
-  factory _$$KeywordRankImplCopyWith(
-          _$KeywordRankImpl value, $Res Function(_$KeywordRankImpl) then) =
-      __$$KeywordRankImplCopyWithImpl<$Res>;
+  factory _$$_KeywordRankCopyWith(
+          _$_KeywordRank value, $Res Function(_$_KeywordRank) then) =
+      __$$_KeywordRankCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int rank, String keyword});
 }
 
 /// @nodoc
-class __$$KeywordRankImplCopyWithImpl<$Res>
-    extends _$KeywordRankCopyWithImpl<$Res, _$KeywordRankImpl>
-    implements _$$KeywordRankImplCopyWith<$Res> {
-  __$$KeywordRankImplCopyWithImpl(
-      _$KeywordRankImpl _value, $Res Function(_$KeywordRankImpl) _then)
+class __$$_KeywordRankCopyWithImpl<$Res>
+    extends _$KeywordRankCopyWithImpl<$Res, _$_KeywordRank>
+    implements _$$_KeywordRankCopyWith<$Res> {
+  __$$_KeywordRankCopyWithImpl(
+      _$_KeywordRank _value, $Res Function(_$_KeywordRank) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$KeywordRankImplCopyWithImpl<$Res>
     Object? rank = null,
     Object? keyword = null,
   }) {
-    return _then(_$KeywordRankImpl(
+    return _then(_$_KeywordRank(
       rank: null == rank
           ? _value.rank
           : rank // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$KeywordRankImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$KeywordRankImpl implements _KeywordRank {
-  _$KeywordRankImpl({this.rank = 0, this.keyword = ''});
+class _$_KeywordRank implements _KeywordRank {
+  _$_KeywordRank({this.rank = 0, this.keyword = ''});
 
-  factory _$KeywordRankImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KeywordRankImplFromJson(json);
+  factory _$_KeywordRank.fromJson(Map<String, dynamic> json) =>
+      _$$_KeywordRankFromJson(json);
 
   @override
   @JsonKey()
@@ -129,7 +129,7 @@ class _$KeywordRankImpl implements _KeywordRank {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KeywordRankImpl &&
+            other is _$_KeywordRank &&
             (identical(other.rank, rank) || other.rank == rank) &&
             (identical(other.keyword, keyword) || other.keyword == keyword));
   }
@@ -141,23 +141,22 @@ class _$KeywordRankImpl implements _KeywordRank {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KeywordRankImplCopyWith<_$KeywordRankImpl> get copyWith =>
-      __$$KeywordRankImplCopyWithImpl<_$KeywordRankImpl>(this, _$identity);
+  _$$_KeywordRankCopyWith<_$_KeywordRank> get copyWith =>
+      __$$_KeywordRankCopyWithImpl<_$_KeywordRank>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KeywordRankImplToJson(
+    return _$$_KeywordRankToJson(
       this,
     );
   }
 }
 
 abstract class _KeywordRank implements KeywordRank {
-  factory _KeywordRank({final int rank, final String keyword}) =
-      _$KeywordRankImpl;
+  factory _KeywordRank({final int rank, final String keyword}) = _$_KeywordRank;
 
   factory _KeywordRank.fromJson(Map<String, dynamic> json) =
-      _$KeywordRankImpl.fromJson;
+      _$_KeywordRank.fromJson;
 
   @override
   int get rank;
@@ -165,7 +164,7 @@ abstract class _KeywordRank implements KeywordRank {
   String get keyword;
   @override
   @JsonKey(ignore: true)
-  _$$KeywordRankImplCopyWith<_$KeywordRankImpl> get copyWith =>
+  _$$_KeywordRankCopyWith<_$_KeywordRank> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -233,11 +232,11 @@ class _$KeywordRankResponseCopyWithImpl<$Res, $Val extends KeywordRankResponse>
 }
 
 /// @nodoc
-abstract class _$$KeywordRankResponseImplCopyWith<$Res>
+abstract class _$$_KeywordRankResponseCopyWith<$Res>
     implements $KeywordRankResponseCopyWith<$Res> {
-  factory _$$KeywordRankResponseImplCopyWith(_$KeywordRankResponseImpl value,
-          $Res Function(_$KeywordRankResponseImpl) then) =
-      __$$KeywordRankResponseImplCopyWithImpl<$Res>;
+  factory _$$_KeywordRankResponseCopyWith(_$_KeywordRankResponse value,
+          $Res Function(_$_KeywordRankResponse) then) =
+      __$$_KeywordRankResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -247,11 +246,11 @@ abstract class _$$KeywordRankResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$KeywordRankResponseImplCopyWithImpl<$Res>
-    extends _$KeywordRankResponseCopyWithImpl<$Res, _$KeywordRankResponseImpl>
-    implements _$$KeywordRankResponseImplCopyWith<$Res> {
-  __$$KeywordRankResponseImplCopyWithImpl(_$KeywordRankResponseImpl _value,
-      $Res Function(_$KeywordRankResponseImpl) _then)
+class __$$_KeywordRankResponseCopyWithImpl<$Res>
+    extends _$KeywordRankResponseCopyWithImpl<$Res, _$_KeywordRankResponse>
+    implements _$$_KeywordRankResponseCopyWith<$Res> {
+  __$$_KeywordRankResponseCopyWithImpl(_$_KeywordRankResponse _value,
+      $Res Function(_$_KeywordRankResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,7 +260,7 @@ class __$$KeywordRankResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$KeywordRankResponseImpl(
+    return _then(_$_KeywordRankResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -280,15 +279,15 @@ class __$$KeywordRankResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$KeywordRankResponseImpl implements _KeywordRankResponse {
-  _$KeywordRankResponseImpl(
+class _$_KeywordRankResponse implements _KeywordRankResponse {
+  _$_KeywordRankResponse(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<KeywordRank>? items = const []})
       : _items = items;
 
-  factory _$KeywordRankResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KeywordRankResponseImplFromJson(json);
+  factory _$_KeywordRankResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_KeywordRankResponseFromJson(json);
 
   @override
   final int status;
@@ -315,7 +314,7 @@ class _$KeywordRankResponseImpl implements _KeywordRankResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KeywordRankResponseImpl &&
+            other is _$_KeywordRankResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -329,13 +328,13 @@ class _$KeywordRankResponseImpl implements _KeywordRankResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KeywordRankResponseImplCopyWith<_$KeywordRankResponseImpl> get copyWith =>
-      __$$KeywordRankResponseImplCopyWithImpl<_$KeywordRankResponseImpl>(
+  _$$_KeywordRankResponseCopyWith<_$_KeywordRankResponse> get copyWith =>
+      __$$_KeywordRankResponseCopyWithImpl<_$_KeywordRankResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KeywordRankResponseImplToJson(
+    return _$$_KeywordRankResponseToJson(
       this,
     );
   }
@@ -346,10 +345,10 @@ abstract class _KeywordRankResponse implements KeywordRankResponse {
           {required final int status,
           final String message,
           @JsonKey(name: 'data') final List<KeywordRank>? items}) =
-      _$KeywordRankResponseImpl;
+      _$_KeywordRankResponse;
 
   factory _KeywordRankResponse.fromJson(Map<String, dynamic> json) =
-      _$KeywordRankResponseImpl.fromJson;
+      _$_KeywordRankResponse.fromJson;
 
   @override
   int get status;
@@ -360,6 +359,6 @@ abstract class _KeywordRankResponse implements KeywordRankResponse {
   List<KeywordRank>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$KeywordRankResponseImplCopyWith<_$KeywordRankResponseImpl> get copyWith =>
+  _$$_KeywordRankResponseCopyWith<_$_KeywordRankResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

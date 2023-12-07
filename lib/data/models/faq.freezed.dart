@@ -88,9 +88,9 @@ class _$FAQCopyWithImpl<$Res, $Val extends FAQ> implements $FAQCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$FAQImplCopyWith<$Res> implements $FAQCopyWith<$Res> {
-  factory _$$FAQImplCopyWith(_$FAQImpl value, $Res Function(_$FAQImpl) then) =
-      __$$FAQImplCopyWithImpl<$Res>;
+abstract class _$$_FAQCopyWith<$Res> implements $FAQCopyWith<$Res> {
+  factory _$$_FAQCopyWith(_$_FAQ value, $Res Function(_$_FAQ) then) =
+      __$$_FAQCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,9 +102,9 @@ abstract class _$$FAQImplCopyWith<$Res> implements $FAQCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FAQImplCopyWithImpl<$Res> extends _$FAQCopyWithImpl<$Res, _$FAQImpl>
-    implements _$$FAQImplCopyWith<$Res> {
-  __$$FAQImplCopyWithImpl(_$FAQImpl _value, $Res Function(_$FAQImpl) _then)
+class __$$_FAQCopyWithImpl<$Res> extends _$FAQCopyWithImpl<$Res, _$_FAQ>
+    implements _$$_FAQCopyWith<$Res> {
+  __$$_FAQCopyWithImpl(_$_FAQ _value, $Res Function(_$_FAQ) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +116,7 @@ class __$$FAQImplCopyWithImpl<$Res> extends _$FAQCopyWithImpl<$Res, _$FAQImpl>
     Object? fa_order = null,
     Object? isExpand = freezed,
   }) {
-    return _then(_$FAQImpl(
+    return _then(_$_FAQ(
       fa_id: null == fa_id
           ? _value.fa_id
           : fa_id // ignore: cast_nullable_to_non_nullable
@@ -143,16 +143,15 @@ class __$$FAQImplCopyWithImpl<$Res> extends _$FAQCopyWithImpl<$Res, _$FAQImpl>
 
 /// @nodoc
 @JsonSerializable()
-class _$FAQImpl implements _FAQ {
-  _$FAQImpl(
+class _$_FAQ implements _FAQ {
+  _$_FAQ(
       {this.fa_id = 0,
       this.fa_subject = '',
       this.fa_content = '',
       this.fa_order = 0,
       this.isExpand = false});
 
-  factory _$FAQImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FAQImplFromJson(json);
+  factory _$_FAQ.fromJson(Map<String, dynamic> json) => _$$_FAQFromJson(json);
 
   @override
   @JsonKey()
@@ -179,7 +178,7 @@ class _$FAQImpl implements _FAQ {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FAQImpl &&
+            other is _$_FAQ &&
             (identical(other.fa_id, fa_id) || other.fa_id == fa_id) &&
             (identical(other.fa_subject, fa_subject) ||
                 other.fa_subject == fa_subject) &&
@@ -199,12 +198,12 @@ class _$FAQImpl implements _FAQ {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FAQImplCopyWith<_$FAQImpl> get copyWith =>
-      __$$FAQImplCopyWithImpl<_$FAQImpl>(this, _$identity);
+  _$$_FAQCopyWith<_$_FAQ> get copyWith =>
+      __$$_FAQCopyWithImpl<_$_FAQ>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FAQImplToJson(
+    return _$$_FAQToJson(
       this,
     );
   }
@@ -216,9 +215,9 @@ abstract class _FAQ implements FAQ {
       final String fa_subject,
       final String fa_content,
       final int fa_order,
-      final bool? isExpand}) = _$FAQImpl;
+      final bool? isExpand}) = _$_FAQ;
 
-  factory _FAQ.fromJson(Map<String, dynamic> json) = _$FAQImpl.fromJson;
+  factory _FAQ.fromJson(Map<String, dynamic> json) = _$_FAQ.fromJson;
 
   @override
   int get fa_id;
@@ -232,8 +231,7 @@ abstract class _FAQ implements FAQ {
   bool? get isExpand;
   @override
   @JsonKey(ignore: true)
-  _$$FAQImplCopyWith<_$FAQImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FAQCopyWith<_$_FAQ> get copyWith => throw _privateConstructorUsedError;
 }
 
 FAQResponse _$FAQResponseFromJson(Map<String, dynamic> json) {
@@ -298,11 +296,11 @@ class _$FAQResponseCopyWithImpl<$Res, $Val extends FAQResponse>
 }
 
 /// @nodoc
-abstract class _$$FAQResponseImplCopyWith<$Res>
+abstract class _$$_FAQResponseCopyWith<$Res>
     implements $FAQResponseCopyWith<$Res> {
-  factory _$$FAQResponseImplCopyWith(
-          _$FAQResponseImpl value, $Res Function(_$FAQResponseImpl) then) =
-      __$$FAQResponseImplCopyWithImpl<$Res>;
+  factory _$$_FAQResponseCopyWith(
+          _$_FAQResponse value, $Res Function(_$_FAQResponse) then) =
+      __$$_FAQResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -310,11 +308,11 @@ abstract class _$$FAQResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FAQResponseImplCopyWithImpl<$Res>
-    extends _$FAQResponseCopyWithImpl<$Res, _$FAQResponseImpl>
-    implements _$$FAQResponseImplCopyWith<$Res> {
-  __$$FAQResponseImplCopyWithImpl(
-      _$FAQResponseImpl _value, $Res Function(_$FAQResponseImpl) _then)
+class __$$_FAQResponseCopyWithImpl<$Res>
+    extends _$FAQResponseCopyWithImpl<$Res, _$_FAQResponse>
+    implements _$$_FAQResponseCopyWith<$Res> {
+  __$$_FAQResponseCopyWithImpl(
+      _$_FAQResponse _value, $Res Function(_$_FAQResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -324,7 +322,7 @@ class __$$FAQResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$FAQResponseImpl(
+    return _then(_$_FAQResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -343,15 +341,15 @@ class __$$FAQResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FAQResponseImpl implements _FAQResponse {
-  _$FAQResponseImpl(
+class _$_FAQResponse implements _FAQResponse {
+  _$_FAQResponse(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<FAQ>? items = const []})
       : _items = items;
 
-  factory _$FAQResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FAQResponseImplFromJson(json);
+  factory _$_FAQResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_FAQResponseFromJson(json);
 
   @override
   final int status;
@@ -378,7 +376,7 @@ class _$FAQResponseImpl implements _FAQResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FAQResponseImpl &&
+            other is _$_FAQResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -392,12 +390,12 @@ class _$FAQResponseImpl implements _FAQResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FAQResponseImplCopyWith<_$FAQResponseImpl> get copyWith =>
-      __$$FAQResponseImplCopyWithImpl<_$FAQResponseImpl>(this, _$identity);
+  _$$_FAQResponseCopyWith<_$_FAQResponse> get copyWith =>
+      __$$_FAQResponseCopyWithImpl<_$_FAQResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FAQResponseImplToJson(
+    return _$$_FAQResponseToJson(
       this,
     );
   }
@@ -407,10 +405,10 @@ abstract class _FAQResponse implements FAQResponse {
   factory _FAQResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<FAQ>? items}) = _$FAQResponseImpl;
+      @JsonKey(name: 'data') final List<FAQ>? items}) = _$_FAQResponse;
 
   factory _FAQResponse.fromJson(Map<String, dynamic> json) =
-      _$FAQResponseImpl.fromJson;
+      _$_FAQResponse.fromJson;
 
   @override
   int get status;
@@ -421,6 +419,6 @@ abstract class _FAQResponse implements FAQResponse {
   List<FAQ>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$FAQResponseImplCopyWith<_$FAQResponseImpl> get copyWith =>
+  _$$_FAQResponseCopyWith<_$_FAQResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

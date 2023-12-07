@@ -84,11 +84,10 @@ class _$TimeDataCopyWithImpl<$Res, $Val extends TimeData>
 }
 
 /// @nodoc
-abstract class _$$TimeDataImplCopyWith<$Res>
-    implements $TimeDataCopyWith<$Res> {
-  factory _$$TimeDataImplCopyWith(
-          _$TimeDataImpl value, $Res Function(_$TimeDataImpl) then) =
-      __$$TimeDataImplCopyWithImpl<$Res>;
+abstract class _$$_TimeDataCopyWith<$Res> implements $TimeDataCopyWith<$Res> {
+  factory _$$_TimeDataCopyWith(
+          _$_TimeData value, $Res Function(_$_TimeData) then) =
+      __$$_TimeDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,11 +99,11 @@ abstract class _$$TimeDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TimeDataImplCopyWithImpl<$Res>
-    extends _$TimeDataCopyWithImpl<$Res, _$TimeDataImpl>
-    implements _$$TimeDataImplCopyWith<$Res> {
-  __$$TimeDataImplCopyWithImpl(
-      _$TimeDataImpl _value, $Res Function(_$TimeDataImpl) _then)
+class __$$_TimeDataCopyWithImpl<$Res>
+    extends _$TimeDataCopyWithImpl<$Res, _$_TimeData>
+    implements _$$_TimeDataCopyWith<$Res> {
+  __$$_TimeDataCopyWithImpl(
+      _$_TimeData _value, $Res Function(_$_TimeData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +112,7 @@ class __$$TimeDataImplCopyWithImpl<$Res>
     Object? banner = freezed,
     Object? timeSaleData = freezed,
   }) {
-    return _then(_$TimeDataImpl(
+    return _then(_$_TimeData(
       banner: freezed == banner
           ? _value.banner
           : banner // ignore: cast_nullable_to_non_nullable
@@ -128,15 +127,15 @@ class __$$TimeDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TimeDataImpl implements _TimeData {
-  _$TimeDataImpl(
+class _$_TimeData implements _TimeData {
+  _$_TimeData(
       {this.banner,
       @JsonKey(name: 'timesSaleItems')
       final List<TimeSaleItem>? timeSaleData = const []})
       : _timeSaleData = timeSaleData;
 
-  factory _$TimeDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeDataImplFromJson(json);
+  factory _$_TimeData.fromJson(Map<String, dynamic> json) =>
+      _$$_TimeDataFromJson(json);
 
   @override
   final TimeBanner? banner;
@@ -160,7 +159,7 @@ class _$TimeDataImpl implements _TimeData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimeDataImpl &&
+            other is _$_TimeData &&
             (identical(other.banner, banner) || other.banner == banner) &&
             const DeepCollectionEquality()
                 .equals(other._timeSaleData, _timeSaleData));
@@ -174,12 +173,12 @@ class _$TimeDataImpl implements _TimeData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TimeDataImplCopyWith<_$TimeDataImpl> get copyWith =>
-      __$$TimeDataImplCopyWithImpl<_$TimeDataImpl>(this, _$identity);
+  _$$_TimeDataCopyWith<_$_TimeData> get copyWith =>
+      __$$_TimeDataCopyWithImpl<_$_TimeData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TimeDataImplToJson(
+    return _$$_TimeDataToJson(
       this,
     );
   }
@@ -189,10 +188,9 @@ abstract class _TimeData implements TimeData {
   factory _TimeData(
       {final TimeBanner? banner,
       @JsonKey(name: 'timesSaleItems')
-      final List<TimeSaleItem>? timeSaleData}) = _$TimeDataImpl;
+      final List<TimeSaleItem>? timeSaleData}) = _$_TimeData;
 
-  factory _TimeData.fromJson(Map<String, dynamic> json) =
-      _$TimeDataImpl.fromJson;
+  factory _TimeData.fromJson(Map<String, dynamic> json) = _$_TimeData.fromJson;
 
   @override
   TimeBanner? get banner;
@@ -201,7 +199,7 @@ abstract class _TimeData implements TimeData {
   List<TimeSaleItem>? get timeSaleData;
   @override
   @JsonKey(ignore: true)
-  _$$TimeDataImplCopyWith<_$TimeDataImpl> get copyWith =>
+  _$$_TimeDataCopyWith<_$_TimeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -263,11 +261,11 @@ class _$TimeBannerCopyWithImpl<$Res, $Val extends TimeBanner>
 }
 
 /// @nodoc
-abstract class _$$TimeBannerImplCopyWith<$Res>
+abstract class _$$_TimeBannerCopyWith<$Res>
     implements $TimeBannerCopyWith<$Res> {
-  factory _$$TimeBannerImplCopyWith(
-          _$TimeBannerImpl value, $Res Function(_$TimeBannerImpl) then) =
-      __$$TimeBannerImplCopyWithImpl<$Res>;
+  factory _$$_TimeBannerCopyWith(
+          _$_TimeBanner value, $Res Function(_$_TimeBanner) then) =
+      __$$_TimeBannerCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -276,11 +274,11 @@ abstract class _$$TimeBannerImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TimeBannerImplCopyWithImpl<$Res>
-    extends _$TimeBannerCopyWithImpl<$Res, _$TimeBannerImpl>
-    implements _$$TimeBannerImplCopyWith<$Res> {
-  __$$TimeBannerImplCopyWithImpl(
-      _$TimeBannerImpl _value, $Res Function(_$TimeBannerImpl) _then)
+class __$$_TimeBannerCopyWithImpl<$Res>
+    extends _$TimeBannerCopyWithImpl<$Res, _$_TimeBanner>
+    implements _$$_TimeBannerCopyWith<$Res> {
+  __$$_TimeBannerCopyWithImpl(
+      _$_TimeBanner _value, $Res Function(_$_TimeBanner) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -289,7 +287,7 @@ class __$$TimeBannerImplCopyWithImpl<$Res>
     Object? mainBanner = freezed,
     Object? bottomBanner = freezed,
   }) {
-    return _then(_$TimeBannerImpl(
+    return _then(_$_TimeBanner(
       mainBanner: freezed == mainBanner
           ? _value._mainBanner
           : mainBanner // ignore: cast_nullable_to_non_nullable
@@ -304,8 +302,8 @@ class __$$TimeBannerImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TimeBannerImpl implements _TimeBanner {
-  _$TimeBannerImpl(
+class _$_TimeBanner implements _TimeBanner {
+  _$_TimeBanner(
       {@JsonKey(name: 'mainBanner')
       final List<TimeBannerList>? mainBanner = const [],
       @JsonKey(name: 'bottomBanner')
@@ -313,8 +311,8 @@ class _$TimeBannerImpl implements _TimeBanner {
       : _mainBanner = mainBanner,
         _bottomBanner = bottomBanner;
 
-  factory _$TimeBannerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeBannerImplFromJson(json);
+  factory _$_TimeBanner.fromJson(Map<String, dynamic> json) =>
+      _$$_TimeBannerFromJson(json);
 
   final List<TimeBannerList>? _mainBanner;
   @override
@@ -347,7 +345,7 @@ class _$TimeBannerImpl implements _TimeBanner {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimeBannerImpl &&
+            other is _$_TimeBanner &&
             const DeepCollectionEquality()
                 .equals(other._mainBanner, _mainBanner) &&
             const DeepCollectionEquality()
@@ -364,12 +362,12 @@ class _$TimeBannerImpl implements _TimeBanner {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TimeBannerImplCopyWith<_$TimeBannerImpl> get copyWith =>
-      __$$TimeBannerImplCopyWithImpl<_$TimeBannerImpl>(this, _$identity);
+  _$$_TimeBannerCopyWith<_$_TimeBanner> get copyWith =>
+      __$$_TimeBannerCopyWithImpl<_$_TimeBanner>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TimeBannerImplToJson(
+    return _$$_TimeBannerToJson(
       this,
     );
   }
@@ -379,10 +377,10 @@ abstract class _TimeBanner implements TimeBanner {
   factory _TimeBanner(
       {@JsonKey(name: 'mainBanner') final List<TimeBannerList>? mainBanner,
       @JsonKey(name: 'bottomBanner')
-      final List<TimeBannerList>? bottomBanner}) = _$TimeBannerImpl;
+      final List<TimeBannerList>? bottomBanner}) = _$_TimeBanner;
 
   factory _TimeBanner.fromJson(Map<String, dynamic> json) =
-      _$TimeBannerImpl.fromJson;
+      _$_TimeBanner.fromJson;
 
   @override
   @JsonKey(name: 'mainBanner')
@@ -392,7 +390,7 @@ abstract class _TimeBanner implements TimeBanner {
   List<TimeBannerList>? get bottomBanner;
   @override
   @JsonKey(ignore: true)
-  _$$TimeBannerImplCopyWith<_$TimeBannerImpl> get copyWith =>
+  _$$_TimeBannerCopyWith<_$_TimeBanner> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -462,22 +460,22 @@ class _$TimeBannerListCopyWithImpl<$Res, $Val extends TimeBannerList>
 }
 
 /// @nodoc
-abstract class _$$TimeBannerListImplCopyWith<$Res>
+abstract class _$$_TimeBannerListCopyWith<$Res>
     implements $TimeBannerListCopyWith<$Res> {
-  factory _$$TimeBannerListImplCopyWith(_$TimeBannerListImpl value,
-          $Res Function(_$TimeBannerListImpl) then) =
-      __$$TimeBannerListImplCopyWithImpl<$Res>;
+  factory _$$_TimeBannerListCopyWith(
+          _$_TimeBannerList value, $Res Function(_$_TimeBannerList) then) =
+      __$$_TimeBannerListCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int bn_id, String bn_alt, String bn_url, String bn_img});
 }
 
 /// @nodoc
-class __$$TimeBannerListImplCopyWithImpl<$Res>
-    extends _$TimeBannerListCopyWithImpl<$Res, _$TimeBannerListImpl>
-    implements _$$TimeBannerListImplCopyWith<$Res> {
-  __$$TimeBannerListImplCopyWithImpl(
-      _$TimeBannerListImpl _value, $Res Function(_$TimeBannerListImpl) _then)
+class __$$_TimeBannerListCopyWithImpl<$Res>
+    extends _$TimeBannerListCopyWithImpl<$Res, _$_TimeBannerList>
+    implements _$$_TimeBannerListCopyWith<$Res> {
+  __$$_TimeBannerListCopyWithImpl(
+      _$_TimeBannerList _value, $Res Function(_$_TimeBannerList) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -488,7 +486,7 @@ class __$$TimeBannerListImplCopyWithImpl<$Res>
     Object? bn_url = null,
     Object? bn_img = null,
   }) {
-    return _then(_$TimeBannerListImpl(
+    return _then(_$_TimeBannerList(
       bn_id: null == bn_id
           ? _value.bn_id
           : bn_id // ignore: cast_nullable_to_non_nullable
@@ -511,12 +509,12 @@ class __$$TimeBannerListImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TimeBannerListImpl implements _TimeBannerList {
-  _$TimeBannerListImpl(
+class _$_TimeBannerList implements _TimeBannerList {
+  _$_TimeBannerList(
       {this.bn_id = 0, this.bn_alt = '', this.bn_url = '', this.bn_img = ''});
 
-  factory _$TimeBannerListImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeBannerListImplFromJson(json);
+  factory _$_TimeBannerList.fromJson(Map<String, dynamic> json) =>
+      _$$_TimeBannerListFromJson(json);
 
   @override
   @JsonKey()
@@ -540,7 +538,7 @@ class _$TimeBannerListImpl implements _TimeBannerList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimeBannerListImpl &&
+            other is _$_TimeBannerList &&
             (identical(other.bn_id, bn_id) || other.bn_id == bn_id) &&
             (identical(other.bn_alt, bn_alt) || other.bn_alt == bn_alt) &&
             (identical(other.bn_url, bn_url) || other.bn_url == bn_url) &&
@@ -554,13 +552,12 @@ class _$TimeBannerListImpl implements _TimeBannerList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TimeBannerListImplCopyWith<_$TimeBannerListImpl> get copyWith =>
-      __$$TimeBannerListImplCopyWithImpl<_$TimeBannerListImpl>(
-          this, _$identity);
+  _$$_TimeBannerListCopyWith<_$_TimeBannerList> get copyWith =>
+      __$$_TimeBannerListCopyWithImpl<_$_TimeBannerList>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TimeBannerListImplToJson(
+    return _$$_TimeBannerListToJson(
       this,
     );
   }
@@ -571,10 +568,10 @@ abstract class _TimeBannerList implements TimeBannerList {
       {final int bn_id,
       final String bn_alt,
       final String bn_url,
-      final String bn_img}) = _$TimeBannerListImpl;
+      final String bn_img}) = _$_TimeBannerList;
 
   factory _TimeBannerList.fromJson(Map<String, dynamic> json) =
-      _$TimeBannerListImpl.fromJson;
+      _$_TimeBannerList.fromJson;
 
   @override
   int get bn_id;
@@ -586,7 +583,7 @@ abstract class _TimeBannerList implements TimeBannerList {
   String get bn_img;
   @override
   @JsonKey(ignore: true)
-  _$$TimeBannerListImplCopyWith<_$TimeBannerListImpl> get copyWith =>
+  _$$_TimeBannerListCopyWith<_$_TimeBannerList> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -702,11 +699,11 @@ class _$TimeSaleItemCopyWithImpl<$Res, $Val extends TimeSaleItem>
 }
 
 /// @nodoc
-abstract class _$$TimeSaleItemImplCopyWith<$Res>
+abstract class _$$_TimeSaleItemCopyWith<$Res>
     implements $TimeSaleItemCopyWith<$Res> {
-  factory _$$TimeSaleItemImplCopyWith(
-          _$TimeSaleItemImpl value, $Res Function(_$TimeSaleItemImpl) then) =
-      __$$TimeSaleItemImplCopyWithImpl<$Res>;
+  factory _$$_TimeSaleItemCopyWith(
+          _$_TimeSaleItem value, $Res Function(_$_TimeSaleItem) then) =
+      __$$_TimeSaleItemCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -723,11 +720,11 @@ abstract class _$$TimeSaleItemImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TimeSaleItemImplCopyWithImpl<$Res>
-    extends _$TimeSaleItemCopyWithImpl<$Res, _$TimeSaleItemImpl>
-    implements _$$TimeSaleItemImplCopyWith<$Res> {
-  __$$TimeSaleItemImplCopyWithImpl(
-      _$TimeSaleItemImpl _value, $Res Function(_$TimeSaleItemImpl) _then)
+class __$$_TimeSaleItemCopyWithImpl<$Res>
+    extends _$TimeSaleItemCopyWithImpl<$Res, _$_TimeSaleItem>
+    implements _$$_TimeSaleItemCopyWith<$Res> {
+  __$$_TimeSaleItemCopyWithImpl(
+      _$_TimeSaleItem _value, $Res Function(_$_TimeSaleItem) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -744,7 +741,7 @@ class __$$TimeSaleItemImplCopyWithImpl<$Res>
     Object? sale_start_time = null,
     Object? sale_end_time = null,
   }) {
-    return _then(_$TimeSaleItemImpl(
+    return _then(_$_TimeSaleItem(
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
@@ -791,8 +788,8 @@ class __$$TimeSaleItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TimeSaleItemImpl implements _TimeSaleItem {
-  _$TimeSaleItemImpl(
+class _$_TimeSaleItem implements _TimeSaleItem {
+  _$_TimeSaleItem(
       {this.it_id = '',
       this.it_name = '',
       this.it_cust_price = 0,
@@ -804,8 +801,8 @@ class _$TimeSaleItemImpl implements _TimeSaleItem {
       this.sale_start_time = '',
       this.sale_end_time = ''});
 
-  factory _$TimeSaleItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeSaleItemImplFromJson(json);
+  factory _$_TimeSaleItem.fromJson(Map<String, dynamic> json) =>
+      _$$_TimeSaleItemFromJson(json);
 
   @override
   @JsonKey()
@@ -847,7 +844,7 @@ class _$TimeSaleItemImpl implements _TimeSaleItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimeSaleItemImpl &&
+            other is _$_TimeSaleItem &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
             (identical(other.it_cust_price, it_cust_price) ||
@@ -884,12 +881,12 @@ class _$TimeSaleItemImpl implements _TimeSaleItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TimeSaleItemImplCopyWith<_$TimeSaleItemImpl> get copyWith =>
-      __$$TimeSaleItemImplCopyWithImpl<_$TimeSaleItemImpl>(this, _$identity);
+  _$$_TimeSaleItemCopyWith<_$_TimeSaleItem> get copyWith =>
+      __$$_TimeSaleItemCopyWithImpl<_$_TimeSaleItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TimeSaleItemImplToJson(
+    return _$$_TimeSaleItemToJson(
       this,
     );
   }
@@ -906,10 +903,10 @@ abstract class _TimeSaleItem implements TimeSaleItem {
       final int it_use_cnt,
       final int it_sum_qty,
       final String sale_start_time,
-      final String sale_end_time}) = _$TimeSaleItemImpl;
+      final String sale_end_time}) = _$_TimeSaleItem;
 
   factory _TimeSaleItem.fromJson(Map<String, dynamic> json) =
-      _$TimeSaleItemImpl.fromJson;
+      _$_TimeSaleItem.fromJson;
 
   @override
   String get it_id;
@@ -933,7 +930,7 @@ abstract class _TimeSaleItem implements TimeSaleItem {
   String get sale_end_time;
   @override
   @JsonKey(ignore: true)
-  _$$TimeSaleItemImplCopyWith<_$TimeSaleItemImpl> get copyWith =>
+  _$$_TimeSaleItemCopyWith<_$_TimeSaleItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1011,11 +1008,11 @@ class _$TimeResponseCopyWithImpl<$Res, $Val extends TimeResponse>
 }
 
 /// @nodoc
-abstract class _$$TimeResponseImplCopyWith<$Res>
+abstract class _$$_TimeResponseCopyWith<$Res>
     implements $TimeResponseCopyWith<$Res> {
-  factory _$$TimeResponseImplCopyWith(
-          _$TimeResponseImpl value, $Res Function(_$TimeResponseImpl) then) =
-      __$$TimeResponseImplCopyWithImpl<$Res>;
+  factory _$$_TimeResponseCopyWith(
+          _$_TimeResponse value, $Res Function(_$_TimeResponse) then) =
+      __$$_TimeResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int status, String message, TimeData? data});
@@ -1025,11 +1022,11 @@ abstract class _$$TimeResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TimeResponseImplCopyWithImpl<$Res>
-    extends _$TimeResponseCopyWithImpl<$Res, _$TimeResponseImpl>
-    implements _$$TimeResponseImplCopyWith<$Res> {
-  __$$TimeResponseImplCopyWithImpl(
-      _$TimeResponseImpl _value, $Res Function(_$TimeResponseImpl) _then)
+class __$$_TimeResponseCopyWithImpl<$Res>
+    extends _$TimeResponseCopyWithImpl<$Res, _$_TimeResponse>
+    implements _$$_TimeResponseCopyWith<$Res> {
+  __$$_TimeResponseCopyWithImpl(
+      _$_TimeResponse _value, $Res Function(_$_TimeResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1039,7 +1036,7 @@ class __$$TimeResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? data = freezed,
   }) {
-    return _then(_$TimeResponseImpl(
+    return _then(_$_TimeResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1058,11 +1055,11 @@ class __$$TimeResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TimeResponseImpl implements _TimeResponse {
-  _$TimeResponseImpl({required this.status, this.message = '', this.data});
+class _$_TimeResponse implements _TimeResponse {
+  _$_TimeResponse({required this.status, this.message = '', this.data});
 
-  factory _$TimeResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeResponseImplFromJson(json);
+  factory _$_TimeResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_TimeResponseFromJson(json);
 
   @override
   final int status;
@@ -1081,7 +1078,7 @@ class _$TimeResponseImpl implements _TimeResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimeResponseImpl &&
+            other is _$_TimeResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.data, data) || other.data == data));
@@ -1094,12 +1091,12 @@ class _$TimeResponseImpl implements _TimeResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TimeResponseImplCopyWith<_$TimeResponseImpl> get copyWith =>
-      __$$TimeResponseImplCopyWithImpl<_$TimeResponseImpl>(this, _$identity);
+  _$$_TimeResponseCopyWith<_$_TimeResponse> get copyWith =>
+      __$$_TimeResponseCopyWithImpl<_$_TimeResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TimeResponseImplToJson(
+    return _$$_TimeResponseToJson(
       this,
     );
   }
@@ -1109,10 +1106,10 @@ abstract class _TimeResponse implements TimeResponse {
   factory _TimeResponse(
       {required final int status,
       final String message,
-      final TimeData? data}) = _$TimeResponseImpl;
+      final TimeData? data}) = _$_TimeResponse;
 
   factory _TimeResponse.fromJson(Map<String, dynamic> json) =
-      _$TimeResponseImpl.fromJson;
+      _$_TimeResponse.fromJson;
 
   @override
   int get status;
@@ -1122,6 +1119,6 @@ abstract class _TimeResponse implements TimeResponse {
   TimeData? get data;
   @override
   @JsonKey(ignore: true)
-  _$$TimeResponseImplCopyWith<_$TimeResponseImpl> get copyWith =>
+  _$$_TimeResponseCopyWith<_$_TimeResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

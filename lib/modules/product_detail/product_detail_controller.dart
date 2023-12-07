@@ -7,6 +7,7 @@ import 'package:boostapp/data/models/product_review.dart';
 import 'package:boostapp/data/service/shop_service.dart';
 import 'package:boostapp/data/service/user_service.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
+import 'package:boostapp/modules/main/pages/bnv_onetouch_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +17,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
   final ShopService _shopService = Get.find();
 
   CartController cartController = Get.put(CartController());
+  OneTouchController oneTouchController = Get.put(OneTouchController());
 
   late PageController pageController;
   RxInt currentIndex = 0.obs;
@@ -176,7 +178,7 @@ class ProductDetailController extends GetxController with GetSingleTickerProvide
         ));
       },
       (response){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           elevation: 6.0,
           behavior: SnackBarBehavior.floating,
           content: Text(

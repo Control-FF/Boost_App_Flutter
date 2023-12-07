@@ -2,6 +2,7 @@ import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/data/models/product_detail.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
+import 'package:boostapp/modules/main/pages/bnv_onetouch_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_controller.dart';
 import 'package:boostapp/modules/product_detail/product_detail_tab_buy.dart';
 import 'package:boostapp/modules/product_detail/product_detail_tab_info.dart';
@@ -17,6 +18,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailScreen extends GetView<ProductDetailController>{
   CartController cartController = Get.put(CartController());
+  OneTouchController oneTouchController = Get.put(OneTouchController());
 
   ScrollController _scrollController = ScrollController();
   bool _showedMessage = false;
@@ -182,30 +184,23 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
 
                             Padding(
                               padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 8.h),
-                              child: Text(
-                                controller.productData.value != null ? controller.productData.value!.item!.it_name : '',
-                                style: TextStyle(
-                                  color: ColorConstant.black,
-                                  fontSize: 24.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                controller.productData.value != null && controller.productData.value!.item!.it_seller == '부스트' ? Padding(
-                                  padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 0.h),
-                                  child: Row(
-                                    children: [
-                                      Image.asset('assets/images/ic_boost.png',width: 98.w,height: 24.h,)
-                                    ],
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      controller.productData.value != null ? controller.productData.value!.item!.it_name : '',
+                                      style: TextStyle(
+                                        color: ColorConstant.black,
+                                        fontSize: 16.sp,
+                                        fontFamily: 'Noto Sans KR',
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
                                   ),
-                                ) : SizedBox(),
-                                controller.productData.value != null ? Padding(
-                                  padding: EdgeInsets.fromLTRB(30.w, 3.h, 30.w, 0.h),
-                                  child: Row(
+                                  SizedBox(width: 10.w,),
+                                  controller.productData.value != null ? Row(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Image.asset('assets/images/ic_rating_fill.png',width: 14.w,height: 14.w,),
@@ -220,8 +215,101 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                         ),
                                       )
                                     ],
+                                  ) : SizedBox()
+
+                                ],
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                controller.productData.value != null ? Padding(
+                                  padding: EdgeInsets.only(left: 30.w),
+                                  child: Text(
+                                    '${Constants.numberAddComma(controller.productData.value!.item!.it_price)}원',
+                                    style: TextStyle(
+                                      color: ColorConstant.black,
+                                      fontSize: 24.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
-                                ) : SizedBox()
+                                ) : SizedBox(),
+                                GestureDetector(
+                                  onTap: (){
+
+                                    List<dynamic> ctItems = [];
+                                    if(controller.productData.value!.option!.isEmpty){
+                                      //단일 상품
+                                      ctItems.add({
+                                        'ct_qty' : controller.qty.value
+                                      });
+                                    }else{
+                                      //복수 옵션
+                                      for(int i=0; i<controller.optionList.length; i++){
+                                        if(controller.optionList[i].isCheck ?? false){
+                                          ctItems.add({
+                                            'io_no' : controller.optionList[i].io_no,
+                                            'ct_qty' : controller.optionList[i].io_qty
+                                          });
+                                        }
+                                      }
+                                    }
+
+
+                                    oneTouchController.showOneTouchPopupConfirm(context,controller.productData.value!.item!.it_id,ctItems);
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 30.w,top: 2.h),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset('assets/images/ic_onetouch.png',width: 13.w,height: 17.h,),
+                                        SizedBox(width: 3.w,),
+                                        Text(
+                                          '원터치 상품',
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 12.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                controller.productData.value != null && controller.productData.value!.item!.it_seller == '부스트' ? Padding(
+                                  padding: EdgeInsets.fromLTRB(30.w, 8.h, 30.w, 0.h),
+                                  child: Row(
+                                    children: [
+                                      Image.asset('assets/images/ic_boost.png',width: 98.w,height: 24.h,)
+                                    ],
+                                  ),
+                                ) : SizedBox(),
+                                Container(
+                                  margin: EdgeInsets.only(right: 30.w,top: 10.h),
+                                  padding: EdgeInsets.fromLTRB(13.w, 4.h, 13.w, 4.h),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(30.r)),
+                                    color: ColorConstant.accent
+                                  ),
+                                  child: Text(
+                                    '11:59 이전 주문시 오늘 도착!',
+                                    style: TextStyle(
+                                      color: ColorConstant.white,
+                                      fontSize: 12.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                             controller.optionList.isEmpty ? Padding(
@@ -231,7 +319,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                 height: 1,
                                 color: ColorConstant.gray17,
                               ),
-                            ) : SizedBox(height: 13.h,),
+                            ) : SizedBox(height: 23.h,),
                             controller.optionList.isEmpty ? Container(
                               padding: EdgeInsets.symmetric(horizontal: 30.w),
                               width: Get.width,
@@ -369,7 +457,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                               ),
                             ) : SizedBox(),
                             controller.optionList.isEmpty ? Padding(
-                              padding: EdgeInsets.fromLTRB(30.w, 15.h, 30.w, 10.h),
+                              padding: EdgeInsets.fromLTRB(30.w, 15.h, 30.w, 13.h),
                               child: Divider(
                                 thickness: 1,
                                 height: 1,
@@ -444,7 +532,7 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                       ),
                                     ),
                                     Text(
-                                      '${Constants.numberAddComma(controller.productData.value!.item!.it_price + controller.optionList[index].io_price)}원',
+                                      '+${Constants.numberAddComma(controller.optionList[index].io_price)}원',
                                       style: TextStyle(
                                         color: ColorConstant.black,
                                         fontSize: 14.sp,

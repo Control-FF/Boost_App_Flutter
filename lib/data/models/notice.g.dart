@@ -6,7 +6,7 @@ part of 'notice.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NoticeImpl _$$NoticeImplFromJson(Map<String, dynamic> json) => _$NoticeImpl(
+_$_Notice _$$_NoticeFromJson(Map<String, dynamic> json) => _$_Notice(
       fa_id: json['fa_id'] as int? ?? 0,
       fa_subject: json['fa_subject'] as String? ?? '',
       fa_content: json['fa_content'] as String? ?? '',
@@ -14,8 +14,7 @@ _$NoticeImpl _$$NoticeImplFromJson(Map<String, dynamic> json) => _$NoticeImpl(
       isExpand: json['isExpand'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$NoticeImplToJson(_$NoticeImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_NoticeToJson(_$_Notice instance) => <String, dynamic>{
       'fa_id': instance.fa_id,
       'fa_subject': instance.fa_subject,
       'fa_content': instance.fa_content,
@@ -23,8 +22,8 @@ Map<String, dynamic> _$$NoticeImplToJson(_$NoticeImpl instance) =>
       'isExpand': instance.isExpand,
     };
 
-_$NoticeResponseImpl _$$NoticeResponseImplFromJson(Map<String, dynamic> json) =>
-    _$NoticeResponseImpl(
+_$_NoticeResponse _$$_NoticeResponseFromJson(Map<String, dynamic> json) =>
+    _$_NoticeResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -33,8 +32,7 @@ _$NoticeResponseImpl _$$NoticeResponseImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$NoticeResponseImplToJson(
-        _$NoticeResponseImpl instance) =>
+Map<String, dynamic> _$$_NoticeResponseToJson(_$_NoticeResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

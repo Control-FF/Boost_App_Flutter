@@ -6,7 +6,7 @@ part of 'coupon.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CouponImpl _$$CouponImplFromJson(Map<String, dynamic> json) => _$CouponImpl(
+_$_Coupon _$$_CouponFromJson(Map<String, dynamic> json) => _$_Coupon(
       cp_no: json['cp_no'] as int? ?? 0,
       cp_id: json['cp_id'] as String? ?? '',
       cp_subject: json['cp_subject'] as String? ?? '',
@@ -25,8 +25,7 @@ _$CouponImpl _$$CouponImplFromJson(Map<String, dynamic> json) => _$CouponImpl(
       cp_datetime: json['cp_datetime'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$CouponImplToJson(_$CouponImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_CouponToJson(_$_Coupon instance) => <String, dynamic>{
       'cp_no': instance.cp_no,
       'cp_id': instance.cp_id,
       'cp_subject': instance.cp_subject,
@@ -45,8 +44,8 @@ Map<String, dynamic> _$$CouponImplToJson(_$CouponImpl instance) =>
       'cp_datetime': instance.cp_datetime,
     };
 
-_$CouponResponseImpl _$$CouponResponseImplFromJson(Map<String, dynamic> json) =>
-    _$CouponResponseImpl(
+_$_CouponResponse _$$_CouponResponseFromJson(Map<String, dynamic> json) =>
+    _$_CouponResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -55,8 +54,7 @@ _$CouponResponseImpl _$$CouponResponseImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$CouponResponseImplToJson(
-        _$CouponResponseImpl instance) =>
+Map<String, dynamic> _$$_CouponResponseToJson(_$_CouponResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

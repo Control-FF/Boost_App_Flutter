@@ -20,6 +20,7 @@ import 'package:boostapp/data/models/main.dart';
 import 'package:boostapp/data/models/more.dart';
 import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/onetouch.dart';
+import 'package:boostapp/data/models/onetouch_cart.dart';
 import 'package:boostapp/data/models/order.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/order_info.dart';
@@ -202,10 +203,32 @@ abstract class ApiClient {
   );
 
   //원터치 리스트
-  @GET('/api/shop/onetouch')
+  @GET('/api/shop/onetouch-list')
   Future<OneTouchResponse> oneTouch(
       @Query('sort') String sort,
       @Query('pageNum') int page,
+  );
+
+  //원터치 리스트 장바구니 하단
+  @GET('/api/shop/cart-onetouch-list')
+  Future<OneTouchCartResponse> oneTouchCart();
+
+  //원터치 등록
+  @POST('/api/shop/add-onetouch')
+  Future<DataResponse> addOneTouch(
+      @Body() Map<String, dynamic> map
+  );
+
+  //원터치 장바구니추가
+  @POST('/api/shop/onetouch-item-to-cart')
+  Future<DataResponse> addOneTouchCart(
+      @Query('ot_id') int otId,
+  );
+
+  //원터치 삭제
+  @DELETE('/api/shop/delete-onetouch')
+  Future<DataResponse> deleteOneTouch(
+      @Query('ot_id') int otId,
   );
 
   //내정보

@@ -6,8 +6,7 @@ part of 'order_confirm.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderDataImpl _$$OrderDataImplFromJson(Map<String, dynamic> json) =>
-    _$OrderDataImpl(
+_$_OrderData _$$_OrderDataFromJson(Map<String, dynamic> json) => _$_OrderData(
       od_id: json['od_id'] as String? ?? '',
       orderItem: (json['order_item'] as List<dynamic>?)
               ?.map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
@@ -35,7 +34,7 @@ _$OrderDataImpl _$$OrderDataImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$OrderDataImplToJson(_$OrderDataImpl instance) =>
+Map<String, dynamic> _$$_OrderDataToJson(_$_OrderData instance) =>
     <String, dynamic>{
       'od_id': instance.od_id,
       'order_item': instance.orderItem,
@@ -46,8 +45,7 @@ Map<String, dynamic> _$$OrderDataImplToJson(_$OrderDataImpl instance) =>
       'totalPayment': instance.totalPayment,
     };
 
-_$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
-    _$OrderItemImpl(
+_$_OrderItem _$$_OrderItemFromJson(Map<String, dynamic> json) => _$_OrderItem(
       ct_id: json['ct_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
@@ -56,7 +54,7 @@ _$OrderItemImpl _$$OrderItemImplFromJson(Map<String, dynamic> json) =>
       it_delivery_type: json['it_delivery_type'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>
+Map<String, dynamic> _$$_OrderItemToJson(_$_OrderItem instance) =>
     <String, dynamic>{
       'ct_id': instance.ct_id,
       'it_id': instance.it_id,
@@ -66,15 +64,15 @@ Map<String, dynamic> _$$OrderItemImplToJson(_$OrderItemImpl instance) =>
       'it_delivery_type': instance.it_delivery_type,
     };
 
-_$OrderShippingImpl _$$OrderShippingImplFromJson(Map<String, dynamic> json) =>
-    _$OrderShippingImpl(
+_$_OrderShipping _$$_OrderShippingFromJson(Map<String, dynamic> json) =>
+    _$_OrderShipping(
       od_name: json['od_name'] as String? ?? '',
       od_hp: json['od_hp'] as String? ?? '',
       zip: json['zip'] as String? ?? '',
       address: json['address'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$OrderShippingImplToJson(_$OrderShippingImpl instance) =>
+Map<String, dynamic> _$$_OrderShippingToJson(_$_OrderShipping instance) =>
     <String, dynamic>{
       'od_name': instance.od_name,
       'od_hp': instance.od_hp,
@@ -82,15 +80,15 @@ Map<String, dynamic> _$$OrderShippingImplToJson(_$OrderShippingImpl instance) =>
       'address': instance.address,
     };
 
-_$OrderCouponImpl _$$OrderCouponImplFromJson(Map<String, dynamic> json) =>
-    _$OrderCouponImpl(
+_$_OrderCoupon _$$_OrderCouponFromJson(Map<String, dynamic> json) =>
+    _$_OrderCoupon(
       mb_point: json['mb_point'] as int? ?? 0,
       od_cash: json['od_cash'] as int? ?? 0,
       unused_coupon_count: json['unused_coupon_count'] as int? ?? 0,
       od_coupon: json['od_coupon'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$OrderCouponImplToJson(_$OrderCouponImpl instance) =>
+Map<String, dynamic> _$$_OrderCouponToJson(_$_OrderCoupon instance) =>
     <String, dynamic>{
       'mb_point': instance.mb_point,
       'od_cash': instance.od_cash,
@@ -98,32 +96,30 @@ Map<String, dynamic> _$$OrderCouponImplToJson(_$OrderCouponImpl instance) =>
       'od_coupon': instance.od_coupon,
     };
 
-_$ShippingRequestImpl _$$ShippingRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ShippingRequestImpl(
+_$_ShippingRequest _$$_ShippingRequestFromJson(Map<String, dynamic> json) =>
+    _$_ShippingRequest(
       location: json['location'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$ShippingRequestImplToJson(
-        _$ShippingRequestImpl instance) =>
+Map<String, dynamic> _$$_ShippingRequestToJson(_$_ShippingRequest instance) =>
     <String, dynamic>{
       'location': instance.location,
     };
 
-_$PaymentMethodImpl _$$PaymentMethodImplFromJson(Map<String, dynamic> json) =>
-    _$PaymentMethodImpl(
+_$_PaymentMethod _$$_PaymentMethodFromJson(Map<String, dynamic> json) =>
+    _$_PaymentMethod(
       subject: json['subject'] as String? ?? '',
       number: json['number'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$PaymentMethodImplToJson(_$PaymentMethodImpl instance) =>
+Map<String, dynamic> _$$_PaymentMethodToJson(_$_PaymentMethod instance) =>
     <String, dynamic>{
       'subject': instance.subject,
       'number': instance.number,
     };
 
-_$TotalPaymentImpl _$$TotalPaymentImplFromJson(Map<String, dynamic> json) =>
-    _$TotalPaymentImpl(
+_$_TotalPayment _$$_TotalPaymentFromJson(Map<String, dynamic> json) =>
+    _$_TotalPayment(
       od_cart_price: json['od_cart_price'] as int? ?? 0,
       od_coupon: json['od_coupon'] as int? ?? 0,
       od_receipt_point: json['od_receipt_point'] as int? ?? 0,
@@ -132,7 +128,7 @@ _$TotalPaymentImpl _$$TotalPaymentImplFromJson(Map<String, dynamic> json) =>
       expected_points: json['expected_points'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$TotalPaymentImplToJson(_$TotalPaymentImpl instance) =>
+Map<String, dynamic> _$$_TotalPaymentToJson(_$_TotalPayment instance) =>
     <String, dynamic>{
       'od_cart_price': instance.od_cart_price,
       'od_coupon': instance.od_coupon,
@@ -142,9 +138,9 @@ Map<String, dynamic> _$$TotalPaymentImplToJson(_$TotalPaymentImpl instance) =>
       'expected_points': instance.expected_points,
     };
 
-_$OrderConfirmResponseImpl _$$OrderConfirmResponseImplFromJson(
+_$_OrderConfirmResponse _$$_OrderConfirmResponseFromJson(
         Map<String, dynamic> json) =>
-    _$OrderConfirmResponseImpl(
+    _$_OrderConfirmResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       data: json['data'] == null
@@ -152,8 +148,8 @@ _$OrderConfirmResponseImpl _$$OrderConfirmResponseImplFromJson(
           : OrderData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$OrderConfirmResponseImplToJson(
-        _$OrderConfirmResponseImpl instance) =>
+Map<String, dynamic> _$$_OrderConfirmResponseToJson(
+        _$_OrderConfirmResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

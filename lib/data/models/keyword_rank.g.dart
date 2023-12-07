@@ -6,21 +6,21 @@ part of 'keyword_rank.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KeywordRankImpl _$$KeywordRankImplFromJson(Map<String, dynamic> json) =>
-    _$KeywordRankImpl(
+_$_KeywordRank _$$_KeywordRankFromJson(Map<String, dynamic> json) =>
+    _$_KeywordRank(
       rank: json['rank'] as int? ?? 0,
       keyword: json['keyword'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$KeywordRankImplToJson(_$KeywordRankImpl instance) =>
+Map<String, dynamic> _$$_KeywordRankToJson(_$_KeywordRank instance) =>
     <String, dynamic>{
       'rank': instance.rank,
       'keyword': instance.keyword,
     };
 
-_$KeywordRankResponseImpl _$$KeywordRankResponseImplFromJson(
+_$_KeywordRankResponse _$$_KeywordRankResponseFromJson(
         Map<String, dynamic> json) =>
-    _$KeywordRankResponseImpl(
+    _$_KeywordRankResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -29,8 +29,8 @@ _$KeywordRankResponseImpl _$$KeywordRankResponseImplFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$KeywordRankResponseImplToJson(
-        _$KeywordRankResponseImpl instance) =>
+Map<String, dynamic> _$$_KeywordRankResponseToJson(
+        _$_KeywordRankResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

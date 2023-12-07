@@ -14,6 +14,7 @@ import 'package:boostapp/data/models/main.dart';
 import 'package:boostapp/data/models/more.dart';
 import 'package:boostapp/data/models/notice.dart';
 import 'package:boostapp/data/models/onetouch.dart';
+import 'package:boostapp/data/models/onetouch_cart.dart';
 import 'package:boostapp/data/models/order_confirm.dart';
 import 'package:boostapp/data/models/order_request_response.dart';
 import 'package:boostapp/data/models/policy.dart';
@@ -199,6 +200,80 @@ class ShopService extends GetxService{
     try {
       final OneTouchResponse response =
       await _apiService.getApiClient().oneTouch(sort,page);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, OneTouchCartResponse>> getOneTouchCart() async {
+    try {
+      final OneTouchCartResponse response =
+      await _apiService.getApiClient().oneTouchCart();
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> addOneTouch({
+    required data,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().addOneTouch(data);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> addOneTouchCart({
+    required otId,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().addOneTouchCart(otId);
+      if (response.status == 200) {
+        return Right(response);
+      } else {
+        return Left(Failure.from(response.message));
+      }
+    } on DioError catch (e) {
+      final DataResponse response = DataResponse.fromJson(e.response?.data);
+      return Left(Failure.from(response.message));
+    } catch (e) {
+      return Left(Failure.from(e));
+    }
+  }
+
+  Future<Either<Failure, DataResponse>> deleteOneTouch({
+    required otId,
+  }) async {
+    try {
+      final DataResponse response =
+      await _apiService.getApiClient().deleteOneTouch(otId);
       if (response.status == 200) {
         return Right(response);
       } else {

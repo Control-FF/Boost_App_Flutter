@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ReviewEditScreen extends GetView<ReviewController>{
 
@@ -231,6 +232,15 @@ class ReviewEditScreen extends GetView<ReviewController>{
                               if(controller.editImgList.length == 3){
                                 return;
                               }
+                              final ImagePicker picker = ImagePicker();
+
+                              final XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
+                              if (pickedFile != null) {
+                                File file = File(pickedFile.path);
+                                controller.editImgList.add(file);
+                              }
+
+/*
                               FilePickerResult? result = await FilePicker.platform.pickFiles(
                                   type: FileType.custom,
                                   allowedExtensions: ['png','jpg','jpeg']
@@ -239,6 +249,8 @@ class ReviewEditScreen extends GetView<ReviewController>{
                                 File file = File(result.files.single.path.toString());
                                 controller.editImgList.add(file);
                               }
+
+ */
                             },
                             child: Container(
                               width: 57.w,

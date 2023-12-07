@@ -72,21 +72,18 @@ class _$PointCopyWithImpl<$Res, $Val extends Point>
 }
 
 /// @nodoc
-abstract class _$$PointImplCopyWith<$Res> implements $PointCopyWith<$Res> {
-  factory _$$PointImplCopyWith(
-          _$PointImpl value, $Res Function(_$PointImpl) then) =
-      __$$PointImplCopyWithImpl<$Res>;
+abstract class _$$_PointCopyWith<$Res> implements $PointCopyWith<$Res> {
+  factory _$$_PointCopyWith(_$_Point value, $Res Function(_$_Point) then) =
+      __$$_PointCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String subject, int point, String reg_time});
 }
 
 /// @nodoc
-class __$$PointImplCopyWithImpl<$Res>
-    extends _$PointCopyWithImpl<$Res, _$PointImpl>
-    implements _$$PointImplCopyWith<$Res> {
-  __$$PointImplCopyWithImpl(
-      _$PointImpl _value, $Res Function(_$PointImpl) _then)
+class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res, _$_Point>
+    implements _$$_PointCopyWith<$Res> {
+  __$$_PointCopyWithImpl(_$_Point _value, $Res Function(_$_Point) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +93,7 @@ class __$$PointImplCopyWithImpl<$Res>
     Object? point = null,
     Object? reg_time = null,
   }) {
-    return _then(_$PointImpl(
+    return _then(_$_Point(
       subject: null == subject
           ? _value.subject
           : subject // ignore: cast_nullable_to_non_nullable
@@ -115,11 +112,11 @@ class __$$PointImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PointImpl implements _Point {
-  _$PointImpl({this.subject = '', this.point = 0, this.reg_time = ''});
+class _$_Point implements _Point {
+  _$_Point({this.subject = '', this.point = 0, this.reg_time = ''});
 
-  factory _$PointImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PointImplFromJson(json);
+  factory _$_Point.fromJson(Map<String, dynamic> json) =>
+      _$$_PointFromJson(json);
 
   @override
   @JsonKey()
@@ -140,7 +137,7 @@ class _$PointImpl implements _Point {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PointImpl &&
+            other is _$_Point &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.point, point) || other.point == point) &&
             (identical(other.reg_time, reg_time) ||
@@ -154,12 +151,12 @@ class _$PointImpl implements _Point {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PointImplCopyWith<_$PointImpl> get copyWith =>
-      __$$PointImplCopyWithImpl<_$PointImpl>(this, _$identity);
+  _$$_PointCopyWith<_$_Point> get copyWith =>
+      __$$_PointCopyWithImpl<_$_Point>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PointImplToJson(
+    return _$$_PointToJson(
       this,
     );
   }
@@ -169,9 +166,9 @@ abstract class _Point implements Point {
   factory _Point(
       {final String subject,
       final int point,
-      final String reg_time}) = _$PointImpl;
+      final String reg_time}) = _$_Point;
 
-  factory _Point.fromJson(Map<String, dynamic> json) = _$PointImpl.fromJson;
+  factory _Point.fromJson(Map<String, dynamic> json) = _$_Point.fromJson;
 
   @override
   String get subject;
@@ -181,7 +178,7 @@ abstract class _Point implements Point {
   String get reg_time;
   @override
   @JsonKey(ignore: true)
-  _$$PointImplCopyWith<_$PointImpl> get copyWith =>
+  _$$_PointCopyWith<_$_Point> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -256,11 +253,11 @@ class _$PointResponseCopyWithImpl<$Res, $Val extends PointResponse>
 }
 
 /// @nodoc
-abstract class _$$PointResponseImplCopyWith<$Res>
+abstract class _$$_PointResponseCopyWith<$Res>
     implements $PointResponseCopyWith<$Res> {
-  factory _$$PointResponseImplCopyWith(
-          _$PointResponseImpl value, $Res Function(_$PointResponseImpl) then) =
-      __$$PointResponseImplCopyWithImpl<$Res>;
+  factory _$$_PointResponseCopyWith(
+          _$_PointResponse value, $Res Function(_$_PointResponse) then) =
+      __$$_PointResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -271,11 +268,11 @@ abstract class _$$PointResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PointResponseImplCopyWithImpl<$Res>
-    extends _$PointResponseCopyWithImpl<$Res, _$PointResponseImpl>
-    implements _$$PointResponseImplCopyWith<$Res> {
-  __$$PointResponseImplCopyWithImpl(
-      _$PointResponseImpl _value, $Res Function(_$PointResponseImpl) _then)
+class __$$_PointResponseCopyWithImpl<$Res>
+    extends _$PointResponseCopyWithImpl<$Res, _$_PointResponse>
+    implements _$$_PointResponseCopyWith<$Res> {
+  __$$_PointResponseCopyWithImpl(
+      _$_PointResponse _value, $Res Function(_$_PointResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -286,7 +283,7 @@ class __$$PointResponseImplCopyWithImpl<$Res>
     Object? point = null,
     Object? items = freezed,
   }) {
-    return _then(_$PointResponseImpl(
+    return _then(_$_PointResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -309,16 +306,16 @@ class __$$PointResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PointResponseImpl implements _PointResponse {
-  _$PointResponseImpl(
+class _$_PointResponse implements _PointResponse {
+  _$_PointResponse(
       {required this.status,
       this.message = '',
       this.point = 0,
       @JsonKey(name: 'list') final List<Point>? items = const []})
       : _items = items;
 
-  factory _$PointResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PointResponseImplFromJson(json);
+  factory _$_PointResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_PointResponseFromJson(json);
 
   @override
   final int status;
@@ -348,7 +345,7 @@ class _$PointResponseImpl implements _PointResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PointResponseImpl &&
+            other is _$_PointResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.point, point) || other.point == point) &&
@@ -363,12 +360,12 @@ class _$PointResponseImpl implements _PointResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PointResponseImplCopyWith<_$PointResponseImpl> get copyWith =>
-      __$$PointResponseImplCopyWithImpl<_$PointResponseImpl>(this, _$identity);
+  _$$_PointResponseCopyWith<_$_PointResponse> get copyWith =>
+      __$$_PointResponseCopyWithImpl<_$_PointResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PointResponseImplToJson(
+    return _$$_PointResponseToJson(
       this,
     );
   }
@@ -379,10 +376,10 @@ abstract class _PointResponse implements PointResponse {
       {required final int status,
       final String message,
       final int point,
-      @JsonKey(name: 'list') final List<Point>? items}) = _$PointResponseImpl;
+      @JsonKey(name: 'list') final List<Point>? items}) = _$_PointResponse;
 
   factory _PointResponse.fromJson(Map<String, dynamic> json) =
-      _$PointResponseImpl.fromJson;
+      _$_PointResponse.fromJson;
 
   @override
   int get status;
@@ -395,6 +392,6 @@ abstract class _PointResponse implements PointResponse {
   List<Point>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$PointResponseImplCopyWith<_$PointResponseImpl> get copyWith =>
+  _$$_PointResponseCopyWith<_$_PointResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

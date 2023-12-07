@@ -412,6 +412,8 @@ class BnvOneTouchScreen extends GetView<OneTouchController>{
 
   @override
   Widget build(BuildContext context) {
+    controller.getOneTouch();
+
     _scrollController.addListener(() {
       double maxScroll = _scrollController.position.maxScrollExtent;
       double currentScroll = _scrollController.position.pixels;
@@ -544,7 +546,7 @@ class BnvOneTouchScreen extends GetView<OneTouchController>{
                         delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int index){
                               return InkWell(
-                                onTap: (){
+                                onTap: () async {
                                   Get.toNamed(AppRoutes.productDetailScreen,arguments: {
                                     'productId' : controller.productList[index].it_id
                                   });
@@ -584,43 +586,72 @@ class BnvOneTouchScreen extends GetView<OneTouchController>{
                                       ),
                                     ),
                                     SizedBox(height: 2.h,),
-                                    SizedBox(
-                                      width: 146.w,
-                                      child: Text.rich(
-                                          TextSpan(
-                                              children: [
-                                                controller.productList[index].it_cust_price != controller.productList[index].it_price ? TextSpan(
-                                                  text: '${Constants.getPercent(controller.productList[index].it_price, controller.productList[index].it_cust_price)}%',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.primary,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ) : TextSpan(),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text.rich(
                                                 TextSpan(
-                                                  text: ' ${Constants.numberAddComma(controller.productList[index].it_price)}원',
-                                                  style: TextStyle(
-                                                    color: ColorConstant.black,
-                                                    fontSize: 12.sp,
-                                                    fontFamily: 'Noto Sans KR',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
+                                                    children: [
+                                                      controller.productList[index].it_cust_price != controller.productList[index].it_price ? TextSpan(
+                                                        text: '${Constants.getPercent(controller.productList[index].it_price, controller.productList[index].it_cust_price)}%',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.primary,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                      ) : TextSpan(),
+                                                      TextSpan(
+                                                        text: ' ${Constants.numberAddComma(controller.productList[index].it_price)}원',
+                                                        style: TextStyle(
+                                                          color: ColorConstant.black,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                        ),
+                                                      )
+                                                    ]
                                                 )
-                                              ]
-                                          )
-                                      ),
-                                    ),
-                                    controller.productList[index].it_cust_price != controller.productList[index].it_price ? Text(
-                                      '${Constants.numberAddComma(controller.productList[index].it_cust_price)}원',
-                                      style: TextStyle(
-                                          color: ColorConstant.gray1,
-                                          fontSize: 8.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                          decoration: TextDecoration.lineThrough
-                                      ),
-                                    ) : SizedBox()
+                                            ),
+                                            controller.productList[index].it_cust_price != controller.productList[index].it_price ? Text(
+                                              '${Constants.numberAddComma(controller.productList[index].it_cust_price)}원',
+                                              style: TextStyle(
+                                                  color: ColorConstant.gray1,
+                                                  fontSize: 8.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w700,
+                                                  decoration: TextDecoration.lineThrough
+                                              ),
+                                            ) : SizedBox()
+                                          ],
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () async {
+                                            controller.deleteOneTouch(context, controller.productList[index].ot_id, index);
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: ColorConstant.primary,
+                                              elevation: 0,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(Radius.circular(10.r))),
+                                              minimumSize: Size(45.w,20.h)
+                                          ),
+                                          child: Text(
+                                            '제거',
+                                            style: TextStyle(
+                                              color: ColorConstant.white,
+                                              fontSize: 8.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
 
                                   ],
                                 ),

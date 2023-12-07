@@ -6,9 +6,8 @@ part of 'cart_add_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CartAddResponseImpl _$$CartAddResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CartAddResponseImpl(
+_$_CartAddResponse _$$_CartAddResponseFromJson(Map<String, dynamic> json) =>
+    _$_CartAddResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items:
@@ -16,8 +15,7 @@ _$CartAddResponseImpl _$$CartAddResponseImplFromJson(
               const [],
     );
 
-Map<String, dynamic> _$$CartAddResponseImplToJson(
-        _$CartAddResponseImpl instance) =>
+Map<String, dynamic> _$$_CartAddResponseToJson(_$_CartAddResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

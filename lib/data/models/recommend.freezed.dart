@@ -118,11 +118,10 @@ class _$RecommendCopyWithImpl<$Res, $Val extends Recommend>
 }
 
 /// @nodoc
-abstract class _$$RecommendImplCopyWith<$Res>
-    implements $RecommendCopyWith<$Res> {
-  factory _$$RecommendImplCopyWith(
-          _$RecommendImpl value, $Res Function(_$RecommendImpl) then) =
-      __$$RecommendImplCopyWithImpl<$Res>;
+abstract class _$$_RecommendCopyWith<$Res> implements $RecommendCopyWith<$Res> {
+  factory _$$_RecommendCopyWith(
+          _$_Recommend value, $Res Function(_$_Recommend) then) =
+      __$$_RecommendCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -138,11 +137,11 @@ abstract class _$$RecommendImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RecommendImplCopyWithImpl<$Res>
-    extends _$RecommendCopyWithImpl<$Res, _$RecommendImpl>
-    implements _$$RecommendImplCopyWith<$Res> {
-  __$$RecommendImplCopyWithImpl(
-      _$RecommendImpl _value, $Res Function(_$RecommendImpl) _then)
+class __$$_RecommendCopyWithImpl<$Res>
+    extends _$RecommendCopyWithImpl<$Res, _$_Recommend>
+    implements _$$_RecommendCopyWith<$Res> {
+  __$$_RecommendCopyWithImpl(
+      _$_Recommend _value, $Res Function(_$_Recommend) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -158,7 +157,7 @@ class __$$RecommendImplCopyWithImpl<$Res>
     Object? it_sum_qty = null,
     Object? reviews = null,
   }) {
-    return _then(_$RecommendImpl(
+    return _then(_$_Recommend(
       it_id: null == it_id
           ? _value.it_id
           : it_id // ignore: cast_nullable_to_non_nullable
@@ -201,8 +200,8 @@ class __$$RecommendImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RecommendImpl implements _Recommend {
-  _$RecommendImpl(
+class _$_Recommend implements _Recommend {
+  _$_Recommend(
       {this.it_id = '',
       this.it_name = '',
       this.it_cust_price = 0,
@@ -213,8 +212,8 @@ class _$RecommendImpl implements _Recommend {
       this.it_sum_qty = 0,
       this.reviews = 0});
 
-  factory _$RecommendImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RecommendImplFromJson(json);
+  factory _$_Recommend.fromJson(Map<String, dynamic> json) =>
+      _$$_RecommendFromJson(json);
 
   @override
   @JsonKey()
@@ -253,7 +252,7 @@ class _$RecommendImpl implements _Recommend {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecommendImpl &&
+            other is _$_Recommend &&
             (identical(other.it_id, it_id) || other.it_id == it_id) &&
             (identical(other.it_name, it_name) || other.it_name == it_name) &&
             (identical(other.it_cust_price, it_cust_price) ||
@@ -277,12 +276,12 @@ class _$RecommendImpl implements _Recommend {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecommendImplCopyWith<_$RecommendImpl> get copyWith =>
-      __$$RecommendImplCopyWithImpl<_$RecommendImpl>(this, _$identity);
+  _$$_RecommendCopyWith<_$_Recommend> get copyWith =>
+      __$$_RecommendCopyWithImpl<_$_Recommend>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RecommendImplToJson(
+    return _$$_RecommendToJson(
       this,
     );
   }
@@ -298,10 +297,10 @@ abstract class _Recommend implements Recommend {
       final String it_time,
       final int it_use_cnt,
       final int it_sum_qty,
-      final int reviews}) = _$RecommendImpl;
+      final int reviews}) = _$_Recommend;
 
   factory _Recommend.fromJson(Map<String, dynamic> json) =
-      _$RecommendImpl.fromJson;
+      _$_Recommend.fromJson;
 
   @override
   String get it_id;
@@ -323,7 +322,7 @@ abstract class _Recommend implements Recommend {
   int get reviews;
   @override
   @JsonKey(ignore: true)
-  _$$RecommendImplCopyWith<_$RecommendImpl> get copyWith =>
+  _$$_RecommendCopyWith<_$_Recommend> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -398,11 +397,11 @@ class _$RecommendResponseCopyWithImpl<$Res, $Val extends RecommendResponse>
 }
 
 /// @nodoc
-abstract class _$$RecommendResponseImplCopyWith<$Res>
+abstract class _$$_RecommendResponseCopyWith<$Res>
     implements $RecommendResponseCopyWith<$Res> {
-  factory _$$RecommendResponseImplCopyWith(_$RecommendResponseImpl value,
-          $Res Function(_$RecommendResponseImpl) then) =
-      __$$RecommendResponseImplCopyWithImpl<$Res>;
+  factory _$$_RecommendResponseCopyWith(_$_RecommendResponse value,
+          $Res Function(_$_RecommendResponse) then) =
+      __$$_RecommendResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -413,11 +412,11 @@ abstract class _$$RecommendResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$RecommendResponseImplCopyWithImpl<$Res>
-    extends _$RecommendResponseCopyWithImpl<$Res, _$RecommendResponseImpl>
-    implements _$$RecommendResponseImplCopyWith<$Res> {
-  __$$RecommendResponseImplCopyWithImpl(_$RecommendResponseImpl _value,
-      $Res Function(_$RecommendResponseImpl) _then)
+class __$$_RecommendResponseCopyWithImpl<$Res>
+    extends _$RecommendResponseCopyWithImpl<$Res, _$_RecommendResponse>
+    implements _$$_RecommendResponseCopyWith<$Res> {
+  __$$_RecommendResponseCopyWithImpl(
+      _$_RecommendResponse _value, $Res Function(_$_RecommendResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -428,7 +427,7 @@ class __$$RecommendResponseImplCopyWithImpl<$Res>
     Object? items = freezed,
     Object? total_cnt = null,
   }) {
-    return _then(_$RecommendResponseImpl(
+    return _then(_$_RecommendResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -451,16 +450,16 @@ class __$$RecommendResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RecommendResponseImpl implements _RecommendResponse {
-  _$RecommendResponseImpl(
+class _$_RecommendResponse implements _RecommendResponse {
+  _$_RecommendResponse(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<Recommend>? items = const [],
       this.total_cnt = 0})
       : _items = items;
 
-  factory _$RecommendResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RecommendResponseImplFromJson(json);
+  factory _$_RecommendResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_RecommendResponseFromJson(json);
 
   @override
   final int status;
@@ -491,7 +490,7 @@ class _$RecommendResponseImpl implements _RecommendResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecommendResponseImpl &&
+            other is _$_RecommendResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
@@ -507,13 +506,13 @@ class _$RecommendResponseImpl implements _RecommendResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecommendResponseImplCopyWith<_$RecommendResponseImpl> get copyWith =>
-      __$$RecommendResponseImplCopyWithImpl<_$RecommendResponseImpl>(
+  _$$_RecommendResponseCopyWith<_$_RecommendResponse> get copyWith =>
+      __$$_RecommendResponseCopyWithImpl<_$_RecommendResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RecommendResponseImplToJson(
+    return _$$_RecommendResponseToJson(
       this,
     );
   }
@@ -524,10 +523,10 @@ abstract class _RecommendResponse implements RecommendResponse {
       {required final int status,
       final String message,
       @JsonKey(name: 'data') final List<Recommend>? items,
-      final int total_cnt}) = _$RecommendResponseImpl;
+      final int total_cnt}) = _$_RecommendResponse;
 
   factory _RecommendResponse.fromJson(Map<String, dynamic> json) =
-      _$RecommendResponseImpl.fromJson;
+      _$_RecommendResponse.fromJson;
 
   @override
   int get status;
@@ -540,6 +539,6 @@ abstract class _RecommendResponse implements RecommendResponse {
   int get total_cnt;
   @override
   @JsonKey(ignore: true)
-  _$$RecommendResponseImplCopyWith<_$RecommendResponseImpl> get copyWith =>
+  _$$_RecommendResponseCopyWith<_$_RecommendResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

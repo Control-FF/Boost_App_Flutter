@@ -76,11 +76,11 @@ class _$CartAddResponseCopyWithImpl<$Res, $Val extends CartAddResponse>
 }
 
 /// @nodoc
-abstract class _$$CartAddResponseImplCopyWith<$Res>
+abstract class _$$_CartAddResponseCopyWith<$Res>
     implements $CartAddResponseCopyWith<$Res> {
-  factory _$$CartAddResponseImplCopyWith(_$CartAddResponseImpl value,
-          $Res Function(_$CartAddResponseImpl) then) =
-      __$$CartAddResponseImplCopyWithImpl<$Res>;
+  factory _$$_CartAddResponseCopyWith(
+          _$_CartAddResponse value, $Res Function(_$_CartAddResponse) then) =
+      __$$_CartAddResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,11 +88,11 @@ abstract class _$$CartAddResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CartAddResponseImplCopyWithImpl<$Res>
-    extends _$CartAddResponseCopyWithImpl<$Res, _$CartAddResponseImpl>
-    implements _$$CartAddResponseImplCopyWith<$Res> {
-  __$$CartAddResponseImplCopyWithImpl(
-      _$CartAddResponseImpl _value, $Res Function(_$CartAddResponseImpl) _then)
+class __$$_CartAddResponseCopyWithImpl<$Res>
+    extends _$CartAddResponseCopyWithImpl<$Res, _$_CartAddResponse>
+    implements _$$_CartAddResponseCopyWith<$Res> {
+  __$$_CartAddResponseCopyWithImpl(
+      _$_CartAddResponse _value, $Res Function(_$_CartAddResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$CartAddResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$CartAddResponseImpl(
+    return _then(_$_CartAddResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -121,15 +121,15 @@ class __$$CartAddResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CartAddResponseImpl implements _CartAddResponse {
-  _$CartAddResponseImpl(
+class _$_CartAddResponse implements _CartAddResponse {
+  _$_CartAddResponse(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'cart_id') final List<int>? items = const []})
       : _items = items;
 
-  factory _$CartAddResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CartAddResponseImplFromJson(json);
+  factory _$_CartAddResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_CartAddResponseFromJson(json);
 
   @override
   final int status;
@@ -156,7 +156,7 @@ class _$CartAddResponseImpl implements _CartAddResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CartAddResponseImpl &&
+            other is _$_CartAddResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -170,13 +170,12 @@ class _$CartAddResponseImpl implements _CartAddResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CartAddResponseImplCopyWith<_$CartAddResponseImpl> get copyWith =>
-      __$$CartAddResponseImplCopyWithImpl<_$CartAddResponseImpl>(
-          this, _$identity);
+  _$$_CartAddResponseCopyWith<_$_CartAddResponse> get copyWith =>
+      __$$_CartAddResponseCopyWithImpl<_$_CartAddResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CartAddResponseImplToJson(
+    return _$$_CartAddResponseToJson(
       this,
     );
   }
@@ -184,13 +183,12 @@ class _$CartAddResponseImpl implements _CartAddResponse {
 
 abstract class _CartAddResponse implements CartAddResponse {
   factory _CartAddResponse(
-          {required final int status,
-          final String message,
-          @JsonKey(name: 'cart_id') final List<int>? items}) =
-      _$CartAddResponseImpl;
+      {required final int status,
+      final String message,
+      @JsonKey(name: 'cart_id') final List<int>? items}) = _$_CartAddResponse;
 
   factory _CartAddResponse.fromJson(Map<String, dynamic> json) =
-      _$CartAddResponseImpl.fromJson;
+      _$_CartAddResponse.fromJson;
 
   @override
   int get status;
@@ -201,6 +199,6 @@ abstract class _CartAddResponse implements CartAddResponse {
   List<int>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$CartAddResponseImplCopyWith<_$CartAddResponseImpl> get copyWith =>
+  _$$_CartAddResponseCopyWith<_$_CartAddResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

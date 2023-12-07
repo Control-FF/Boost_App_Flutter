@@ -6,8 +6,7 @@ part of 'time.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TimeDataImpl _$$TimeDataImplFromJson(Map<String, dynamic> json) =>
-    _$TimeDataImpl(
+_$_TimeData _$$_TimeDataFromJson(Map<String, dynamic> json) => _$_TimeData(
       banner: json['banner'] == null
           ? null
           : TimeBanner.fromJson(json['banner'] as Map<String, dynamic>),
@@ -17,14 +16,14 @@ _$TimeDataImpl _$$TimeDataImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$TimeDataImplToJson(_$TimeDataImpl instance) =>
+Map<String, dynamic> _$$_TimeDataToJson(_$_TimeData instance) =>
     <String, dynamic>{
       'banner': instance.banner,
       'timesSaleItems': instance.timeSaleData,
     };
 
-_$TimeBannerImpl _$$TimeBannerImplFromJson(Map<String, dynamic> json) =>
-    _$TimeBannerImpl(
+_$_TimeBanner _$$_TimeBannerFromJson(Map<String, dynamic> json) =>
+    _$_TimeBanner(
       mainBanner: (json['mainBanner'] as List<dynamic>?)
               ?.map((e) => TimeBannerList.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -35,22 +34,21 @@ _$TimeBannerImpl _$$TimeBannerImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$TimeBannerImplToJson(_$TimeBannerImpl instance) =>
+Map<String, dynamic> _$$_TimeBannerToJson(_$_TimeBanner instance) =>
     <String, dynamic>{
       'mainBanner': instance.mainBanner,
       'bottomBanner': instance.bottomBanner,
     };
 
-_$TimeBannerListImpl _$$TimeBannerListImplFromJson(Map<String, dynamic> json) =>
-    _$TimeBannerListImpl(
+_$_TimeBannerList _$$_TimeBannerListFromJson(Map<String, dynamic> json) =>
+    _$_TimeBannerList(
       bn_id: json['bn_id'] as int? ?? 0,
       bn_alt: json['bn_alt'] as String? ?? '',
       bn_url: json['bn_url'] as String? ?? '',
       bn_img: json['bn_img'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$TimeBannerListImplToJson(
-        _$TimeBannerListImpl instance) =>
+Map<String, dynamic> _$$_TimeBannerListToJson(_$_TimeBannerList instance) =>
     <String, dynamic>{
       'bn_id': instance.bn_id,
       'bn_alt': instance.bn_alt,
@@ -58,8 +56,8 @@ Map<String, dynamic> _$$TimeBannerListImplToJson(
       'bn_img': instance.bn_img,
     };
 
-_$TimeSaleItemImpl _$$TimeSaleItemImplFromJson(Map<String, dynamic> json) =>
-    _$TimeSaleItemImpl(
+_$_TimeSaleItem _$$_TimeSaleItemFromJson(Map<String, dynamic> json) =>
+    _$_TimeSaleItem(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -72,7 +70,7 @@ _$TimeSaleItemImpl _$$TimeSaleItemImplFromJson(Map<String, dynamic> json) =>
       sale_end_time: json['sale_end_time'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$TimeSaleItemImplToJson(_$TimeSaleItemImpl instance) =>
+Map<String, dynamic> _$$_TimeSaleItemToJson(_$_TimeSaleItem instance) =>
     <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -86,8 +84,8 @@ Map<String, dynamic> _$$TimeSaleItemImplToJson(_$TimeSaleItemImpl instance) =>
       'sale_end_time': instance.sale_end_time,
     };
 
-_$TimeResponseImpl _$$TimeResponseImplFromJson(Map<String, dynamic> json) =>
-    _$TimeResponseImpl(
+_$_TimeResponse _$$_TimeResponseFromJson(Map<String, dynamic> json) =>
+    _$_TimeResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       data: json['data'] == null
@@ -95,7 +93,7 @@ _$TimeResponseImpl _$$TimeResponseImplFromJson(Map<String, dynamic> json) =>
           : TimeData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$TimeResponseImplToJson(_$TimeResponseImpl instance) =>
+Map<String, dynamic> _$$_TimeResponseToJson(_$_TimeResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

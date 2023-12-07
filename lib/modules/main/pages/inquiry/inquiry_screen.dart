@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class InquiryScreen extends GetView<InquiryController>{
 
@@ -493,12 +494,11 @@ class InquiryScreen extends GetView<InquiryController>{
                                     if(controller.imgList.length == 2){
                                       return;
                                     }
-                                    FilePickerResult? result = await FilePicker.platform.pickFiles(
-                                        type: FileType.custom,
-                                        allowedExtensions: ['png','jpg','jpeg']
-                                    );
-                                    if(result != null) {
-                                      File file = File(result.files.single.path.toString());
+                                    final ImagePicker picker = ImagePicker();
+
+                                    final XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
+                                    if (pickedFile != null) {
+                                      File file = File(pickedFile.path);
                                       controller.imgList.add(file);
                                     }
                                   },

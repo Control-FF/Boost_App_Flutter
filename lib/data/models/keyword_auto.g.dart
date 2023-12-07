@@ -6,9 +6,9 @@ part of 'keyword_auto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KeywordAutoResponseImpl _$$KeywordAutoResponseImplFromJson(
+_$_KeywordAutoResponse _$$_KeywordAutoResponseFromJson(
         Map<String, dynamic> json) =>
-    _$KeywordAutoResponseImpl(
+    _$_KeywordAutoResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items:
@@ -16,8 +16,8 @@ _$KeywordAutoResponseImpl _$$KeywordAutoResponseImplFromJson(
               const [],
     );
 
-Map<String, dynamic> _$$KeywordAutoResponseImplToJson(
-        _$KeywordAutoResponseImpl instance) =>
+Map<String, dynamic> _$$_KeywordAutoResponseToJson(
+        _$_KeywordAutoResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

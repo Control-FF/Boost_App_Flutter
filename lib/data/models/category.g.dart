@@ -6,23 +6,21 @@ part of 'category.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
-    _$CategoryImpl(
+_$_Category _$$_CategoryFromJson(Map<String, dynamic> json) => _$_Category(
       ca_id: json['ca_id'] as String? ?? '',
       ca_name: json['ca_name'] as String? ?? '',
       sub_flag: json['sub_flag'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
+Map<String, dynamic> _$$_CategoryToJson(_$_Category instance) =>
     <String, dynamic>{
       'ca_id': instance.ca_id,
       'ca_name': instance.ca_name,
       'sub_flag': instance.sub_flag,
     };
 
-_$CategoryResponseImpl _$$CategoryResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CategoryResponseImpl(
+_$_CategoryResponse _$$_CategoryResponseFromJson(Map<String, dynamic> json) =>
+    _$_CategoryResponse(
       status: json['status'] as int,
       message: json['message'] as String,
       items: (json['data'] as List<dynamic>?)
@@ -31,8 +29,7 @@ _$CategoryResponseImpl _$$CategoryResponseImplFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$CategoryResponseImplToJson(
-        _$CategoryResponseImpl instance) =>
+Map<String, dynamic> _$$_CategoryResponseToJson(_$_CategoryResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

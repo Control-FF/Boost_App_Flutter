@@ -6,7 +6,7 @@ part of 'review.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ReviewImpl _$$ReviewImplFromJson(Map<String, dynamic> json) => _$ReviewImpl(
+_$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
       is_id: json['is_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
@@ -26,8 +26,7 @@ _$ReviewImpl _$$ReviewImplFromJson(Map<String, dynamic> json) => _$ReviewImpl(
       isExpand: json['isExpand'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
       'is_id': instance.is_id,
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -47,8 +46,8 @@ Map<String, dynamic> _$$ReviewImplToJson(_$ReviewImpl instance) =>
       'isExpand': instance.isExpand,
     };
 
-_$ReviewResponseImpl _$$ReviewResponseImplFromJson(Map<String, dynamic> json) =>
-    _$ReviewResponseImpl(
+_$_ReviewResponse _$$_ReviewResponseFromJson(Map<String, dynamic> json) =>
+    _$_ReviewResponse(
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
               ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
@@ -56,8 +55,7 @@ _$ReviewResponseImpl _$$ReviewResponseImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$ReviewResponseImplToJson(
-        _$ReviewResponseImpl instance) =>
+Map<String, dynamic> _$$_ReviewResponseToJson(_$_ReviewResponse instance) =>
     <String, dynamic>{
       'message': instance.message,
       'data': instance.items,

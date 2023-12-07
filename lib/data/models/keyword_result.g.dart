@@ -6,8 +6,8 @@ part of 'keyword_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KeywordResultImpl _$$KeywordResultImplFromJson(Map<String, dynamic> json) =>
-    _$KeywordResultImpl(
+_$_KeywordResult _$$_KeywordResultFromJson(Map<String, dynamic> json) =>
+    _$_KeywordResult(
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
       it_cust_price: json['it_cust_price'] as int? ?? 0,
@@ -18,7 +18,7 @@ _$KeywordResultImpl _$$KeywordResultImplFromJson(Map<String, dynamic> json) =>
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$KeywordResultImplToJson(_$KeywordResultImpl instance) =>
+Map<String, dynamic> _$$_KeywordResultToJson(_$_KeywordResult instance) =>
     <String, dynamic>{
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -30,9 +30,9 @@ Map<String, dynamic> _$$KeywordResultImplToJson(_$KeywordResultImpl instance) =>
       'it_sum_qty': instance.it_sum_qty,
     };
 
-_$KeywordResultResponseImpl _$$KeywordResultResponseImplFromJson(
+_$_KeywordResultResponse _$$_KeywordResultResponseFromJson(
         Map<String, dynamic> json) =>
-    _$KeywordResultResponseImpl(
+    _$_KeywordResultResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -42,8 +42,8 @@ _$KeywordResultResponseImpl _$$KeywordResultResponseImplFromJson(
       total_cnt: json['total_cnt'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$KeywordResultResponseImplToJson(
-        _$KeywordResultResponseImpl instance) =>
+Map<String, dynamic> _$$_KeywordResultResponseToJson(
+        _$_KeywordResultResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

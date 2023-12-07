@@ -6,7 +6,7 @@ part of 'cart.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
+_$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
       item_count: json['item_count'] as int? ?? 0,
       items: (json['cart_items'] as List<dynamic>?)
               ?.map((e) => CartItem.fromJson(e as Map<String, dynamic>))
@@ -14,14 +14,12 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
           const [],
     );
 
-Map<String, dynamic> _$$CartImplToJson(_$CartImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_CartToJson(_$_Cart instance) => <String, dynamic>{
       'item_count': instance.item_count,
       'cart_items': instance.items,
     };
 
-_$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
-    _$CartItemImpl(
+_$_CartItem _$$_CartItemFromJson(Map<String, dynamic> json) => _$_CartItem(
       ct_id: json['ct_id'] as int? ?? 0,
       od_id: json['od_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
@@ -41,7 +39,7 @@ _$CartItemImpl _$$CartItemImplFromJson(Map<String, dynamic> json) =>
       isCheck: json['isCheck'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>
+Map<String, dynamic> _$$_CartItemToJson(_$_CartItem instance) =>
     <String, dynamic>{
       'ct_id': instance.ct_id,
       'od_id': instance.od_id,
@@ -62,8 +60,8 @@ Map<String, dynamic> _$$CartItemImplToJson(_$CartItemImpl instance) =>
       'isCheck': instance.isCheck,
     };
 
-_$CartResponseImpl _$$CartResponseImplFromJson(Map<String, dynamic> json) =>
-    _$CartResponseImpl(
+_$_CartResponse _$$_CartResponseFromJson(Map<String, dynamic> json) =>
+    _$_CartResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       data: json['data'] == null
@@ -71,7 +69,7 @@ _$CartResponseImpl _$$CartResponseImplFromJson(Map<String, dynamic> json) =>
           : Cart.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$CartResponseImplToJson(_$CartResponseImpl instance) =>
+Map<String, dynamic> _$$_CartResponseToJson(_$_CartResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

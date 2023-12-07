@@ -6,16 +6,16 @@ part of 'order_request_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderRequestResponseImpl _$$OrderRequestResponseImplFromJson(
+_$_OrderRequestResponse _$$_OrderRequestResponseFromJson(
         Map<String, dynamic> json) =>
-    _$OrderRequestResponseImpl(
+    _$_OrderRequestResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       od_id: json['od_id'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$OrderRequestResponseImplToJson(
-        _$OrderRequestResponseImpl instance) =>
+Map<String, dynamic> _$$_OrderRequestResponseToJson(
+        _$_OrderRequestResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

@@ -6,6 +6,7 @@ part 'onetouch.g.dart';
 @freezed
 class OneTouch with _$OneTouch {
   factory OneTouch({
+    @Default(0) int ot_id,
     @Default('') String it_id,
     @Default('') String it_name,
     @Default(0) int it_cust_price,
@@ -14,6 +15,7 @@ class OneTouch with _$OneTouch {
     @Default('') String it_time,
     @Default(0) int it_use_cnt,
     @Default(0) int it_sum_qty,
+    @Default(0) int reviews,
   }) = _OneTouch;
 
   factory OneTouch.fromJson(Map<String, dynamic> json) =>

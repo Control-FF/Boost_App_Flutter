@@ -81,11 +81,11 @@ class _$TokenResponseCopyWithImpl<$Res, $Val extends TokenResponse>
 }
 
 /// @nodoc
-abstract class _$$TokenResponseImplCopyWith<$Res>
+abstract class _$$_TokenResponseCopyWith<$Res>
     implements $TokenResponseCopyWith<$Res> {
-  factory _$$TokenResponseImplCopyWith(
-          _$TokenResponseImpl value, $Res Function(_$TokenResponseImpl) then) =
-      __$$TokenResponseImplCopyWithImpl<$Res>;
+  factory _$$_TokenResponseCopyWith(
+          _$_TokenResponse value, $Res Function(_$_TokenResponse) then) =
+      __$$_TokenResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$TokenResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TokenResponseImplCopyWithImpl<$Res>
-    extends _$TokenResponseCopyWithImpl<$Res, _$TokenResponseImpl>
-    implements _$$TokenResponseImplCopyWith<$Res> {
-  __$$TokenResponseImplCopyWithImpl(
-      _$TokenResponseImpl _value, $Res Function(_$TokenResponseImpl) _then)
+class __$$_TokenResponseCopyWithImpl<$Res>
+    extends _$TokenResponseCopyWithImpl<$Res, _$_TokenResponse>
+    implements _$$_TokenResponseCopyWith<$Res> {
+  __$$_TokenResponseCopyWithImpl(
+      _$_TokenResponse _value, $Res Function(_$_TokenResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +108,7 @@ class __$$TokenResponseImplCopyWithImpl<$Res>
     Object? accessToken = freezed,
     Object? refreshToken = freezed,
   }) {
-    return _then(_$TokenResponseImpl(
+    return _then(_$_TokenResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -131,15 +131,15 @@ class __$$TokenResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TokenResponseImpl implements _TokenResponse {
-  _$TokenResponseImpl(
+class _$_TokenResponse implements _TokenResponse {
+  _$_TokenResponse(
       {required this.status,
       this.message = '',
       this.accessToken = '',
       this.refreshToken = ''});
 
-  factory _$TokenResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TokenResponseImplFromJson(json);
+  factory _$_TokenResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_TokenResponseFromJson(json);
 
   @override
   final int status;
@@ -162,7 +162,7 @@ class _$TokenResponseImpl implements _TokenResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokenResponseImpl &&
+            other is _$_TokenResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.accessToken, accessToken) ||
@@ -179,12 +179,12 @@ class _$TokenResponseImpl implements _TokenResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TokenResponseImplCopyWith<_$TokenResponseImpl> get copyWith =>
-      __$$TokenResponseImplCopyWithImpl<_$TokenResponseImpl>(this, _$identity);
+  _$$_TokenResponseCopyWith<_$_TokenResponse> get copyWith =>
+      __$$_TokenResponseCopyWithImpl<_$_TokenResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TokenResponseImplToJson(
+    return _$$_TokenResponseToJson(
       this,
     );
   }
@@ -195,10 +195,10 @@ abstract class _TokenResponse implements TokenResponse {
       {required final int status,
       final String message,
       final String? accessToken,
-      final String? refreshToken}) = _$TokenResponseImpl;
+      final String? refreshToken}) = _$_TokenResponse;
 
   factory _TokenResponse.fromJson(Map<String, dynamic> json) =
-      _$TokenResponseImpl.fromJson;
+      _$_TokenResponse.fromJson;
 
   @override
   int get status;
@@ -210,6 +210,6 @@ abstract class _TokenResponse implements TokenResponse {
   String? get refreshToken;
   @override
   @JsonKey(ignore: true)
-  _$$TokenResponseImplCopyWith<_$TokenResponseImpl> get copyWith =>
+  _$$_TokenResponseCopyWith<_$_TokenResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

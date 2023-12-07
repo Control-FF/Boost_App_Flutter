@@ -103,10 +103,10 @@ class _$InquiryCopyWithImpl<$Res, $Val extends Inquiry>
 }
 
 /// @nodoc
-abstract class _$$InquiryImplCopyWith<$Res> implements $InquiryCopyWith<$Res> {
-  factory _$$InquiryImplCopyWith(
-          _$InquiryImpl value, $Res Function(_$InquiryImpl) then) =
-      __$$InquiryImplCopyWithImpl<$Res>;
+abstract class _$$_InquiryCopyWith<$Res> implements $InquiryCopyWith<$Res> {
+  factory _$$_InquiryCopyWith(
+          _$_Inquiry value, $Res Function(_$_Inquiry) then) =
+      __$$_InquiryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,11 +120,10 @@ abstract class _$$InquiryImplCopyWith<$Res> implements $InquiryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$InquiryImplCopyWithImpl<$Res>
-    extends _$InquiryCopyWithImpl<$Res, _$InquiryImpl>
-    implements _$$InquiryImplCopyWith<$Res> {
-  __$$InquiryImplCopyWithImpl(
-      _$InquiryImpl _value, $Res Function(_$InquiryImpl) _then)
+class __$$_InquiryCopyWithImpl<$Res>
+    extends _$InquiryCopyWithImpl<$Res, _$_Inquiry>
+    implements _$$_InquiryCopyWith<$Res> {
+  __$$_InquiryCopyWithImpl(_$_Inquiry _value, $Res Function(_$_Inquiry) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +137,7 @@ class __$$InquiryImplCopyWithImpl<$Res>
     Object? iq_time = null,
     Object? iq_answer_time = freezed,
   }) {
-    return _then(_$InquiryImpl(
+    return _then(_$_Inquiry(
       iq_id: null == iq_id
           ? _value.iq_id
           : iq_id // ignore: cast_nullable_to_non_nullable
@@ -173,8 +172,8 @@ class __$$InquiryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InquiryImpl implements _Inquiry {
-  _$InquiryImpl(
+class _$_Inquiry implements _Inquiry {
+  _$_Inquiry(
       {this.iq_id = 0,
       this.iq_type = '',
       this.iq_question = '',
@@ -183,8 +182,8 @@ class _$InquiryImpl implements _Inquiry {
       this.iq_time = '',
       this.iq_answer_time = ''});
 
-  factory _$InquiryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InquiryImplFromJson(json);
+  factory _$_Inquiry.fromJson(Map<String, dynamic> json) =>
+      _$$_InquiryFromJson(json);
 
   @override
   @JsonKey()
@@ -217,7 +216,7 @@ class _$InquiryImpl implements _Inquiry {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InquiryImpl &&
+            other is _$_Inquiry &&
             (identical(other.iq_id, iq_id) || other.iq_id == iq_id) &&
             (identical(other.iq_type, iq_type) || other.iq_type == iq_type) &&
             (identical(other.iq_question, iq_question) ||
@@ -239,12 +238,12 @@ class _$InquiryImpl implements _Inquiry {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InquiryImplCopyWith<_$InquiryImpl> get copyWith =>
-      __$$InquiryImplCopyWithImpl<_$InquiryImpl>(this, _$identity);
+  _$$_InquiryCopyWith<_$_Inquiry> get copyWith =>
+      __$$_InquiryCopyWithImpl<_$_Inquiry>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InquiryImplToJson(
+    return _$$_InquiryToJson(
       this,
     );
   }
@@ -258,9 +257,9 @@ abstract class _Inquiry implements Inquiry {
       final String iq_answer,
       final String is_secret,
       final String iq_time,
-      final String? iq_answer_time}) = _$InquiryImpl;
+      final String? iq_answer_time}) = _$_Inquiry;
 
-  factory _Inquiry.fromJson(Map<String, dynamic> json) = _$InquiryImpl.fromJson;
+  factory _Inquiry.fromJson(Map<String, dynamic> json) = _$_Inquiry.fromJson;
 
   @override
   int get iq_id;
@@ -278,7 +277,7 @@ abstract class _Inquiry implements Inquiry {
   String? get iq_answer_time;
   @override
   @JsonKey(ignore: true)
-  _$$InquiryImplCopyWith<_$InquiryImpl> get copyWith =>
+  _$$_InquiryCopyWith<_$_Inquiry> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -381,11 +380,11 @@ class _$InquiryResponseCopyWithImpl<$Res, $Val extends InquiryResponse>
 }
 
 /// @nodoc
-abstract class _$$InquiryResponseImplCopyWith<$Res>
+abstract class _$$_InquiryResponseCopyWith<$Res>
     implements $InquiryResponseCopyWith<$Res> {
-  factory _$$InquiryResponseImplCopyWith(_$InquiryResponseImpl value,
-          $Res Function(_$InquiryResponseImpl) then) =
-      __$$InquiryResponseImplCopyWithImpl<$Res>;
+  factory _$$_InquiryResponseCopyWith(
+          _$_InquiryResponse value, $Res Function(_$_InquiryResponse) then) =
+      __$$_InquiryResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -400,11 +399,11 @@ abstract class _$$InquiryResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$InquiryResponseImplCopyWithImpl<$Res>
-    extends _$InquiryResponseCopyWithImpl<$Res, _$InquiryResponseImpl>
-    implements _$$InquiryResponseImplCopyWith<$Res> {
-  __$$InquiryResponseImplCopyWithImpl(
-      _$InquiryResponseImpl _value, $Res Function(_$InquiryResponseImpl) _then)
+class __$$_InquiryResponseCopyWithImpl<$Res>
+    extends _$InquiryResponseCopyWithImpl<$Res, _$_InquiryResponse>
+    implements _$$_InquiryResponseCopyWith<$Res> {
+  __$$_InquiryResponseCopyWithImpl(
+      _$_InquiryResponse _value, $Res Function(_$_InquiryResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -419,7 +418,7 @@ class __$$InquiryResponseImplCopyWithImpl<$Res>
     Object? isLastPage = null,
     Object? items = freezed,
   }) {
-    return _then(_$InquiryResponseImpl(
+    return _then(_$_InquiryResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -458,8 +457,8 @@ class __$$InquiryResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InquiryResponseImpl implements _InquiryResponse {
-  _$InquiryResponseImpl(
+class _$_InquiryResponse implements _InquiryResponse {
+  _$_InquiryResponse(
       {required this.status,
       this.message = '',
       this.page = 0,
@@ -470,8 +469,8 @@ class _$InquiryResponseImpl implements _InquiryResponse {
       @JsonKey(name: 'list') final List<Inquiry>? items = const []})
       : _items = items;
 
-  factory _$InquiryResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InquiryResponseImplFromJson(json);
+  factory _$_InquiryResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_InquiryResponseFromJson(json);
 
   @override
   final int status;
@@ -513,7 +512,7 @@ class _$InquiryResponseImpl implements _InquiryResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InquiryResponseImpl &&
+            other is _$_InquiryResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.page, page) || other.page == page) &&
@@ -544,13 +543,12 @@ class _$InquiryResponseImpl implements _InquiryResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InquiryResponseImplCopyWith<_$InquiryResponseImpl> get copyWith =>
-      __$$InquiryResponseImplCopyWithImpl<_$InquiryResponseImpl>(
-          this, _$identity);
+  _$$_InquiryResponseCopyWith<_$_InquiryResponse> get copyWith =>
+      __$$_InquiryResponseCopyWithImpl<_$_InquiryResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InquiryResponseImplToJson(
+    return _$$_InquiryResponseToJson(
       this,
     );
   }
@@ -558,18 +556,17 @@ class _$InquiryResponseImpl implements _InquiryResponse {
 
 abstract class _InquiryResponse implements InquiryResponse {
   factory _InquiryResponse(
-          {required final int status,
-          final String message,
-          final int page,
-          final int listSize,
-          final int totalPage,
-          final int totalCount,
-          final String isLastPage,
-          @JsonKey(name: 'list') final List<Inquiry>? items}) =
-      _$InquiryResponseImpl;
+      {required final int status,
+      final String message,
+      final int page,
+      final int listSize,
+      final int totalPage,
+      final int totalCount,
+      final String isLastPage,
+      @JsonKey(name: 'list') final List<Inquiry>? items}) = _$_InquiryResponse;
 
   factory _InquiryResponse.fromJson(Map<String, dynamic> json) =
-      _$InquiryResponseImpl.fromJson;
+      _$_InquiryResponse.fromJson;
 
   @override
   int get status;
@@ -590,6 +587,6 @@ abstract class _InquiryResponse implements InquiryResponse {
   List<Inquiry>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$InquiryResponseImplCopyWith<_$InquiryResponseImpl> get copyWith =>
+  _$$_InquiryResponseCopyWith<_$_InquiryResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

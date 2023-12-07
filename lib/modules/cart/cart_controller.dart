@@ -79,18 +79,14 @@ class CartController extends GetxController{
     result.fold(
       (failure) => print(failure.message),
       (response) {
-        if(type == 'oneTouch'){
-          showOneTouchPopup(context);
-        }else{
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            elevation: 6.0,
-            behavior: SnackBarBehavior.floating,
-            content: Text(
-              '장바구니에 추가되었습니다.',
-              style: TextStyle(color: Colors.white),
-            ),
-          ));
-        }
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          elevation: 6.0,
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            '장바구니에 추가되었습니다.',
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
 
         getCartList();
       },
@@ -216,76 +212,5 @@ class CartController extends GetxController{
     }
 
     return checkCnt;
-  }
-
-  void showOneTouchPopup(context){
-    getCartList();
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            insetPadding: EdgeInsets.symmetric(horizontal: 68.w),
-            contentPadding: EdgeInsets.zero,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.r))
-            ),
-            content: Container(
-              height: 110.h,
-              alignment: Alignment.center,
-              child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '원터치 상품이 추가되었습니다.',
-                        style: TextStyle(
-                          color: ColorConstant.black,
-                          fontSize: 12.sp,
-                          fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 14.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 50.w,
-                            height: 23.h,
-                            child: ElevatedButton(
-                              onPressed: (){
-                                Get.back();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: ColorConstant.primary,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
-                                  ),
-                                  padding: EdgeInsets.all(0)
-                              ),
-                              child: Text(
-                                '확인',
-                                style: TextStyle(
-                                  color: ColorConstant.white,
-                                  fontSize: 10.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  )
-              ),
-            ),
-          );
-        });
   }
 }

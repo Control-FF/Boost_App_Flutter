@@ -91,11 +91,11 @@ class _$OrderInfoAddressCopyWithImpl<$Res, $Val extends OrderInfoAddress>
 }
 
 /// @nodoc
-abstract class _$$OrderInfoAddressImplCopyWith<$Res>
+abstract class _$$_OrderInfoAddressCopyWith<$Res>
     implements $OrderInfoAddressCopyWith<$Res> {
-  factory _$$OrderInfoAddressImplCopyWith(_$OrderInfoAddressImpl value,
-          $Res Function(_$OrderInfoAddressImpl) then) =
-      __$$OrderInfoAddressImplCopyWithImpl<$Res>;
+  factory _$$_OrderInfoAddressCopyWith(
+          _$_OrderInfoAddress value, $Res Function(_$_OrderInfoAddress) then) =
+      __$$_OrderInfoAddressCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$OrderInfoAddressImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OrderInfoAddressImplCopyWithImpl<$Res>
-    extends _$OrderInfoAddressCopyWithImpl<$Res, _$OrderInfoAddressImpl>
-    implements _$$OrderInfoAddressImplCopyWith<$Res> {
-  __$$OrderInfoAddressImplCopyWithImpl(_$OrderInfoAddressImpl _value,
-      $Res Function(_$OrderInfoAddressImpl) _then)
+class __$$_OrderInfoAddressCopyWithImpl<$Res>
+    extends _$OrderInfoAddressCopyWithImpl<$Res, _$_OrderInfoAddress>
+    implements _$$_OrderInfoAddressCopyWith<$Res> {
+  __$$_OrderInfoAddressCopyWithImpl(
+      _$_OrderInfoAddress _value, $Res Function(_$_OrderInfoAddress) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$OrderInfoAddressImplCopyWithImpl<$Res>
     Object? address1 = null,
     Object? address2 = null,
   }) {
-    return _then(_$OrderInfoAddressImpl(
+    return _then(_$_OrderInfoAddress(
       ad_id: null == ad_id
           ? _value.ad_id
           : ad_id // ignore: cast_nullable_to_non_nullable
@@ -150,16 +150,16 @@ class __$$OrderInfoAddressImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderInfoAddressImpl implements _OrderInfoAddress {
-  _$OrderInfoAddressImpl(
+class _$_OrderInfoAddress implements _OrderInfoAddress {
+  _$_OrderInfoAddress(
       {this.ad_id = 0,
       this.ad_name = '',
       this.ad_hp = '',
       this.address1 = '',
       this.address2 = ''});
 
-  factory _$OrderInfoAddressImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderInfoAddressImplFromJson(json);
+  factory _$_OrderInfoAddress.fromJson(Map<String, dynamic> json) =>
+      _$$_OrderInfoAddressFromJson(json);
 
   @override
   @JsonKey()
@@ -186,7 +186,7 @@ class _$OrderInfoAddressImpl implements _OrderInfoAddress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderInfoAddressImpl &&
+            other is _$_OrderInfoAddress &&
             (identical(other.ad_id, ad_id) || other.ad_id == ad_id) &&
             (identical(other.ad_name, ad_name) || other.ad_name == ad_name) &&
             (identical(other.ad_hp, ad_hp) || other.ad_hp == ad_hp) &&
@@ -204,13 +204,12 @@ class _$OrderInfoAddressImpl implements _OrderInfoAddress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderInfoAddressImplCopyWith<_$OrderInfoAddressImpl> get copyWith =>
-      __$$OrderInfoAddressImplCopyWithImpl<_$OrderInfoAddressImpl>(
-          this, _$identity);
+  _$$_OrderInfoAddressCopyWith<_$_OrderInfoAddress> get copyWith =>
+      __$$_OrderInfoAddressCopyWithImpl<_$_OrderInfoAddress>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderInfoAddressImplToJson(
+    return _$$_OrderInfoAddressToJson(
       this,
     );
   }
@@ -222,10 +221,10 @@ abstract class _OrderInfoAddress implements OrderInfoAddress {
       final String ad_name,
       final String ad_hp,
       final String address1,
-      final String address2}) = _$OrderInfoAddressImpl;
+      final String address2}) = _$_OrderInfoAddress;
 
   factory _OrderInfoAddress.fromJson(Map<String, dynamic> json) =
-      _$OrderInfoAddressImpl.fromJson;
+      _$_OrderInfoAddress.fromJson;
 
   @override
   int get ad_id;
@@ -239,7 +238,7 @@ abstract class _OrderInfoAddress implements OrderInfoAddress {
   String get address2;
   @override
   @JsonKey(ignore: true)
-  _$$OrderInfoAddressImplCopyWith<_$OrderInfoAddressImpl> get copyWith =>
+  _$$_OrderInfoAddressCopyWith<_$_OrderInfoAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -297,22 +296,22 @@ class _$OrderInfoPaymentCopyWithImpl<$Res, $Val extends OrderInfoPayment>
 }
 
 /// @nodoc
-abstract class _$$OrderInfoPaymentImplCopyWith<$Res>
+abstract class _$$_OrderInfoPaymentCopyWith<$Res>
     implements $OrderInfoPaymentCopyWith<$Res> {
-  factory _$$OrderInfoPaymentImplCopyWith(_$OrderInfoPaymentImpl value,
-          $Res Function(_$OrderInfoPaymentImpl) then) =
-      __$$OrderInfoPaymentImplCopyWithImpl<$Res>;
+  factory _$$_OrderInfoPaymentCopyWith(
+          _$_OrderInfoPayment value, $Res Function(_$_OrderInfoPayment) then) =
+      __$$_OrderInfoPaymentCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int pay_id, String pay_name});
 }
 
 /// @nodoc
-class __$$OrderInfoPaymentImplCopyWithImpl<$Res>
-    extends _$OrderInfoPaymentCopyWithImpl<$Res, _$OrderInfoPaymentImpl>
-    implements _$$OrderInfoPaymentImplCopyWith<$Res> {
-  __$$OrderInfoPaymentImplCopyWithImpl(_$OrderInfoPaymentImpl _value,
-      $Res Function(_$OrderInfoPaymentImpl) _then)
+class __$$_OrderInfoPaymentCopyWithImpl<$Res>
+    extends _$OrderInfoPaymentCopyWithImpl<$Res, _$_OrderInfoPayment>
+    implements _$$_OrderInfoPaymentCopyWith<$Res> {
+  __$$_OrderInfoPaymentCopyWithImpl(
+      _$_OrderInfoPayment _value, $Res Function(_$_OrderInfoPayment) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -321,7 +320,7 @@ class __$$OrderInfoPaymentImplCopyWithImpl<$Res>
     Object? pay_id = null,
     Object? pay_name = null,
   }) {
-    return _then(_$OrderInfoPaymentImpl(
+    return _then(_$_OrderInfoPayment(
       pay_id: null == pay_id
           ? _value.pay_id
           : pay_id // ignore: cast_nullable_to_non_nullable
@@ -336,11 +335,11 @@ class __$$OrderInfoPaymentImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderInfoPaymentImpl implements _OrderInfoPayment {
-  _$OrderInfoPaymentImpl({this.pay_id = 0, this.pay_name = ''});
+class _$_OrderInfoPayment implements _OrderInfoPayment {
+  _$_OrderInfoPayment({this.pay_id = 0, this.pay_name = ''});
 
-  factory _$OrderInfoPaymentImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderInfoPaymentImplFromJson(json);
+  factory _$_OrderInfoPayment.fromJson(Map<String, dynamic> json) =>
+      _$$_OrderInfoPaymentFromJson(json);
 
   @override
   @JsonKey()
@@ -358,7 +357,7 @@ class _$OrderInfoPaymentImpl implements _OrderInfoPayment {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderInfoPaymentImpl &&
+            other is _$_OrderInfoPayment &&
             (identical(other.pay_id, pay_id) || other.pay_id == pay_id) &&
             (identical(other.pay_name, pay_name) ||
                 other.pay_name == pay_name));
@@ -371,13 +370,12 @@ class _$OrderInfoPaymentImpl implements _OrderInfoPayment {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderInfoPaymentImplCopyWith<_$OrderInfoPaymentImpl> get copyWith =>
-      __$$OrderInfoPaymentImplCopyWithImpl<_$OrderInfoPaymentImpl>(
-          this, _$identity);
+  _$$_OrderInfoPaymentCopyWith<_$_OrderInfoPayment> get copyWith =>
+      __$$_OrderInfoPaymentCopyWithImpl<_$_OrderInfoPayment>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderInfoPaymentImplToJson(
+    return _$$_OrderInfoPaymentToJson(
       this,
     );
   }
@@ -385,10 +383,10 @@ class _$OrderInfoPaymentImpl implements _OrderInfoPayment {
 
 abstract class _OrderInfoPayment implements OrderInfoPayment {
   factory _OrderInfoPayment({final int pay_id, final String pay_name}) =
-      _$OrderInfoPaymentImpl;
+      _$_OrderInfoPayment;
 
   factory _OrderInfoPayment.fromJson(Map<String, dynamic> json) =
-      _$OrderInfoPaymentImpl.fromJson;
+      _$_OrderInfoPayment.fromJson;
 
   @override
   int get pay_id;
@@ -396,7 +394,7 @@ abstract class _OrderInfoPayment implements OrderInfoPayment {
   String get pay_name;
   @override
   @JsonKey(ignore: true)
-  _$$OrderInfoPaymentImplCopyWith<_$OrderInfoPaymentImpl> get copyWith =>
+  _$$_OrderInfoPaymentCopyWith<_$_OrderInfoPayment> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -511,11 +509,11 @@ class _$OrderInfoResponseCopyWithImpl<$Res, $Val extends OrderInfoResponse>
 }
 
 /// @nodoc
-abstract class _$$OrderInfoResponseImplCopyWith<$Res>
+abstract class _$$_OrderInfoResponseCopyWith<$Res>
     implements $OrderInfoResponseCopyWith<$Res> {
-  factory _$$OrderInfoResponseImplCopyWith(_$OrderInfoResponseImpl value,
-          $Res Function(_$OrderInfoResponseImpl) then) =
-      __$$OrderInfoResponseImplCopyWithImpl<$Res>;
+  factory _$$_OrderInfoResponseCopyWith(_$_OrderInfoResponse value,
+          $Res Function(_$_OrderInfoResponse) then) =
+      __$$_OrderInfoResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -533,11 +531,11 @@ abstract class _$$OrderInfoResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$OrderInfoResponseImplCopyWithImpl<$Res>
-    extends _$OrderInfoResponseCopyWithImpl<$Res, _$OrderInfoResponseImpl>
-    implements _$$OrderInfoResponseImplCopyWith<$Res> {
-  __$$OrderInfoResponseImplCopyWithImpl(_$OrderInfoResponseImpl _value,
-      $Res Function(_$OrderInfoResponseImpl) _then)
+class __$$_OrderInfoResponseCopyWithImpl<$Res>
+    extends _$OrderInfoResponseCopyWithImpl<$Res, _$_OrderInfoResponse>
+    implements _$$_OrderInfoResponseCopyWith<$Res> {
+  __$$_OrderInfoResponseCopyWithImpl(
+      _$_OrderInfoResponse _value, $Res Function(_$_OrderInfoResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -550,7 +548,7 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
     Object? addressItem = freezed,
     Object? paymentItem = freezed,
   }) {
-    return _then(_$OrderInfoResponseImpl(
+    return _then(_$_OrderInfoResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -581,8 +579,8 @@ class __$$OrderInfoResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OrderInfoResponseImpl implements _OrderInfoResponse {
-  _$OrderInfoResponseImpl(
+class _$_OrderInfoResponse implements _OrderInfoResponse {
+  _$_OrderInfoResponse(
       {required this.status,
       this.message = '',
       this.mb_point = 0,
@@ -590,8 +588,8 @@ class _$OrderInfoResponseImpl implements _OrderInfoResponse {
       this.addressItem,
       this.paymentItem});
 
-  factory _$OrderInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderInfoResponseImplFromJson(json);
+  factory _$_OrderInfoResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_OrderInfoResponseFromJson(json);
 
   @override
   final int status;
@@ -618,7 +616,7 @@ class _$OrderInfoResponseImpl implements _OrderInfoResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderInfoResponseImpl &&
+            other is _$_OrderInfoResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.mb_point, mb_point) ||
@@ -639,13 +637,13 @@ class _$OrderInfoResponseImpl implements _OrderInfoResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderInfoResponseImplCopyWith<_$OrderInfoResponseImpl> get copyWith =>
-      __$$OrderInfoResponseImplCopyWithImpl<_$OrderInfoResponseImpl>(
+  _$$_OrderInfoResponseCopyWith<_$_OrderInfoResponse> get copyWith =>
+      __$$_OrderInfoResponseCopyWithImpl<_$_OrderInfoResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderInfoResponseImplToJson(
+    return _$$_OrderInfoResponseToJson(
       this,
     );
   }
@@ -658,10 +656,10 @@ abstract class _OrderInfoResponse implements OrderInfoResponse {
       final int mb_point,
       final int mb_coupon_cnt,
       final OrderInfoAddress? addressItem,
-      final OrderInfoPayment? paymentItem}) = _$OrderInfoResponseImpl;
+      final OrderInfoPayment? paymentItem}) = _$_OrderInfoResponse;
 
   factory _OrderInfoResponse.fromJson(Map<String, dynamic> json) =
-      _$OrderInfoResponseImpl.fromJson;
+      _$_OrderInfoResponse.fromJson;
 
   @override
   int get status;
@@ -677,6 +675,6 @@ abstract class _OrderInfoResponse implements OrderInfoResponse {
   OrderInfoPayment? get paymentItem;
   @override
   @JsonKey(ignore: true)
-  _$$OrderInfoResponseImplCopyWith<_$OrderInfoResponseImpl> get copyWith =>
+  _$$_OrderInfoResponseCopyWith<_$_OrderInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

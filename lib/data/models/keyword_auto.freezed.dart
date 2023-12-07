@@ -76,11 +76,11 @@ class _$KeywordAutoResponseCopyWithImpl<$Res, $Val extends KeywordAutoResponse>
 }
 
 /// @nodoc
-abstract class _$$KeywordAutoResponseImplCopyWith<$Res>
+abstract class _$$_KeywordAutoResponseCopyWith<$Res>
     implements $KeywordAutoResponseCopyWith<$Res> {
-  factory _$$KeywordAutoResponseImplCopyWith(_$KeywordAutoResponseImpl value,
-          $Res Function(_$KeywordAutoResponseImpl) then) =
-      __$$KeywordAutoResponseImplCopyWithImpl<$Res>;
+  factory _$$_KeywordAutoResponseCopyWith(_$_KeywordAutoResponse value,
+          $Res Function(_$_KeywordAutoResponse) then) =
+      __$$_KeywordAutoResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -88,11 +88,11 @@ abstract class _$$KeywordAutoResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$KeywordAutoResponseImplCopyWithImpl<$Res>
-    extends _$KeywordAutoResponseCopyWithImpl<$Res, _$KeywordAutoResponseImpl>
-    implements _$$KeywordAutoResponseImplCopyWith<$Res> {
-  __$$KeywordAutoResponseImplCopyWithImpl(_$KeywordAutoResponseImpl _value,
-      $Res Function(_$KeywordAutoResponseImpl) _then)
+class __$$_KeywordAutoResponseCopyWithImpl<$Res>
+    extends _$KeywordAutoResponseCopyWithImpl<$Res, _$_KeywordAutoResponse>
+    implements _$$_KeywordAutoResponseCopyWith<$Res> {
+  __$$_KeywordAutoResponseCopyWithImpl(_$_KeywordAutoResponse _value,
+      $Res Function(_$_KeywordAutoResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$KeywordAutoResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$KeywordAutoResponseImpl(
+    return _then(_$_KeywordAutoResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -121,15 +121,15 @@ class __$$KeywordAutoResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$KeywordAutoResponseImpl implements _KeywordAutoResponse {
-  _$KeywordAutoResponseImpl(
+class _$_KeywordAutoResponse implements _KeywordAutoResponse {
+  _$_KeywordAutoResponse(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<String>? items = const []})
       : _items = items;
 
-  factory _$KeywordAutoResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KeywordAutoResponseImplFromJson(json);
+  factory _$_KeywordAutoResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_KeywordAutoResponseFromJson(json);
 
   @override
   final int status;
@@ -156,7 +156,7 @@ class _$KeywordAutoResponseImpl implements _KeywordAutoResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$KeywordAutoResponseImpl &&
+            other is _$_KeywordAutoResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -170,13 +170,13 @@ class _$KeywordAutoResponseImpl implements _KeywordAutoResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KeywordAutoResponseImplCopyWith<_$KeywordAutoResponseImpl> get copyWith =>
-      __$$KeywordAutoResponseImplCopyWithImpl<_$KeywordAutoResponseImpl>(
+  _$$_KeywordAutoResponseCopyWith<_$_KeywordAutoResponse> get copyWith =>
+      __$$_KeywordAutoResponseCopyWithImpl<_$_KeywordAutoResponse>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KeywordAutoResponseImplToJson(
+    return _$$_KeywordAutoResponseToJson(
       this,
     );
   }
@@ -187,10 +187,10 @@ abstract class _KeywordAutoResponse implements KeywordAutoResponse {
           {required final int status,
           final String message,
           @JsonKey(name: 'data') final List<String>? items}) =
-      _$KeywordAutoResponseImpl;
+      _$_KeywordAutoResponse;
 
   factory _KeywordAutoResponse.fromJson(Map<String, dynamic> json) =
-      _$KeywordAutoResponseImpl.fromJson;
+      _$_KeywordAutoResponse.fromJson;
 
   @override
   int get status;
@@ -201,6 +201,6 @@ abstract class _KeywordAutoResponse implements KeywordAutoResponse {
   List<String>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$KeywordAutoResponseImplCopyWith<_$KeywordAutoResponseImpl> get copyWith =>
+  _$$_KeywordAutoResponseCopyWith<_$_KeywordAutoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

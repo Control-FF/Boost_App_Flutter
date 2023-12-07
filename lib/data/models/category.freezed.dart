@@ -73,22 +73,21 @@ class _$CategoryCopyWithImpl<$Res, $Val extends Category>
 }
 
 /// @nodoc
-abstract class _$$CategoryImplCopyWith<$Res>
-    implements $CategoryCopyWith<$Res> {
-  factory _$$CategoryImplCopyWith(
-          _$CategoryImpl value, $Res Function(_$CategoryImpl) then) =
-      __$$CategoryImplCopyWithImpl<$Res>;
+abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
+  factory _$$_CategoryCopyWith(
+          _$_Category value, $Res Function(_$_Category) then) =
+      __$$_CategoryCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String ca_id, String ca_name, String sub_flag});
 }
 
 /// @nodoc
-class __$$CategoryImplCopyWithImpl<$Res>
-    extends _$CategoryCopyWithImpl<$Res, _$CategoryImpl>
-    implements _$$CategoryImplCopyWith<$Res> {
-  __$$CategoryImplCopyWithImpl(
-      _$CategoryImpl _value, $Res Function(_$CategoryImpl) _then)
+class __$$_CategoryCopyWithImpl<$Res>
+    extends _$CategoryCopyWithImpl<$Res, _$_Category>
+    implements _$$_CategoryCopyWith<$Res> {
+  __$$_CategoryCopyWithImpl(
+      _$_Category _value, $Res Function(_$_Category) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +97,7 @@ class __$$CategoryImplCopyWithImpl<$Res>
     Object? ca_name = null,
     Object? sub_flag = null,
   }) {
-    return _then(_$CategoryImpl(
+    return _then(_$_Category(
       ca_id: null == ca_id
           ? _value.ca_id
           : ca_id // ignore: cast_nullable_to_non_nullable
@@ -117,11 +116,11 @@ class __$$CategoryImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CategoryImpl implements _Category {
-  _$CategoryImpl({this.ca_id = '', this.ca_name = '', this.sub_flag = ''});
+class _$_Category implements _Category {
+  _$_Category({this.ca_id = '', this.ca_name = '', this.sub_flag = ''});
 
-  factory _$CategoryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryImplFromJson(json);
+  factory _$_Category.fromJson(Map<String, dynamic> json) =>
+      _$$_CategoryFromJson(json);
 
   @override
   @JsonKey()
@@ -142,7 +141,7 @@ class _$CategoryImpl implements _Category {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryImpl &&
+            other is _$_Category &&
             (identical(other.ca_id, ca_id) || other.ca_id == ca_id) &&
             (identical(other.ca_name, ca_name) || other.ca_name == ca_name) &&
             (identical(other.sub_flag, sub_flag) ||
@@ -156,12 +155,12 @@ class _$CategoryImpl implements _Category {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
-      __$$CategoryImplCopyWithImpl<_$CategoryImpl>(this, _$identity);
+  _$$_CategoryCopyWith<_$_Category> get copyWith =>
+      __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryImplToJson(
+    return _$$_CategoryToJson(
       this,
     );
   }
@@ -171,10 +170,9 @@ abstract class _Category implements Category {
   factory _Category(
       {final String ca_id,
       final String ca_name,
-      final String sub_flag}) = _$CategoryImpl;
+      final String sub_flag}) = _$_Category;
 
-  factory _Category.fromJson(Map<String, dynamic> json) =
-      _$CategoryImpl.fromJson;
+  factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
 
   @override
   String get ca_id;
@@ -184,7 +182,7 @@ abstract class _Category implements Category {
   String get sub_flag;
   @override
   @JsonKey(ignore: true)
-  _$$CategoryImplCopyWith<_$CategoryImpl> get copyWith =>
+  _$$_CategoryCopyWith<_$_Category> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -252,11 +250,11 @@ class _$CategoryResponseCopyWithImpl<$Res, $Val extends CategoryResponse>
 }
 
 /// @nodoc
-abstract class _$$CategoryResponseImplCopyWith<$Res>
+abstract class _$$_CategoryResponseCopyWith<$Res>
     implements $CategoryResponseCopyWith<$Res> {
-  factory _$$CategoryResponseImplCopyWith(_$CategoryResponseImpl value,
-          $Res Function(_$CategoryResponseImpl) then) =
-      __$$CategoryResponseImplCopyWithImpl<$Res>;
+  factory _$$_CategoryResponseCopyWith(
+          _$_CategoryResponse value, $Res Function(_$_CategoryResponse) then) =
+      __$$_CategoryResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -266,11 +264,11 @@ abstract class _$$CategoryResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CategoryResponseImplCopyWithImpl<$Res>
-    extends _$CategoryResponseCopyWithImpl<$Res, _$CategoryResponseImpl>
-    implements _$$CategoryResponseImplCopyWith<$Res> {
-  __$$CategoryResponseImplCopyWithImpl(_$CategoryResponseImpl _value,
-      $Res Function(_$CategoryResponseImpl) _then)
+class __$$_CategoryResponseCopyWithImpl<$Res>
+    extends _$CategoryResponseCopyWithImpl<$Res, _$_CategoryResponse>
+    implements _$$_CategoryResponseCopyWith<$Res> {
+  __$$_CategoryResponseCopyWithImpl(
+      _$_CategoryResponse _value, $Res Function(_$_CategoryResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -280,7 +278,7 @@ class __$$CategoryResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$CategoryResponseImpl(
+    return _then(_$_CategoryResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -299,15 +297,15 @@ class __$$CategoryResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CategoryResponseImpl implements _CategoryResponse {
-  _$CategoryResponseImpl(
+class _$_CategoryResponse implements _CategoryResponse {
+  _$_CategoryResponse(
       {required this.status,
       required this.message,
       @JsonKey(name: 'data') final List<Category>? items = const []})
       : _items = items;
 
-  factory _$CategoryResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryResponseImplFromJson(json);
+  factory _$_CategoryResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_CategoryResponseFromJson(json);
 
   @override
   final int status;
@@ -333,7 +331,7 @@ class _$CategoryResponseImpl implements _CategoryResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryResponseImpl &&
+            other is _$_CategoryResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -347,13 +345,12 @@ class _$CategoryResponseImpl implements _CategoryResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CategoryResponseImplCopyWith<_$CategoryResponseImpl> get copyWith =>
-      __$$CategoryResponseImplCopyWithImpl<_$CategoryResponseImpl>(
-          this, _$identity);
+  _$$_CategoryResponseCopyWith<_$_CategoryResponse> get copyWith =>
+      __$$_CategoryResponseCopyWithImpl<_$_CategoryResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CategoryResponseImplToJson(
+    return _$$_CategoryResponseToJson(
       this,
     );
   }
@@ -364,10 +361,10 @@ abstract class _CategoryResponse implements CategoryResponse {
           {required final int status,
           required final String message,
           @JsonKey(name: 'data') final List<Category>? items}) =
-      _$CategoryResponseImpl;
+      _$_CategoryResponse;
 
   factory _CategoryResponse.fromJson(Map<String, dynamic> json) =
-      _$CategoryResponseImpl.fromJson;
+      _$_CategoryResponse.fromJson;
 
   @override
   int get status;
@@ -378,6 +375,6 @@ abstract class _CategoryResponse implements CategoryResponse {
   List<Category>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$CategoryResponseImplCopyWith<_$CategoryResponseImpl> get copyWith =>
+  _$$_CategoryResponseCopyWith<_$_CategoryResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

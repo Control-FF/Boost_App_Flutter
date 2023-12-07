@@ -1,6 +1,7 @@
 import 'package:boostapp/core/constants/constants.dart';
 import 'package:boostapp/core/utils/color_constant.dart';
 import 'package:boostapp/modules/cart/cart_controller.dart';
+import 'package:boostapp/modules/main/pages/bnv_onetouch_controller.dart';
 import 'package:boostapp/modules/main/pages/buy/buy_controller.dart';
 import 'package:boostapp/routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,11 +12,12 @@ import 'package:get/get.dart';
 
 class CartScreen extends GetView<CartController>{
   BuyController buyController = Get.put(BuyController());
+  OneTouchController oneTouchController = Get.put(OneTouchController());
 
   @override
   Widget build(BuildContext context) {
     controller.getCartList();
-    buyController.getBuyList();
+    oneTouchController.getOneTouchCart();
 
     return SafeArea(
       child: Scaffold(
@@ -973,7 +975,7 @@ class CartScreen extends GetView<CartController>{
                               ),
                             ),
                              */
-                              Padding(
+                              oneTouchController.oneTouchCartList.isNotEmpty ? Padding(
                                 padding: EdgeInsets.fromLTRB(30.w, 0.h, 30.w, 17.h),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1010,16 +1012,16 @@ class CartScreen extends GetView<CartController>{
                                     ),
                                   ],
                                 ),
-                              ),
-                              Padding(
+                              ) : SizedBox(),
+                              oneTouchController.oneTouchCartList.isNotEmpty ? Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 30),
                                 child: Divider(
                                   color: ColorConstant.gray10,
                                   height: 1.h,
                                   thickness: 1.h,
                                 ),
-                              ),
-                              Padding(
+                              ) : SizedBox(),
+                              oneTouchController.oneTouchCartList.isNotEmpty ? Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 30),
                                 child: Container(
                                   height: 290,
@@ -1027,7 +1029,7 @@ class CartScreen extends GetView<CartController>{
                                     physics: BouncingScrollPhysics(),
                                     padding: EdgeInsets.only(top: 20.h),
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: buyController.buyList.length,
+                                    itemCount: oneTouchController.oneTouchCartList.length,
                                     shrinkWrap: true,
                                     itemBuilder: (context, index){
                                       return Column(
@@ -1037,7 +1039,7 @@ class CartScreen extends GetView<CartController>{
                                             child: GestureDetector(
                                               onTap: (){
                                                 Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                                  'productId' : buyController.buyList[index].it_id
+                                                  'productId' : oneTouchController.oneTouchCartList[index].it_id
                                                 });
                                               },
                                               child: Padding(
@@ -1045,8 +1047,8 @@ class CartScreen extends GetView<CartController>{
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    buyController.buyList[index].it_img1 != ''
-                                                        ? Image.network(buyController.buyList[index].it_img1,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
+                                                    oneTouchController.oneTouchCartList[index].img != ''
+                                                        ? Image.network(oneTouchController.oneTouchCartList[index].img,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
                                                       return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
                                                     },)
                                                         : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
@@ -1057,7 +1059,7 @@ class CartScreen extends GetView<CartController>{
                                                           TextSpan(
                                                               children: [
                                                                 TextSpan(
-                                                                  text: buyController.buyList[index].it_name,
+                                                                  text: oneTouchController.oneTouchCartList[index].it_name,
                                                                   style: TextStyle(
                                                                     color: ColorConstant.black,
                                                                     fontSize: 10.sp,
@@ -1075,8 +1077,17 @@ class CartScreen extends GetView<CartController>{
                                                       child: Text.rich(
                                                           TextSpan(
                                                               children: [
+                                                                oneTouchController.oneTouchCartList[index].it_cust_price != oneTouchController.oneTouchCartList[index].it_price ? TextSpan(
+                                                                  text: '${Constants.getPercent(oneTouchController.oneTouchCartList[index].it_price, oneTouchController.oneTouchCartList[index].it_cust_price)}%',
+                                                                  style: TextStyle(
+                                                                    color: ColorConstant.primary,
+                                                                    fontSize: 12.sp,
+                                                                    fontFamily: 'Noto Sans KR',
+                                                                    fontWeight: FontWeight.w700,
+                                                                  ),
+                                                                ) : TextSpan(),
                                                                 TextSpan(
-                                                                  text: ' ${Constants.numberAddComma(buyController.buyList[index].ct_price)}원',
+                                                                  text: ' ${Constants.numberAddComma(oneTouchController.oneTouchCartList[index].it_price)}원',
                                                                   style: TextStyle(
                                                                     color: ColorConstant.black,
                                                                     fontSize: 12.sp,
@@ -1088,6 +1099,16 @@ class CartScreen extends GetView<CartController>{
                                                           )
                                                       ),
                                                     ),
+                                                    oneTouchController.oneTouchCartList[index].it_cust_price != oneTouchController.oneTouchCartList[index].it_price ? Text(
+                                                      '${Constants.numberAddComma(oneTouchController.oneTouchCartList[index].it_cust_price)}원',
+                                                      style: TextStyle(
+                                                          color: ColorConstant.gray1,
+                                                          fontSize: 8.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w700,
+                                                          decoration: TextDecoration.lineThrough
+                                                      ),
+                                                    ) : SizedBox()
                                                   ],
                                                 ),
                                               ),
@@ -1106,22 +1127,7 @@ class CartScreen extends GetView<CartController>{
                                                   padding: EdgeInsets.all(0)
                                               ),
                                               onPressed: (){
-
-                                                List<dynamic> ctItems = [];
-
-                                                if(buyController.buyList[index].io_no != 0){
-                                                  //옵션 있을때
-                                                  ctItems.add({
-                                                    'io_no' : buyController.buyList[index].io_no,
-                                                    'ct_qty' : 1
-                                                  });
-                                                }else{
-                                                  ctItems.add({
-                                                    'ct_qty' : 1
-                                                  });
-                                                }
-
-                                                controller.addCart(context, buyController.buyList[index].it_id.toString(), ctItems,type: 'oneTouch');
+                                                oneTouchController.addOneTouchCart(context, oneTouchController.oneTouchCartList[index].ot_id);
                                               },
                                               child: Text(
                                                 '함께 구매',
@@ -1139,7 +1145,7 @@ class CartScreen extends GetView<CartController>{
                                     },
                                   ),
                                 ),
-                              ),
+                              ) : SizedBox(),
                               Padding(
                                 padding: EdgeInsets.only(top: 20.h,bottom: 17.h),
                                 child: Divider(

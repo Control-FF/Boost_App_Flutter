@@ -6,7 +6,7 @@ part of 'order.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
+_$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       od_id: json['od_id'] as int? ?? 0,
       it_id: json['it_id'] as String? ?? '',
       it_name: json['it_name'] as String? ?? '',
@@ -32,8 +32,7 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       it_img10: json['it_img10'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'od_id': instance.od_id,
       'it_id': instance.it_id,
       'it_name': instance.it_name,
@@ -59,8 +58,8 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'it_img10': instance.it_img10,
     };
 
-_$OrderResponseImpl _$$OrderResponseImplFromJson(Map<String, dynamic> json) =>
-    _$OrderResponseImpl(
+_$_OrderResponse _$$_OrderResponseFromJson(Map<String, dynamic> json) =>
+    _$_OrderResponse(
       status: json['status'] as int,
       message: json['message'] as String? ?? '',
       items: (json['data'] as List<dynamic>?)
@@ -69,7 +68,7 @@ _$OrderResponseImpl _$$OrderResponseImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$OrderResponseImplToJson(_$OrderResponseImpl instance) =>
+Map<String, dynamic> _$$_OrderResponseToJson(_$_OrderResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,

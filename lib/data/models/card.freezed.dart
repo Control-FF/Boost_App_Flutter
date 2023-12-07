@@ -103,10 +103,9 @@ class _$CardCopyWithImpl<$Res, $Val extends Card>
 }
 
 /// @nodoc
-abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
-  factory _$$CardImplCopyWith(
-          _$CardImpl value, $Res Function(_$CardImpl) then) =
-      __$$CardImplCopyWithImpl<$Res>;
+abstract class _$$_CardCopyWith<$Res> implements $CardCopyWith<$Res> {
+  factory _$$_CardCopyWith(_$_Card value, $Res Function(_$_Card) then) =
+      __$$_CardCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -120,10 +119,9 @@ abstract class _$$CardImplCopyWith<$Res> implements $CardCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$CardImplCopyWithImpl<$Res>
-    extends _$CardCopyWithImpl<$Res, _$CardImpl>
-    implements _$$CardImplCopyWith<$Res> {
-  __$$CardImplCopyWithImpl(_$CardImpl _value, $Res Function(_$CardImpl) _then)
+class __$$_CardCopyWithImpl<$Res> extends _$CardCopyWithImpl<$Res, _$_Card>
+    implements _$$_CardCopyWith<$Res> {
+  __$$_CardCopyWithImpl(_$_Card _value, $Res Function(_$_Card) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -137,7 +135,7 @@ class __$$CardImplCopyWithImpl<$Res>
     Object? disabled = null,
     Object? is_company = null,
   }) {
-    return _then(_$CardImpl(
+    return _then(_$_Card(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -172,8 +170,8 @@ class __$$CardImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CardImpl implements _Card {
-  _$CardImpl(
+class _$_Card implements _Card {
+  _$_Card(
       {this.id = 0,
       this.billingkey = '',
       this.card_name = '',
@@ -182,8 +180,7 @@ class _$CardImpl implements _Card {
       this.disabled = 0,
       this.is_company = 0});
 
-  factory _$CardImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardImplFromJson(json);
+  factory _$_Card.fromJson(Map<String, dynamic> json) => _$$_CardFromJson(json);
 
   @override
   @JsonKey()
@@ -216,7 +213,7 @@ class _$CardImpl implements _Card {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardImpl &&
+            other is _$_Card &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.billingkey, billingkey) ||
                 other.billingkey == billingkey) &&
@@ -239,12 +236,12 @@ class _$CardImpl implements _Card {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
-      __$$CardImplCopyWithImpl<_$CardImpl>(this, _$identity);
+  _$$_CardCopyWith<_$_Card> get copyWith =>
+      __$$_CardCopyWithImpl<_$_Card>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CardImplToJson(
+    return _$$_CardToJson(
       this,
     );
   }
@@ -258,9 +255,9 @@ abstract class _Card implements Card {
       final int is_default,
       final String mb_id,
       final int disabled,
-      final int is_company}) = _$CardImpl;
+      final int is_company}) = _$_Card;
 
-  factory _Card.fromJson(Map<String, dynamic> json) = _$CardImpl.fromJson;
+  factory _Card.fromJson(Map<String, dynamic> json) = _$_Card.fromJson;
 
   @override
   int get id;
@@ -278,8 +275,7 @@ abstract class _Card implements Card {
   int get is_company;
   @override
   @JsonKey(ignore: true)
-  _$$CardImplCopyWith<_$CardImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CardCopyWith<_$_Card> get copyWith => throw _privateConstructorUsedError;
 }
 
 CardResponse _$CardResponseFromJson(Map<String, dynamic> json) {
@@ -344,11 +340,11 @@ class _$CardResponseCopyWithImpl<$Res, $Val extends CardResponse>
 }
 
 /// @nodoc
-abstract class _$$CardResponseImplCopyWith<$Res>
+abstract class _$$_CardResponseCopyWith<$Res>
     implements $CardResponseCopyWith<$Res> {
-  factory _$$CardResponseImplCopyWith(
-          _$CardResponseImpl value, $Res Function(_$CardResponseImpl) then) =
-      __$$CardResponseImplCopyWithImpl<$Res>;
+  factory _$$_CardResponseCopyWith(
+          _$_CardResponse value, $Res Function(_$_CardResponse) then) =
+      __$$_CardResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -356,11 +352,11 @@ abstract class _$$CardResponseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CardResponseImplCopyWithImpl<$Res>
-    extends _$CardResponseCopyWithImpl<$Res, _$CardResponseImpl>
-    implements _$$CardResponseImplCopyWith<$Res> {
-  __$$CardResponseImplCopyWithImpl(
-      _$CardResponseImpl _value, $Res Function(_$CardResponseImpl) _then)
+class __$$_CardResponseCopyWithImpl<$Res>
+    extends _$CardResponseCopyWithImpl<$Res, _$_CardResponse>
+    implements _$$_CardResponseCopyWith<$Res> {
+  __$$_CardResponseCopyWithImpl(
+      _$_CardResponse _value, $Res Function(_$_CardResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -370,7 +366,7 @@ class __$$CardResponseImplCopyWithImpl<$Res>
     Object? message = null,
     Object? items = freezed,
   }) {
-    return _then(_$CardResponseImpl(
+    return _then(_$_CardResponse(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -389,15 +385,15 @@ class __$$CardResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CardResponseImpl implements _CardResponse {
-  _$CardResponseImpl(
+class _$_CardResponse implements _CardResponse {
+  _$_CardResponse(
       {required this.status,
       this.message = '',
       @JsonKey(name: 'data') final List<Card>? items = const []})
       : _items = items;
 
-  factory _$CardResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CardResponseImplFromJson(json);
+  factory _$_CardResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_CardResponseFromJson(json);
 
   @override
   final int status;
@@ -424,7 +420,7 @@ class _$CardResponseImpl implements _CardResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CardResponseImpl &&
+            other is _$_CardResponse &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._items, _items));
@@ -438,12 +434,12 @@ class _$CardResponseImpl implements _CardResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CardResponseImplCopyWith<_$CardResponseImpl> get copyWith =>
-      __$$CardResponseImplCopyWithImpl<_$CardResponseImpl>(this, _$identity);
+  _$$_CardResponseCopyWith<_$_CardResponse> get copyWith =>
+      __$$_CardResponseCopyWithImpl<_$_CardResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CardResponseImplToJson(
+    return _$$_CardResponseToJson(
       this,
     );
   }
@@ -453,10 +449,10 @@ abstract class _CardResponse implements CardResponse {
   factory _CardResponse(
       {required final int status,
       final String message,
-      @JsonKey(name: 'data') final List<Card>? items}) = _$CardResponseImpl;
+      @JsonKey(name: 'data') final List<Card>? items}) = _$_CardResponse;
 
   factory _CardResponse.fromJson(Map<String, dynamic> json) =
-      _$CardResponseImpl.fromJson;
+      _$_CardResponse.fromJson;
 
   @override
   int get status;
@@ -467,6 +463,6 @@ abstract class _CardResponse implements CardResponse {
   List<Card>? get items;
   @override
   @JsonKey(ignore: true)
-  _$$CardResponseImplCopyWith<_$CardResponseImpl> get copyWith =>
+  _$$_CardResponseCopyWith<_$_CardResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
