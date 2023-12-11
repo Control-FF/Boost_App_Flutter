@@ -27,7 +27,7 @@ mixin _$OneTouch {
   int get it_price => throw _privateConstructorUsedError;
   String get it_img1 => throw _privateConstructorUsedError;
   String get it_time => throw _privateConstructorUsedError;
-  int get it_use_cnt => throw _privateConstructorUsedError;
+  String? get it_use_cnt => throw _privateConstructorUsedError;
   int get it_sum_qty => throw _privateConstructorUsedError;
   int get reviews => throw _privateConstructorUsedError;
 
@@ -50,7 +50,7 @@ abstract class $OneTouchCopyWith<$Res> {
       int it_price,
       String it_img1,
       String it_time,
-      int it_use_cnt,
+      String? it_use_cnt,
       int it_sum_qty,
       int reviews});
 }
@@ -75,7 +75,7 @@ class _$OneTouchCopyWithImpl<$Res, $Val extends OneTouch>
     Object? it_price = null,
     Object? it_img1 = null,
     Object? it_time = null,
-    Object? it_use_cnt = null,
+    Object? it_use_cnt = freezed,
     Object? it_sum_qty = null,
     Object? reviews = null,
   }) {
@@ -108,10 +108,10 @@ class _$OneTouchCopyWithImpl<$Res, $Val extends OneTouch>
           ? _value.it_time
           : it_time // ignore: cast_nullable_to_non_nullable
               as String,
-      it_use_cnt: null == it_use_cnt
+      it_use_cnt: freezed == it_use_cnt
           ? _value.it_use_cnt
           : it_use_cnt // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
       it_sum_qty: null == it_sum_qty
           ? _value.it_sum_qty
           : it_sum_qty // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ abstract class _$$_OneTouchCopyWith<$Res> implements $OneTouchCopyWith<$Res> {
       int it_price,
       String it_img1,
       String it_time,
-      int it_use_cnt,
+      String? it_use_cnt,
       int it_sum_qty,
       int reviews});
 }
@@ -162,7 +162,7 @@ class __$$_OneTouchCopyWithImpl<$Res>
     Object? it_price = null,
     Object? it_img1 = null,
     Object? it_time = null,
-    Object? it_use_cnt = null,
+    Object? it_use_cnt = freezed,
     Object? it_sum_qty = null,
     Object? reviews = null,
   }) {
@@ -195,10 +195,10 @@ class __$$_OneTouchCopyWithImpl<$Res>
           ? _value.it_time
           : it_time // ignore: cast_nullable_to_non_nullable
               as String,
-      it_use_cnt: null == it_use_cnt
+      it_use_cnt: freezed == it_use_cnt
           ? _value.it_use_cnt
           : it_use_cnt // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
       it_sum_qty: null == it_sum_qty
           ? _value.it_sum_qty
           : it_sum_qty // ignore: cast_nullable_to_non_nullable
@@ -222,7 +222,7 @@ class _$_OneTouch implements _OneTouch {
       this.it_price = 0,
       this.it_img1 = '',
       this.it_time = '',
-      this.it_use_cnt = 0,
+      this.it_use_cnt = '0',
       this.it_sum_qty = 0,
       this.reviews = 0});
 
@@ -252,7 +252,7 @@ class _$_OneTouch implements _OneTouch {
   final String it_time;
   @override
   @JsonKey()
-  final int it_use_cnt;
+  final String? it_use_cnt;
   @override
   @JsonKey()
   final int it_sum_qty;
@@ -324,7 +324,7 @@ abstract class _OneTouch implements OneTouch {
       final int it_price,
       final String it_img1,
       final String it_time,
-      final int it_use_cnt,
+      final String? it_use_cnt,
       final int it_sum_qty,
       final int reviews}) = _$_OneTouch;
 
@@ -345,7 +345,7 @@ abstract class _OneTouch implements OneTouch {
   @override
   String get it_time;
   @override
-  int get it_use_cnt;
+  String? get it_use_cnt;
   @override
   int get it_sum_qty;
   @override

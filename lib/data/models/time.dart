@@ -49,7 +49,6 @@ class TimeSaleItem with _$TimeSaleItem {
     @Default(0) int it_price,
     @Default('') String it_img1,
     @Default('') String it_time,
-    @Default(0) int it_use_cnt,
     @Default(0) int it_sum_qty,
     @Default('') String sale_start_time,
     @Default('') String sale_end_time,

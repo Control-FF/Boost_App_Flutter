@@ -449,7 +449,7 @@ class BnvOneTouchScreen extends GetView<OneTouchController>{
           physics: BouncingScrollPhysics(),
           controller: _scrollController,
           child: Obx(() => Container(
-            margin: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 0.h),
+            margin: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 100.h),
             color: ColorConstant.white,
             child: Column(
               children: [
@@ -641,7 +641,7 @@ class BnvOneTouchScreen extends GetView<OneTouchController>{
                                               minimumSize: Size(45.w,20.h)
                                           ),
                                           child: Text(
-                                            '제거',
+                                            '제외',
                                             style: TextStyle(
                                               color: ColorConstant.white,
                                               fontSize: 8.sp,

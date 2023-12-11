@@ -14,7 +14,6 @@ _$_KeywordResult _$$_KeywordResultFromJson(Map<String, dynamic> json) =>
       it_price: json['it_price'] as int? ?? 0,
       it_img1: json['it_img1'] as String? ?? '',
       it_time: json['it_time'] as String? ?? '',
-      it_use_cnt: json['it_use_cnt'] as int? ?? 0,
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
     );
 
@@ -26,7 +25,6 @@ Map<String, dynamic> _$$_KeywordResultToJson(_$_KeywordResult instance) =>
       'it_price': instance.it_price,
       'it_img1': instance.it_img1,
       'it_time': instance.it_time,
-      'it_use_cnt': instance.it_use_cnt,
       'it_sum_qty': instance.it_sum_qty,
     };
 

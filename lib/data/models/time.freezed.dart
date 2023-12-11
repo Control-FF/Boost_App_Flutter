@@ -599,7 +599,6 @@ mixin _$TimeSaleItem {
   int get it_price => throw _privateConstructorUsedError;
   String get it_img1 => throw _privateConstructorUsedError;
   String get it_time => throw _privateConstructorUsedError;
-  int get it_use_cnt => throw _privateConstructorUsedError;
   int get it_sum_qty => throw _privateConstructorUsedError;
   String get sale_start_time => throw _privateConstructorUsedError;
   String get sale_end_time => throw _privateConstructorUsedError;
@@ -623,7 +622,6 @@ abstract class $TimeSaleItemCopyWith<$Res> {
       int it_price,
       String it_img1,
       String it_time,
-      int it_use_cnt,
       int it_sum_qty,
       String sale_start_time,
       String sale_end_time});
@@ -648,7 +646,6 @@ class _$TimeSaleItemCopyWithImpl<$Res, $Val extends TimeSaleItem>
     Object? it_price = null,
     Object? it_img1 = null,
     Object? it_time = null,
-    Object? it_use_cnt = null,
     Object? it_sum_qty = null,
     Object? sale_start_time = null,
     Object? sale_end_time = null,
@@ -678,10 +675,6 @@ class _$TimeSaleItemCopyWithImpl<$Res, $Val extends TimeSaleItem>
           ? _value.it_time
           : it_time // ignore: cast_nullable_to_non_nullable
               as String,
-      it_use_cnt: null == it_use_cnt
-          ? _value.it_use_cnt
-          : it_use_cnt // ignore: cast_nullable_to_non_nullable
-              as int,
       it_sum_qty: null == it_sum_qty
           ? _value.it_sum_qty
           : it_sum_qty // ignore: cast_nullable_to_non_nullable
@@ -713,7 +706,6 @@ abstract class _$$_TimeSaleItemCopyWith<$Res>
       int it_price,
       String it_img1,
       String it_time,
-      int it_use_cnt,
       int it_sum_qty,
       String sale_start_time,
       String sale_end_time});
@@ -736,7 +728,6 @@ class __$$_TimeSaleItemCopyWithImpl<$Res>
     Object? it_price = null,
     Object? it_img1 = null,
     Object? it_time = null,
-    Object? it_use_cnt = null,
     Object? it_sum_qty = null,
     Object? sale_start_time = null,
     Object? sale_end_time = null,
@@ -766,10 +757,6 @@ class __$$_TimeSaleItemCopyWithImpl<$Res>
           ? _value.it_time
           : it_time // ignore: cast_nullable_to_non_nullable
               as String,
-      it_use_cnt: null == it_use_cnt
-          ? _value.it_use_cnt
-          : it_use_cnt // ignore: cast_nullable_to_non_nullable
-              as int,
       it_sum_qty: null == it_sum_qty
           ? _value.it_sum_qty
           : it_sum_qty // ignore: cast_nullable_to_non_nullable
@@ -796,7 +783,6 @@ class _$_TimeSaleItem implements _TimeSaleItem {
       this.it_price = 0,
       this.it_img1 = '',
       this.it_time = '',
-      this.it_use_cnt = 0,
       this.it_sum_qty = 0,
       this.sale_start_time = '',
       this.sale_end_time = ''});
@@ -824,9 +810,6 @@ class _$_TimeSaleItem implements _TimeSaleItem {
   final String it_time;
   @override
   @JsonKey()
-  final int it_use_cnt;
-  @override
-  @JsonKey()
   final int it_sum_qty;
   @override
   @JsonKey()
@@ -837,7 +820,7 @@ class _$_TimeSaleItem implements _TimeSaleItem {
 
   @override
   String toString() {
-    return 'TimeSaleItem(it_id: $it_id, it_name: $it_name, it_cust_price: $it_cust_price, it_price: $it_price, it_img1: $it_img1, it_time: $it_time, it_use_cnt: $it_use_cnt, it_sum_qty: $it_sum_qty, sale_start_time: $sale_start_time, sale_end_time: $sale_end_time)';
+    return 'TimeSaleItem(it_id: $it_id, it_name: $it_name, it_cust_price: $it_cust_price, it_price: $it_price, it_img1: $it_img1, it_time: $it_time, it_sum_qty: $it_sum_qty, sale_start_time: $sale_start_time, sale_end_time: $sale_end_time)';
   }
 
   @override
@@ -853,8 +836,6 @@ class _$_TimeSaleItem implements _TimeSaleItem {
                 other.it_price == it_price) &&
             (identical(other.it_img1, it_img1) || other.it_img1 == it_img1) &&
             (identical(other.it_time, it_time) || other.it_time == it_time) &&
-            (identical(other.it_use_cnt, it_use_cnt) ||
-                other.it_use_cnt == it_use_cnt) &&
             (identical(other.it_sum_qty, it_sum_qty) ||
                 other.it_sum_qty == it_sum_qty) &&
             (identical(other.sale_start_time, sale_start_time) ||
@@ -865,18 +846,8 @@ class _$_TimeSaleItem implements _TimeSaleItem {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      it_id,
-      it_name,
-      it_cust_price,
-      it_price,
-      it_img1,
-      it_time,
-      it_use_cnt,
-      it_sum_qty,
-      sale_start_time,
-      sale_end_time);
+  int get hashCode => Object.hash(runtimeType, it_id, it_name, it_cust_price,
+      it_price, it_img1, it_time, it_sum_qty, sale_start_time, sale_end_time);
 
   @JsonKey(ignore: true)
   @override
@@ -900,7 +871,6 @@ abstract class _TimeSaleItem implements TimeSaleItem {
       final int it_price,
       final String it_img1,
       final String it_time,
-      final int it_use_cnt,
       final int it_sum_qty,
       final String sale_start_time,
       final String sale_end_time}) = _$_TimeSaleItem;
@@ -920,8 +890,6 @@ abstract class _TimeSaleItem implements TimeSaleItem {
   String get it_img1;
   @override
   String get it_time;
-  @override
-  int get it_use_cnt;
   @override
   int get it_sum_qty;
   @override

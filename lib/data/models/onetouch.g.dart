@@ -14,7 +14,7 @@ _$_OneTouch _$$_OneTouchFromJson(Map<String, dynamic> json) => _$_OneTouch(
       it_price: json['it_price'] as int? ?? 0,
       it_img1: json['it_img1'] as String? ?? '',
       it_time: json['it_time'] as String? ?? '',
-      it_use_cnt: json['it_use_cnt'] as int? ?? 0,
+      it_use_cnt: json['it_use_cnt'] as String? ?? '0',
       it_sum_qty: json['it_sum_qty'] as int? ?? 0,
       reviews: json['reviews'] as int? ?? 0,
     );

@@ -26,7 +26,6 @@ mixin _$KeywordResult {
   int get it_price => throw _privateConstructorUsedError;
   String get it_img1 => throw _privateConstructorUsedError;
   String get it_time => throw _privateConstructorUsedError;
-  int get it_use_cnt => throw _privateConstructorUsedError;
   int get it_sum_qty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +47,6 @@ abstract class $KeywordResultCopyWith<$Res> {
       int it_price,
       String it_img1,
       String it_time,
-      int it_use_cnt,
       int it_sum_qty});
 }
 
@@ -71,7 +69,6 @@ class _$KeywordResultCopyWithImpl<$Res, $Val extends KeywordResult>
     Object? it_price = null,
     Object? it_img1 = null,
     Object? it_time = null,
-    Object? it_use_cnt = null,
     Object? it_sum_qty = null,
   }) {
     return _then(_value.copyWith(
@@ -99,10 +96,6 @@ class _$KeywordResultCopyWithImpl<$Res, $Val extends KeywordResult>
           ? _value.it_time
           : it_time // ignore: cast_nullable_to_non_nullable
               as String,
-      it_use_cnt: null == it_use_cnt
-          ? _value.it_use_cnt
-          : it_use_cnt // ignore: cast_nullable_to_non_nullable
-              as int,
       it_sum_qty: null == it_sum_qty
           ? _value.it_sum_qty
           : it_sum_qty // ignore: cast_nullable_to_non_nullable
@@ -126,7 +119,6 @@ abstract class _$$_KeywordResultCopyWith<$Res>
       int it_price,
       String it_img1,
       String it_time,
-      int it_use_cnt,
       int it_sum_qty});
 }
 
@@ -147,7 +139,6 @@ class __$$_KeywordResultCopyWithImpl<$Res>
     Object? it_price = null,
     Object? it_img1 = null,
     Object? it_time = null,
-    Object? it_use_cnt = null,
     Object? it_sum_qty = null,
   }) {
     return _then(_$_KeywordResult(
@@ -175,10 +166,6 @@ class __$$_KeywordResultCopyWithImpl<$Res>
           ? _value.it_time
           : it_time // ignore: cast_nullable_to_non_nullable
               as String,
-      it_use_cnt: null == it_use_cnt
-          ? _value.it_use_cnt
-          : it_use_cnt // ignore: cast_nullable_to_non_nullable
-              as int,
       it_sum_qty: null == it_sum_qty
           ? _value.it_sum_qty
           : it_sum_qty // ignore: cast_nullable_to_non_nullable
@@ -197,7 +184,6 @@ class _$_KeywordResult implements _KeywordResult {
       this.it_price = 0,
       this.it_img1 = '',
       this.it_time = '',
-      this.it_use_cnt = 0,
       this.it_sum_qty = 0});
 
   factory _$_KeywordResult.fromJson(Map<String, dynamic> json) =>
@@ -223,14 +209,11 @@ class _$_KeywordResult implements _KeywordResult {
   final String it_time;
   @override
   @JsonKey()
-  final int it_use_cnt;
-  @override
-  @JsonKey()
   final int it_sum_qty;
 
   @override
   String toString() {
-    return 'KeywordResult(it_id: $it_id, it_name: $it_name, it_cust_price: $it_cust_price, it_price: $it_price, it_img1: $it_img1, it_time: $it_time, it_use_cnt: $it_use_cnt, it_sum_qty: $it_sum_qty)';
+    return 'KeywordResult(it_id: $it_id, it_name: $it_name, it_cust_price: $it_cust_price, it_price: $it_price, it_img1: $it_img1, it_time: $it_time, it_sum_qty: $it_sum_qty)';
   }
 
   @override
@@ -246,8 +229,6 @@ class _$_KeywordResult implements _KeywordResult {
                 other.it_price == it_price) &&
             (identical(other.it_img1, it_img1) || other.it_img1 == it_img1) &&
             (identical(other.it_time, it_time) || other.it_time == it_time) &&
-            (identical(other.it_use_cnt, it_use_cnt) ||
-                other.it_use_cnt == it_use_cnt) &&
             (identical(other.it_sum_qty, it_sum_qty) ||
                 other.it_sum_qty == it_sum_qty));
   }
@@ -255,7 +236,7 @@ class _$_KeywordResult implements _KeywordResult {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, it_id, it_name, it_cust_price,
-      it_price, it_img1, it_time, it_use_cnt, it_sum_qty);
+      it_price, it_img1, it_time, it_sum_qty);
 
   @JsonKey(ignore: true)
   @override
@@ -279,7 +260,6 @@ abstract class _KeywordResult implements KeywordResult {
       final int it_price,
       final String it_img1,
       final String it_time,
-      final int it_use_cnt,
       final int it_sum_qty}) = _$_KeywordResult;
 
   factory _KeywordResult.fromJson(Map<String, dynamic> json) =
@@ -297,8 +277,6 @@ abstract class _KeywordResult implements KeywordResult {
   String get it_img1;
   @override
   String get it_time;
-  @override
-  int get it_use_cnt;
   @override
   int get it_sum_qty;
   @override
