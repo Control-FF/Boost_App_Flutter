@@ -14,30 +14,30 @@ class InquiryScreen extends GetView<InquiryController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: ColorConstant.white,
-            elevation: 0,
-            title: Text(
-              '고객센터',
-              style: TextStyle(
-                color: ColorConstant.black2,
-                fontSize: 16.sp,
-                fontFamily: 'Noto Sans KR',
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            centerTitle: true,
-            leading: IconButton(
-              onPressed: (){
-                Get.back();
-              },
-              icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: ColorConstant.white,
+          elevation: 0,
+          title: Text(
+            '고객센터',
+            style: TextStyle(
+              color: ColorConstant.black2,
+              fontSize: 16.sp,
+              fontFamily: 'Noto Sans KR',
+              fontWeight: FontWeight.w700,
             ),
           ),
-          backgroundColor: ColorConstant.white,
-          body: SingleChildScrollView(
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: (){
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+          ),
+        ),
+        backgroundColor: ColorConstant.white,
+        body: SafeArea(
+          child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -372,36 +372,36 @@ class InquiryScreen extends GetView<InquiryController>{
                           focusNode: controller.titleFocusNode,
                           controller: controller.titleController,
                           decoration: InputDecoration(
-                            hintText: '제목을 입력하세요.',
-                            hintStyle: TextStyle(
-                              color: ColorConstant.gray2,
-                              fontSize: 12.sp,
-                              fontFamily: 'Noto Sans KR',
-                              fontWeight: FontWeight.w500,
-                            ),
-                            counterText: '',
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1.w,
-                                  color: ColorConstant.primary
+                              hintText: '제목을 입력하세요.',
+                              hintStyle: TextStyle(
+                                color: ColorConstant.gray2,
+                                fontSize: 12.sp,
+                                fontFamily: 'Noto Sans KR',
+                                fontWeight: FontWeight.w500,
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1.w,
-                                  color: ColorConstant.gray2
+                              counterText: '',
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1.w,
+                                    color: ColorConstant.primary
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(15.r)),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  width: 1.w,
-                                  color: ColorConstant.gray2
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1.w,
+                                    color: ColorConstant.gray2
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(15.r)),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                            ),
-                            contentPadding: EdgeInsets.fromLTRB(17.w, 8.h, 17.w, 8.h)
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1.w,
+                                    color: ColorConstant.gray2
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(15.r)),
+                              ),
+                              contentPadding: EdgeInsets.fromLTRB(17.w, 8.h, 17.w, 8.h)
                           ),
                           maxLines: 1,
                           style: TextStyle(
@@ -799,8 +799,8 @@ class InquiryScreen extends GetView<InquiryController>{
                 SizedBox(height: 30.h,)
               ],
             ),
-          )
-      ),
+          ),
+        )
     );
   }
 

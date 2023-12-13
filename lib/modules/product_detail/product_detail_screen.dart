@@ -67,79 +67,79 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
       }
     });
 
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: ColorConstant.white,
+      appBar: AppBar(
         backgroundColor: ColorConstant.white,
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '상품 상세',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
+        elevation: 0,
+        title: Text(
+          '상품 상세',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 30.w),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    width: 25.w,
-                    height: 25.h,
-                    child: InkWell(
-                      splashColor: Colors.white, // splash color
-                      onTap: () {
-                        Get.toNamed(AppRoutes.cartScreen);
-                      }, // button pressed
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
-                        ],
-                      ),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 30.w),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 25.w,
+                  height: 25.h,
+                  child: InkWell(
+                    splashColor: Colors.white, // splash color
+                    onTap: () {
+                      Get.toNamed(AppRoutes.cartScreen);
+                    }, // button pressed
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
+                      ],
                     ),
                   ),
-                  GetX<CartController>(
-                      builder: (_){
-                        return cartController.cartList.isNotEmpty ? Container(
-                          width: 15.w,
-                          height: 15.h,
-                          alignment: Alignment.center,
-                          margin: EdgeInsets.only(left: 20.w,bottom: 10.h),
-                          decoration: BoxDecoration(
-                              color: ColorConstant.accent,
-                              shape: BoxShape.circle
+                ),
+                GetX<CartController>(
+                    builder: (_){
+                      return cartController.cartList.isNotEmpty ? Container(
+                        width: 15.w,
+                        height: 15.h,
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(left: 20.w,bottom: 10.h),
+                        decoration: BoxDecoration(
+                            color: ColorConstant.accent,
+                            shape: BoxShape.circle
+                        ),
+                        child: Text(
+                          cartController.cartList.length.toString(),
+                          style: TextStyle(
+                            color: ColorConstant.white,
+                            fontSize: 7.sp,
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: FontWeight.w700,
                           ),
-                          child: Text(
-                            cartController.cartList.length.toString(),
-                            style: TextStyle(
-                              color: ColorConstant.white,
-                              fontSize: 7.sp,
-                              fontFamily: 'Noto Sans KR',
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ) : SizedBox();
-                      }
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-        body: Column(
+                        ),
+                      ) : SizedBox();
+                    }
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
                 child: NestedScrollView(
@@ -297,8 +297,8 @@ class ProductDetailScreen extends GetView<ProductDetailController>{
                                   margin: EdgeInsets.only(right: 30.w,top: 10.h),
                                   padding: EdgeInsets.fromLTRB(13.w, 4.h, 13.w, 4.h),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(30.r)),
-                                    color: ColorConstant.accent
+                                      borderRadius: BorderRadius.all(Radius.circular(30.r)),
+                                      color: ColorConstant.accent
                                   ),
                                   child: Text(
                                     '11:59 이전 주문시 오늘 도착!',

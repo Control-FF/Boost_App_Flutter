@@ -16,11 +16,11 @@ class RegisterScreen extends GetView<RegisterController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: KeyboardDismissOnTap(
-        child: Scaffold(
-          backgroundColor: ColorConstant.white,
-          body: SingleChildScrollView(
+    return KeyboardDismissOnTap(
+      child: Scaffold(
+        backgroundColor: ColorConstant.white,
+        body: SafeArea(
+          child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.vertical,
             child: Container(

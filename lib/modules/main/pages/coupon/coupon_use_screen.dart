@@ -10,30 +10,30 @@ import 'package:get/get.dart';
 class CouponUseScreen extends GetView<CouponController>{
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '쿠폰',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorConstant.white,
+        elevation: 0,
+        title: Text(
+          '쿠폰',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: ColorConstant.white,
-        body: Obx(() => Column(
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+      ),
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: Obx(() => Column(
           children: [
             Expanded(
               child: ListView.separated(

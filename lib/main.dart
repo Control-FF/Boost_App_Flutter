@@ -56,12 +56,26 @@ class MyApp extends StatelessWidget {
             : Size(812, 375),
         builder: (context, child) => GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          themeMode: ThemeMode.light,
           title: '부스트',
           locale: DevicePreview.locale(context),
           initialRoute: AppRoutes.splashScreen,
           getPages: AppRoutes.pages,
           theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+              brightness: Brightness.light,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            appBarTheme: AppBarTheme(
+              systemOverlayStyle: SystemUiOverlayStyle.light,
+            )
+          ),
+          darkTheme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            brightness: Brightness.light,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            appBarTheme: AppBarTheme(
+              systemOverlayStyle: SystemUiOverlayStyle.light,
+            )
           ),
         ),
       ),

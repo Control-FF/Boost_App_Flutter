@@ -436,113 +436,112 @@ class SearchScreen extends GetView<ProductSearchController> {
       }
     });
 
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () async {
-          bool backStatus = controller.onWillPop(context);
-          if (backStatus) {
-            return Future.value(true);
-          }
-          return Future.value(false);
-        },
-        child: Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        bool backStatus = controller.onWillPop(context);
+        if (backStatus) {
+          return Future.value(true);
+        }
+        return Future.value(false);
+      },
+      child: Scaffold(
+        backgroundColor: ColorConstant.white,
+        appBar: AppBar(
           backgroundColor: ColorConstant.white,
-          appBar: AppBar(
-            backgroundColor: ColorConstant.white,
-            elevation: 0,
-            title: Container(
-              width: Get.width,
-              height: 41.w,
-              child: TextField(
-                controller: controller.searchController,
-                decoration: InputDecoration(
-                  counterText: '',
-                  hintText: '검색어를 입력하세요.',
-                  hintStyle: TextStyle(
-                    color: ColorConstant.black,
-                    fontSize: 12.sp,
-                    fontFamily: 'Noto Sans KR',
-                    fontWeight: FontWeight.w500,
-                  ),
-                  contentPadding: EdgeInsets.zero,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 2.w,
-                        color: ColorConstant.gray14
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 2.w,
-                        color: ColorConstant.gray14
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        width: 2.w,
-                        color: ColorConstant.gray14
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                  ),
-                  prefixIcon: Icon(Icons.search_rounded,color: ColorConstant.primary,),
-                ),
-                maxLines: 1,
-                style: TextStyle(
+          elevation: 0,
+          title: Container(
+            width: Get.width,
+            height: 41.w,
+            child: TextField(
+              controller: controller.searchController,
+              decoration: InputDecoration(
+                counterText: '',
+                hintText: '검색어를 입력하세요.',
+                hintStyle: TextStyle(
                   color: ColorConstant.black,
                   fontSize: 12.sp,
                   fontFamily: 'Noto Sans KR',
                   fontWeight: FontWeight.w500,
                 ),
-                textInputAction: TextInputAction.done,
-                keyboardType: TextInputType.text,
-                onChanged: (value){
-                  if(value == ""){
-                    controller.searchStatus.value = '';
-                  }else{
-                    controller.searchStatus.value = 'search';
-                    controller.getKeywordAutoList();
-                  }
-                },
-                onSubmitted: (String str){
-                  if(str != ''){
-                    controller.searchStatus.value = 'result';
-                    controller.saveSearchText(str);
-                    controller.getKeywordResultList();
-                  }
-                },
+                contentPadding: EdgeInsets.zero,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      width: 2.w,
+                      color: ColorConstant.gray14
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      width: 2.w,
+                      color: ColorConstant.gray14
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      width: 2.w,
+                      color: ColorConstant.gray14
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                ),
+                prefixIcon: Icon(Icons.search_rounded,color: ColorConstant.primary,),
               ),
-            ),
-            leading: IconButton(
-              onPressed: (){
-                Get.back();
+              maxLines: 1,
+              style: TextStyle(
+                color: ColorConstant.black,
+                fontSize: 12.sp,
+                fontFamily: 'Noto Sans KR',
+                fontWeight: FontWeight.w500,
+              ),
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.text,
+              onChanged: (value){
+                if(value == ""){
+                  controller.searchStatus.value = '';
+                }else{
+                  controller.searchStatus.value = 'search';
+                  controller.getKeywordAutoList();
+                }
               },
-              icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.gray12,),
+              onSubmitted: (String str){
+                if(str != ''){
+                  controller.searchStatus.value = 'result';
+                  controller.saveSearchText(str);
+                  controller.getKeywordResultList();
+                }
+              },
             ),
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 30.w),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 25.w,
-                      height: 25.h,
-                      child: InkWell(
-                        splashColor: Colors.white, // splash color
-                        onTap: () {
-                          Get.toNamed(AppRoutes.cartScreen);
-                        }, // button pressed
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
-                          ],
-                        ),
+          ),
+          leading: IconButton(
+            onPressed: (){
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.gray12,),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.only(right: 30.w),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 25.w,
+                    height: 25.h,
+                    child: InkWell(
+                      splashColor: Colors.white, // splash color
+                      onTap: () {
+                        Get.toNamed(AppRoutes.cartScreen);
+                      }, // button pressed
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset('assets/images/ic_cart.png',width: 17.w,height: 17.h,), // icon
+                        ],
                       ),
                     ),
-                    GetX<CartController>(
+                  ),
+                  GetX<CartController>(
                       builder: (_){
                         return cartController.cartList.isNotEmpty ? Container(
                           width: 15.w,
@@ -564,13 +563,14 @@ class SearchScreen extends GetView<ProductSearchController> {
                           ),
                         ) : SizedBox();
                       }
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          body: SingleChildScrollView(
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
               controller: _scrollController,
               physics: BouncingScrollPhysics(),
               child: Obx(() {
@@ -701,7 +701,7 @@ class SearchScreen extends GetView<ProductSearchController> {
                                       crossAxisSpacing: 0,
                                     ),
                                     delegate: SliverChildBuilderDelegate(
-                                        (BuildContext context, int index){
+                                            (BuildContext context, int index){
                                           return InkWell(
                                             onTap: (){
                                               controller.searchController.text = controller.keywordRankList[index].keyword;
@@ -734,11 +734,11 @@ class SearchScreen extends GetView<ProductSearchController> {
                                                     child: Text(
                                                       controller.keywordRankList[index].keyword,
                                                       style: TextStyle(
-                                                        color: ColorConstant.black,
-                                                        fontSize: 12.sp,
-                                                        fontFamily: 'Noto Sans KR',
-                                                        fontWeight: FontWeight.w400,
-                                                        overflow: TextOverflow.ellipsis
+                                                          color: ColorConstant.black,
+                                                          fontSize: 12.sp,
+                                                          fontFamily: 'Noto Sans KR',
+                                                          fontWeight: FontWeight.w400,
+                                                          overflow: TextOverflow.ellipsis
                                                       ),
                                                     ),
                                                   ),

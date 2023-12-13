@@ -10,30 +10,30 @@ import 'package:get/get.dart';
 class ShippingScreen extends GetView<ShippingController>{
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '배송 요청사항',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorConstant.white,
+        elevation: 0,
+        title: Text(
+          '배송 요청사항',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: ColorConstant.white,
-        body: Obx(() => KeyboardDismissOnTap(
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+      ),
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: Obx(() => KeyboardDismissOnTap(
           child: Column(
             children: [
               Expanded(

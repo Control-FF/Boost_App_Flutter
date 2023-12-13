@@ -206,31 +206,31 @@ class AddressScreen extends GetView<AddressController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        extendBody: true,
+    return Scaffold(
+      extendBody: true,
+      backgroundColor: ColorConstant.white,
+      appBar: AppBar(
         backgroundColor: ColorConstant.white,
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Obx(() => Text(
-            controller.title.value,
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          )),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        elevation: 0,
+        title: Obx(() => Text(
+          controller.title.value,
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
+        )),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
         ),
-        body: Container(
+      ),
+      body: SafeArea(
+        child: Container(
           child: Column(
             children: [
               Container(
@@ -259,178 +259,178 @@ class AddressScreen extends GetView<AddressController>{
                 ),
               ),
               Expanded(
-                child: controller.obx(
-                        (state) => ListView.separated(
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      separatorBuilder: (context, index) {
-                        return Container(
-                          height: 1.00,
-                          margin: EdgeInsets.symmetric(horizontal: 30.w),
-                          decoration: BoxDecoration(
-                            color: ColorConstant.gray1.withOpacity(0.2),
-                          ),
-                        );
-                      },
-                      itemCount: state.items.length,
-                      itemBuilder: (context, index) {
-                        return Obx(() => Container(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(30.w, 19.h, 18.w, 0),
-                                width: 16.w,
-                                height: 16.h,
-                                child: Checkbox(
-                                  side: BorderSide(
-                                      width: 1.w,
-                                      color: ColorConstant.gray7
-                                  ),
-                                  value: controller.selectAdId.value == state.items[index].ad_id,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6.r),
-                                  ),
-                                  checkColor: ColorConstant.white,
-                                  activeColor: ColorConstant.primary,
-                                  onChanged: (bool? checkValue){
-                                    controller.selectIndex.value = index;
-                                    for(int i=0; i<state.items.length; i++){
-                                      if(i == index){
-                                        controller.selectAdId.value = state.items[index].ad_id;
-                                      }else{
+                  child: controller.obx(
+                          (state) => ListView.separated(
+                        physics: BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return Container(
+                            height: 1.00,
+                            margin: EdgeInsets.symmetric(horizontal: 30.w),
+                            decoration: BoxDecoration(
+                              color: ColorConstant.gray1.withOpacity(0.2),
+                            ),
+                          );
+                        },
+                        itemCount: state.items.length,
+                        itemBuilder: (context, index) {
+                          return Obx(() => Container(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(30.w, 19.h, 18.w, 0),
+                                  width: 16.w,
+                                  height: 16.h,
+                                  child: Checkbox(
+                                    side: BorderSide(
+                                        width: 1.w,
+                                        color: ColorConstant.gray7
+                                    ),
+                                    value: controller.selectAdId.value == state.items[index].ad_id,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6.r),
+                                    ),
+                                    checkColor: ColorConstant.white,
+                                    activeColor: ColorConstant.primary,
+                                    onChanged: (bool? checkValue){
+                                      controller.selectIndex.value = index;
+                                      for(int i=0; i<state.items.length; i++){
+                                        if(i == index){
+                                          controller.selectAdId.value = state.items[index].ad_id;
+                                        }else{
 
+                                        }
                                       }
-                                    }
-                                  },
+                                    },
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Stack(
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.only(top: 15.h),
-                                          width: Get.width,
-                                          child: Text(
-                                            '${state.items[index].name}\n'
-                                                '${state.items[index].phone}\n'
-                                                '${state.items[index].address1}\n'
-                                                '${state.items[index].address2}\n',
-                                            style: TextStyle(
-                                              color: ColorConstant.black,
-                                              fontSize: 14.sp,
-                                              fontFamily: 'Noto Sans KR',
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        state.items[index].ad_default == "true" ? Positioned(
-                                          top: 15,
-                                          right: 30,
-                                          child: Container(
-                                            width: 66.w,
-                                            height: 25.h,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                                                border: Border.all(width: 1,color: ColorConstant.gray2)
-                                            ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Stack(
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.only(top: 15.h),
+                                            width: Get.width,
                                             child: Text(
-                                              '기본배송지',
+                                              '${state.items[index].name}\n'
+                                                  '${state.items[index].phone}\n'
+                                                  '${state.items[index].address1}\n'
+                                                  '${state.items[index].address2}\n',
                                               style: TextStyle(
-                                                color: ColorConstant.gray8,
-                                                fontSize: 10.sp,
+                                                color: ColorConstant.black,
+                                                fontSize: 14.sp,
                                                 fontFamily: 'Noto Sans KR',
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             ),
                                           ),
-                                        ) : Positioned(
-                                          top: 15,
-                                          right: 30,
-                                          child: Container(
-                                            width: 87.w,
-                                            height: 24.h,
-                                            child: OutlinedButton(
-                                              style: OutlinedButton.styleFrom(
-                                                  side: BorderSide(width: 1.w, color: ColorConstant.primary),
-                                                  elevation: 0,
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.all(Radius.circular(5.r))
-                                                  ),
-                                                  padding: EdgeInsets.all(0),
-                                                  minimumSize: Size(87.w,24.h)
+                                          state.items[index].ad_default == "true" ? Positioned(
+                                            top: 15,
+                                            right: 30,
+                                            child: Container(
+                                              width: 66.w,
+                                              height: 25.h,
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                                                  border: Border.all(width: 1,color: ColorConstant.gray2)
                                               ),
-                                              onPressed: (){
-                                                _showBasicPopup(context,state.items[index].ad_id);
-                                              },
                                               child: Text(
-                                                '기본 배송지 설정',
+                                                '기본배송지',
                                                 style: TextStyle(
-                                                  color: ColorConstant.primary,
+                                                  color: ColorConstant.gray8,
                                                   fontSize: 10.sp,
                                                   fontFamily: 'Noto Sans KR',
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    state.items[index].ad_default == "false" ? Container(
-                                      width: 50.w,
-                                      height: 23.h,
-                                      child: ElevatedButton(
-                                        onPressed: (){
-                                          _showDeletePopup(context,state.items[index].ad_id);
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor: ColorConstant.primary,
-                                            elevation: 0,
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(Radius.circular(5.r))
+                                          ) : Positioned(
+                                            top: 15,
+                                            right: 30,
+                                            child: Container(
+                                              width: 87.w,
+                                              height: 24.h,
+                                              child: OutlinedButton(
+                                                style: OutlinedButton.styleFrom(
+                                                    side: BorderSide(width: 1.w, color: ColorConstant.primary),
+                                                    elevation: 0,
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.all(Radius.circular(5.r))
+                                                    ),
+                                                    padding: EdgeInsets.all(0),
+                                                    minimumSize: Size(87.w,24.h)
+                                                ),
+                                                onPressed: (){
+                                                  _showBasicPopup(context,state.items[index].ad_id);
+                                                },
+                                                child: Text(
+                                                  '기본 배송지 설정',
+                                                  style: TextStyle(
+                                                    color: ColorConstant.primary,
+                                                    fontSize: 10.sp,
+                                                    fontFamily: 'Noto Sans KR',
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
-                                            padding: EdgeInsets.all(0),
-                                            minimumSize: Size(50.w,23.h)
-                                        ),
-                                        child: Text(
-                                          '삭제',
-                                          style: TextStyle(
-                                            color: ColorConstant.white,
-                                            fontSize: 10.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w400,
+                                          )
+                                        ],
+                                      ),
+                                      state.items[index].ad_default == "false" ? Container(
+                                        width: 50.w,
+                                        height: 23.h,
+                                        child: ElevatedButton(
+                                          onPressed: (){
+                                            _showDeletePopup(context,state.items[index].ad_id);
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor: ColorConstant.primary,
+                                              elevation: 0,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(Radius.circular(5.r))
+                                              ),
+                                              padding: EdgeInsets.all(0),
+                                              minimumSize: Size(50.w,23.h)
+                                          ),
+                                          child: Text(
+                                            '삭제',
+                                            style: TextStyle(
+                                              color: ColorConstant.white,
+                                              fontSize: 10.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w400,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ) : SizedBox(),
-                                    SizedBox(height: 18.h,)
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ));
-                      },
-                    ),
-                    onEmpty:Center(
-                      child: Text(
-                        '등록된 배송지가 없습니다.\n배송지를 추가해주세요.',
-                        style: TextStyle(
-                          color: ColorConstant.black,
-                          fontSize: 16.sp,
-                          fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w400,
-                        ),
-                        textAlign: TextAlign.center,
+                                      ) : SizedBox(),
+                                      SizedBox(height: 18.h,)
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ));
+                        },
                       ),
-                    )
-                )
+                      onEmpty:Center(
+                        child: Text(
+                          '등록된 배송지가 없습니다.\n배송지를 추가해주세요.',
+                          style: TextStyle(
+                            color: ColorConstant.black,
+                            fontSize: 16.sp,
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: FontWeight.w400,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                  )
               ),
               Obx(() => Container(
                 width: Get.width,

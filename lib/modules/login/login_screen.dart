@@ -86,10 +86,10 @@ class LoginScreen extends GetView<LoginController>{
   @override
   Widget build(BuildContext context) {
     return KeyboardDismissOnTap(
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: ColorConstant.white,
-          body: Container(
+      child: Scaffold(
+        backgroundColor: ColorConstant.white,
+        body: SafeArea(
+          child: Container(
             margin: EdgeInsets.fromLTRB(26.w, 47.w, 26.w, 0),
             child: Obx(() => Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -430,8 +430,7 @@ class MoreScreen extends GetView<MoreController>{
       }
     });
 
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorConstant.white,
           elevation: 0,
@@ -452,199 +451,200 @@ class MoreScreen extends GetView<MoreController>{
           ),
         ),
         backgroundColor: ColorConstant.white,
-        body: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            controller: _scrollController,
-            child: Obx(() => Container(
-              margin: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 0.h),
-              color: ColorConstant.white,
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${controller.totalCnt.value}개의 상품',
-                        style: TextStyle(
-                          color: ColorConstant.gray12,
-                          fontSize: 10.sp,
-                          fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w500,
+        body: SafeArea(
+          child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              controller: _scrollController,
+              child: Obx(() => Container(
+                margin: EdgeInsets.fromLTRB(30.w, 20.h, 30.w, 0.h),
+                color: ColorConstant.white,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '${controller.totalCnt.value}개의 상품',
+                          style: TextStyle(
+                            color: ColorConstant.gray12,
+                            fontSize: 10.sp,
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: (){
-                              _showFilterPopup(context);
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.tune,
-                                  size: 12,
-                                  color: controller.filter.value != ''
-                                      ? ColorConstant.accent
-                                      : ColorConstant.black.withOpacity(0.77),
-                                ),
-                                SizedBox(width: 3.w,),
-                                Text(
-                                  '필터',
-                                  style: TextStyle(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: (){
+                                _showFilterPopup(context);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.tune,
+                                    size: 12,
                                     color: controller.filter.value != ''
                                         ? ColorConstant.accent
                                         : ColorConstant.black.withOpacity(0.77),
-                                    fontSize: 10.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w500,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(width: 3.w,),
+                                  Text(
+                                    '필터',
+                                    style: TextStyle(
+                                      color: controller.filter.value != ''
+                                          ? ColorConstant.accent
+                                          : ColorConstant.black.withOpacity(0.77),
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 3.w,),
-                          InkWell(
-                            onTap: (){
-                              _showSortPopup(context);
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.format_list_bulleted,
-                                  size: 12,
-                                  color: controller.sort.value != ''
-                                      ? ColorConstant.accent
-                                      : ColorConstant.black.withOpacity(0.77),
-                                ),
-                                SizedBox(width: 3.w,),
-                                Text(
-                                  '정렬',
-                                  style: TextStyle(
+                            SizedBox(width: 3.w,),
+                            InkWell(
+                              onTap: (){
+                                _showSortPopup(context);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.format_list_bulleted,
+                                    size: 12,
                                     color: controller.sort.value != ''
                                         ? ColorConstant.accent
                                         : ColorConstant.black.withOpacity(0.77),
-                                    fontSize: 10.sp,
-                                    fontFamily: 'Noto Sans KR',
-                                    fontWeight: FontWeight.w500,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(width: 3.w,),
+                                  Text(
+                                    '정렬',
+                                    style: TextStyle(
+                                      color: controller.sort.value != ''
+                                          ? ColorConstant.accent
+                                          : ColorConstant.black.withOpacity(0.77),
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 7,),
+                    CustomScrollView(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        slivers: [
+                          SliverGrid(
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio: 58.63 / 90,
+                              mainAxisSpacing: 37,
+                              crossAxisSpacing: 23,
+                            ),
+                            delegate: SliverChildBuilderDelegate(
+                                    (BuildContext context, int index){
+                                  return InkWell(
+                                    onTap: (){
+                                      Get.toNamed(AppRoutes.productDetailScreen,arguments: {
+                                        'productId' : controller.productList[index].it_id
+                                      });
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        controller.productList[index].it_img1 == ""
+                                            ? Image.asset(
+                                          'assets/images/product_sample.png',
+                                          fit: BoxFit.cover,
+                                        )
+                                            : AspectRatio(
+                                          aspectRatio: 1/1,
+                                          child: Image.network(
+                                            '${Constants.fileUrl}${controller.productList[index].it_img1}',
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        SizedBox(height: 9.h,),
+                                        SizedBox(
+                                          width: 146.w,
+                                          child: Text.rich(
+                                              TextSpan(
+                                                  children: [
+                                                    TextSpan(
+                                                      text: controller.productList[index].it_name,
+                                                      style: TextStyle(
+                                                        color: ColorConstant.black,
+                                                        fontSize: 10.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w400,
+                                                      ),
+                                                    )
+                                                  ]
+                                              )
+                                          ),
+                                        ),
+                                        SizedBox(height: 2.h,),
+                                        SizedBox(
+                                          width: 146.w,
+                                          child: Text.rich(
+                                              TextSpan(
+                                                  children: [
+                                                    controller.productList[index].it_cust_price != controller.productList[index].it_price ? TextSpan(
+                                                      text: '${Constants.getPercent(controller.productList[index].it_price, controller.productList[index].it_cust_price)}%',
+                                                      style: TextStyle(
+                                                        color: ColorConstant.primary,
+                                                        fontSize: 12.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                    ) : TextSpan(),
+                                                    TextSpan(
+                                                      text: ' ${Constants.numberAddComma(controller.productList[index].it_price)}원',
+                                                      style: TextStyle(
+                                                        color: ColorConstant.black,
+                                                        fontSize: 12.sp,
+                                                        fontFamily: 'Noto Sans KR',
+                                                        fontWeight: FontWeight.w700,
+                                                      ),
+                                                    )
+                                                  ]
+                                              )
+                                          ),
+                                        ),
+                                        controller.productList[index].it_cust_price != controller.productList[index].it_price ? Text(
+                                          '${Constants.numberAddComma(controller.productList[index].it_cust_price)}원',
+                                          style: TextStyle(
+                                              color: ColorConstant.gray1,
+                                              fontSize: 8.sp,
+                                              fontFamily: 'Noto Sans KR',
+                                              fontWeight: FontWeight.w700,
+                                              decoration: TextDecoration.lineThrough
+                                          ),
+                                        ) : SizedBox()
+
+                                      ],
+                                    ),
+                                  );
+                                },
+                                childCount: controller.productList.length
                             ),
                           ),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 7,),
-                  CustomScrollView(
-                    shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      slivers: [
-                        SliverGrid(
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 58.63 / 90,
-                            mainAxisSpacing: 37,
-                            crossAxisSpacing: 23,
-                          ),
-                          delegate: SliverChildBuilderDelegate(
-                                  (BuildContext context, int index){
-                                return InkWell(
-                                  onTap: (){
-                                    Get.toNamed(AppRoutes.productDetailScreen,arguments: {
-                                      'productId' : controller.productList[index].it_id
-                                    });
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      controller.productList[index].it_img1 == ""
-                                          ? Image.asset(
-                                        'assets/images/product_sample.png',
-                                        fit: BoxFit.cover,
-                                      )
-                                          : AspectRatio(
-                                        aspectRatio: 1/1,
-                                        child: Image.network(
-                                          '${Constants.fileUrl}${controller.productList[index].it_img1}',
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      SizedBox(height: 9.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: controller.productList[index].it_name,
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 10.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w400,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      SizedBox(height: 2.h,),
-                                      SizedBox(
-                                        width: 146.w,
-                                        child: Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  controller.productList[index].it_cust_price != controller.productList[index].it_price ? TextSpan(
-                                                    text: '${Constants.getPercent(controller.productList[index].it_price, controller.productList[index].it_cust_price)}%',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.primary,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  ) : TextSpan(),
-                                                  TextSpan(
-                                                    text: ' ${Constants.numberAddComma(controller.productList[index].it_price)}원',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                      ),
-                                      controller.productList[index].it_cust_price != controller.productList[index].it_price ? Text(
-                                        '${Constants.numberAddComma(controller.productList[index].it_cust_price)}원',
-                                        style: TextStyle(
-                                            color: ColorConstant.gray1,
-                                            fontSize: 8.sp,
-                                            fontFamily: 'Noto Sans KR',
-                                            fontWeight: FontWeight.w700,
-                                            decoration: TextDecoration.lineThrough
-                                        ),
-                                      ) : SizedBox()
-
-                                    ],
-                                  ),
-                                );
-                              },
-                              childCount: controller.productList.length
-                          ),
-                        ),
-                      ]
-                  )
-                ],
-              ),
-            ))
+                        ]
+                    )
+                  ],
+                ),
+              ))
+          ),
         )
-      ),
     );
   }
 

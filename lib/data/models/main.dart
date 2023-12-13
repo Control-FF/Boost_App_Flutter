@@ -47,6 +47,7 @@ class CategoryData with _$CategoryData {
 
     @Default('') String ca_id,
     @Default('') String ca_name,
+    @Default('') String ca_img,
     @Default('false') String sub_flag,
   }) = _CategoryData;
 

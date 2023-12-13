@@ -109,10 +109,10 @@ class MyInfoCheckScreen extends GetView<MyInfoController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorConstant.white,
-        body: SingleChildScrollView(
+    return Scaffold(
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Obx(() => Container(

@@ -15,40 +15,40 @@ class ReviewEditScreen extends GetView<ReviewController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () async {
-          bool backStatus = controller.onWillPop(context);
-          if (backStatus) {
-            return Future.value(true);
-          }
-          return Future.value(false);
-        },
-        child: Stack(
-          children: [
-            Scaffold(
-              appBar: AppBar(
-                backgroundColor: ColorConstant.white,
-                elevation: 0,
-                title: Text(
-                  '리뷰',
-                  style: TextStyle(
-                    color: ColorConstant.black2,
-                    fontSize: 16.sp,
-                    fontFamily: 'Noto Sans KR',
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                centerTitle: true,
-                leading: IconButton(
-                  onPressed: (){
-                    Get.back();
-                  },
-                  icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return WillPopScope(
+      onWillPop: () async {
+        bool backStatus = controller.onWillPop(context);
+        if (backStatus) {
+          return Future.value(true);
+        }
+        return Future.value(false);
+      },
+      child: Stack(
+        children: [
+          Scaffold(
+            appBar: AppBar(
+              backgroundColor: ColorConstant.white,
+              elevation: 0,
+              title: Text(
+                '리뷰',
+                style: TextStyle(
+                  color: ColorConstant.black2,
+                  fontSize: 16.sp,
+                  fontFamily: 'Noto Sans KR',
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              backgroundColor: ColorConstant.white,
-              body: SingleChildScrollView(
+              centerTitle: true,
+              leading: IconButton(
+                onPressed: (){
+                  Get.back();
+                },
+                icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+              ),
+            ),
+            backgroundColor: ColorConstant.white,
+            body: SafeArea(
+              child: SingleChildScrollView(
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 30.w),
                   child: Column(
@@ -399,15 +399,15 @@ class ReviewEditScreen extends GetView<ReviewController>{
                 ),
               ),
             ),
-            Obx(() => controller.isLoading.value ? const Opacity(
-              opacity: 0.8,
-              child: ModalBarrier(dismissible: false, color: Colors.black),
-            ) : SizedBox()),
-            Obx(() => controller.isLoading.value ? const Center(
-              child: CircularProgressIndicator(),
-            ) : SizedBox()),
-          ],
-        ),
+          ),
+          Obx(() => controller.isLoading.value ? const Opacity(
+            opacity: 0.8,
+            child: ModalBarrier(dismissible: false, color: Colors.black),
+          ) : SizedBox()),
+          Obx(() => controller.isLoading.value ? const Center(
+            child: CircularProgressIndicator(),
+          ) : SizedBox()),
+        ],
       ),
     );
   }

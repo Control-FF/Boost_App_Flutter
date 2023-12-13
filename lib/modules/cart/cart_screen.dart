@@ -19,30 +19,30 @@ class CartScreen extends GetView<CartController>{
     controller.getCartList();
     oneTouchController.getOneTouchCart();
 
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: ColorConstant.white,
+      appBar: AppBar(
         backgroundColor: ColorConstant.white,
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '장바구니',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        elevation: 0,
+        title: Text(
+          '장바구니',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
         ),
-        body: Column(
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
               child: CustomScrollView(

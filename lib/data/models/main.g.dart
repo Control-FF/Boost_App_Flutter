@@ -68,6 +68,7 @@ _$_CategoryData _$$_CategoryDataFromJson(Map<String, dynamic> json) =>
     _$_CategoryData(
       ca_id: json['ca_id'] as String? ?? '',
       ca_name: json['ca_name'] as String? ?? '',
+      ca_img: json['ca_img'] as String? ?? '',
       sub_flag: json['sub_flag'] as String? ?? 'false',
     );
 
@@ -75,6 +76,7 @@ Map<String, dynamic> _$$_CategoryDataToJson(_$_CategoryData instance) =>
     <String, dynamic>{
       'ca_id': instance.ca_id,
       'ca_name': instance.ca_name,
+      'ca_img': instance.ca_img,
       'sub_flag': instance.sub_flag,
     };
 

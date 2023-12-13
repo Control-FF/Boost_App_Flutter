@@ -15,10 +15,10 @@ class TutorialScreen extends GetView<TutorialController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorConstant.white,
-        body: Column(
+    return Scaffold(
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: Column(
           children: [
             Expanded(
               child: PageView(
@@ -101,7 +101,7 @@ class TutorialScreen extends GetView<TutorialController>{
             )
           ],
         ),
-      )
+      ),
     );
   }
 

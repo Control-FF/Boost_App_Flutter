@@ -123,7 +123,7 @@ class HomeTabPopular extends GetView<HomeController>{
                                 child: Column(
                                   children: [
                                     CircleAvatar(
-                                      backgroundImage: AssetImage('assets/images/sample_category1.png',),
+                                      backgroundImage: NetworkImage(mainController.mainCategoryList[index].ca_img,),
                                       radius: 29.w,
                                     ),
                                     SizedBox(height: 7.h,),

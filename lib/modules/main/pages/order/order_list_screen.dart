@@ -907,329 +907,328 @@ class OrderListScreen extends GetView<OrderController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '주문 내역',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorConstant.white,
+        elevation: 0,
+        title: Text(
+          '주문 내역',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: ColorConstant.white,
-        body: controller.obx(
-            (state) => Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.w),
-                  child: Divider(
-                    thickness: 1,
-                    height: 1.h,
-                    color: ColorConstant.black.withOpacity(0.1),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+      ),
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: controller.obx((state) => Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              child: Divider(
+                thickness: 1,
+                height: 1.h,
+                color: ColorConstant.black.withOpacity(0.1),
+              ),
+            ),
+            Obx(() => Container(
+              margin: EdgeInsets.fromLTRB(30.w, 12.h, 30.w, 25.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: (){
+                      controller.orderListStatus.value = 0;
+                      controller.getOrderList();
+                    },
+                    child: Container(
+                      width: 53.w,
+                      height: 70.h,
+                      padding: EdgeInsets.only(top: 9.5.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                          color: controller.orderListStatus.value == 0 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.userData.value == null ? '0' : controller.userData.value!.order!.deposit_cnt.toString(),
+                            style: TextStyle(
+                              color: controller.orderListStatus.value == 0 ? ColorConstant.white : ColorConstant.black,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    '입금, 결제 완료',
+                                    style: TextStyle(
+                                      color: controller.orderListStatus.value == 0 ? ColorConstant.white : ColorConstant.black,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                Obx(() => Container(
-                  margin: EdgeInsets.fromLTRB(30.w, 12.h, 30.w, 25.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          controller.orderListStatus.value = 0;
-                          controller.getOrderList();
-                        },
-                        child: Container(
-                          width: 53.w,
-                          height: 70.h,
-                          padding: EdgeInsets.only(top: 9.5.h),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                              color: controller.orderListStatus.value == 0 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.userData.value == null ? '0' : controller.userData.value!.order!.deposit_cnt.toString(),
-                                style: TextStyle(
-                                  color: controller.orderListStatus.value == 0 ? ColorConstant.white : ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        '입금, 결제 완료',
-                                        style: TextStyle(
-                                          color: controller.orderListStatus.value == 0 ? ColorConstant.white : ColorConstant.black,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                  GestureDetector(
+                    onTap: (){
+                      controller.orderListStatus.value = 1;
+                      controller.getOrderList();
+                    },
+                    child: Container(
+                      width: 53.w,
+                      height: 70.h,
+                      padding: EdgeInsets.only(top: 9.5.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                          color: controller.orderListStatus.value == 1 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
                       ),
-                      GestureDetector(
-                        onTap: (){
-                          controller.orderListStatus.value = 1;
-                          controller.getOrderList();
-                        },
-                        child: Container(
-                          width: 53.w,
-                          height: 70.h,
-                          padding: EdgeInsets.only(top: 9.5.h),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                              color: controller.orderListStatus.value == 1 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.userData.value == null ? '0' : controller.userData.value!.order!.prepare_cnt.toString(),
+                            style: TextStyle(
+                              color: controller.orderListStatus.value == 1 ? ColorConstant.white : ColorConstant.black,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.userData.value == null ? '0' : controller.userData.value!.order!.prepare_cnt.toString(),
-                                style: TextStyle(
-                                  color: controller.orderListStatus.value == 1 ? ColorConstant.white : ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    '배송\n준비중',
+                                    style: TextStyle(
+                                      color: controller.orderListStatus.value == 1 ? ColorConstant.white : ColorConstant.black,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
                               ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        '배송\n준비중',
-                                        style: TextStyle(
-                                          color: controller.orderListStatus.value == 1 ? ColorConstant.white : ColorConstant.black,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                            ),
+                          )
+                        ],
                       ),
-                      GestureDetector(
-                        onTap: (){
-                          controller.orderListStatus.value = 2;
-                          controller.getOrderList();
-                        },
-                        child: Container(
-                          width: 53.w,
-                          height: 70.h,
-                          padding: EdgeInsets.only(top: 9.5.h),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                              color: controller.orderListStatus.value == 2 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.userData.value == null ? '0' : controller.userData.value!.order!.delivery_cnt.toString(),
-                                style: TextStyle(
-                                  color: controller.orderListStatus.value == 2 ? ColorConstant.white : ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        '배송중',
-                                        style: TextStyle(
-                                          color: controller.orderListStatus.value == 2 ? ColorConstant.white : ColorConstant.black,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: (){
-                          controller.orderListStatus.value = 3;
-                          controller.getOrderList();
-                        },
-                        child: Container(
-                          width: 53.w,
-                          height: 70.h,
-                          padding: EdgeInsets.only(top: 9.5.h),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                              color: controller.orderListStatus.value == 3 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.userData.value == null ? '0' : controller.userData.value!.order!.complete_cnt.toString(),
-                                style: TextStyle(
-                                  color: controller.orderListStatus.value == 3 ? ColorConstant.white : ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        '배송\n완료',
-                                        style: TextStyle(
-                                          color: controller.orderListStatus.value == 3 ? ColorConstant.white : ColorConstant.black,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: (){
-                          controller.orderListStatus.value = 4;
-                          controller.getOrderList();
-                        },
-                        child: Container(
-                          width: 53.w,
-                          height: 70.h,
-                          padding: EdgeInsets.only(top: 9.5.h),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(5.r)),
-                              color: controller.orderListStatus.value == 4 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.userData.value == null ? '0' : controller.userData.value!.order!.cancel_cnt.toString(),
-                                style: TextStyle(
-                                  color: controller.orderListStatus.value == 4 ? ColorConstant.white : ColorConstant.black,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  child: Wrap(
-                                    children: [
-                                      Text(
-                                        '취소, 교환, 환불',
-                                        style: TextStyle(
-                                          color: controller.orderListStatus.value == 4 ? ColorConstant.white : ColorConstant.black,
-                                          fontSize: 10.sp,
-                                          fontFamily: 'Noto Sans KR',
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                )),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30.w),
-                    child: ListView.builder(
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: state.items.length,
-                      itemBuilder: (context, index){
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  GestureDetector(
+                    onTap: (){
+                      controller.orderListStatus.value = 2;
+                      controller.getOrderList();
+                    },
+                    child: Container(
+                      width: 53.w,
+                      height: 70.h,
+                      padding: EdgeInsets.only(top: 9.5.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                          color: controller.orderListStatus.value == 2 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.userData.value == null ? '0' : controller.userData.value!.order!.delivery_cnt.toString(),
+                            style: TextStyle(
+                              color: controller.orderListStatus.value == 2 ? ColorConstant.white : ColorConstant.black,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    '배송중',
+                                    style: TextStyle(
+                                      color: controller.orderListStatus.value == 2 ? ColorConstant.white : ColorConstant.black,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      controller.orderListStatus.value = 3;
+                      controller.getOrderList();
+                    },
+                    child: Container(
+                      width: 53.w,
+                      height: 70.h,
+                      padding: EdgeInsets.only(top: 9.5.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                          color: controller.orderListStatus.value == 3 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.userData.value == null ? '0' : controller.userData.value!.order!.complete_cnt.toString(),
+                            style: TextStyle(
+                              color: controller.orderListStatus.value == 3 ? ColorConstant.white : ColorConstant.black,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    '배송\n완료',
+                                    style: TextStyle(
+                                      color: controller.orderListStatus.value == 3 ? ColorConstant.white : ColorConstant.black,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      controller.orderListStatus.value = 4;
+                      controller.getOrderList();
+                    },
+                    child: Container(
+                      width: 53.w,
+                      height: 70.h,
+                      padding: EdgeInsets.only(top: 9.5.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(5.r)),
+                          color: controller.orderListStatus.value == 4 ? ColorConstant.gray12 : ColorConstant.blue2.withOpacity(0.29)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.userData.value == null ? '0' : controller.userData.value!.order!.cancel_cnt.toString(),
+                            style: TextStyle(
+                              color: controller.orderListStatus.value == 4 ? ColorConstant.white : ColorConstant.black,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Wrap(
+                                children: [
+                                  Text(
+                                    '취소, 교환, 환불',
+                                    style: TextStyle(
+                                      color: controller.orderListStatus.value == 4 ? ColorConstant.white : ColorConstant.black,
+                                      fontSize: 10.sp,
+                                      fontFamily: 'Noto Sans KR',
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 30.w),
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: state.items.length,
+                  itemBuilder: (context, index){
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        controller.isShowDate(index) ? Padding(
+                          padding: EdgeInsets.only(bottom: 11.h),
+                          child: Text(
+                            state.items[index].ct_time.split(' ')[0],
+                            style: TextStyle(
+                              color: ColorConstant.gray12,
+                              fontSize: 12.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ) : SizedBox(),
+                        Row(
                           children: [
-                            controller.isShowDate(index) ? Padding(
-                              padding: EdgeInsets.only(bottom: 11.h),
-                              child: Text(
-                                state.items[index].ct_time.split(' ')[0],
-                                style: TextStyle(
-                                  color: ColorConstant.gray12,
-                                  fontSize: 12.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(6.r)),
+                              child: state.items[index].it_img1 != '' ? Image.network(
+                                state.items[index].it_img1,width: 96.w,height: 96.h,fit: BoxFit.cover,
+                              ) : Image.asset(
+                                'assets/images/product_sample.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
                               ),
-                            ) : SizedBox(),
-                            Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.all(Radius.circular(6.r)),
-                                  child: state.items[index].it_img1 != '' ? Image.network(
-                                    state.items[index].it_img1,width: 96.w,height: 96.h,fit: BoxFit.cover,
-                                  ) : Image.asset(
-                                    'assets/images/product_sample.png',width: 96.w,height: 96.h,fit: BoxFit.cover,
-                                  ),
-                                ),
-                                SizedBox(width: 4.w,),
-                                Expanded(
-                                  child: Container(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        /*
+                            ),
+                            SizedBox(width: 4.w,),
+                            Expanded(
+                              child: Container(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    /*
                                         Row(
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
@@ -1266,21 +1265,21 @@ class OrderListScreen extends GetView<OrderController>{
                                         SizedBox(height: 5.h,),
 
                                          */
-                                        Wrap(
-                                          children: [
-                                            Text(
-                                              state.items[index].it_name,
-                                              style: TextStyle(
-                                                color: ColorConstant.black,
-                                                fontSize: 10.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(height: 5.h,),
-                                        /*
+                                    Wrap(
+                                      children: [
+                                        Text(
+                                          state.items[index].it_name,
+                                          style: TextStyle(
+                                            color: ColorConstant.black,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(height: 5.h,),
+                                    /*
                                         Wrap(
                                           children: [
                                             Text(
@@ -1296,10 +1295,10 @@ class OrderListScreen extends GetView<OrderController>{
                                         ),
 
                                          */
-                                        Text.rich(
-                                            TextSpan(
-                                                children: [
-                                                  /*
+                                    Text.rich(
+                                        TextSpan(
+                                            children: [
+                                              /*
                                                   TextSpan(
                                                     text: '50%',
                                                     style: TextStyle(
@@ -1311,151 +1310,151 @@ class OrderListScreen extends GetView<OrderController>{
                                                   ),
 
                                                    */
-                                                  TextSpan(
-                                                    text: '${Constants.numberAddComma(state.items[index].ct_price)}원',
-                                                    style: TextStyle(
-                                                      color: ColorConstant.black,
-                                                      fontSize: 12.sp,
-                                                      fontFamily: 'Noto Sans KR',
-                                                      fontWeight: FontWeight.w700,
-                                                    ),
-                                                  )
-                                                ]
-                                            )
-                                        ),
-                                        Align(
-                                          alignment: Alignment.centerRight,
-                                          child: ElevatedButton(
-                                            onPressed: (){
-                                              //add cart
-
-                                              List<dynamic> ctItems = [];
-
-                                              if(controller.orderList[index].io_no != 0){
-                                                //옵션 있을때
-                                                ctItems.add({
-                                                  'io_no' : controller.orderList[index].io_no,
-                                                  'ct_qty' : 1
-                                                });
-                                              }else{
-                                                ctItems.add({
-                                                  'ct_qty' : 1
-                                                });
-                                              }
-                                              cartController.addCart(context, controller.orderList[index].it_id.toString(), ctItems);
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor: ColorConstant.primary,
-                                                elevation: 0,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.all(Radius.circular(4.r))
+                                              TextSpan(
+                                                text: '${Constants.numberAddComma(state.items[index].ct_price)}원',
+                                                style: TextStyle(
+                                                  color: ColorConstant.black,
+                                                  fontSize: 12.sp,
+                                                  fontFamily: 'Noto Sans KR',
+                                                  fontWeight: FontWeight.w700,
                                                 ),
-                                                minimumSize: Size(77.w,24.h)
-                                            ),
-                                            child: Text(
-                                              '장바구니 담기',
-                                              style: TextStyle(
-                                                color: ColorConstant.white,
-                                                fontSize: 10.sp,
-                                                fontFamily: 'Noto Sans KR',
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                            ),
-                                          ),
+                                              )
+                                            ]
                                         )
-                                      ],
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 11.h,),
-                            Obx(() => controller.orderListStatus.value == 4
-                                ? Container(
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(vertical: 14),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                                  color: ColorConstant.accent
-                              ),
-                              child: Text(
-                                '교환, 반품신청 완료',
-                                style: TextStyle(
-                                  color: ColorConstant.white,
-                                  fontSize: 14.sp,
-                                  fontFamily: 'Noto Sans KR',
-                                  fontWeight: FontWeight.w700,
+                                    Align(
+                                      alignment: Alignment.centerRight,
+                                      child: ElevatedButton(
+                                        onPressed: (){
+                                          //add cart
+
+                                          List<dynamic> ctItems = [];
+
+                                          if(controller.orderList[index].io_no != 0){
+                                            //옵션 있을때
+                                            ctItems.add({
+                                              'io_no' : controller.orderList[index].io_no,
+                                              'ct_qty' : 1
+                                            });
+                                          }else{
+                                            ctItems.add({
+                                              'ct_qty' : 1
+                                            });
+                                          }
+                                          cartController.addCart(context, controller.orderList[index].it_id.toString(), ctItems);
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: ColorConstant.primary,
+                                            elevation: 0,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(4.r))
+                                            ),
+                                            minimumSize: Size(77.w,24.h)
+                                        ),
+                                        child: Text(
+                                          '장바구니 담기',
+                                          style: TextStyle(
+                                            color: ColorConstant.white,
+                                            fontSize: 10.sp,
+                                            fontFamily: 'Noto Sans KR',
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
                             )
-                                : Row(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: ElevatedButton(
-                                    onPressed: (){
-                                      if(controller.orderListStatus.value == 3){
-                                        _showStep2Popup(context);
-                                      }else{
-                                        _showStep1Popup(context);
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: ColorConstant.gray20,
-                                        elevation: 0,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(4.r))
-                                        ),
-                                        minimumSize: Size(0.w,28.h)
+                          ],
+                        ),
+                        SizedBox(height: 11.h,),
+                        Obx(() => controller.orderListStatus.value == 4
+                            ? Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(vertical: 14),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(8)),
+                              color: ColorConstant.accent
+                          ),
+                          child: Text(
+                            '교환, 반품신청 완료',
+                            style: TextStyle(
+                              color: ColorConstant.white,
+                              fontSize: 14.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        )
+                            : Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  if(controller.orderListStatus.value == 3){
+                                    _showStep2Popup(context);
+                                  }else{
+                                    _showStep1Popup(context);
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: ColorConstant.gray20,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(4.r))
                                     ),
-                                    child: Text(
-                                      controller.orderListStatus.value == 3 ? '교환, 반품 신청' : '취소, 교환 신청',
-                                      style: TextStyle(
-                                        color: ColorConstant.white,
-                                        fontSize: 11.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
+                                    minimumSize: Size(0.w,28.h)
+                                ),
+                                child: Text(
+                                  controller.orderListStatus.value == 3 ? '교환, 반품 신청' : '취소, 교환 신청',
+                                  style: TextStyle(
+                                    color: ColorConstant.white,
+                                    fontSize: 11.sp,
+                                    fontFamily: 'Noto Sans KR',
+                                    fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                SizedBox(width: 6.w,),
-                                Expanded(
-                                  flex: 1,
-                                  child: ElevatedButton(
-                                    onPressed: (){
-                                      //add cart
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: ColorConstant.accent,
-                                        elevation: 0,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(Radius.circular(4.r))
-                                        ),
-                                        minimumSize: Size(0.w,28.h)
+                              ),
+                            ),
+                            SizedBox(width: 6.w,),
+                            Expanded(
+                              flex: 1,
+                              child: ElevatedButton(
+                                onPressed: (){
+                                  //add cart
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: ColorConstant.accent,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(4.r))
                                     ),
-                                    child: Text(
-                                      controller.orderListStatus.value == 3 ? '구매 확정' : '배송 조회',
-                                      style: TextStyle(
-                                        color: ColorConstant.white,
-                                        fontSize: 11.sp,
-                                        fontFamily: 'Noto Sans KR',
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
+                                    minimumSize: Size(0.w,28.h)
+                                ),
+                                child: Text(
+                                  controller.orderListStatus.value == 3 ? '구매 확정' : '배송 조회',
+                                  style: TextStyle(
+                                    color: ColorConstant.white,
+                                    fontSize: 11.sp,
+                                    fontFamily: 'Noto Sans KR',
+                                    fontWeight: FontWeight.w700,
                                   ),
-                                )
-                              ],
-                            )),
-                            SizedBox(height: 20.h,)
+                                ),
+                              ),
+                            )
                           ],
-                        );
-                      },
-                    ),
-                  ),
+                        )),
+                        SizedBox(height: 20.h,)
+                      ],
+                    );
+                  },
                 ),
-              ],
-            )
+              ),
+            ),
+          ],
+        )
         ),
       ),
     );

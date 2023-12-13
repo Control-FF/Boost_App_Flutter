@@ -16,30 +16,30 @@ class _CouponRegisterScreenState extends State<CouponRegisterScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '쿠폰 등록',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorConstant.white,
+        elevation: 0,
+        title: Text(
+          '쿠폰 등록',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: ColorConstant.white,
-        body: Padding(
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+      ),
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: Padding(
           padding: EdgeInsets.all(30),
           child: Obx(() => Row(
             children: [
@@ -54,24 +54,24 @@ class _CouponRegisterScreenState extends State<CouponRegisterScreen>{
                   child: TextField(
                     controller: controller.couponController,
                     decoration: InputDecoration(
-                      hintText: '쿠폰 번호',
-                      hintStyle: TextStyle(
-                        color: ColorConstant.gray1,
-                        fontSize: 12.sp,
-                        fontFamily: 'Noto Sans KR',
-                        fontWeight: FontWeight.w500,
-                      ),
-                      counterText: '',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: EdgeInsets.zero
+                        hintText: '쿠폰 번호',
+                        hintStyle: TextStyle(
+                          color: ColorConstant.gray1,
+                          fontSize: 12.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w500,
+                        ),
+                        counterText: '',
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsets.zero
 
                     ),
                     maxLines: 1,

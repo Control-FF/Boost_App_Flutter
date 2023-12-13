@@ -16,40 +16,40 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
   Widget build(BuildContext context) {
     initializeDateFormatting();
 
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () async {
-          bool backStatus = controller.onWillPop(context);
-          if (backStatus) {
-            return Future.value(true);
-          }
-          return Future.value(false);
-        },
-        child: Stack(
-          children: [
-            Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        bool backStatus = controller.onWillPop(context);
+        if (backStatus) {
+          return Future.value(true);
+        }
+        return Future.value(false);
+      },
+      child: Stack(
+        children: [
+          Scaffold(
+              backgroundColor: ColorConstant.white,
+              appBar: AppBar(
                 backgroundColor: ColorConstant.white,
-                appBar: AppBar(
-                  backgroundColor: ColorConstant.white,
-                  elevation: 0,
-                  title: Text(
-                    '주문하기 / 배송정보 입력',
-                    style: TextStyle(
-                      color: ColorConstant.black2,
-                      fontSize: 16.sp,
-                      fontFamily: 'Noto Sans KR',
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  centerTitle: true,
-                  leading: IconButton(
-                    onPressed: (){
-                      Get.back();
-                    },
-                    icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+                elevation: 0,
+                title: Text(
+                  '주문하기 / 배송정보 입력',
+                  style: TextStyle(
+                    color: ColorConstant.black2,
+                    fontSize: 16.sp,
+                    fontFamily: 'Noto Sans KR',
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-                body: CustomScrollView(
+                centerTitle: true,
+                leading: IconButton(
+                  onPressed: (){
+                    Get.back();
+                  },
+                  icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+                ),
+              ),
+              body: SafeArea(
+                child: CustomScrollView(
                     shrinkWrap: true,
                     physics: BouncingScrollPhysics(),
                     slivers: [
@@ -915,17 +915,17 @@ class OrderConfirmScreen extends GetView<OrderConfirmController>{
                           )
                       ))
                     ]
-                )
-            ),
-            Obx(() => controller.isLoading.value ? const Opacity(
-              opacity: 0.8,
-              child: ModalBarrier(dismissible: false, color: Colors.black),
-            ) : SizedBox()),
-            Obx(() => controller.isLoading.value ? const Center(
-              child: CircularProgressIndicator(),
-            ) : SizedBox()),
-          ],
-        ),
+                ),
+              )
+          ),
+          Obx(() => controller.isLoading.value ? const Opacity(
+            opacity: 0.8,
+            child: ModalBarrier(dismissible: false, color: Colors.black),
+          ) : SizedBox()),
+          Obx(() => controller.isLoading.value ? const Center(
+            child: CircularProgressIndicator(),
+          ) : SizedBox()),
+        ],
       ),
     );
   }

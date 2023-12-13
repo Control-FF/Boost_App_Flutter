@@ -9,30 +9,30 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorConstant.white,
-          elevation: 0,
-          title: Text(
-            '회원가입 정보',
-            style: TextStyle(
-              color: ColorConstant.black2,
-              fontSize: 16.sp,
-              fontFamily: 'Noto Sans KR',
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: (){
-              Get.back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorConstant.white,
+        elevation: 0,
+        title: Text(
+          '회원가입 정보',
+          style: TextStyle(
+            color: ColorConstant.black2,
+            fontSize: 16.sp,
+            fontFamily: 'Noto Sans KR',
+            fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: ColorConstant.white,
-        body: Column(
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+        ),
+      ),
+      backgroundColor: ColorConstant.white,
+      body: SafeArea(
+        child: Column(
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -421,30 +421,30 @@ class MyInfoUpdateScreen extends GetView<MyInfoController>{
             Row(
               children: [
                 Expanded(
-                  flex: 1,
-                  child: ElevatedButton(
-                    onPressed: (){
-                      Get.back();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorConstant.gray1,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero
+                    flex: 1,
+                    child: ElevatedButton(
+                      onPressed: (){
+                        Get.back();
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorConstant.gray1,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero
+                          ),
+                          minimumSize: Size(0,55.h)
                       ),
-                      minimumSize: Size(0,55.h)
-                    ),
-                    child: Text(
-                      '취소',
-                      style: TextStyle(
-                        color: ColorConstant.white,
-                        fontSize: 14.sp,
-                        fontFamily: 'Noto Sans KR',
-                        fontWeight: FontWeight.w500,
+                      child: Text(
+                        '취소',
+                        style: TextStyle(
+                          color: ColorConstant.white,
+                          fontSize: 14.sp,
+                          fontFamily: 'Noto Sans KR',
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
 
-                  )
+                    )
                 ),
                 Expanded(
                     flex: 1,

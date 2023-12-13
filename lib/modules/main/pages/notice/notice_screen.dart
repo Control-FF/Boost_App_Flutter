@@ -10,8 +10,7 @@ class NoticeScreen extends GetView<NoticeController>{
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           backgroundColor: ColorConstant.white,
           elevation: 0,
@@ -33,97 +32,98 @@ class NoticeScreen extends GetView<NoticeController>{
           ),
         ),
         backgroundColor: ColorConstant.white,
-        body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        width: Get.width,
-                        height: 137.h,
-                        color: ColorConstant.gray2.withOpacity(0.5),
-                        alignment: Alignment.center,
-                        child: Text(
-                          '최근 부스트 앱 중요한 소식 업로드\n공지사항 페이지 입니다.',
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          width: Get.width,
+                          height: 137.h,
+                          color: ColorConstant.gray2.withOpacity(0.5),
+                          alignment: Alignment.center,
+                          child: Text(
+                            '최근 부스트 앱 중요한 소식 업로드\n공지사항 페이지 입니다.',
+                            style: TextStyle(
+                              color: ColorConstant.black,
+                              fontSize: 16.sp,
+                              fontFamily: 'Noto Sans KR',
+                              fontWeight: FontWeight.w500,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(height: 46.h,)
+                      ],
+                    ),
+                    Positioned(
+                      bottom: 30.h,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 41.w),
+                        height: 32.h,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                            border: Border.all(color: ColorConstant.primary,width: 2),
+                            color: ColorConstant.white
+                        ),
+                        child: TextField(
+                          controller: controller.searchController,
+                          decoration: InputDecoration(
+                              hintStyle: TextStyle(
+                                color: ColorConstant.black2,
+                                fontSize: 13.sp,
+                                fontFamily: 'Noto Sans KR',
+                                fontWeight: FontWeight.w700,
+                              ),
+                              hintText: '공지 내용을 검색하세요.',
+                              counterText: '',
+                              contentPadding: EdgeInsets.only(left: 18.w),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide.none
+                              ),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide.none
+                              ),
+                              border: const OutlineInputBorder(
+                                  borderSide: BorderSide.none
+                              ),
+                              suffixIconConstraints: BoxConstraints(
+                                  minWidth: 16.w,
+                                  minHeight: 16.h
+                              ),
+                              suffixIcon: Container(
+                                margin: EdgeInsets.fromLTRB(18.w, 7.h, 18.h, 7.w),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    controller.getNoticeList();
+                                    FocusManager.instance.primaryFocus?.unfocus();
+                                  },
+                                  child: Image.asset('assets/images/ic_search_primary.png'),
+                                ),
+                              )
+                          ),
+                          maxLines: 1,
                           style: TextStyle(
-                            color: ColorConstant.black,
-                            fontSize: 16.sp,
+                            color: ColorConstant.gray1,
+                            fontSize: 14.sp,
                             fontFamily: 'Noto Sans KR',
                             fontWeight: FontWeight.w500,
                           ),
-                          textAlign: TextAlign.center,
+                          keyboardType: TextInputType.text,
+                          textInputAction: TextInputAction.done,
                         ),
                       ),
-                      SizedBox(height: 46.h,)
-                    ],
-                  ),
-                  Positioned(
-                    bottom: 30.h,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 41.w),
-                      height: 32.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                        border: Border.all(color: ColorConstant.primary,width: 2),
-                        color: ColorConstant.white
-                      ),
-                      child: TextField(
-                        controller: controller.searchController,
-                        decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                              color: ColorConstant.black2,
-                              fontSize: 13.sp,
-                              fontFamily: 'Noto Sans KR',
-                              fontWeight: FontWeight.w700,
-                            ),
-                            hintText: '공지 내용을 검색하세요.',
-                            counterText: '',
-                            contentPadding: EdgeInsets.only(left: 18.w),
-                            focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide.none
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide.none
-                            ),
-                            border: const OutlineInputBorder(
-                              borderSide: BorderSide.none
-                            ),
-                            suffixIconConstraints: BoxConstraints(
-                                minWidth: 16.w,
-                                minHeight: 16.h
-                            ),
-                            suffixIcon: Container(
-                              margin: EdgeInsets.fromLTRB(18.w, 7.h, 18.h, 7.w),
-                              child: GestureDetector(
-                                onTap: (){
-                                  controller.getNoticeList();
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                child: Image.asset('assets/images/ic_search_primary.png'),
-                              ),
-                            )
-                        ),
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: ColorConstant.gray1,
-                          fontSize: 14.sp,
-                          fontFamily: 'Noto Sans KR',
-                          fontWeight: FontWeight.w500,
-                        ),
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.done,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Obx(
-                  () => ListView.builder(
+                    )
+                  ],
+                ),
+                Obx(
+                      () => ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: controller.items.length,
@@ -174,7 +174,7 @@ class NoticeScreen extends GetView<NoticeController>{
                             ),
                           ),
                           Obx(
-                              () => controller.items[index].isExpand ? Container(
+                                  () => controller.items[index].isExpand ? Container(
                                 width: Get.width,
                                 color: ColorConstant.gray16.withOpacity(0.5),
                                 padding: EdgeInsets.fromLTRB(18.w, 24.h, 18.w, 24.h),
@@ -199,11 +199,11 @@ class NoticeScreen extends GetView<NoticeController>{
                     },
 
                   ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         )
-      ),
     );
   }
 

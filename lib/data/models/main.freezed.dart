@@ -659,6 +659,7 @@ CategoryData _$CategoryDataFromJson(Map<String, dynamic> json) {
 mixin _$CategoryData {
   String get ca_id => throw _privateConstructorUsedError;
   String get ca_name => throw _privateConstructorUsedError;
+  String get ca_img => throw _privateConstructorUsedError;
   String get sub_flag => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -673,7 +674,7 @@ abstract class $CategoryDataCopyWith<$Res> {
           CategoryData value, $Res Function(CategoryData) then) =
       _$CategoryDataCopyWithImpl<$Res, CategoryData>;
   @useResult
-  $Res call({String ca_id, String ca_name, String sub_flag});
+  $Res call({String ca_id, String ca_name, String ca_img, String sub_flag});
 }
 
 /// @nodoc
@@ -691,6 +692,7 @@ class _$CategoryDataCopyWithImpl<$Res, $Val extends CategoryData>
   $Res call({
     Object? ca_id = null,
     Object? ca_name = null,
+    Object? ca_img = null,
     Object? sub_flag = null,
   }) {
     return _then(_value.copyWith(
@@ -701,6 +703,10 @@ class _$CategoryDataCopyWithImpl<$Res, $Val extends CategoryData>
       ca_name: null == ca_name
           ? _value.ca_name
           : ca_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      ca_img: null == ca_img
+          ? _value.ca_img
+          : ca_img // ignore: cast_nullable_to_non_nullable
               as String,
       sub_flag: null == sub_flag
           ? _value.sub_flag
@@ -718,7 +724,7 @@ abstract class _$$_CategoryDataCopyWith<$Res>
       __$$_CategoryDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String ca_id, String ca_name, String sub_flag});
+  $Res call({String ca_id, String ca_name, String ca_img, String sub_flag});
 }
 
 /// @nodoc
@@ -734,6 +740,7 @@ class __$$_CategoryDataCopyWithImpl<$Res>
   $Res call({
     Object? ca_id = null,
     Object? ca_name = null,
+    Object? ca_img = null,
     Object? sub_flag = null,
   }) {
     return _then(_$_CategoryData(
@@ -744,6 +751,10 @@ class __$$_CategoryDataCopyWithImpl<$Res>
       ca_name: null == ca_name
           ? _value.ca_name
           : ca_name // ignore: cast_nullable_to_non_nullable
+              as String,
+      ca_img: null == ca_img
+          ? _value.ca_img
+          : ca_img // ignore: cast_nullable_to_non_nullable
               as String,
       sub_flag: null == sub_flag
           ? _value.sub_flag
@@ -757,7 +768,10 @@ class __$$_CategoryDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CategoryData implements _CategoryData {
   _$_CategoryData(
-      {this.ca_id = '', this.ca_name = '', this.sub_flag = 'false'});
+      {this.ca_id = '',
+      this.ca_name = '',
+      this.ca_img = '',
+      this.sub_flag = 'false'});
 
   factory _$_CategoryData.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryDataFromJson(json);
@@ -770,11 +784,14 @@ class _$_CategoryData implements _CategoryData {
   final String ca_name;
   @override
   @JsonKey()
+  final String ca_img;
+  @override
+  @JsonKey()
   final String sub_flag;
 
   @override
   String toString() {
-    return 'CategoryData(ca_id: $ca_id, ca_name: $ca_name, sub_flag: $sub_flag)';
+    return 'CategoryData(ca_id: $ca_id, ca_name: $ca_name, ca_img: $ca_img, sub_flag: $sub_flag)';
   }
 
   @override
@@ -784,13 +801,15 @@ class _$_CategoryData implements _CategoryData {
             other is _$_CategoryData &&
             (identical(other.ca_id, ca_id) || other.ca_id == ca_id) &&
             (identical(other.ca_name, ca_name) || other.ca_name == ca_name) &&
+            (identical(other.ca_img, ca_img) || other.ca_img == ca_img) &&
             (identical(other.sub_flag, sub_flag) ||
                 other.sub_flag == sub_flag));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ca_id, ca_name, sub_flag);
+  int get hashCode =>
+      Object.hash(runtimeType, ca_id, ca_name, ca_img, sub_flag);
 
   @JsonKey(ignore: true)
   @override
@@ -810,6 +829,7 @@ abstract class _CategoryData implements CategoryData {
   factory _CategoryData(
       {final String ca_id,
       final String ca_name,
+      final String ca_img,
       final String sub_flag}) = _$_CategoryData;
 
   factory _CategoryData.fromJson(Map<String, dynamic> json) =
@@ -819,6 +839,8 @@ abstract class _CategoryData implements CategoryData {
   String get ca_id;
   @override
   String get ca_name;
+  @override
+  String get ca_img;
   @override
   String get sub_flag;
   @override

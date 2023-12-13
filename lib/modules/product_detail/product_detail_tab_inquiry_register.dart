@@ -11,30 +11,30 @@ class ProductDetailTabInquiryRegister extends GetView<ProductDetailController>{
   @override
   Widget build(BuildContext context) {
     return KeyboardDismissOnTap(
-      child: SafeArea(
-        child: Scaffold(
+      child: Scaffold(
+        backgroundColor: ColorConstant.white,
+        appBar: AppBar(
           backgroundColor: ColorConstant.white,
-          appBar: AppBar(
-            backgroundColor: ColorConstant.white,
-            elevation: 0,
-            title: Text(
-              '상품 문의',
-              style: TextStyle(
-                color: ColorConstant.black2,
-                fontSize: 16.sp,
-                fontFamily: 'Noto Sans KR',
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            centerTitle: true,
-            leading: IconButton(
-              onPressed: (){
-                Get.back();
-              },
-              icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+          elevation: 0,
+          title: Text(
+            '상품 문의',
+            style: TextStyle(
+              color: ColorConstant.black2,
+              fontSize: 16.sp,
+              fontFamily: 'Noto Sans KR',
+              fontWeight: FontWeight.w700,
             ),
           ),
-          body: Column(
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: (){
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back_ios_new_rounded,color: ColorConstant.black,),
+          ),
+        ),
+        body: SafeArea(
+          child: Column(
             children: [
               Expanded(
                 child: SingleChildScrollView(
