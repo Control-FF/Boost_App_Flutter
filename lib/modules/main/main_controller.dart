@@ -95,6 +95,10 @@ class MainController extends GetxController{
         mainMdList.value = response.data!.mdItems!;
         mainRecommendList.value = response.data!.recommendItems!;
 
+        for(int i=0; i<mainCategoryList.length; i++){
+          precacheImage(Image.network(mainCategoryList[i].ca_img).image, Get.context!);
+        }
+
         if(bottomBannerList.isNotEmpty){
           String popupDate = _storageService.getPopupDate();
 

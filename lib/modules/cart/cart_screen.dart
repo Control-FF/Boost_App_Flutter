@@ -1025,7 +1025,7 @@ class CartScreen extends GetView<CartController>{
                                 padding: EdgeInsets.symmetric(horizontal: 30),
                                 child: Container(
                                   height: 290,
-                                  child: ListView.builder(
+                                  child: ListView.separated(
                                     physics: BouncingScrollPhysics(),
                                     padding: EdgeInsets.only(top: 20.h),
                                     scrollDirection: Axis.horizontal,
@@ -1042,116 +1042,113 @@ class CartScreen extends GetView<CartController>{
                                                   'productId' : oneTouchController.oneTouchCartList[index].it_id
                                                 });
                                               },
-                                              child: Padding(
-                                                padding: index == 4 ? EdgeInsets.zero : EdgeInsets.only(right: 11),
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    oneTouchController.oneTouchCartList[index].img != ''
-                                                        ? Image.network(oneTouchController.oneTouchCartList[index].img,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
-                                                      return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
-                                                    },)
-                                                        : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
-                                                    SizedBox(height: 9.h,),
-                                                    SizedBox(
-                                                      width: 146.w,
-                                                      child: Text.rich(
-                                                          TextSpan(
-                                                              children: [
-                                                                TextSpan(
-                                                                  text: oneTouchController.oneTouchCartList[index].it_name,
-                                                                  style: TextStyle(
-                                                                    color: ColorConstant.black,
-                                                                    fontSize: 10.sp,
-                                                                    fontFamily: 'Noto Sans KR',
-                                                                    fontWeight: FontWeight.w400,
-                                                                  ),
-                                                                )
-                                                              ]
-                                                          )
-                                                      ),
-                                                    ),
-                                                    SizedBox(height: 2.h,),
-                                                    Container(
-                                                      width: 146.w,
-                                                      child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                        children: [
-                                                          Column(
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  oneTouchController.oneTouchCartList[index].img != ''
+                                                      ? Image.network(oneTouchController.oneTouchCartList[index].img,width: 146.w,height: 151.h,fit: BoxFit.cover,errorBuilder: (context,exception,stackTrace){
+                                                    return Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,);
+                                                  },)
+                                                      : Image.asset('assets/images/product_sample.png',width: 146.w,height: 151.h,fit: BoxFit.cover,),
+                                                  SizedBox(height: 9.h,),
+                                                  SizedBox(
+                                                    width: 146.w,
+                                                    child: Text.rich(
+                                                        TextSpan(
                                                             children: [
-                                                              SizedBox(
-                                                                width: 100.w,
-                                                                child: Text.rich(
-                                                                    TextSpan(
-                                                                        children: [
-                                                                          oneTouchController.oneTouchCartList[index].it_cust_price != oneTouchController.oneTouchCartList[index].it_price ? TextSpan(
-                                                                            text: '${Constants.getPercent(oneTouchController.oneTouchCartList[index].it_price, oneTouchController.oneTouchCartList[index].it_cust_price)}%',
-                                                                            style: TextStyle(
-                                                                              color: ColorConstant.primary,
-                                                                              fontSize: 12.sp,
-                                                                              fontFamily: 'Noto Sans KR',
-                                                                              fontWeight: FontWeight.w700,
-                                                                            ),
-                                                                          ) : TextSpan(),
-                                                                          TextSpan(
-                                                                            text: ' ${Constants.numberAddComma(oneTouchController.oneTouchCartList[index].it_price)}원',
-                                                                            style: TextStyle(
-                                                                              color: ColorConstant.black,
-                                                                              fontSize: 12.sp,
-                                                                              fontFamily: 'Noto Sans KR',
-                                                                              fontWeight: FontWeight.w700,
-                                                                            ),
-                                                                          )
-                                                                        ]
-                                                                    )
+                                                              TextSpan(
+                                                                text: oneTouchController.oneTouchCartList[index].it_name,
+                                                                style: TextStyle(
+                                                                  color: ColorConstant.black,
+                                                                  fontSize: 10.sp,
+                                                                  fontFamily: 'Noto Sans KR',
+                                                                  fontWeight: FontWeight.w400,
+                                                                ),
+                                                              )
+                                                            ]
+                                                        )
+                                                    ),
+                                                  ),
+                                                  SizedBox(height: 2.h,),
+                                                  Container(
+                                                    width: 146.w,
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 100.w,
+                                                              child: Text.rich(
+                                                                  TextSpan(
+                                                                      children: [
+                                                                        oneTouchController.oneTouchCartList[index].it_cust_price != oneTouchController.oneTouchCartList[index].it_price ? TextSpan(
+                                                                          text: '${Constants.getPercent(oneTouchController.oneTouchCartList[index].it_price, oneTouchController.oneTouchCartList[index].it_cust_price)}%',
+                                                                          style: TextStyle(
+                                                                            color: ColorConstant.primary,
+                                                                            fontSize: 12.sp,
+                                                                            fontFamily: 'Noto Sans KR',
+                                                                            fontWeight: FontWeight.w700,
+                                                                          ),
+                                                                        ) : TextSpan(),
+                                                                        TextSpan(
+                                                                          text: ' ${Constants.numberAddComma(oneTouchController.oneTouchCartList[index].it_price)}원',
+                                                                          style: TextStyle(
+                                                                            color: ColorConstant.black,
+                                                                            fontSize: 12.sp,
+                                                                            fontFamily: 'Noto Sans KR',
+                                                                            fontWeight: FontWeight.w700,
+                                                                          ),
+                                                                        )
+                                                                      ]
+                                                                  )
+                                                              ),
+                                                            ),
+                                                            oneTouchController.oneTouchCartList[index].it_cust_price != oneTouchController.oneTouchCartList[index].it_price ? Text(
+                                                              '${Constants.numberAddComma(oneTouchController.oneTouchCartList[index].it_cust_price)}원',
+                                                              style: TextStyle(
+                                                                  color: ColorConstant.gray1,
+                                                                  fontSize: 8.sp,
+                                                                  fontFamily: 'Noto Sans KR',
+                                                                  fontWeight: FontWeight.w700,
+                                                                  decoration: TextDecoration.lineThrough
+                                                              ),
+                                                            ) : SizedBox()
+
+                                                          ],
+                                                        ),
+                                                        SizedBox(
+                                                          width: 46.w,
+                                                          child: Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                                            children: [
+                                                              Text(
+                                                                oneTouchController.oneTouchCartList[index].io_id != '' ? oneTouchController.oneTouchCartList[index].io_id! : '',
+                                                                style: TextStyle(
+                                                                  color: ColorConstant.black,
+                                                                  fontSize: 10.sp,
+                                                                  fontFamily: 'Noto Sans KR',
+                                                                  fontWeight: FontWeight.w700,
+                                                                ),
+                                                                overflow: TextOverflow.ellipsis,
+                                                              ),
+                                                              Text(
+                                                                oneTouchController.oneTouchCartList[index].io_id != '' ? '${oneTouchController.oneTouchCartList[index].ct_qty}개' : '',
+                                                                style: TextStyle(
+                                                                  color: ColorConstant.black,
+                                                                  fontSize: 10.sp,
+                                                                  fontFamily: 'Noto Sans KR',
+                                                                  fontWeight: FontWeight.w700,
                                                                 ),
                                                               ),
-                                                              oneTouchController.oneTouchCartList[index].it_cust_price != oneTouchController.oneTouchCartList[index].it_price ? Text(
-                                                                '${Constants.numberAddComma(oneTouchController.oneTouchCartList[index].it_cust_price)}원',
-                                                                style: TextStyle(
-                                                                    color: ColorConstant.gray1,
-                                                                    fontSize: 8.sp,
-                                                                    fontFamily: 'Noto Sans KR',
-                                                                    fontWeight: FontWeight.w700,
-                                                                    decoration: TextDecoration.lineThrough
-                                                                ),
-                                                              ) : SizedBox()
-
                                                             ],
                                                           ),
-                                                          SizedBox(
-                                                            width: 46.w,
-                                                            child: Column(
-                                                              crossAxisAlignment: CrossAxisAlignment.end,
-                                                              children: [
-                                                                Text(
-                                                                  oneTouchController.oneTouchCartList[index].io_id != '' ? oneTouchController.oneTouchCartList[index].io_id! : '',
-                                                                  style: TextStyle(
-                                                                    color: ColorConstant.black,
-                                                                    fontSize: 10.sp,
-                                                                    fontFamily: 'Noto Sans KR',
-                                                                    fontWeight: FontWeight.w700,
-                                                                  ),
-                                                                  overflow: TextOverflow.ellipsis,
-                                                                ),
-                                                                Text(
-                                                                  oneTouchController.oneTouchCartList[index].io_id != '' ? '${oneTouchController.oneTouchCartList[index].ct_qty}개' : '',
-                                                                  style: TextStyle(
-                                                                    color: ColorConstant.black,
-                                                                    fontSize: 10.sp,
-                                                                    fontFamily: 'Noto Sans KR',
-                                                                    fontWeight: FontWeight.w700,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
                                               ),
                                             ),
                                           ),
@@ -1183,6 +1180,9 @@ class CartScreen extends GetView<CartController>{
                                           )
                                         ],
                                       );
+                                    },
+                                    separatorBuilder: (context, index){
+                                      return SizedBox(width: 11.w,);
                                     },
                                   ),
                                 ),
